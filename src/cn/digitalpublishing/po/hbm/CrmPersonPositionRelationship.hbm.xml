@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmPersonPositionRelationship" table="CRM_PERSON_POSITION_RS">
+		<id name="id" type="java.lang.String">
+			<column name="R_PP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="status" type="java.lang.String">
+			<column name="R_PP_STATUS" length="32">
+				<comment>人员岗位关系状态</comment>
+			</column>
+		</property>
+		<many-to-one name="position" class="cn.digitalpublishing.po.CrmPosition" fetch="select" lazy="false">
+			<column name="POSITION_ID" length="32">
+				<comment>岗位ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="personTypeRelationship" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_PERSON_TYPE_ID" length="32">
+				<comment>人员类型角色ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

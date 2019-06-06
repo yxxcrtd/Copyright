@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductPriceDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>priceId,priceType,priceName,priceValue,priceStartOn,priceEndOn,priceOrderCategory,priceDefaultFlg,priceStatus,region.id,region.name,productLicense.licenseId,productLicense.licenseName</properties>
+			<fields>a.priceId,(select z.name from BDic z where z.id = a.priceType),a.priceName,a.priceValue,a.priceStartOn,a.priceEndOn,(select z.name from BDic z where z.id = a.priceOrderCategory),(select z.name from BDic z where z.id = a.priceDefaultFlg), (select z.name from BDic z where z.id = a.priceStatus),c.id,c.name,e.licenseId,e.licenseName</fields>
+			<hql>from PProductPrice a left join a.product b left join a.region c left join a.productLicense d left join a.productLicense e</hql>
+			<conditions>
+				<condition id="priceId" describe="priceId">
+					<params type="param">
+						<param name="priceId" type="java.lang.String"></param>
+					</params>
+					<hql> a.priceId = ? </hql>
+				</condition>
+				<condition id="priceType" describe="产品类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType like ?</hql>
+				</condition>
+				<condition id="priceName" describe="价格名称">
+					<params type="param">
+						<param name="priceName" type="java.lang.String" />
+					</params>
+					<hql>a.priceName like ?</hql>
+				</condition>
+				<condition id="priceValue" describe="价格值">
+					<params type="param">
+						<param name="priceValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.priceValue = ?</hql>
+				</condition>
+				<condition id="priceStartOn" describe="价格开始时间">
+					<params type="param">
+						<param name="priceStartOn" type="java.util.Date" />
+					</params>
+					<hql>a.priceStartOn like ?</hql>
+				</condition>
+				<condition id="priceEndOn" describe="价格结束时间">
+					<params type="param">
+						<param name="priceEndOn" type="java.util.Date" />
+					</params>
+					<hql>a.priceEndOn like ?</hql>
+				</condition>
+				<condition id="priceOrderCategory" describe="价格订单分类">
+					<params type="param">
+						<param name="priceOrderCategory" type="java.lang.String" />
+					</params>
+					<hql>a.priceOrderCategory like ?</hql>
+				</condition>
+				<condition id="priceDefaultFlg" describe="价格默认标识">
+					<params type="param">
+						<param name="priceDefaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.priceDefaultFlg like ?</hql>
+				</condition>
+				<condition id="priceStatus" describe="价格状态">
+					<params type="param">
+						<param name="priceStatus" type="java.lang.String" />
+					</params>
+					<hql>a.priceStatus like ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="regionId" describe="地域id">
+					<params type="param">
+						<param name="regionId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+					<condition id="licenseId" describe="产品许可id">
+					<params type="param">
+						<param name="licenseId" type="java.lang.String" />
+					</params>
+					<hql>d.licenseId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPrice</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>priceId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductPrice a left join a.product b left join a.region c left join a.productLicense d</hql>
+			<conditions>
+				<condition id="priceId" describe="priceId">
+					<params type="param">
+						<param name="priceId" type="java.lang.String"></param>
+					</params>
+					<hql> a.priceId = ? </hql>
+				</condition>
+				<condition id="priceType" describe="产品类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType like ?</hql>
+				</condition>
+				<condition id="priceName" describe="价格名称">
+					<params type="param">
+						<param name="priceName" type="java.lang.String" />
+					</params>
+					<hql>a.priceName like ?</hql>
+				</condition>
+				<condition id="priceValue" describe="价格值">
+					<params type="param">
+						<param name="priceValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.priceValue = ?</hql>
+				</condition>
+				<condition id="priceStartOn" describe="价格开始时间">
+					<params type="param">
+						<param name="priceStartOn" type="java.util.Date" />
+					</params>
+					<hql>a.priceStartOn like ?</hql>
+				</condition>
+				<condition id="priceEndOn" describe="价格结束时间">
+					<params type="param">
+						<param name="priceEndOn" type="java.util.Date" />
+					</params>
+					<hql>a.priceEndOn like ?</hql>
+				</condition>
+				<condition id="priceOrderCategory" describe="价格订单分类">
+					<params type="param">
+						<param name="priceOrderCategory" type="java.lang.String" />
+					</params>
+					<hql>a.priceOrderCategory like ?</hql>
+				</condition>
+				<condition id="priceDefaultFlg" describe="价格默认标识">
+					<params type="param">
+						<param name="priceDefaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.priceDefaultFlg like ?</hql>
+				</condition>
+				<condition id="priceStatus" describe="价格状态">
+					<params type="param">
+						<param name="priceStatus" type="java.lang.String" />
+					</params>
+					<hql>a.priceStatus like ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="regionId" describe="地域id">
+					<params type="param">
+						<param name="regionId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+					<condition id="licenseId" describe="产品许可id">
+					<params type="param">
+						<param name="licenseId" type="java.lang.String" />
+					</params>
+					<hql>d.licenseId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPrice</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>priceId,priceType,priceName,priceValue,priceStartOn,priceEndOn,priceOrderCategory,priceDefaultFlg,priceStatus,region.id,region.name </properties>
+			<fields>a.priceId,(select z.name from BDic z where z.id = a.priceType),a.priceName,a.priceValue,a.priceStartOn,a.priceEndOn,(select z.name from BDic z where z.id = a.priceOrderCategory),(select z.name from BDic z where z.id = a.priceDefaultFlg), (select z.name from BDic z where z.id = a.priceStatus),c.id,c.name</fields>
+			<hql>from PProductPrice a left join a.product b left join a.region c left join a.productLicense d</hql>
+			<conditions>
+				<condition id="priceId" describe="priceId">
+					<params type="param">
+						<param name="priceId" type="java.lang.String"></param>
+					</params>
+					<hql> a.priceId = ? </hql>
+				</condition>
+				<condition id="priceType" describe="产品类型">
+					<params type="param">
+						<param name="priceType" type="java.lang.String" />
+					</params>
+					<hql>a.priceType like ?</hql>
+				</condition>
+				<condition id="priceName" describe="价格名称">
+					<params type="param">
+						<param name="priceName" type="java.lang.String" />
+					</params>
+					<hql>a.priceName like ?</hql>
+				</condition>
+				<condition id="priceValue" describe="价格值">
+					<params type="param">
+						<param name="priceValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.priceValue = ?</hql>
+				</condition>
+				<condition id="priceStartOn" describe="价格开始时间">
+					<params type="param">
+						<param name="priceStartOn" type="java.util.Date" />
+					</params>
+					<hql>a.priceStartOn like ?</hql>
+				</condition>
+				<condition id="priceEndOn" describe="价格结束时间">
+					<params type="param">
+						<param name="priceEndOn" type="java.util.Date" />
+					</params>
+					<hql>a.priceEndOn like ?</hql>
+				</condition>
+				<condition id="priceOrderCategory" describe="价格订单分类">
+					<params type="param">
+						<param name="priceOrderCategory" type="java.lang.String" />
+					</params>
+					<hql>a.priceOrderCategory like ?</hql>
+				</condition>
+				<condition id="priceDefaultFlg" describe="价格默认标识">
+					<params type="param">
+						<param name="priceDefaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.priceDefaultFlg like ?</hql>
+				</condition>
+				<condition id="priceStatus" describe="价格状态">
+					<params type="param">
+						<param name="priceStatus" type="java.lang.String" />
+					</params>
+					<hql>a.priceStatus like ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="regionId" describe="地域id">
+					<params type="param">
+						<param name="regionId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+					<condition id="licenseId" describe="产品许可id">
+					<params type="param">
+						<param name="licenseId" type="java.lang.String" />
+					</params>
+					<hql>d.licenseId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPrice</className>
+		</query>
+	</dao>
+</web-query>

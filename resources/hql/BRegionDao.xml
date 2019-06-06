@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.BRegionDao">
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,fullName,code,treeCode,order,status,createOn,createBy,updateOn,updateBy,country.id,childSize, parentRegion.id</properties>
+			<fields>a.id,a.name,a.fullName,a.code,a.treeCode,a.order,a.status,a.createOn,a.createBy,a.updateOn,a.updateBy,b.id, (select count(*) from BRegion y where y.parentRegion.id = a.id and y.status = a.status) , c.id</fields>
+			<hql>from BRegion a left join a.country b left join a.parentRegion c</hql>
+			<conditions>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then '1' else c.id end) = ?</hql>
+				</condition>
+
+				<condition id="id" describe="地域id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="code" describe="地域id">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+
+				<condition id="coId" describe="国别ID">
+					<params type="param">
+						<param name="coId" type="java.lang.String"></param>
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BRegion</className>
+		</query>
+		
+		<query>
+			<id>getListNoParent</id>
+			<method>getListNoParent</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,fullName,code</properties>
+			<fields>a.id,a.name,a.fullName,a.code</fields>
+			<hql>from BRegion a left join a.country b left join a.parentRegion c</hql>
+			<conditions>
+
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+
+				<condition id="coId" describe="国别ID">
+					<params type="param">
+						<param name="coId" type="java.lang.String"></param>
+					</params>
+					<hql>b.id = ? and c.id is not null</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BRegion</className>
+		</query>
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from BRegion a left join a.country b left join a.parentRegion c</hql>
+			<conditions>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when c.id is null then '1' else c.id end) = ?</hql>
+				</condition>
+
+				<condition id="id" describe="地域id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				
+				<condition id="code" describe="地域id">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+
+				<condition id="coId" describe="国别ID">
+					<params type="param">
+						<param name="coId" type="java.lang.String"></param>
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BRegion</className>
+		</query>
+	</dao>
+</web-query>

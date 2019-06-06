@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.FTaskDao">
+
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>id,name,url,joinNum,taskAssigneeFlag,assignee,startFlag,field,display,createDate</properties>
+            <fields>a.id,a.name,a.url,a.joinNum,a.taskAssigneeFlag,a.assignee,a.startFlag,a.field,a.display,a.createDate</fields>
+            <hql>from FTask a</hql>
+            <conditions>
+                <condition id="pdid" describe="状态">
+                    <params type="param">
+                        <param name="pdid" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.pdid = ?</hql>
+                </condition>
+                <condition id="activityName" describe="状态">
+                    <params type="param">
+                        <param name="activityName" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.activityName = ?</hql>
+                </condition>
+                <condition id="type" describe="状态">
+                    <params type="param">
+                        <param name="type" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.type = ?</hql>
+                </condition>
+
+
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FTask</className>
+        </query>
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>id,name,url,joinNum,taskAssigneeFlag,assignee,startFlag,field,display,createDate</properties>
+            <fields>a.id,a.name,a.url,a.joinNum,a.taskAssigneeFlag,(select b.name from CrmPosition b where b.id = a.assignee),a.startFlag,a.field,a.display,a.createDate</fields>
+            <hql>from FTask a</hql>
+            <conditions>
+                <condition id="pdid" describe="状态">
+                    <params type="param">
+                        <param name="pdid" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.pdid = ?</hql>
+                </condition>
+                <condition id="activityName" describe="状态">
+                    <params type="param">
+                        <param name="activityName" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.activityName = ?</hql>
+                </condition>
+                <condition id="type" describe="状态">
+                    <params type="param">
+                        <param name="type" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.type = ?</hql>
+                </condition>
+                <condition id="productType" describe="状态">
+                    <params type="param">
+                        <param name="productType" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.productType = ?</hql>
+                </condition>
+                <condition id="processType" describe="状态">
+                    <params type="param">
+                        <param name="processType" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.processType = ?</hql>
+                </condition>
+                <condition id="names" describe="names">
+                    <params type="param">
+                        <param name="names" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.activityName in #X1</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FTask</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>id</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from FTask a</hql>
+            <conditions>
+                <condition id="pdid" describe="状态">
+                    <params type="param">
+                        <param name="pdid" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.pdid = ?</hql>
+                </condition>
+                <condition id="activityName" describe="状态">
+                    <params type="param">
+                        <param name="activityName" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.activityName = ?</hql>
+                </condition>
+                <condition id="productType" describe="状态">
+                    <params type="param">
+                        <param name="productType" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.productType = ?</hql>
+                </condition>
+                <condition id="processType" describe="状态">
+                    <params type="param">
+                        <param name="processType" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.processType = ?</hql>
+                </condition>
+                <condition id="names" describe="names">
+                    <params type="param">
+                        <param name="names" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.activityName in #X1</hql>
+                </condition>
+            </conditions>
+            <order></order>
+            <className>cn.digitalpublishing.po.FTask</className>
+        </query>
+        <query>
+            <id>getTaskImplPagingList</id>
+            <method>getTaskImplPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>taskImpl</properties>
+            <fields>a</fields>
+            <hql>from org.jbpm.pvm.internal.task.TaskImpl a</hql>
+            <conditions>
+
+                <condition id="assignees" describe="names">
+                    <params type="param">
+                        <param name="assignees" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.assignee in #X1</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>order by a.createTime desc </order>
+            <className>cn.digitalpublishing.po.FTask</className>
+        </query>
+
+    </dao>
+</web-query>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.EMaterialDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>materialId, materialName, materialCode, materialSpec, materialGrams, materialUnit, materialPrice, materialStock, materialStockCount</properties>
+			<fields>a.materialId, a.materialName, a.materialCode, a.materialSpec, a.materialGrams, a.materialUnit, a.materialPrice, a.materialStock, a.materialStockCount</fields>
+			<hql>from EMaterial a</hql>
+			<conditions>
+				<condition id="materialId" discribe="材料ID">
+					<params type="param">
+						<param name="materialId" type="java.lang.String" />
+					</params>
+					<hql>a.materialId = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialUnit" discribe="材料单位">
+					<params type="param">
+						<param name="materialUnit" type="java.lang.String" />
+					</params>
+					<hql>a.materialUnit = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialStock" discribe="材料库区">
+					<params type="param">
+						<param name="materialStock" type="java.lang.String" />
+					</params>
+					<hql>a.materialStock = ?</hql>
+				</condition>
+				<condition id="materialStockCount" discribe="材料库存">
+					<params type="param">
+						<param name="materialStockCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialStockCount = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EMaterial</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>materialId, materialName, materialCode, materialSpec, materialGrams, materialUnit, materialPrice, materialStock, materialStockCount</properties>
+			<fields>a.materialId, a.materialName, a.materialCode, a.materialSpec, a.materialGrams, a.materialUnit, a.materialPrice, a.materialStock, a.materialStockCount</fields>
+			<hql>from EMaterial a</hql>
+			<conditions>
+				<condition id="materialId" discribe="材料ID">
+					<params type="param">
+						<param name="materialId" type="java.lang.String" />
+					</params>
+					<hql>a.materialId = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialUnit" discribe="材料单位">
+					<params type="param">
+						<param name="materialUnit" type="java.lang.String" />
+					</params>
+					<hql>a.materialUnit = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialStock" discribe="材料库区">
+					<params type="param">
+						<param name="materialStock" type="java.lang.String" />
+					</params>
+					<hql>a.materialStock = ?</hql>
+				</condition>
+				<condition id="materialStockCount" discribe="材料库存">
+					<params type="param">
+						<param name="materialStockCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialStockCount = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EMaterial</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>materialId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from EMaterial a</hql>
+			<conditions>
+				<condition id="materialId" discribe="材料ID">
+					<params type="param">
+						<param name="materialId" type="java.lang.String" />
+					</params>
+					<hql>a.materialId = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialUnit" discribe="材料单位">
+					<params type="param">
+						<param name="materialUnit" type="java.lang.String" />
+					</params>
+					<hql>a.materialUnit = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialStock" discribe="材料库区">
+					<params type="param">
+						<param name="materialStock" type="java.lang.String" />
+					</params>
+					<hql>a.materialStock = ?</hql>
+				</condition>
+				<condition id="materialStockCount" discribe="材料库存">
+					<params type="param">
+						<param name="materialStockCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialStockCount = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EMaterial</className>
+		</query>
+		
+		<query>
+			<id>getSelectMaterialPagingList</id>
+			<method>getSelectMaterialPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>materialId, materialName, materialCode, materialSpec, materialGrams, materialUnit, materialPrice, materialStock, materialStockCount, crmCorpTypeRelationship.corp.shortName</properties>
+			<fields>a.materialId, a.materialName, a.materialCode, a.materialSpec, a.materialGrams, a.materialUnit, a.materialPrice, a.materialStock, a.materialStockCount, a.crmCorpTypeRelationship.corp.shortName</fields>
+			<hql>from EMaterial a</hql>
+			<conditions>
+				<condition id="materialId" discribe="材料ID">
+					<params type="param">
+						<param name="materialId" type="java.lang.String" />
+					</params>
+					<hql>a.materialId = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialUnit" discribe="材料单位">
+					<params type="param">
+						<param name="materialUnit" type="java.lang.String" />
+					</params>
+					<hql>a.materialUnit = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialStock" discribe="材料库区">
+					<params type="param">
+						<param name="materialStock" type="java.lang.String" />
+					</params>
+					<hql>a.materialStock = ?</hql>
+				</condition>
+				<condition id="materialStockCount" discribe="材料库存">
+					<params type="param">
+						<param name="materialStockCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialStockCount = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EMaterial</className>
+		</query>
+		<query>
+			<id>getSelectMaterialCount</id>
+			<method>getSelectMaterialCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>materialId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from EMaterial a</hql>
+			<conditions>
+				<condition id="materialId" discribe="材料ID">
+					<params type="param">
+						<param name="materialId" type="java.lang.String" />
+					</params>
+					<hql>a.materialId = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialUnit" discribe="材料单位">
+					<params type="param">
+						<param name="materialUnit" type="java.lang.String" />
+					</params>
+					<hql>a.materialUnit = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialStock" discribe="材料库区">
+					<params type="param">
+						<param name="materialStock" type="java.lang.String" />
+					</params>
+					<hql>a.materialStock = ?</hql>
+				</condition>
+				<condition id="materialStockCount" discribe="材料库存">
+					<params type="param">
+						<param name="materialStockCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialStockCount = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EMaterial</className>
+		</query>
+		
+	</dao>
+</web-query>

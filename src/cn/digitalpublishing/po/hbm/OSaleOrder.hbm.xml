@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.OSaleOrder" table="O_SALE_ORDER">
+		<id name="saleOrderId" type="java.lang.String">
+			<column name="O_SALE_ORDER_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="saleOrderCode" type="java.lang.String">
+			<column name="O_SALE_ORDER_CODE" length="32">
+				<comment>销售订单编号</comment>
+			</column>
+		</property>
+		<property name="saleOrderCreateOn" type="java.util.Date">
+			<column name="O_SALE_ORDER_CREATE_ON">
+				<comment>销售订单创建日期</comment>
+			</column>
+		</property>
+		<property name="saleOrderCreateBy" type="java.lang.String">
+			<column name="O_SALE_ORDER_CREATE_BY" length="32">
+				<comment>销售订单创建人</comment>
+			</column>
+		</property>
+		<property name="saleOrderUpdateOn" type="java.util.Date">
+			<column name="O_SALE_ORDER_UPDATE_ON">
+				<comment>销售订单修改日期</comment>
+			</column>
+		</property>
+		<property name="saleOrderUpdateBy" type="java.lang.String">
+			<column name="O_SALE_ORDER_UPDATE_BY" length="32">
+				<comment>销售订单修改人</comment>
+			</column>
+		</property>
+		<property name="saleOrderSendRemark" type="java.lang.String">
+			<column name="O_SALE_ORDER_SEND_REMARK" length="1024">
+				<comment>销售订单发货备注</comment>
+			</column>
+		</property>
+		<property name="saleOrderBookingOn" type="java.util.Date">
+			<column name="O_SALE_ORDER_BOOKING_ON">
+				<comment>销售订单订货日期</comment>
+			</column>
+		</property>
+		<property name="saleOrderBookingBy" type="java.lang.String">
+			<column name="O_SALE_ORDER_BOOKING_BY" length="32">
+				<comment>销售订单交单人</comment>
+			</column>
+		</property>
+		<property name="saleOrderTaxRate" type="java.lang.Integer">
+			<column name="O_SALE_ORDER_TAX_RATE">
+				<comment>销售订单税率</comment>
+			</column>
+		</property>
+		<property name="saleOrderRecheckFlg" type="java.lang.String">
+			<column name="O_SALE_ORDER_RECHECK_FLG" length="32">
+				<comment>销售订单查重标识</comment>
+			</column>
+		</property>
+		<property name="saleOrderStatus" type="java.lang.String">
+			<column name="O_SALE_ORDER_STATUS" length="32">
+				<comment>销售订单状态</comment>
+			</column>
+		</property>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="saleItemSet" inverse="true">
+			<key>
+				<column name="O_SALE_ORDER_ID" length="32">
+					<comment>销售订单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OSaleItem" />
+		</set>
+		<set name="stockOutSet" inverse="true">
+			<key>
+				<column name="O_SALE_ORDER_ID" length="32">
+					<comment>销售订单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockOut" />
+		</set>
+		<set name="initialSaleOrderSet" inverse="true">
+			<key>
+				<column name="O_SALE_ORDER_ID" length="32">
+					<comment>销售订单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OInitialSaleOrder" />
+		</set>
+	</class>
+</hibernate-mapping>

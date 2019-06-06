@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.EPrintDao">
+
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>printId,printPrice,printCount,printOpenFlg,printSize,printBinding,printSheet,printSampleCount,printEdition,printStatus</properties>
+			<fields>a.printId,a.printPrice,a.printCount,(select name from BDic z where z.id=a.printOpenFlg),a.printSize,(select name from BDic z where z.id=a.printBinding),a.printSheet,a.printSampleCount,a.printEdition,a.printStatus</fields>
+			<hql> from EPrint a left join a.product b </hql>
+			<conditions>
+				<condition id="printId" describe="printId">
+					<params type="param">
+						<param name="printId" type="java.lang.String"></param>
+					</params>
+					<hql>a.printId = ?</hql>
+				</condition>
+				<condition id="printStatus" describe="printStatus">
+					<params type="param">
+						<param name="printStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.printStatus = ?</hql>
+				</condition>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.EPrint</className>
+		</query>
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>printId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from EPrint a left join a.product b </hql>
+			<conditions>
+				<condition id="printId" describe="printId">
+					<params type="param">
+						<param name="printId" type="java.lang.String"></param>
+					</params>
+					<hql> a.printId = ? </hql>
+				</condition>
+				<condition id="printStatus" describe="printStatus">
+					<params type="param">
+						<param name="printStatus" type="java.lang.String"></param>
+					</params>
+					<hql> a.printStatus = ? </hql>
+				</condition>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.EPrint</className>
+		</query>
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>printId,printPrice,printCount,printOpenFlg,printSize,printBinding,printSheet,printSampleCount,printEdition,a.printStatus,product.id,product.title</properties>
+			<fields>a.printId,a.printPrice,a.printCount,a.printOpenFlg,a.printSize,a.printBinding,a.printSheet,a.printSampleCount,a.printEdition,a.printStatus,b.id,b.title</fields>
+			<hql> from EPrint a left join a.product b </hql>
+			<conditions>
+				<condition id="printId" describe="printId">
+					<params type="param">
+						<param name="printId" type="java.lang.String"></param>
+					</params>
+					<hql> a.printId = ? </hql>
+				</condition>
+				<condition id="printStatus" describe="printStatus">
+					<params type="param">
+						<param name="printStatus" type="java.lang.String"></param>
+					</params>
+					<hql> a.printStatus = ? </hql>
+				</condition>
+				<condition id="b.id" describe="b.id">
+					<params type="param">
+						<param name="b.id" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.EPrint</className>
+		</query>
+</dao>
+</web-query>

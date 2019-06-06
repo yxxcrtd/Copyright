@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductMaterialDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,code,order,price,grams,type,spec,num,paperType,stockCount,stockId</properties>
+			<fields>a.id,a.name,a.code,a.order,a.price,(select name from BDic z where z.id=a.grams),(select name from BDic z where z.id=a.type),(select name from BDic z where z.id=a.spec),a.num,(select name from BDic z where z.id=a.paperType),a.stockCount,a.stockId</fields>
+			<hql>from PProductMaterial a left join a.print b</hql>
+			<conditions>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="题名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="printId" describe="题名">
+					<params type="param">
+						<param name="printId" type="java.lang.String" />
+					</params>
+					<hql>b.printId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductMaterial</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductMaterial a left join a.print b</hql>
+			<conditions>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="题名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="printId" describe="题名">
+					<params type="param">
+						<param name="printId" type="java.lang.String" />
+					</params>
+					<hql>b.printId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductMaterial</className>
+		</query>
+	</dao>
+</web-query>

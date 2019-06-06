@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmPerson" table="CRM_PERSON">
+		<id name="id" type="java.lang.String">
+			<column name="PERSON_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="PERSON_CODE" length="32">
+				<comment>人员编码</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="PERSON_NAME" length="32">
+				<comment>人员名称</comment>
+			</column>
+		</property>
+		<property name="telephone" type="java.lang.String">
+			<column name="PERSON_TELEPHONE" length="16">
+				<comment>座机</comment>
+			</column>
+		</property>
+		<property name="phone" type="java.lang.String">
+			<column name="PERSON_PHONE" length="16">
+				<comment>手机</comment>
+			</column>
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="PERSON_ADDRESS" length="256">
+				<comment>联系地址</comment>
+			</column>
+		</property>
+		<property name="postCode" type="java.lang.String">
+			<column name="PERSON_POSTCODE" length="8">
+				<comment>邮编</comment>
+			</column>
+		</property>
+		<property name="email" type="java.lang.String">
+			<column name="PERSON_EMAIL" length="32">
+				<comment>电子邮箱</comment>
+			</column>
+		</property>
+		<property name="fax" type="java.lang.String">
+			<column name="PERSON_FAX" length="32">
+				<comment>传真</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="PERSON_CREATE_ON">
+				<comment>创建时间</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="PERSON_CREATE_BY" length="32">
+				<comment>创建人</comment>
+			</column>
+		</property>
+		<property name="updateOn" type="java.util.Date">
+			<column name="PERSON_UPDATE_ON">
+				<comment>修改时间</comment>
+			</column>
+		</property>
+		<property name="updateBy" type="java.lang.String">
+			<column name="PERSON_UPDATE_BY" length="32">
+				<comment>修改人</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="PERSON_STATUS" length="32">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<property name="pinyin" type="java.lang.String">
+			<column name="PERSON_PINYIN" length="128">
+				<comment>拼音</comment>
+			</column>
+		</property>
+		<property name="lowerPinyin" type="java.lang.String">
+			<column name="PERSON_LOWER_PINYIN" length="128">
+				<comment>拼音小写</comment>
+			</column>
+		</property>
+        <property name="about" type="java.lang.String">
+            <column name="PERSON_ABOUT" length="2000">
+                <comment>作者简介</comment>
+            </column>
+        </property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="personTypeRelationshipSet" inverse="true">
+			<key>
+				<column name="PERSON_ID" length="32">
+					<comment>人员ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonTypeRelationship" />
+		</set>
+		<set name="proposalPersonRelationshipSet" inverse="true">
+			<key>
+				<column name="PERSON_ID" length="32">
+					<comment>人员ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalPersonRelationship" />
+		</set>
+		<set name="productProposalPersonRelationshipSet" inverse="true">
+			<key>
+				<column name="PERSON_ID" length="32">
+					<comment>人员ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductProposalPersonRelationship" />
+		</set>
+		<set name="proposalAdvicePersonRelationshipSet" inverse="true">
+			<key>
+				<column name="PERSON_ID" length="32">
+					<comment>人员ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalAdvicePersonRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

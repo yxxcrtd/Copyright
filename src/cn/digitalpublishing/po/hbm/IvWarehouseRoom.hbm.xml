@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvWarehouseRoom" table="IV_WAREHOUSE_ROOM">
+		<id name="whRoomId" type="java.lang.String">
+			<column name="WH_ROOM_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="whRoomCode" type="java.lang.String">
+			<column name="WH_ROOM_CODE" length="32">
+				<comment>仓库房间编号</comment>
+			</column>
+		</property>
+		<property name="whRoomDesc" type="java.lang.String">
+			<column name="WH_ROOM_DESC" length="128">
+				<comment>仓库房间描述</comment>
+			</column>
+		</property>
+		<property name="whRoomStatus" type="java.lang.String">
+			<column name="WH_ROOM_STATUS" length="32">
+				<comment>仓库房间状态</comment>
+			</column>
+		</property>
+		<many-to-one name="warehouseFloor" class="cn.digitalpublishing.po.IvWarehouseFloor" fetch="select" lazy="false">
+			<column name="WH_FLOOR_ID" length="32">
+				<comment>仓库层ID</comment>
+			</column>
+		</many-to-one>
+		<set name="shelfSet" inverse="true">
+			<key>
+				<column name="WH_ROOM_ID" length="32">
+					<comment>仓库房间ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvShelf" />
+		</set>
+		<set name="locationSet" inverse="true">
+			<key>
+				<column name="WH_ROOM_ID" length="32">
+					<comment>仓库房间ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvLocation" />
+		</set>
+	</class>
+</hibernate-mapping>

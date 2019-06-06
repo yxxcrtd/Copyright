@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpPhoneDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, type, defaultFlg, country, no</properties>
+			<fields>a.id, a.type, a.defaultFlg, a.country, a.no</fields>
+			<hql>from CrmCorpPhone a</hql>
+			<conditions>
+				<condition id="id" discribe="联系电话ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="电话分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="defaultFlg" discribe="是否主要电话">
+					<params type="param">
+						<param name="defaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.defaultFlg = ?</hql>
+				</condition>
+				<condition id="country" discribe="国家">
+					<params type="param">
+						<param name="country" type="java.lang.String" />
+					</params>
+					<hql>a.country = ?</hql>
+				</condition>
+				<condition id="no" discribe="号码">
+					<params type="param">
+						<param name="no" type="java.lang.String" />
+					</params>
+					<hql>a.no = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpPhone</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, type, defaultFlg, country, no</properties>
+			<fields>a.id, a.type, a.defaultFlg, a.country, a.no</fields>
+			<hql>from CrmCorpPhone a</hql>
+			<conditions>
+				<condition id="id" discribe="联系电话ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="电话分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="defaultFlg" discribe="是否主要电话">
+					<params type="param">
+						<param name="defaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.defaultFlg = ?</hql>
+				</condition>
+				<condition id="country" discribe="国家">
+					<params type="param">
+						<param name="country" type="java.lang.String" />
+					</params>
+					<hql>a.country = ?</hql>
+				</condition>
+				<condition id="no" discribe="号码">
+					<params type="param">
+						<param name="no" type="java.lang.String" />
+					</params>
+					<hql>a.no = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpPhone</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpPhone a</hql>
+			<conditions>
+				<condition id="id" discribe="联系电话ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="电话分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="defaultFlg" discribe="是否主要电话">
+					<params type="param">
+						<param name="defaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.defaultFlg = ?</hql>
+				</condition>
+				<condition id="country" discribe="国家">
+					<params type="param">
+						<param name="country" type="java.lang.String" />
+					</params>
+					<hql>a.country = ?</hql>
+				</condition>
+				<condition id="no" discribe="号码">
+					<params type="param">
+						<param name="no" type="java.lang.String" />
+					</params>
+					<hql>a.no = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpPhone</className>
+		</query>
+	</dao>
+</web-query>

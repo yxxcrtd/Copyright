@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvRackingDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rackingId, rackingCode, rackingCreateOn, rackingCreateBy, rackingUpdateOn, rackingUpdateBy, rackingPickBy, rackingStatus</properties>
+			<fields>a.rackingId, a.rackingCode, a.rackingCreateOn, a.rackingCreateBy, a.rackingUpdateOn, a.rackingUpdateBy, (select e.person.name from CrmPersonTypeRelationship e where e.id = a.rackingPickBy), (select name from BDic e where e.id = a.rackingStatus)</fields>
+			<hql>from IvRacking a</hql>
+			<conditions>
+				<condition id="rackingId" discribe="上架指示单ID">
+					<params type="param">
+						<param name="rackingId" type="java.lang.String" />
+					</params>
+					<hql>a.rackingId = ?</hql>
+				</condition>
+				<condition id="rackingCode" discribe="上架指示单号">
+					<params type="param">
+						<param name="rackingCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingCode = ?</hql>
+				</condition>
+				<condition id="rackingCreateOn" discribe="上架指示单创建日期">
+					<params type="param">
+						<param name="rackingCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.rackingCreateOn = ?</hql>
+				</condition>
+				<condition id="rackingCreateBy" discribe="上架指示单创建人">
+					<params type="param">
+						<param name="rackingCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingCreateBy = ?</hql>
+				</condition>
+				<condition id="rackingUpdateOn" discribe="上架指示单修改日期">
+					<params type="param">
+						<param name="rackingUpdateOn" type="java.util.Date" />
+					</params>
+					<hql>a.rackingUpdateOn = ?</hql>
+				</condition>
+				<condition id="rackingUpdateBy" discribe="上架指示单修改人">
+					<params type="param">
+						<param name="rackingUpdateBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingUpdateBy = ?</hql>
+				</condition>
+				<condition id="rackingPickBy" discribe="上架指示单拣货人">
+					<params type="param">
+						<param name="rackingPickBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingPickBy = ?</hql>
+				</condition>
+				<condition id="rackingStatus" discribe="上架指示单状态">
+					<params type="param">
+						<param name="rackingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.rackingStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvRacking</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>rackingId, rackingCode, rackingCreateOn, rackingCreateBy, rackingUpdateOn, rackingUpdateBy, rackingPickBy, rackingStatus</properties>
+			<fields>a.rackingId, a.rackingCode, a.rackingCreateOn, a.rackingCreateBy, a.rackingUpdateOn, a.rackingUpdateBy, (select e.person.name from CrmPersonTypeRelationship e where e.id = a.rackingPickBy), (select name from BDic e where e.id = a.rackingStatus)</fields>
+			<hql>from IvRacking a</hql>
+			<conditions>
+				<condition id="rackingId" discribe="上架指示单ID">
+					<params type="param">
+						<param name="rackingId" type="java.lang.String" />
+					</params>
+					<hql>a.rackingId = ?</hql>
+				</condition>
+				<condition id="rackingCode" discribe="上架指示单号">
+					<params type="param">
+						<param name="rackingCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingCode like ?</hql>
+				</condition>
+				<condition id="rackingCreateOn" discribe="上架指示单创建日期">
+					<params type="param">
+						<param name="rackingCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.rackingCreateOn = ?</hql>
+				</condition>
+				<condition id="rackingCreateBy" discribe="上架指示单创建人">
+					<params type="param">
+						<param name="rackingCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingCreateBy = ?</hql>
+				</condition>
+				<condition id="rackingUpdateOn" discribe="上架指示单修改日期">
+					<params type="param">
+						<param name="rackingUpdateOn" type="java.util.Date" />
+					</params>
+					<hql>a.rackingUpdateOn = ?</hql>
+				</condition>
+				<condition id="rackingUpdateBy" discribe="上架指示单修改人">
+					<params type="param">
+						<param name="rackingUpdateBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingUpdateBy = ?</hql>
+				</condition>
+				<condition id="rackingPickBy" discribe="上架指示单拣货人">
+					<params type="param">
+						<param name="rackingPickBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingPickBy = ?</hql>
+				</condition>
+				<condition id="rackingStatus" discribe="上架指示单状态">
+					<params type="param">
+						<param name="rackingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.rackingStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvRacking</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rackingId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvRacking a</hql>
+			<conditions>
+				<condition id="rackingId" discribe="上架指示单ID">
+					<params type="param">
+						<param name="rackingId" type="java.lang.String" />
+					</params>
+					<hql>a.rackingId = ?</hql>
+				</condition>
+				<condition id="rackingCode" discribe="上架指示单号">
+					<params type="param">
+						<param name="rackingCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingCode like ?</hql>
+				</condition>
+				<condition id="rackingCreateOn" discribe="上架指示单创建日期">
+					<params type="param">
+						<param name="rackingCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.rackingCreateOn = ?</hql>
+				</condition>
+				<condition id="rackingCreateBy" discribe="上架指示单创建人">
+					<params type="param">
+						<param name="rackingCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingCreateBy = ?</hql>
+				</condition>
+				<condition id="rackingUpdateOn" discribe="上架指示单修改日期">
+					<params type="param">
+						<param name="rackingUpdateOn" type="java.util.Date" />
+					</params>
+					<hql>a.rackingUpdateOn = ?</hql>
+				</condition>
+				<condition id="rackingUpdateBy" discribe="上架指示单修改人">
+					<params type="param">
+						<param name="rackingUpdateBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingUpdateBy = ?</hql>
+				</condition>
+				<condition id="rackingPickBy" discribe="上架指示单拣货人">
+					<params type="param">
+						<param name="rackingPickBy" type="java.lang.String" />
+					</params>
+					<hql>a.rackingPickBy = ?</hql>
+				</condition>
+				<condition id="rackingStatus" discribe="上架指示单状态">
+					<params type="param">
+						<param name="rackingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.rackingStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvRacking</className>
+		</query>
+	</dao>
+</web-query>

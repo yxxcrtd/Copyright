@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpComplainDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, item, date</properties>
+			<fields>a.id, a.item, a.date</fields>
+			<hql>from CrmCorpComplain a</hql>
+			<conditions>
+				<condition id="id" discribe="投诉ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="item" discribe="投诉事项">
+					<params type="param">
+						<param name="item" type="java.lang.String" />
+					</params>
+					<hql>a.item = ?</hql>
+				</condition>
+				<condition id="date" discribe="投诉时间">
+					<params type="param">
+						<param name="date" type="java.util.Date" />
+					</params>
+					<hql>a.date = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpComplain</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, item, date</properties>
+			<fields>a.id, a.item, a.date</fields>
+			<hql>from CrmCorpComplain a</hql>
+			<conditions>
+				<condition id="id" discribe="投诉ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="item" discribe="投诉事项">
+					<params type="param">
+						<param name="item" type="java.lang.String" />
+					</params>
+					<hql>a.item = ?</hql>
+				</condition>
+				<condition id="date" discribe="投诉时间">
+					<params type="param">
+						<param name="date" type="java.util.Date" />
+					</params>
+					<hql>a.date = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpComplain</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpComplain a</hql>
+			<conditions>
+				<condition id="id" discribe="投诉ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="item" discribe="投诉事项">
+					<params type="param">
+						<param name="item" type="java.lang.String" />
+					</params>
+					<hql>a.item = ?</hql>
+				</condition>
+				<condition id="date" discribe="投诉时间">
+					<params type="param">
+						<param name="date" type="java.util.Date" />
+					</params>
+					<hql>a.date = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpComplain</className>
+		</query>
+	</dao>
+</web-query>

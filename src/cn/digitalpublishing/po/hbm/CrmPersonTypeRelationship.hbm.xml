@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmPersonTypeRelationship" table="CRM_PERSON_TYPE_RS">
+		<id name="id" type="java.lang.String">
+			<column name="CRM_PERSON_TYPE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+        <property name="status" type="java.lang.String">
+            <column name="CRM_PERSON_TYPE_STATUS" length="32">
+                <comment>人员类型角色状态</comment>
+            </column>
+        </property>
+		<many-to-one name="personType" class="cn.digitalpublishing.po.CrmPersonType" fetch="select" lazy="false">
+			<column name="PE_TYPE_ID" length="32">
+				<comment>人员类型ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="person" class="cn.digitalpublishing.po.CrmPerson" fetch="select" lazy="false">
+			<column name="PERSON_ID" length="32">
+				<comment>人员ID</comment>
+			</column>
+		</many-to-one>
+		<set name="personPositionRelationshipSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonPositionRelationship" />
+		</set>
+		<set name="productPersonRelationshipSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductPersonRelationship" />
+		</set>
+		<set name="personPropSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonProp" />
+		</set>
+		<set name="personNameSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonName" />
+		</set>
+		<set name="personEmailSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonEmail" />
+		</set>
+		<set name="personPhoneSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonPhone" />
+		</set>
+		<set name="personIdentitySet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonIdentity" />
+		</set>
+		<set name="proposalAuthorRelationshipSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalAuthorRelationship" />
+		</set>
+		<set name="corpPersonActivityRelationshipSet" inverse="true">
+			<key>
+				<column name="CRM_PERSON_TYPE_ID" length="32">
+					<comment>人员类型角色ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.FCorpPersonActivityRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

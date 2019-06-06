@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvCheck" table="IV_CHECK">
+		<id name="checkId" type="java.lang.String">
+			<column name="IV_CHECK_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="checkCode" type="java.lang.String">
+			<column name="IV_CHECK_CODE" length="32">
+				<comment>入库验更单号</comment>
+			</column>
+		</property>
+		<property name="checkCreateOn" type="java.util.Date">
+			<column name="IV_CHECK_CREATE_ON">
+				<comment>入库验更单创建日期</comment>
+			</column>
+		</property>
+		<property name="checkCreateBy" type="java.lang.String">
+			<column name="IV_CHECK_CREATE_BY" length="32">
+				<comment>入库验更单创建人</comment>
+			</column>
+		</property>
+		<property name="checkType" type="java.lang.String">
+			<column name="IV_CHECK_TYPE" length="32">
+				<comment>入库验更单类型</comment>
+			</column>
+		</property>
+		<property name="checkIsbn" type="java.lang.String">
+			<column name="IV_CHECK_ISBN" length="32">
+				<comment>入库验更单ISBN</comment>
+			</column>
+		</property>
+		<property name="checkTitle" type="java.lang.String">
+			<column name="IV_CHECK_TITLE" length="256">
+				<comment>入库验更单书名</comment>
+			</column>
+		</property>
+		<property name="checkCount" type="java.lang.Integer">
+			<column name="IV_CHECK_COUNT">
+				<comment>入库验更单数量</comment>
+			</column>
+		</property>
+		<many-to-one name="stockIn" class="cn.digitalpublishing.po.IvStockIn" fetch="select" lazy="false">
+			<column name="IV_STOCK_IN_ID" length="32">
+				<comment>入库单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="stockInItem" class="cn.digitalpublishing.po.IvStockInItem" fetch="select" lazy="false">
+			<column name="IV_STOCK_IN_ITEM_ID" length="32">
+				<comment>入库单明细ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

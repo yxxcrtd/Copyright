@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.FMethodDao">
+
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>methodId,methodName,methodType,methodValue,methodSource,methodOrder</properties>
+            <fields>a.methodId,a.methodName,a.methodType,a.methodValue,a.methodSource,a.methodOrder</fields>
+            <hql>from FMethod a  left join a.task b</hql>
+            <conditions>
+                <condition id="taskId" describe="状态">
+                    <params type="param">
+                        <param name="taskId" type="java.lang.String"></param>
+                    </params>
+                    <hql> b.id = ? </hql>
+                </condition>
+
+
+
+
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FMethod</className>
+        </query>
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>methodId,methodName,methodType,methodValue,methodSource,methodOrder</properties>
+            <fields>a.methodId,a.methodName,a.methodType,a.methodValue,a.methodSource,a.methodOrder</fields>
+            <hql>from FMethod a  left join a.task b</hql>
+            <conditions>
+                <condition id="taskId" describe="状态">
+                    <params type="param">
+                        <param name="taskId" type="java.lang.String"></param>
+                    </params>
+                    <hql> b.id = ? </hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FMethod</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>methodId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from FMethod a </hql>
+            <conditions>
+                <condition id="taskId" describe="状态">
+                    <params type="param">
+                        <param name="taskId" type="java.lang.String"></param>
+                    </params>
+                    <hql> b.id = ? </hql>
+                </condition>
+            </conditions>
+            <order></order>
+            <className>cn.digitalpublishing.po.FMethod</className>
+        </query>
+    </dao>
+</web-query>

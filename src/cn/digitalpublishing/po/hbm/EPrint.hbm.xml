@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.EPrint" table="E_PRINT">
+		<id name="printId" type="java.lang.String">
+			<column name="E_PRINT_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="printPrice" type="java.math.BigDecimal">
+			<column name="E_PRINT_PRICE" precision="10" scale="2">
+				<comment>定价</comment>
+			</column>
+		</property>
+		<property name="printCount" type="java.lang.Integer">
+			<column name="E_PRINT_COUNT">
+				<comment>印数</comment>
+			</column>
+		</property>
+		<property name="printOpenFlg" type="java.lang.String">
+			<column name="E_PRINT_OPEN_FLG" length="32">
+				<comment>开本</comment>
+			</column>
+		</property>
+		<property name="printSize" type="java.lang.String">
+			<column name="E_PRINT_SIZE" length="32">
+				<comment>成品尺寸</comment>
+			</column>
+		</property>
+		<property name="printBinding" type="java.lang.String">
+			<column name="E_PRINT_BINDING" length="32">
+				<comment>装帧方式</comment>
+			</column>
+		</property>
+		<property name="printPageCount" type="java.lang.Integer">
+			<column name="E_PRINT_PAGE_COUNT">
+				<comment>页数</comment>
+			</column>
+		</property>
+		<property name="printSheet" type="java.math.BigDecimal">
+			<column name="E_PRINT_SHEET" precision="10" scale="2">
+				<comment>印张</comment>
+			</column>
+		</property>
+		<property name="printPaperTotalCount" type="java.math.BigDecimal">
+			<column name="E_PRINT_PAPER_TOTAL_COUNT" precision="10" scale="2">
+				<comment>总印张</comment>
+			</column>
+		</property>
+		<property name="printEdition" type="java.lang.Integer">
+			<column name="E_PRINT_EDITION">
+				<comment>版次</comment>
+			</column>
+		</property>
+		<property name="printCoverTechnology" type="java.lang.String">
+			<column name="E_PRINT_COVER_TECHNOLOGY" length="32">
+				<comment>封面工艺</comment>
+			</column>
+		</property>
+		<property name="printBindingMethod" type="java.lang.String">
+			<column name="E_PRINT_BINDING_METHOD" length="32">
+				<comment>订法</comment>
+			</column>
+		</property>
+		<property name="printBindingType" type="java.lang.String">
+			<column name="E_PRINT_BINDING_TYPE" length="32">
+				<comment>订式</comment>
+			</column>
+		</property>
+		<property name="printLeEdge" type="java.lang.Integer">
+			<column name="E_PRINT_LE_EDGE">
+				<comment>勒口</comment>
+			</column>
+		</property>
+		<property name="printSellType" type="java.lang.String">
+			<column name="E_PRINT_SELL_TYPE" length="32">
+				<comment>发行方式</comment>
+			</column>
+		</property>
+		<property name="printHeadMargin" type="java.lang.Integer">
+			<column name="E_PRINT_HEAD_MARGIN">
+				<comment>天头</comment>
+			</column>
+		</property>
+		<property name="printFootMargin" type="java.lang.Integer">
+			<column name="E_PRINT_FOOT_MARGIN">
+				<comment>地脚</comment>
+			</column>
+		</property>
+		<property name="printBindingEdge" type="java.lang.Integer">
+			<column name="E_PRINT_BINDING_EDGE">
+				<comment>订口</comment>
+			</column>
+		</property>
+		<property name="printCutEdge" type="java.lang.Integer">
+			<column name="E_PRINT_CUT_EDGE">
+				<comment>切口</comment>
+			</column>
+		</property>
+		<property name="printThousandWords" type="java.math.BigDecimal">
+			<column name="E_PRINT_THOUSAND_WORDS" precision="10" scale="2">
+				<comment>千字数</comment>
+			</column>
+		</property>
+		<property name="printSampleCount" type="java.lang.Integer">
+			<column name="E_PRINT_SAMPLE_COUNT">
+				<comment>样书册书</comment>
+			</column>
+		</property>
+		<property name="printOrderDesc" type="java.lang.String">
+			<column name="E_PRINT_ORDER_DESC" length="1024">
+				<comment>装订顺序</comment>
+			</column>
+		</property>
+		<property name="printStatus" type="java.lang.String">
+			<column name="E_PRINT_STATUS" length="32">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<property name="printIsLeEdge" type="java.lang.Boolean">
+			<column name="E_PRINT_IS_LE_EDGE">
+				<comment>是否有勒口</comment>
+			</column>
+		</property>
+		<property name="printIsCover" type="java.lang.Boolean">
+			<column name="E_PRINT_IS_COVER">
+				<comment>是否有封面</comment>
+			</column>
+		</property>
+		<property name="printIsJacket" type="java.lang.Boolean">
+			<column name="E_PRINT_IS_JACKET">
+				<comment>是否有护封</comment>
+			</column>
+		</property>
+		<property name="printIsGirdle" type="java.lang.Boolean">
+			<column name="E_PRINT_IS_GIRDLE">
+				<comment>是否有腰封</comment>
+			</column>
+		</property>
+		<property name="printCreateOn" type="java.util.Date">
+			<column name="E_PRINT_CREATE_ON">
+				<comment>创建日期</comment>
+			</column>
+		</property>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<set name="productMaterialPrintSet" inverse="true">
+			<key>
+				<column name="E_PRINT_ID" length="32">
+					<comment>付印单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductMaterialPrint" />
+		</set>
+		<set name="productBindingSet" inverse="true">
+			<key>
+				<column name="E_PRINT_ID" length="32">
+					<comment>付印单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductBinding" />
+		</set>
+	</class>
+</hibernate-mapping>

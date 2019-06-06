@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.FHistTaskDao">
+
+        <query>
+            <id>getHistList</id>
+            <method>getHistList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>name,assignee,out,startTime,endTime</properties>
+            <fields>a.activityName,(select d.person.name from CrmPersonTypeRelationship d where d.id = a.historyTask.assignee),a.historyTask.outcome,a.historyTask.createTime,a.historyTask.endTime</fields>
+            <hql>from org.jbpm.pvm.internal.history.model.HistoryTaskInstanceImpl a</hql>
+            <conditions>
+
+                <condition id="eId" discribe="流程实例ID">
+                    <params type="param">
+                        <param name="eId" type="java.lang.String" />
+                    </params>
+                    <hql>a.executionId = ?</hql>
+                </condition>
+                <condition id="type" discribe="流程实例ID">
+                    <params type="param">
+                        <param name="type" type="java.lang.String"/>
+                    </params>
+                    <hql>a.type = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FHistTask</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map" />
+            </params>
+            <properties>name</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql> from org.jbpm.pvm.internal.history.model.HistoryTaskInstanceImpl a </hql>
+            <conditions>
+                <condition id="eId" discribe="流程实例ID">
+                    <params type="param">
+                        <param name="eId" type="java.lang.String" />
+                    </params>
+                    <hql>a.executionId = ?</hql>
+                </condition>
+                <condition id="type" discribe="流程实例ID">
+                    <params type="param">
+                        <param name="type" type="java.lang.String"/>
+                    </params>
+                    <hql>a.type = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FHistTask</className>
+        </query>
+    </dao>
+
+</web-query>

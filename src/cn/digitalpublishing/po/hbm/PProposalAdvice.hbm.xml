@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProposalAdvice" table="P_PROPOSAL_ADVICE">
+		<id name="id" type="java.lang.String">
+			<column name="PROPOSAL_ADVICE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="desc" type="java.lang.String">
+			<column name="PROPOSAL_ADVICE_DESC" length="1024">
+				<comment>策划意见描述</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="PROPOSAL_ADVICE_CREATE_ON">
+				<comment>策划意见创建时间</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="PROPOSAL_ADVICE_CREATE_BY" length="32">
+				<comment>策划意见创建人</comment>
+			</column>
+		</property>
+		<property name="roleType" type="java.lang.String">
+			<column name="PROPOSAL_ADVICE_ROLE_TYPE" length="32">
+				<comment>策划意见可见范围</comment>
+			</column>
+		</property>
+		<many-to-one name="proposal" class="cn.digitalpublishing.po.PProposal" fetch="select" lazy="false">
+			<column name="PROPOSAL_ID" length="32">
+				<comment>策划ID</comment>
+			</column>
+		</many-to-one>
+		<set name="proposalAdvicePersonRelationshipSet" inverse="true">
+			<key>
+				<column name="PROPOSAL_ADVICE_ID" length="32">
+					<comment>策划意见ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalAdvicePersonRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

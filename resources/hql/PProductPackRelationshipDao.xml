@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <dao id="cn.digitalpublishing.dao.PProductPackRelationshipDao">
+
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="sort" type="java.lang.String"></param>
+                <param name="condition" type="java.util.Map"></param>
+            </params>
+            <properties>
+                product.id,product.isbn,product.status,product.translation,product.title,product.subTitle,product.pubYear,product.pubName,product.price,product.pageNum,product.edition,product.binding,product.language,product.remark,product.keyword,
+                pack.id,pack.isbn,pack.status,pack.translation,pack.title,pack.subTitle,pack.pubYear,pack.pubName,pack.price,pack.pageNum,pack.edition,pack.binding,pack.language,pack.remark,pack.keyword
+            </properties>
+            <fields>
+                b.id,b.isbn,b.status,b.translation,b.title,b.subTitle,b.pubYear,b.pubName,b.price,b.pageNum,b.edition,b.binding,b.language,b.remark,b.keyword,
+                c.id,c.isbn,c.status,c.translation,c.title,c.subTitle,c.pubYear,c.pubName,c.price,c.pageNum,c.edition,c.binding,c.language,c.remark,c.keyword
+            </fields>
+            <hql>from PProductPackRelationship a left join a.product b left join a.pack c</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="status" discribe="状态">
+                    <params type="param">
+                        <param name="status" type="java.lang.String"/>
+                    </params>
+                    <hql>a.status = ?</hql>
+                </condition>
+                <condition id="productId" discribe="状态">
+                    <params type="param">
+                        <param name="productId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="packId" discribe="状态">
+                    <params type="param">
+                        <param name="packId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProductPackRelationship</className>
+        </query>
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+               id,product.id,product.isbn,product.translation,product.title,product.subTitle,product.pubYear,product.pubName,product.pubBy,product.editorName,product.editorBy,product.pageNum,product.edition,product.binding,product.language,product.remark,product.keyword,product.marcFlag,product.productType.name,product.productType.code, pack.id,pack.isbn,pack.translation,pack.title,pack.subTitle,pack.pubYear,pack.pubName,pack.pubBy,pack.editorName,pack.editorBy,pack.pageNum,pack.edition,pack.binding,pack.language,pack.remark,pack.keyword,pack.marcFlag,pack.productType.name,pack.productType.code
+            </properties>
+            <fields>
+                a.id,b.id,b.isbn,b.translation,b.title,b.subTitle,b.pubYear,b.pubName,b.pubBy,b.editorName,b.editorBy,b.pageNum,b.edition,(select name from BDic z where z.id=b.binding),b.language,b.remark,b.keyword,(select name from BDic z where z.id=b.marcFlag),d.name,d.code, c.id,c.isbn,c.translation,c.title,c.subTitle,c.pubYear,c.pubName,c.pubBy,c.editorName,c.editorBy,c.pageNum,c.edition,(select name from BDic z where z.id=c.binding),c.language,c.remark,c.keyword,(select name from BDic z where z.id=c.marcFlag),e.name,e.code
+            </fields>
+            <hql>from PProductPackRelationship a left join a.product b left join a.pack c left join b.productType d left join c.productType e</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="status" discribe="状态">
+                    <params type="param">
+                        <param name="status" type="java.lang.String"/>
+                    </params>
+                    <hql>a.status = ?</hql>
+                </condition>
+                <condition id="productId" discribe="状态">
+                    <params type="param">
+                        <param name="productId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="packId" discribe="状态">
+                    <params type="param">
+                        <param name="packId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProductPackRelationship</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"/>
+            </params>
+            <properties>id</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from PProductPackRelationship a left join a.product b left join a.pack c</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="code" describe="产品类型编号">
+                    <params type="param">
+                        <param name="code" type="java.lang.String"/>
+                    </params>
+                    <hql>b.code = ?</hql>
+                </condition>
+                <condition id="status" discribe="状态">
+                    <params type="param">
+                        <param name="status" type="java.lang.String"/>
+                    </params>
+                    <hql>a.status = ?</hql>
+                </condition>
+                <condition id="productId" discribe="状态">
+                    <params type="param">
+                        <param name="productId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="packId" discribe="状态">
+                    <params type="param">
+                        <param name="packId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProductPackRelationship</className>
+        </query>
+    </dao>
+</web-query>

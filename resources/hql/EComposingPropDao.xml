@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.EComposingPropDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>
+				composingPropId,composingPropCode,composingPropName,composingPropValue,composingPropOrder,
+				composingPropDisplay,composingPropMust,composingPropSource,composingPropStatus,composingPropCreateOn,
+				composingPropCreateBy,composingPropUpdateOn,composingPropUpdateBy,composingPropInternationCode,
+				composing.composingId,composing.composingProduct,composingTypeProp.ctypePropId,composingTypeProp.ctypePropName
+			</properties>
+			<fields>
+				a.composingPropId,a.composingPropCode,a.composingPropName,a.composingPropValue,a.composingPropOrder,
+				(select name from BDic e where e.id=a.composingPropDisplay),(select name from BDic e where e.id=a.composingPropMust),a.composingPropSource,a.composingPropStatus,a.composingPropCreateOn,
+				a.composingPropCreateBy,a.composingPropUpdateOn,a.composingPropUpdateBy,a.composingPropInternationCode,
+				b.composingId,b.composingProduct,c.ctypePropId,c.ctypePropName
+			</fields>
+			<hql>from EComposingProp a left join a.composing b left join a.composingTypeProp c</hql>
+			<conditions>
+				<condition id="composingPropId" discribe="composingPropId">
+					<params type="param">
+						<param name="composingPropId" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropId = ?</hql>
+				</condition>
+				<condition id="composingPropCode" discribe="composingPropCode">
+					<params type="param">
+						<param name="composingPropCode" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropCode = ?</hql>
+				</condition>
+				<condition id="composingPropName" discribe="composingPropName">
+					<params type="param">
+						<param name="composingPropName" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropName = ?</hql>
+				</condition>
+				<condition id="composingPropValue" discribe="composingPropValue">
+					<params type="param">
+						<param name="composingPropValue" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropValue = ?</hql>
+				</condition>
+				<condition id="composingPropOrder" discribe="composingPropOrder">
+					<params type="param">
+						<param name="composingPropOrder" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropOrder = ?</hql>
+				</condition>
+				<condition id="composingPropDisplay" discribe="composingPropDisplay">
+					<params type="param">
+						<param name="composingPropDisplay" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropDisplay = ?</hql>
+				</condition>
+				<condition id="composingPropMust" discribe="composingPropMust">
+					<params type="param">
+						<param name="composingPropMust" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropMust = ?</hql>
+				</condition>
+				<condition id="composingPropSource" discribe="composingPropSource">
+					<params type="param">
+						<param name="composingPropSource" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropSource = ?</hql>
+				</condition>
+				<condition id="composingPropStatus" discribe="composingPropStatus">
+					<params type="param">
+						<param name="composingPropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropStatus = ?</hql>
+				</condition>
+				<condition id="composingPropInternationCode" discribe="composingPropInternationCode">
+					<params type="param">
+						<param name="composingPropInternationCode" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropInternationCode = ?</hql>
+				</condition>
+				<condition id="composingId" discribe="composingId">
+					<params type="param">
+						<param name="composingId" type="java.lang.String" />
+					</params>
+					<hql>b.composingId = ?</hql>
+				</condition>
+				<condition id="ctypePropId" discribe="ctypePropId">
+					<params type="param">
+						<param name="ctypePropId" type="java.lang.String" />
+					</params>
+					<hql>c.ctypePropId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingProp</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>
+				composingPropId,composingPropCode,composingPropName,composingPropValue,composingPropOrder,
+				composingPropDisplay,composingPropMust,composingPropSource,composingPropStatus,composingPropCreateOn,
+				composingPropCreateBy,composingPropUpdateOn,composingPropUpdateBy,composingPropInternationCode,
+				composing.composingId,composing.composingProduct,composingTypeProp.ctypePropId,composingTypeProp.ctypePropName
+			</properties>
+			<fields>
+				a.composingPropId,a.composingPropCode,a.composingPropName,a.composingPropValue,a.composingPropOrder,
+				(select code from BDic e where e.id=a.composingPropDisplay),(select code from BDic e where e.id=a.composingPropMust),a.composingPropSource,a.composingPropStatus,a.composingPropCreateOn,
+				a.composingPropCreateBy,a.composingPropUpdateOn,a.composingPropUpdateBy,a.composingPropInternationCode,
+				b.composingId,b.composingProduct,c.ctypePropId,c.ctypePropName
+			</fields>
+			<hql>from EComposingProp a left join a.composing b left join a.composingTypeProp c</hql>
+			<conditions>
+				
+				<condition id="classifyId" discribe="classifyId">
+					<params type="param">
+						<param name="classifyId" type="java.lang.String" />
+					</params>
+					<hql>c.composingTypePropClassify.ctpClassifyId = ?</hql>
+				</condition>
+				
+				<condition id="composingPropId" discribe="composingPropId">
+					<params type="param">
+						<param name="composingPropId" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropId = ?</hql>
+				</condition>
+				<condition id="composingPropCode" discribe="composingPropCode">
+					<params type="param">
+						<param name="composingPropCode" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropCode = ?</hql>
+				</condition>
+				<condition id="composingPropName" discribe="composingPropName">
+					<params type="param">
+						<param name="composingPropName" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropName = ?</hql>
+				</condition>
+				<condition id="composingPropValue" discribe="composingPropValue">
+					<params type="param">
+						<param name="composingPropValue" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropValue = ?</hql>
+				</condition>
+				<condition id="composingPropOrder" discribe="composingPropOrder">
+					<params type="param">
+						<param name="composingPropOrder" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropOrder = ?</hql>
+				</condition>
+				<condition id="composingPropDisplay" discribe="composingPropDisplay">
+					<params type="param">
+						<param name="composingPropDisplay" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropDisplay = ?</hql>
+				</condition>
+				<condition id="composingPropMust" discribe="composingPropMust">
+					<params type="param">
+						<param name="composingPropMust" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropMust = ?</hql>
+				</condition>
+				<condition id="composingPropSource" discribe="composingPropSource">
+					<params type="param">
+						<param name="composingPropSource" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropSource = ?</hql>
+				</condition>
+				<condition id="composingPropStatus" discribe="composingPropStatus">
+					<params type="param">
+						<param name="composingPropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropStatus = ?</hql>
+				</condition>
+				<condition id="composingPropInternationCode" discribe="composingPropInternationCode">
+					<params type="param">
+						<param name="composingPropInternationCode" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropInternationCode = ?</hql>
+				</condition>
+				<condition id="composingId" discribe="composingId">
+					<params type="param">
+						<param name="composingId" type="java.lang.String" />
+					</params>
+					<hql>b.composingId = ?</hql>
+				</condition>
+				<condition id="ctypePropId" discribe="ctypePropId">
+					<params type="param">
+						<param name="ctypePropId" type="java.lang.String" />
+					</params>
+					<hql>c.ctypePropId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingProp</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>composingPropId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from EComposingProp a</hql>
+			<conditions>
+				<condition id="composingPropId" discribe="composingPropId">
+					<params type="param">
+						<param name="composingPropId" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropId = ?</hql>
+				</condition>
+				<condition id="composingPropStatus" discribe="composingPropStatus">
+					<params type="param">
+						<param name="composingPropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingPropStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingProp</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductAttachDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name</properties>
+			<fields>a.id,a.code,(select z.name from BDic z where z.id = a.name)</fields>
+			<hql>from PProductAttach a left join a.product b</hql>
+			<conditions>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="题名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="productId" describe="题名">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductAttach</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductAttach a left join a.product b</hql>
+			<conditions>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="题名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="productId" describe="题名">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductAttach</className>
+		</query>
+	</dao>
+</web-query>

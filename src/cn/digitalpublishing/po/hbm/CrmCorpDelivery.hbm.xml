@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpDelivery" table="CRM_CORP_DELIVERY">
+		<id name="id" type="java.lang.String">
+			<column name="DELIVERY_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="corpName" type="java.lang.String">
+			<column name="DELIVERY_CORP_NAME" length="512">
+				<comment>收货单位</comment>
+			</column>
+		</property>
+		<property name="corpAddress" type="java.lang.String">
+			<column name="DELIVERY_CORP_ADDRESS" length="1024">
+				<comment>收货地址</comment>
+			</column>
+		</property>
+		<property name="receiverName" type="java.lang.String">
+			<column name="DELIVERY_RECEIVER_NAME" length="32">
+				<comment>收货联系人</comment>
+			</column>
+		</property>
+		<property name="tel" type="java.lang.String">
+			<column name="DELIVERY_TEL" length="32">
+				<comment>收货联系电话</comment>
+			</column>
+		</property>
+		<property name="fax" type="java.lang.String">
+			<column name="DELIVERY_FAX" length="32">
+				<comment>收货联系传真</comment>
+			</column>
+		</property>
+		<property name="postcode" type="java.lang.String">
+			<column name="DELIVERY_POSTCODE" length="32">
+				<comment>收货邮编</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="DELIVERY_STATUS" length="32">
+				<comment>收货状态</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.BExchange" table="B_EXCHANGE">
+		<id name="exId" type="java.lang.String">
+			<column name="B_EX_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="exRate" type="java.math.BigDecimal">
+			<column name="B_EX_RATE" precision="10" scale="2">
+				<comment>汇率值</comment>
+			</column>
+		</property>
+		<property name="exDate" type="java.util.Date">
+			<column name="B_EX_DATE">
+				<comment>日期</comment>
+			</column>
+		</property>
+		<property name="exType" type="java.lang.String">
+			<column name="B_EX_TYPE" length="32">
+				<comment>类型</comment>
+			</column>
+		</property>
+		<property name="exStatus" type="java.lang.String">
+			<column name="B_EX_STATUS" length="32">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<many-to-one name="fromCurrency" class="cn.digitalpublishing.po.BCurrency" fetch="select" lazy="false">
+			<column name="CURR_FROM_ID" length="32">
+				<comment>币种信息ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="toCurrency" class="cn.digitalpublishing.po.BCurrency" fetch="select" lazy="false">
+			<column name="CURR_TO_ID" length="32">
+				<comment>币种信息ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

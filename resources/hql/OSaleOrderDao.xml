@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.OSaleOrderDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>saleOrderId, saleOrderCode, saleOrderCreateOn, saleOrderCreateBy,saleOrderUpdateOn,saleOrderUpdateBy,saleOrderSendRemark,saleOrderBookingOn,saleOrderBookingBy,saleOrderTaxRate,saleOrderRecheckFlg,saleOrderStatus</properties>
+			<fields>a.saleOrderId, a.saleOrderCode, a.saleOrderCreateOn, a.saleOrderCreateBy,a.saleOrderUpdateOn,a.saleOrderUpdateBy,a.saleOrderSendRemark,a.saleOrderBookingOn,a.saleOrderBookingBy,a.saleOrderTaxRate,a.saleOrderRecheckFlg,a.saleOrderStatus</fields>
+			<hql>from OSaleOrder a  </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OSaleOrder</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>saleOrderId, saleOrderCode, saleOrderCreateOn, saleOrderCreateBy,saleOrderUpdateOn,saleOrderUpdateBy,saleOrderSendRemark,saleOrderBookingOn,saleOrderBookingBy,saleOrderTaxRate,saleOrderRecheckFlg,saleOrderStatus,corpTypeRelationship.corp.code, corpTypeRelationship.corp.fullName </properties>
+			<fields>a.saleOrderId, a.saleOrderCode, a.saleOrderCreateOn, a.saleOrderCreateBy,a.saleOrderUpdateOn,a.saleOrderUpdateBy,a.saleOrderSendRemark,a.saleOrderBookingOn,(select d.person.name from CrmPersonTypeRelationship d where d.id = a.saleOrderBookingBy),a.saleOrderTaxRate,a.saleOrderRecheckFlg,(select z.name from BDic z where z.id = a.saleOrderStatus), c.code, c.fullName</fields>
+			<hql>from OSaleOrder a left join a.corpTypeRelationship b left join b.corp c </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderId = ?</hql>
+				</condition>
+				<condition id="saleOrderCode" discribe="saleOrderCode">
+					<params type="param">
+						<param name="saleOrderCode" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderCode like ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderStatus = ?</hql>
+				</condition>
+				<condition id="crm_corptype_id" discribe="公司类型角色关系Id">
+					<params type="param">
+						<param name="crm_corptype_id" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OSaleOrder</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>saleOrderId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from OSaleOrder a left join a.corpTypeRelationship b</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderId= ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderStatus = ?</hql>
+				</condition>
+				<condition id="saleOrderCode" discribe="saleOrderCode">
+					<params type="param">
+						<param name="saleOrderCode" type="java.lang.String" />
+					</params>
+					<hql>a.saleOrderCode like ?</hql>
+				</condition>
+				<condition id="crm_corptype_id" discribe="公司类型角色关系Id">
+					<params type="param">
+						<param name="crm_corptype_id" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OSaleOrder</className>
+		</query>
+	</dao>
+</web-query>

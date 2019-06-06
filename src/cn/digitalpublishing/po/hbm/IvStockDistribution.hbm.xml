@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStockDistribution" table="IV_STOCK_DISTRIBUTION">
+		<id name="stockDistributionId" type="java.lang.String">
+			<column name="IV_STOCK_DIST_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="stockDistributionCode" type="java.lang.String">
+			<column name="IV_STOCK_DIST_CODE" length="32">
+				<comment>配书单号</comment>
+			</column>
+		</property>
+		<property name="stockDistributionCreateOn" type="java.util.Date">
+			<column name="IV_STOCK_DIST_CREATE_ON">
+				<comment>配书单创建日期</comment>
+			</column>
+		</property>
+		<property name="stockDistributionCreateBy" type="java.lang.String">
+			<column name="IV_STOCK_DIST_CREATE_BY" length="32">
+				<comment>配书单创建人</comment>
+			</column>
+		</property>
+		<property name="stockDistributionUpdateOn" type="java.util.Date">
+			<column name="IV_STOCK_DIST_UPDATE_ON">
+				<comment>配书单修改日期</comment>
+			</column>
+		</property>
+		<property name="stockDistributionUpdateBy" type="java.lang.String">
+			<column name="IV_STOCK_DIST_UPDATE_BY" length="32">
+				<comment>配书单修改人</comment>
+			</column>
+		</property>
+		<property name="stockDistributionPickBy" type="java.lang.String">
+			<column name="IV_STOCK_DIST_PICK_BY" length="32">
+				<comment>配书单拣货人</comment>
+			</column>
+		</property>
+		<property name="stockDistributionStatus" type="java.lang.String">
+			<column name="IV_STOCK_DIST_STATUS" length="32">
+				<comment>配书单状态</comment>
+			</column>
+		</property>
+		<set name="stockDistributionItemSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_DIST_ID" length="32">
+					<comment>配书单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockDistributionItem" />
+		</set>
+	</class>
+</hibernate-mapping>

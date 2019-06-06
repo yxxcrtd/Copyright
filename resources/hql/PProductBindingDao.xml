@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductBindingDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, name, nameText, factory, factoryText, price, labour, unit, num, count, endOn, desc</properties>
+			<fields>a.id, a.name, (select name from BDic e where e.id = a.name), a.factory, (select name from BDic e where e.id = a.factory), a.price, a.labour, a.unit, a.num, a.count, a.endOn, a.desc</fields>
+			<hql>from PProductBinding a</hql>
+			<conditions>
+				<condition id="id" discribe="装订ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="装订项目">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="factory" discribe="装订承装厂名称">
+					<params type="param">
+						<param name="factory" type="java.lang.String" />
+					</params>
+					<hql>a.factory = ?</hql>
+				</condition>
+				<condition id="price" discribe="装订单价">
+					<params type="param">
+						<param name="price" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.price = ?</hql>
+				</condition>
+				<condition id="labour" discribe="装订工价">
+					<params type="param">
+						<param name="labour" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.labour = ?</hql>
+				</condition>
+				<condition id="unit" discribe="装订计算单位">
+					<params type="param">
+						<param name="unit" type="java.lang.String" />
+					</params>
+					<hql>a.unit = ?</hql>
+				</condition>
+				<condition id="num" discribe="装订结算数量">
+					<params type="param">
+						<param name="num" type="java.lang.Integer" />
+					</params>
+					<hql>a.num = ?</hql>
+				</condition>
+				<condition id="count" discribe="装订承装册数">
+					<params type="param">
+						<param name="count" type="java.lang.Integer" />
+					</params>
+					<hql>a.count = ?</hql>
+				</condition>
+				<condition id="endOn" discribe="装订完成日期">
+					<params type="param">
+						<param name="endOn" type="java.util.Date" />
+					</params>
+					<hql>a.endOn = ?</hql>
+				</condition>
+				<condition id="desc" discribe="装订印法说明">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc = ?</hql>
+				</condition>
+				
+				<condition id="print_printId" discribe="付印单ID">
+					<params type="param">
+						<param name="print_printId" type="java.lang.String" />
+					</params>
+					<hql>a.print.printId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductBinding</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, name, factory, price, labour, unit, num, count, endOn, desc</properties>
+			<fields>a.id, a.name, a.factory, a.price, a.labour, a.unit, a.num, a.count, a.endOn, a.desc</fields>
+			<hql>from PProductBinding a</hql>
+			<conditions>
+				<condition id="id" discribe="装订ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="装订项目">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="factory" discribe="装订承装厂名称">
+					<params type="param">
+						<param name="factory" type="java.lang.String" />
+					</params>
+					<hql>a.factory = ?</hql>
+				</condition>
+				<condition id="price" discribe="装订单价">
+					<params type="param">
+						<param name="price" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.price = ?</hql>
+				</condition>
+				<condition id="labour" discribe="装订工价">
+					<params type="param">
+						<param name="labour" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.labour = ?</hql>
+				</condition>
+				<condition id="unit" discribe="装订计算单位">
+					<params type="param">
+						<param name="unit" type="java.lang.String" />
+					</params>
+					<hql>a.unit = ?</hql>
+				</condition>
+				<condition id="num" discribe="装订结算数量">
+					<params type="param">
+						<param name="num" type="java.lang.Integer" />
+					</params>
+					<hql>a.num = ?</hql>
+				</condition>
+				<condition id="count" discribe="装订承装册数">
+					<params type="param">
+						<param name="count" type="java.lang.Integer" />
+					</params>
+					<hql>a.count = ?</hql>
+				</condition>
+				<condition id="endOn" discribe="装订完成日期">
+					<params type="param">
+						<param name="endOn" type="java.util.Date" />
+					</params>
+					<hql>a.endOn = ?</hql>
+				</condition>
+				<condition id="desc" discribe="装订印法说明">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductBinding</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductBinding a</hql>
+			<conditions>
+				<condition id="id" discribe="装订ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="装订项目">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="factory" discribe="装订承装厂名称">
+					<params type="param">
+						<param name="factory" type="java.lang.String" />
+					</params>
+					<hql>a.factory = ?</hql>
+				</condition>
+				<condition id="price" discribe="装订单价">
+					<params type="param">
+						<param name="price" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.price = ?</hql>
+				</condition>
+				<condition id="labour" discribe="装订工价">
+					<params type="param">
+						<param name="labour" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.labour = ?</hql>
+				</condition>
+				<condition id="unit" discribe="装订计算单位">
+					<params type="param">
+						<param name="unit" type="java.lang.String" />
+					</params>
+					<hql>a.unit = ?</hql>
+				</condition>
+				<condition id="num" discribe="装订结算数量">
+					<params type="param">
+						<param name="num" type="java.lang.Integer" />
+					</params>
+					<hql>a.num = ?</hql>
+				</condition>
+				<condition id="count" discribe="装订承装册数">
+					<params type="param">
+						<param name="count" type="java.lang.Integer" />
+					</params>
+					<hql>a.count = ?</hql>
+				</condition>
+				<condition id="endOn" discribe="装订完成日期">
+					<params type="param">
+						<param name="endOn" type="java.util.Date" />
+					</params>
+					<hql>a.endOn = ?</hql>
+				</condition>
+				<condition id="desc" discribe="装订印法说明">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductBinding</className>
+		</query>
+	</dao>
+</web-query>

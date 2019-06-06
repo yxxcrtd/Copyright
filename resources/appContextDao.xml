@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="daoFacade" class="cn.digitalpublishing.facade.DaoFacade">
+	
+		<!-- 基础 -->
+		<property name="dicDao">
+			<bean class="cn.digitalpublishing.dao.BDicDao" parent="commonDao" />
+		</property>
+		<!-- 数据词典 -->
+		<property name="dicClassDao">
+			<bean class="cn.digitalpublishing.dao.BDicClassDao" parent="commonDao" />
+		</property>
+		<!--产品信息 -->
+		<property name="productDao">
+			<bean class="cn.digitalpublishing.dao.PProductDao" parent="commonDao"></bean>
+		</property>
+		<!--产品订单 -->
+		<property name="productOrderDao">
+			<bean class="cn.digitalpublishing.dao.ProductOrderDao" parent="commonDao"></bean>
+		</property>
+        <!-- 产品分类 -->
+		<property name="productTypeDao">
+			<bean class="cn.digitalpublishing.dao.PProductTypeDao" parent="commonDao"></bean>
+		</property>
+        <!-- 碎片化 -->
+		<property name="structureDao">
+			<bean class="cn.digitalpublishing.dao.PStructureDao" parent="commonDao"></bean>
+		</property>
+		<!-- 碎片化结构 -->
+		<property name="productStructureRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.PProductStructureRelationshipDao" parent="commonDao"></bean>
+		</property>
+        <!-- 产品许可 -->
+        <property name="productLicenseDao">
+            <bean class="cn.digitalpublishing.dao.PProductLicenseDao" parent="commonDao"></bean>
+        </property>
+		<!-- 合同 -->
+		<property name="crcontractDao">
+			<bean class="cn.digitalpublishing.dao.CrContractDao" parent="commonDao" />
+		</property>
+		<!-- 国别权利合同关系 -->
+		<property name="crcRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrCrcRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 国别附属权利关系 -->
+		<property name="csrRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrCsrRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 授权类型 -->
+		<property name="crLicenseTypeDao">
+			<bean class="cn.digitalpublishing.dao.CrLicenseTypeDao" parent="commonDao" />
+		</property>
+		<!-- 语种权利合同关系 -->
+		<property name="lrcRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrLrcRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 语种附属权利关系 -->
+		<property name="lsrRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrLsrRelationshipDao" parent="commonDao" />
+		</property>
+		<!-- 权利授权 -->
+		<property name="CrRightDao">
+			<bean class="cn.digitalpublishing.dao.CrRightDao" parent="commonDao" />
+		</property>
+		<!-- 计算公式 -->
+		<property name="crFormulaDao">
+			<bean class="cn.digitalpublishing.dao.CrRlFormulaDao" parent="commonDao" />
+		</property>
+		<!-- 权利授权者 -->
+		<property name="crOwnerDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerDao" parent="commonDao" />
+		</property>
+		<!-- 预付款及固定费用 -->
+		<property name="crOwnerFeeDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerFeeDao" parent="commonDao" />
+		</property>
+		<!-- 付款对象 -->
+		<property name="crOwnerPayeeDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerPayeeDao" parent="commonDao" />
+		</property>
+		<!-- 人员版税计算规则 -->
+		<property name="crOwnerRoyaltyDao">
+			<bean class="cn.digitalpublishing.dao.CrRlOwnerRoyaltyDao" parent="commonDao" />
+		</property>
+		<!-- 权利授权产品 -->
+		<property name="crProductDao">
+			<bean class="cn.digitalpublishing.dao.CrRlProductDao" parent="commonDao" />
+		</property>
+		<!-- 版税规则库 -->
+		<property name="crRoyaltyRuleDao">
+			<bean class="cn.digitalpublishing.dao.CrRlRoyaltyRuleDao" parent="commonDao" />
+		</property>
+		<!-- 版税附属权利 -->
+		<property name="subsidaryRightDao">
+			<bean class="cn.digitalpublishing.dao.CrSubsidaryRightDao" parent="commonDao" />
+		</property>
+		<!-- 版税结算 -->
+		<property name="settlementDao">
+			<bean class="cn.digitalpublishing.dao.CrSettlementDao" parent="commonDao" />
+		</property>
+		
+		<property name="crmCorpTypeDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpTypeDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmPersonTypeDao">
+			<bean class="cn.digitalpublishing.dao.CrmPersonTypeDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="productPersonRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.PProductPersonRelationshipDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCorpTypePropClassifyDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpTypePropClassifyDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmPeTypePropDao">
+			<bean class="cn.digitalpublishing.dao.CrmPeTypePropDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="productTypePropClassifyDao">
+			<bean class="cn.digitalpublishing.dao.PProductTypePropClassifyDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCtypePropDao">
+			<bean class="cn.digitalpublishing.dao.CrmCtypePropDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="proposalDao">
+			<bean class="cn.digitalpublishing.dao.PProposalDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="productProposalPersonRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.PProductProposalPersonRelationshipDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmPersonTypeRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrmPersonTypeRelationshipDao" parent="commonDao"></bean>
+		</property>
+       
+       <property name="countryDao">
+			<bean class="cn.digitalpublishing.dao.BCountryDao" parent="commonDao" />
+		</property>
+
+		<property name="regionDao">
+			<bean class="cn.digitalpublishing.dao.BRegionDao" parent="commonDao" />
+		</property>
+       
+       <property name="structureTypeDao">
+			<bean class="cn.digitalpublishing.dao.PStructureTypeDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="structureTypePropClassifyDao">
+			<bean class="cn.digitalpublishing.dao.PStructureTypePropClassifyDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="structureTypePropDao">
+			<bean class="cn.digitalpublishing.dao.PStructureTypePropDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="structurePropDao">
+			<bean class="cn.digitalpublishing.dao.PStructurePropDao" parent="commonDao"></bean>
+		</property>
+       
+       <property name="crmCtpClassifyDao">
+			<bean class="cn.digitalpublishing.dao.CrmCtpClassifyDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCorpPropDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpPropDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCorpDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmPersonPropDao">
+			<bean class="cn.digitalpublishing.dao.CrmPersonPropDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmPeTpClassifyDao">
+			<bean class="cn.digitalpublishing.dao.CrmPeTpClassifyDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCorpTypePropDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpTypePropDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCorpTypeRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpTypeRelationshipDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmPersonDao">
+			<bean class="cn.digitalpublishing.dao.CrmPersonDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="proposalAdviceDao">
+			<bean class="cn.digitalpublishing.dao.PProposalAdviceDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="proposalAuthorRelationshipDao">
+			<bean class="cn.digitalpublishing.dao.PProposalAuthorRelationshipDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="crmCorpAccountDao">
+			<bean class="cn.digitalpublishing.dao.CrmCorpAccountDao" parent="commonDao"></bean>
+		</property>
+		
+		<property name="currencyDao">
+			<bean class="cn.digitalpublishing.dao.BCurrencyDao" parent="commonDao" />
+		</property>
+		
+		<property name="exchangeDao">
+			<bean class="cn.digitalpublishing.dao.BExchangeDao" parent="commonDao"></bean>
+		</property>
+       
+	</bean>
+</beans>

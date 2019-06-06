@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.OInitialSaleItem" table="O_INITIAL_SALE_ITEM">
+		<id name="initialSaleItemId" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="initialSaleItemCode" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_CODE" length="32">
+				<comment>初始销售订单项编号</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemCreateOn" type="java.util.Date">
+			<column name="O_INITIAL_SALE_ITEM_CREATE_ON">
+				<comment>初始销售订单项创建日期</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemCreateBy" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_CREATE_BY" length="32">
+				<comment>初始销售订单项创建人</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemUpdateOn" type="java.util.Date">
+			<column name="O_INITIAL_SALE_ITEM_UPDATE_ON">
+				<comment>初始销售订单项修改日期</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemUpdateBy" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_UPDATE_BY" length="32">
+				<comment>初始销售订单项修改人</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemIsbn" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_ISBN" length="32">
+				<comment>初始销售订单项ISBN</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemTitle" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_TITLE" length="256">
+				<comment>初始销售订单项书名</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemAuthor" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_AUTHOR" length="128">
+				<comment>初始销售订单项作者</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemPublisher" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_PUBLISHER" length="256">
+				<comment>初始销售订单项出版社</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemPrice" type="java.math.BigDecimal">
+			<column name="O_INITIAL_SALE_ITEM_PRICE" precision="10" scale="2">
+				<comment>初始销售订单项报订定价</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemDiscount" type="java.lang.Integer">
+			<column name="O_INITIAL_SALE_ITEM_DISCOUNT">
+				<comment>初始销售订单项报订折扣</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemCount" type="java.lang.Integer">
+			<column name="O_INITIAL_SALE_ITEM_COUNT">
+				<comment>初始销售订单项报订数量</comment>
+			</column>
+		</property>
+		<property name="initialSaleItemStatus" type="java.lang.String">
+			<column name="O_INITIAL_SALE_ITEM_STATUS" length="32">
+				<comment>初始销售订单项状态</comment>
+			</column>
+		</property>
+		<many-to-one name="initialSaleOrder" class="cn.digitalpublishing.po.OInitialSaleOrder" fetch="select" lazy="false">
+			<column name="O_INIT_SALE_ORDER_ID" length="32">
+				<comment>初始销售订单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="saleItem" class="cn.digitalpublishing.po.OSaleItem" fetch="select" lazy="false">
+			<column name="O_SALE_ITEM_ID" length="32">
+				<comment>销售订单项ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

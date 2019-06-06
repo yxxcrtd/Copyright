@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpWebsiteDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, type, url</properties>
+			<fields>a.id, a.type, a.url</fields>
+			<hql>from CrmCorpWebsite a</hql>
+			<conditions>
+				<condition id="id" discribe="网站ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="网站分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="url" discribe="网站地址">
+					<params type="param">
+						<param name="url" type="java.lang.String" />
+					</params>
+					<hql>a.url = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpWebsite</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, type, url</properties>
+			<fields>a.id, a.type, a.url</fields>
+			<hql>from CrmCorpWebsite a</hql>
+			<conditions>
+				<condition id="id" discribe="网站ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="网站分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="url" discribe="网站地址">
+					<params type="param">
+						<param name="url" type="java.lang.String" />
+					</params>
+					<hql>a.url = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpWebsite</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpWebsite a</hql>
+			<conditions>
+				<condition id="id" discribe="网站ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="网站分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="url" discribe="网站地址">
+					<params type="param">
+						<param name="url" type="java.lang.String" />
+					</params>
+					<hql>a.url = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpWebsite</className>
+		</query>
+	</dao>
+</web-query>

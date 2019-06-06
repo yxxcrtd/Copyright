@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.OInvoiceReq" table="O_INVOICE_REQ">
+		<id name="invoiceReqId" type="java.lang.String">
+			<column name="O_INVOICE_REQ_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="invoiceReqCode" type="java.lang.String">
+			<column name="O_INVOICE_REQ_CODE" length="32">
+				<comment>销售发票申请单号</comment>
+			</column>
+		</property>
+		<property name="invoiceReqCreateBy" type="java.lang.String">
+			<column name="O_INVOICE_REQ_CREATE_BY" length="32">
+				<comment>销售发票申请单创建人</comment>
+			</column>
+		</property>
+		<property name="invoiceReqCreateOn" type="java.util.Date">
+			<column name="O_INVOICE_REQ_CREATE_ON">
+				<comment>销售发票申请单创建日期</comment>
+			</column>
+		</property>
+		<property name="invoiceReqCustomer" type="java.lang.String">
+			<column name="O_INVOICE_REQ_CUSTOMER" length="256">
+				<comment>销售发票申请单客户名称</comment>
+			</column>
+		</property>
+		<property name="invoiceReqInvoiceType" type="java.lang.String">
+			<column name="O_INVOICE_REQ_INVOICE_TYPE" length="32">
+				<comment>销售发票申请单发票类型</comment>
+			</column>
+		</property>
+		<property name="invoiceReqContent" type="java.lang.String">
+			<column name="O_INVOICE_REQ_CONTENT" length="1024">
+				<comment>销售发票申请单发票内容</comment>
+			</column>
+		</property>
+		<property name="invoiceReqRemark" type="java.lang.String">
+			<column name="O_INVOICE_REQ_REMARK" length="1024">
+				<comment>销售发票申请单备注</comment>
+			</column>
+		</property>
+		<property name="invoiceReqCount" type="java.lang.Integer">
+			<column name="O_INVOICE_REQ_COUNT">
+				<comment>销售发票申请单总册数</comment>
+			</column>
+		</property>
+		<property name="invoiceReqFixedPrice" type="java.math.BigDecimal">
+			<column name="O_INVOICE_REQ_FIXED_PRICE" precision="10" scale="2">
+				<comment>销售发票申请单总码洋</comment>
+			</column>
+		</property>
+		<property name="invoiceReqDiscountedPrice" type="java.math.BigDecimal">
+			<column name="O_INVOICE_REQ_DIS_PRICE" precision="10" scale="2">
+				<comment>销售发票申请单总实洋</comment>
+			</column>
+		</property>
+		<property name="invoiceReqTaxRate" type="java.lang.Integer">
+			<column name="O_INVOICE_REQ_TAX_RATE">
+				<comment>销售发票申请单税率</comment>
+			</column>
+		</property>
+		<property name="invoiceReqTax" type="java.math.BigDecimal">
+			<column name="O_INVOICE_REQ_TAX" precision="10" scale="2">
+				<comment>销售发票申请单税额</comment>
+			</column>
+		</property>
+		<property name="invoiceReqStatus" type="java.lang.String">
+			<column name="O_INVOICE_REQ_STATUS" length="32">
+				<comment>销售发票申请单状态</comment>
+			</column>
+		</property>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="stockOutSet" inverse="true">
+			<key>
+				<column name="O_INVOICE_REQ_ID" length="32">
+					<comment>销售发票申请单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockOut" />
+		</set>
+		<set name="invoiceRepaymentRelationshipSet" inverse="true">
+			<key>
+				<column name="O_INVOICE_REQ_ID" length="32">
+					<comment>销售发票申请单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OInvoiceRepaymentRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

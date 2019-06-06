@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.EComposingTypePropDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ctypePropId,ctypePropCode,ctypePropName,ctypePropOrder,ctypePropDisplay,ctypePropMust,ctypePropSourceType,ctypePropSource,ctypePropStatus,ctypePropInternationCode,composingTypePropClassify.ctpClassifyId,composingTypePropClassify.ctpClassifyName,composingType.ctypeId,composingType.ctypeName</properties>
+			<fields>a.ctypePropId,a.ctypePropCode,a.ctypePropName,a.ctypePropOrder,(select code from BDic d where d.id = a.ctypePropDisplay),(select code from BDic e where e.id=a.ctypePropMust),a.ctypePropSourceType,a.ctypePropSource,a.ctypePropStatus,a.ctypePropInternationCode,b.ctpClassifyId,b.ctpClassifyName,c.ctypeId,c.ctypeName</fields>
+			<hql>from EComposingTypeProp a left join a.composingTypePropClassify b left join a.composingType c</hql>
+			<conditions>
+				<condition id="ctypePropId" discribe="ctypePropId">
+					<params type="param">
+						<param name="ctypePropId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropId = ?</hql>
+				</condition>
+				<condition id="ctypePropCode" describe="ctypePropCode">
+					<params type="param">
+						<param name="ctypePropCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropCode like  ?</hql>
+				</condition>
+				<condition id="ctypePropName" describe="ctypePropName">
+					<params type="param">
+						<param name="ctypePropName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropName like  ?</hql>
+				</condition>
+				<condition id="ctypePropOrder" describe="ctypePropOrder">
+					<params type="param">
+						<param name="ctypePropOrder" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropOrder = ?</hql>
+				</condition>
+				<condition id="ctypePropDisplay" describe="ctypePropDisplay">
+					<params type="param">
+						<param name="ctypePropDisplay" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropDisplay =  ?</hql>
+				</condition>
+				<condition id="ctypePropStatus" describe="ctypePropStatus">
+					<params type="param">
+						<param name="ctypePropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropStatus =  ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>b.ctpClassifyId =  ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>c.ctypeId =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypeProp</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ctypePropId,ctypePropCode,ctypePropName,ctypePropOrder,ctypePropDisplay,ctypePropMust,ctypePropSourceType,ctypePropSource,ctypePropStatus,ctypePropInternationCode,composingTypePropClassify.ctpClassifyId,composingTypePropClassify.ctpClassifyName,composingType.ctypeId,composingType.ctypeName</properties>
+			<fields>a.ctypePropId,a.ctypePropCode,a.ctypePropName,a.ctypePropOrder,a.ctypePropDisplay,a.ctypePropMust,a.ctypePropSourceType,a.ctypePropSource,a.ctypePropStatus,a.ctypePropInternationCode,b.ctpClassifyId,b.ctpClassifyName,c.ctypeId,c.ctypeName</fields>
+			<hql>from EComposingTypeProp a left join a.composingTypePropClassify b left join a.composingType c</hql>
+			<conditions>
+				<condition id="ctypePropId" discribe="ctypePropId">
+					<params type="param">
+						<param name="ctypePropId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropId = ?</hql>
+				</condition>
+				<condition id="ctypePropCode" describe="ctypePropCode">
+					<params type="param">
+						<param name="ctypePropCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropCode like  ?</hql>
+				</condition>
+				<condition id="ctypePropName" describe="ctypePropName">
+					<params type="param">
+						<param name="ctypePropName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropName like  ?</hql>
+				</condition>
+				<condition id="ctypePropOrder" describe="ctypePropOrder">
+					<params type="param">
+						<param name="ctypePropOrder" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropOrder = ?</hql>
+				</condition>
+				<condition id="ctypePropDisplay" describe="ctypePropDisplay">
+					<params type="param">
+						<param name="ctypePropDisplay" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropDisplay =  ?</hql>
+				</condition>
+				<condition id="ctypePropStatus" describe="ctypePropStatus">
+					<params type="param">
+						<param name="ctypePropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropStatus =  ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>b.ctpClassifyId =  ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>c.ctypeId =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypeProp</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>ctypePropId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from EComposingTypeProp a left join a.composingTypePropClassify b left join a.composingType c</hql>
+			<conditions>
+				<condition id="ctypePropId" discribe="ctypePropId">
+					<params type="param">
+						<param name="ctypePropId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropId = ?</hql>
+				</condition>
+				<condition id="ctypePropCode" describe="ctypePropCode">
+					<params type="param">
+						<param name="ctypePropCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropCode like  ?</hql>
+				</condition>
+				<condition id="ctypePropName" describe="ctypePropName">
+					<params type="param">
+						<param name="ctypePropName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropName like  ?</hql>
+				</condition>
+				<condition id="ctypePropOrder" describe="ctypePropOrder">
+					<params type="param">
+						<param name="ctypePropOrder" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropOrder = ?</hql>
+				</condition>
+				<condition id="ctypePropDisplay" describe="ctypePropDisplay">
+					<params type="param">
+						<param name="ctypePropDisplay" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropDisplay =  ?</hql>
+				</condition>
+				<condition id="ctypePropStatus" describe="ctypePropStatus">
+					<params type="param">
+						<param name="ctypePropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropStatus =  ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>b.ctpClassifyId =  ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>c.ctypeId =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypeProp</className>
+		</query>
+		<query>
+			<id>getListForInsert</id>
+			<method>getListForInsert</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ctypePropId,ctypePropCode,ctypePropName,ctypePropOrder,ctypePropDisplay,ctypePropMust,ctypePropSourceType,ctypePropSource,ctypePropStatus,ctypePropInternationCode,composingTypePropClassify.ctpClassifyId,composingTypePropClassify.ctpClassifyName,composingType.ctypeId,composingType.ctypeName</properties>
+			<fields>a.ctypePropId,a.ctypePropCode,a.ctypePropName,a.ctypePropOrder,a.ctypePropDisplay,a.ctypePropMust,a.ctypePropSourceType,a.ctypePropSource,a.ctypePropStatus,a.ctypePropInternationCode,b.ctpClassifyId,b.ctpClassifyName,c.ctypeId,c.ctypeName</fields>
+			<hql>from EComposingTypeProp a left join a.composingTypePropClassify b left join a.composingType c</hql>
+			<conditions>
+				<condition id="ctypePropId" discribe="ctypePropId">
+					<params type="param">
+						<param name="ctypePropId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropId = ?</hql>
+				</condition>
+				<condition id="ctypePropCode" describe="ctypePropCode">
+					<params type="param">
+						<param name="ctypePropCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropCode like  ?</hql>
+				</condition>
+				<condition id="ctypePropName" describe="ctypePropName">
+					<params type="param">
+						<param name="ctypePropName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropName like  ?</hql>
+				</condition>
+				<condition id="ctypePropOrder" describe="ctypePropOrder">
+					<params type="param">
+						<param name="ctypePropOrder" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropOrder = ?</hql>
+				</condition>
+				<condition id="ctypePropDisplay" describe="ctypePropDisplay">
+					<params type="param">
+						<param name="ctypePropDisplay" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropDisplay =  ?</hql>
+				</condition>
+				<condition id="ctypePropStatus" describe="ctypePropStatus">
+					<params type="param">
+						<param name="ctypePropStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctypePropStatus =  ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>b.ctpClassifyId =  ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>c.ctypeId =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypeProp</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.BCountryDao">
+	
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,cnName,enName,status,createBy,updateBy</properties>
+			<fields>a.id,a.cnName,a.enName,(select name from BDic z where z.id=a.status),a.createBy,a.updateBy</fields>
+			<hql>from BCountry a</hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> a.status = ? </hql>
+				</condition>
+
+				<condition id="cnName" describe="cnName">
+					<params type="param">
+						<param name="cnName" type="java.lang.String"></param>
+					</params>
+					<hql> a.cnName like ? </hql>
+				</condition>
+				
+				<condition id="cnIdInCrRight" describe="cnIdInCrRight">
+					<params type="param">
+						<param name="cnIdInCrRight" type="java.lang.String"></param>
+					</params>
+					<hql> a.id not in(select h.country.id from CrCrcRelationship h where h.right.rlicenseId = ?)</hql>
+				</condition>
+				
+				<condition id="cnIdSubsidaryRight" describe="cnIdSubsidaryRight">
+					<params type="param">
+						<param name="cnIdSubsidaryRight" type="java.lang.String"></param>
+					</params>
+					<hql> a.id not in(select h.country.id from CrCsrRelationship h where h.subsidaryRight.srlicenseId = ?)</hql>
+				</condition>
+				
+				<condition id="enName" describe="cnName">
+					<params type="param">
+						<param name="enName" type="java.lang.String"></param>
+					</params>
+					<hql>lower(a.enName) like  ? </hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+			<order> </order>
+			<className>cn.digitalpublishing.po.BCountry</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,cnName,enName,status,createBy,updateBy</properties>
+			<fields>a.id,a.cnName,a.enName,a.status,a.createBy,a.updateBy</fields>
+			<hql>from BCountry a</hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> a.status = ? </hql>
+				</condition>
+
+				<condition id="cnName" describe="cnName">
+					<params type="param">
+						<param name="cnName" type="java.lang.String"></param>
+					</params>
+					<hql> a.cnName like ? </hql>
+				</condition>
+				
+				<condition id="enName" describe="cnName">
+					<params type="param">
+						<param name="enName" type="java.lang.String"></param>
+					</params>
+					<hql>lower(a.enName) like  ? </hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BCountry</className>
+		</query>
+		
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from BCountry a</hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> a.status = ? </hql>
+				</condition>
+
+				<condition id="cnName" describe="cnName">
+					<params type="param">
+						<param name="cnName" type="java.lang.String"></param>
+					</params>
+					<hql> a.cnName like ? </hql>
+				</condition>
+				
+				<condition id="cnIdInCrRight" describe="cnIdInCrRight">
+					<params type="param">
+						<param name="cnIdInCrRight" type="java.lang.String"></param>
+					</params>
+					<hql> a.id not in(select h.country.id from CrCrcRelationship h where h.right.rlicenseId = ?)</hql>
+				</condition>
+				
+				<condition id="cnIdSubsidaryRight" describe="cnIdSubsidaryRight">
+					<params type="param">
+						<param name="cnIdSubsidaryRight" type="java.lang.String"></param>
+					</params>
+					<hql> a.id not in(select h.country.id from CrCsrRelationship h where h.subsidaryRight.srlicenseId = ?)</hql>
+				</condition>
+				
+				<condition id="enName" describe="cnName">
+					<params type="param">
+						<param name="enName" type="java.lang.String"></param>
+					</params>
+					<hql>lower(a.enName) like  ? </hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BCountry</className>
+		</query>
+		
+	</dao>
+	
+</web-query>

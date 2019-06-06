@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.FActivityDao">
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,pdid,activityName,pdName,propCode,assigneeCode</properties>
+			<fields>a.id,a.pdid,a.activityName,a.pdName,a.propCode,a.assigneeCode</fields>
+			<hql>from FActivity a  </hql>
+			<conditions>
+				<condition id="pdid" describe="状态">
+					<params type="param">
+						<param name="pdid" type="java.lang.String"></param>
+					</params>
+					<hql> a.pdid = ? </hql>
+				</condition>
+				<condition id="activityName" describe="状态">
+					<params type="param">
+						<param name="activityName" type="java.lang.String"></param>
+					</params>
+					<hql> a.activityName = ? </hql>
+				</condition>
+				<condition id="type" describe="状态">
+					<params type="param">
+						<param name="type" type="java.lang.String"></param>
+					</params>
+					<hql> a.type = ? </hql>
+				</condition>
+                <condition id="startFlag" describe="状态">
+					<params type="param">
+						<param name="startFlag" type="java.lang.String"></param>
+					</params>
+					<hql> a.startFlag = ? </hql>
+				</condition>
+				<condition id="names" describe="names">
+					<params type="param">
+						<param name="names" type="java.lang.String" array="true" arrayMark="#X1"></param>
+					</params>
+					<hql>a.activityName in #X1</hql>
+				</condition>
+
+
+
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.FActivity</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,pdid,activityName,pdName,propCode,assigneeCode</properties>
+			<fields>a.id,a.pdid,a.activityName,a.pdName,a.propCode,a.assigneeCode</fields>
+			<hql>from FActivity a  </hql>
+			<conditions>
+				<condition id="pdid" describe="状态">
+					<params type="param">
+						<param name="pdid" type="java.lang.String"></param>
+					</params>
+					<hql> a.pdid = ? </hql>
+				</condition>
+				<condition id="activityName" describe="状态">
+					<params type="param">
+						<param name="activityName" type="java.lang.String"></param>
+					</params>
+					<hql> a.activityName = ? </hql>
+				</condition>
+				<condition id="type" describe="状态">
+					<params type="param">
+						<param name="type" type="java.lang.String"></param>
+					</params>
+					<hql> a.type = ? </hql>
+				</condition>
+				<condition id="names" describe="names">
+					<params type="param">
+						<param name="names" type="java.lang.String" array="true" arrayMark="#X1"></param>
+					</params>
+					<hql>a.activityName in #X1</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.FActivity</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from FActivity a </hql>
+			<conditions>
+				<condition id="pdid" describe="状态">
+					<params type="param">
+						<param name="pdid" type="java.lang.String"></param>
+					</params>
+					<hql> a.pdid = ? </hql>
+				</condition>
+				<condition id="activityName" describe="状态">
+					<params type="param">
+						<param name="activityName" type="java.lang.String"></param>
+					</params>
+					<hql> a.activityName = ? </hql>
+				</condition>
+				<condition id="type" describe="状态">
+					<params type="param">
+						<param name="type" type="java.lang.String"></param>
+					</params>
+					<hql> a.type = ? </hql>
+				</condition>
+                <condition id="startFlag" describe="状态">
+					<params type="param">
+						<param name="startFlag" type="java.lang.String"></param>
+					</params>
+					<hql> a.startFlag = ? </hql>
+				</condition>
+				<condition id="names" describe="names">
+					<params type="param">
+						<param name="names" type="java.lang.String" array="true" arrayMark="#X1"></param>
+					</params>
+					<hql>a.activityName in #X1</hql>
+				</condition>
+			</conditions>
+			<order></order>
+			<className>cn.digitalpublishing.po.FActivity</className>
+		</query>
+	</dao>
+</web-query>

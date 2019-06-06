@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpDao">
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, code, shortName, fullName, introduction</properties>
+			<fields>a.id, a.code, a.shortName, a.fullName, a.introduction</fields>
+			<hql>from CrmCorp a</hql>
+			<conditions>
+				<condition id="corpType_id" discribe="公司类型ID">
+					<params type="param">
+						<param name="corpType_id" type="java.lang.String" />
+					</params>
+					<hql>a.id not in (select b.corp.id from CrmCorpTypeRelationship b where b.corpType.id = ?)</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.id in (select b.corp.id from CrmCorpTypeRelationship b where b.status = ?)</hql>
+				</condition>
+				<condition id="code" discribe="编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql> a.code = ?</hql>
+				</condition>				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorp</className>
+		</query>
+		
+		
+
+	</dao>
+</web-query>

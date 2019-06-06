@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query>
+        <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno>
+        <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm>
+        </web-query> -->
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.IvStockOutDao">
+
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                stockOutId,stockOutCode,stockOutCreateOn,stockOutCreateBy,stockOutUpdateOn,stockOutUpdateBy,stockOutSendOn,stockOutReceiveCorp,stockOutReceiveAddr,stockOutReceiveTel,stockOutReceivePerson,stockOutTotalCount,stockOutFixedPrice,stockOutDiscountedPrice,stockOutAverageDiscount,stockOutTaxRate,stockOutDiscount,stockOutAttach,stockOutTypeCount,stockOutBusinessBy,stockOutStatus
+            </properties>
+            <fields>a.stockOutId,a.stockOutCode,a.stockOutCreateOn,(select p.person.name from CrmPersonTypeRelationship
+                p where p.id =
+                a.stockOutCreateBy),a.stockOutUpdateOn,a.stockOutUpdateBy,a.stockOutSendOn,a.stockOutReceiveCorp,a.stockOutReceiveAddr,a.stockOutReceiveTel,a.stockOutReceivePerson,a.stockOutTotalCount,a.stockOutFixedPrice,a.stockOutDiscountedPrice,a.stockOutAverageDiscount,a.stockOutTaxRate,a.stockOutDiscount,a.stockOutAttach,a.stockOutTypeCount,a.stockOutBusinessBy,(select
+                name from BDic z where z.id=a.stockOutStatus)
+            </fields>
+            <hql>from IvStockOut a left join a.corpTypeRelationship b left join a.transport c</hql>
+            <conditions>
+                <condition id="stockOutStatus" describe="id">
+                    <params type="param">
+                        <param name="stockOutStatus" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutStatus = ?</hql>
+                </condition>
+                <condition id="stockOutReceiveCorp" describe="id">
+                    <params type="param">
+                        <param name="stockOutReceiveCorp" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutReceiveCorp = ?</hql>
+                </condition>
+                <condition id="invoiceReqId" describe="id">
+                    <params type="param">
+                        <param name="invoiceReqId" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.invoiceReq.invoiceReqId = ?</hql>
+                </condition>
+                <condition id="stockOutCode" describe="id">
+                    <params type="param">
+                        <param name="stockOutCode" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutCode like ?</hql>
+                </condition>
+                <condition id="stockOutIds" describe="names">
+                    <params type="param">
+                        <param name="stockOutIds" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.stockOutId in #X1</hql>
+                </condition>
+                <condition id="crm_corptype_id" describe="公司类型ID">
+                    <params type="param">
+                        <param name="crm_corptype_id" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="transportId" describe="运输登记单ID">
+                    <params type="param">
+                        <param name="transportId" type="java.lang.String"></param>
+                    </params>
+                    <hql>c.transportId = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>
+            </order>
+            <className>cn.digitalpublishing.po.IvStockOut</className>
+        </query>
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                stockOutId,stockOutCode,stockOutCreateOn,stockOutCreateBy,stockOutUpdateOn,stockOutUpdateBy,stockOutSendOn,stockOutReceiveCorp,stockOutReceiveAddr,stockOutReceiveTel,stockOutReceivePerson,stockOutTotalCount,stockOutFixedPrice,stockOutDiscountedPrice,stockOutAverageDiscount,stockOutTaxRate,stockOutDiscount,stockOutAttach,stockOutTypeCount,stockOutBusinessBy,stockOutStatus
+            </properties>
+            <fields>a.stockOutId,a.stockOutCode,a.stockOutCreateOn,a.stockOutCreateBy,a.stockOutUpdateOn,a.stockOutUpdateBy,a.stockOutSendOn,a.stockOutReceiveCorp,a.stockOutReceiveAddr,a.stockOutReceiveTel,a.stockOutReceivePerson,a.stockOutTotalCount,a.stockOutFixedPrice,a.stockOutDiscountedPrice,a.stockOutAverageDiscount,a.stockOutTaxRate,a.stockOutDiscount,a.stockOutAttach,a.stockOutTypeCount,a.stockOutBusinessBy,a.stockOutStatus
+            </fields>
+            <hql>from IvStockOut a left join a.corpTypeRelationship b left join a.transport c</hql>
+            <conditions>
+                <condition id="stockOutStatus" describe="id">
+                    <params type="param">
+                        <param name="stockOutStatus" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutStatus = ?</hql>
+                </condition>
+                <condition id="stockOutReceiveCorp" describe="id">
+                    <params type="param">
+                        <param name="stockOutReceiveCorp" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutReceiveCorp = ?</hql>
+                </condition>
+                <condition id="invoiceReqId" describe="id">
+                    <params type="param">
+                        <param name="invoiceReqId" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.invoiceReq.invoiceReqId = ?</hql>
+                </condition>
+                <condition id="stockOutCode" describe="id">
+                    <params type="param">
+                        <param name="stockOutCode" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutCode like ?</hql>
+                </condition>
+                <condition id="stockOutIds" describe="names">
+                    <params type="param">
+                        <param name="stockOutIds" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.stockOutId in #X1</hql>
+                </condition>
+                <condition id="crm_corptype_id" describe="公司类型ID">
+                    <params type="param">
+                        <param name="crm_corptype_id" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="transportId" describe="运输登记单ID">
+                    <params type="param">
+                        <param name="transportId" type="java.lang.String"></param>
+                    </params>
+                    <hql>c.transportId = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>
+            </order>
+            <className>cn.digitalpublishing.po.IvStockOut</className>
+        </query>
+
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>stockOutId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from IvStockOut a left join a.corpTypeRelationship b left join a.transport c</hql>
+            <conditions>
+                <condition id="stockOutReceiveCorp" describe="id">
+                    <params type="param">
+                        <param name="stockOutReceiveCorp" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutReceiveCorp = ?</hql>
+                </condition>
+                <condition id="stockOutIds" describe="names">
+                    <params type="param">
+                        <param name="stockOutIds" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.stockOutId in #X1</hql>
+                </condition>
+                <condition id="stockOutStatus" describe="id">
+                    <params type="param">
+                        <param name="stockOutStatus" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutStatus = ?</hql>
+                </condition>
+                <condition id="stockOutCode" describe="id">
+                    <params type="param">
+                        <param name="stockOutCode" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutCode like ?</hql>
+                </condition>
+                <condition id="crm_corptype_id" describe="公司类型ID">
+                    <params type="param">
+                        <param name="crm_corptype_id" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="transportId" describe="运输登记单ID">
+                    <params type="param">
+                        <param name="transportId" type="java.lang.String"></param>
+                    </params>
+                    <hql>c.transportId = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>
+            </order>
+            <className>cn.digitalpublishing.po.IvStockOut</className>
+        </query>
+
+        <query>
+            <id>getStockOutItemStatusCount</id>
+            <method>getStockOutItemStatusCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>stockOutId, stockOutStatus, stockOutItemQuantity, stockOutItemPartQuantity,
+                stockOutItemAllQuantity
+            </properties>
+            <fields>a.stockOutId, a.stockOutStatus, cast((select count(*) from IvStockOutItem e where e.stockOut =
+                a.stockOutId) as int), cast((select count(*) from IvStockOutItem e where e.stockOut = a.stockOutId and
+                e.stockOutItemStatus = '402880be47c3df720147c3df73290004') as int), cast((select count(*) from
+                IvStockOutItem e where e.stockOut = a.stockOutId and e.stockOutItemStatus =
+                '402880be47c3df720147c3df73290005') as int)
+            </fields>
+            <hql>from IvStockOut a</hql>
+            <conditions>
+                <condition id="stockOutReceiveCorp" describe="id">
+                    <params type="param">
+                        <param name="stockOutReceiveCorp" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.stockOutReceiveCorp = ?</hql>
+                </condition>
+                <condition id="stockOutIds" describe="names">
+                    <params type="param">
+                        <param name="stockOutIds" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.stockOutId in #X1</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.IvStockOut</className>
+        </query>
+
+    </dao>
+</web-query>

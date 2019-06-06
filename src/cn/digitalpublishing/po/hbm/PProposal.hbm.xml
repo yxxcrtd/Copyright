@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProposal" table="P_PROPOSAL">
+		<id name="id" type="java.lang.String">
+			<column name="PROPOSAL_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="PROPOSAL_NAME" length="128">
+				<comment>策划名称</comment>
+			</column>
+		</property>
+		<property name="desc" type="java.lang.String">
+			<column name="PROPOSAL_DESC" length="1024">
+				<comment>策划描述</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="PROPOSAL_CREATE_ON">
+				<comment>策划创建时间</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="PROPOSAL_CREATE_BY" length="32">
+				<comment>策划创建人</comment>
+			</column>
+		</property>
+		<property name="roleType" type="java.lang.String">
+			<column name="PROPOSAL_ROLE_TYPE" length="32">
+				<comment>策划可见范围</comment>
+			</column>
+		</property>
+		<set name="productSet" inverse="true">
+			<key>
+				<column name="PROPOSAL_ID" length="32">
+					<comment>策划ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProduct" />
+		</set>
+		<set name="proposalAdviceSet" inverse="true">
+			<key>
+				<column name="PROPOSAL_ID" length="32">
+					<comment>策划ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalAdvice" />
+		</set>
+		<set name="proposalPersonRelationshipSet" inverse="true">
+			<key>
+				<column name="PROPOSAL_ID" length="32">
+					<comment>策划ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalPersonRelationship" />
+		</set>
+		<set name="proposalAuthorRelationshipSet" inverse="true">
+			<key>
+				<column name="PROPOSAL_ID" length="32">
+					<comment>策划ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProposalAuthorRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductContractRelationshipDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,product.id,contract.contractName,contract.contractType,contract.contractDate,contract.contractSource,contract.contractReason</properties>
+			<fields>a.id,b.id,c.contractName,(select z.name from BDic z where z.id = c.contractType),c.contractDate,c.contractSource,c.contractReason</fields>
+			<hql>from PProductContractRelationship a  left join a.product b  left join a.contract c </hql>
+			<conditions>
+				<condition id="productId" describe="产品ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="contractStatus" describe="合同状态">
+					<params type="param">
+						<param name="contractStatus" type="java.lang.String" />
+					</params>
+					<hql>c.contractStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductContractRelationship</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductContractRelationship a  left join a.product b  left join a.contract c </hql>
+			<conditions>
+				<condition id="productId" describe="产品ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="contractStatus" describe="合同状态">
+					<params type="param">
+						<param name="contractStatus" type="java.lang.String" />
+					</params>
+					<hql>c.contractStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductContractRelationship</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,product.id,contract.contractId,contract.contractName,contract.contractType,contract.contractDate,contract.contractSource,contract.contractReason</properties>
+			<fields>a.id,b.id,c.contractId, c.contractName,(select z.name from BDic z where z.id = c.contractType),c.contractDate,c.contractSource,c.contractReason</fields>
+			<hql>from PProductContractRelationship a  left join a.product b  left join a.contract c </hql>
+			<conditions>
+				<condition id="productId" describe="产品ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductContractRelationship</className>
+		</query>
+	</dao>
+</web-query>

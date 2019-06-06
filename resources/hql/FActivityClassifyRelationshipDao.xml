@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.FActivityClassifyRelationshipDao">
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from FActivityClassifyRelationship a left join a.activity b left join a.productTypePropClassify c </hql>
+			<conditions>
+
+				<condition id="activity" describe="人员信息ID">
+					<params type="param">
+						<param name="activity" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+
+
+				<condition id="productTypePropClassify" describe="人员信息ID">
+					<params type="param">
+						<param name="productTypePropClassify" type="java.lang.String"></param>
+					</params>
+					<hql> c.id = ? </hql>
+				</condition>
+
+
+
+			</conditions>
+			<order></order>
+			<className>cn.digitalpublishing.po.FActivityClassifyRelationship</className>
+		</query>
+		<query>
+			<id>delByWhere</id>
+			<method>delByWhere</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>a.id</fields>
+			<hql>from FActivityClassifyRelationship a left join a.activity b</hql>
+			<conditions>
+				<condition id="activity" describe="人员信息ID">
+					<params type="param">
+						<param name="activity" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+			<order>order by a.productTypePropClassify.code</order>
+			<className>cn.digitalpublishing.po.FActivityClassifyRelationship</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,productTypeCode,activity.id,productTypePropClassify.id,productTypePropClassify.name,productTypePropClassify.code</properties>
+			<fields>a.id,a.productTypeCode,b.id,c.id,c.name,c.code</fields>
+			<hql>from FActivityClassifyRelationship a left join a.activity b left join a.productTypePropClassify c left join c.parentClassify d</hql>
+			<conditions>
+				<condition id="activity" describe="人员信息ID">
+					<params type="param">
+						<param name="activity" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+				
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when d.id is null then '0' else d.id end) = ?</hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+            <order>order by a.productTypePropClassify.code</order>
+			<className>cn.digitalpublishing.po.FActivityClassifyRelationship</className>
+		</query>
+	</dao>
+</web-query>

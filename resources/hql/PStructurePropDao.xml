@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PStructurePropDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,code,name,value,order,display,must,source,status,internationCode,createBy</properties>
+			<fields>a.id,a.code,a.name,a.value,a.order,(select code from BDic e where e.id = a.display),(select code from BDic e where e.id = a.must),a.source,a.status,a.internationCode,a.createBy</fields>
+			<hql>from PStructureProp a</hql>
+			<conditions>
+				<condition id="id" discribe="结构材属性ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="code" discribe="结构属性编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+				<condition id="name" discribe="结构属性名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="value" discribe="结构属性取值">
+					<params type="param">
+						<param name="value" type="java.lang.String" />
+					</params>
+					<hql>a.value = ?</hql>
+				</condition>
+				<condition id="order" discribe="结构属性排序">
+					<params type="param">
+						<param name="order" type="java.lang.String" />
+					</params>
+					<hql>a.order = ?</hql>
+				</condition>
+				<condition id="display" discribe="结构属性显示方式">
+					<params type="param">
+						<param name="display" type="java.lang.String" />
+					</params>
+					<hql>a.display = ?</hql>
+				</condition>
+				<condition id="must" discribe="结构属性是否必填">
+					<params type="param">
+						<param name="must" type="java.lang.String" />
+					</params>
+					<hql>a.must = ?</hql>
+				</condition>
+				<condition id="source" discribe="结构属性来源">
+					<params type="param">
+						<param name="source" type="java.lang.String" />
+					</params>
+					<hql>a.source = ?</hql>
+				</condition>
+				<condition id="status" discribe="结构属性状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="createOn" discribe="结构属性创建日期">
+					<params type="param">
+						<param name="createOn" type="java.util.Date" />
+					</params>
+					<hql>a.createOn = ?</hql>
+				</condition>
+				<condition id="createBy" discribe="结构属性创建者">
+					<params type="param">
+						<param name="createBy" type="java.lang.String" />
+					</params>
+					<hql>a.createBy = ?</hql>
+				</condition>
+				<condition id="updateOn" discribe="结构属性修改日期">
+					<params type="param">
+						<param name="updateOn" type="java.util.Date" />
+					</params>
+					<hql>a.updateOn = ?</hql>
+				</condition>
+				<condition id="updateBy" discribe="结构属性修改者">
+					<params type="param">
+						<param name="updateBy" type="java.lang.String" />
+					</params>
+					<hql>a.updateBy = ?</hql>
+				</condition>
+				<condition id="internationCode" discribe="国际化参数">
+					<params type="param">
+						<param name="internationCode" type="java.lang.String" />
+					</params>
+					<hql>a.internationCode = ?</hql>
+				</condition>
+				
+				<condition id="structureTypeProp_id" discribe="国际化参数">
+					<params type="param">
+						<param name="structureTypeProp_id" type="java.lang.String" />
+					</params>
+					<hql>a.structureTypeProp.id = ?</hql>
+				</condition>
+				
+				<condition id="structure_id" discribe="产品结构ID">
+					<params type="param">
+						<param name="structure_id" type="java.lang.String" />
+					</params>
+					<hql>a.structure.id = ?</hql>
+				</condition>
+				
+				<condition id="classify_id" discribe="ClassifyId">
+					<params type="param">
+						<param name="classify_id" type="java.lang.String" />
+					</params>
+					<hql>a.structureTypeProp.structureTypePropClassify.id = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PStructureProp</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, code, name, value, order, display, must, source, status, createOn, createBy, updateOn, updateBy, internationCode</properties>
+			<fields>a.id, a.code, a.name, a.value, a.order, a.display, a.must, a.source, a.status, a.createOn, a.createBy, a.updateOn, a.updateBy, a.internationCode</fields>
+			<hql>from PStructureProp a</hql>
+			<conditions>
+				<condition id="id" discribe="结构材属性ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="code" discribe="结构属性编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+				<condition id="name" discribe="结构属性名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="value" discribe="结构属性取值">
+					<params type="param">
+						<param name="value" type="java.lang.String" />
+					</params>
+					<hql>a.value = ?</hql>
+				</condition>
+				<condition id="order" discribe="结构属性排序">
+					<params type="param">
+						<param name="order" type="java.lang.String" />
+					</params>
+					<hql>a.order = ?</hql>
+				</condition>
+				<condition id="display" discribe="结构属性显示方式">
+					<params type="param">
+						<param name="display" type="java.lang.String" />
+					</params>
+					<hql>a.display = ?</hql>
+				</condition>
+				<condition id="must" discribe="结构属性是否必填">
+					<params type="param">
+						<param name="must" type="java.lang.String" />
+					</params>
+					<hql>a.must = ?</hql>
+				</condition>
+				<condition id="source" discribe="结构属性来源">
+					<params type="param">
+						<param name="source" type="java.lang.String" />
+					</params>
+					<hql>a.source = ?</hql>
+				</condition>
+				<condition id="status" discribe="结构属性状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="createOn" discribe="结构属性创建日期">
+					<params type="param">
+						<param name="createOn" type="java.util.Date" />
+					</params>
+					<hql>a.createOn = ?</hql>
+				</condition>
+				<condition id="createBy" discribe="结构属性创建者">
+					<params type="param">
+						<param name="createBy" type="java.lang.String" />
+					</params>
+					<hql>a.createBy = ?</hql>
+				</condition>
+				<condition id="updateOn" discribe="结构属性修改日期">
+					<params type="param">
+						<param name="updateOn" type="java.util.Date" />
+					</params>
+					<hql>a.updateOn = ?</hql>
+				</condition>
+				<condition id="updateBy" discribe="结构属性修改者">
+					<params type="param">
+						<param name="updateBy" type="java.lang.String" />
+					</params>
+					<hql>a.updateBy = ?</hql>
+				</condition>
+				<condition id="internationCode" discribe="国际化参数">
+					<params type="param">
+						<param name="internationCode" type="java.lang.String" />
+					</params>
+					<hql>a.internationCode = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PStructureProp</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PStructureProp a</hql>
+			<conditions>
+				<condition id="id" discribe="结构材属性ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="code" discribe="结构属性编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+				<condition id="name" discribe="结构属性名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="value" discribe="结构属性取值">
+					<params type="param">
+						<param name="value" type="java.lang.String" />
+					</params>
+					<hql>a.value = ?</hql>
+				</condition>
+				<condition id="order" discribe="结构属性排序">
+					<params type="param">
+						<param name="order" type="java.lang.String" />
+					</params>
+					<hql>a.order = ?</hql>
+				</condition>
+				<condition id="display" discribe="结构属性显示方式">
+					<params type="param">
+						<param name="display" type="java.lang.String" />
+					</params>
+					<hql>a.display = ?</hql>
+				</condition>
+				<condition id="must" discribe="结构属性是否必填">
+					<params type="param">
+						<param name="must" type="java.lang.String" />
+					</params>
+					<hql>a.must = ?</hql>
+				</condition>
+				<condition id="source" discribe="结构属性来源">
+					<params type="param">
+						<param name="source" type="java.lang.String" />
+					</params>
+					<hql>a.source = ?</hql>
+				</condition>
+				<condition id="status" discribe="结构属性状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="createOn" discribe="结构属性创建日期">
+					<params type="param">
+						<param name="createOn" type="java.util.Date" />
+					</params>
+					<hql>a.createOn = ?</hql>
+				</condition>
+				<condition id="createBy" discribe="结构属性创建者">
+					<params type="param">
+						<param name="createBy" type="java.lang.String" />
+					</params>
+					<hql>a.createBy = ?</hql>
+				</condition>
+				<condition id="updateOn" discribe="结构属性修改日期">
+					<params type="param">
+						<param name="updateOn" type="java.util.Date" />
+					</params>
+					<hql>a.updateOn = ?</hql>
+				</condition>
+				<condition id="updateBy" discribe="结构属性修改者">
+					<params type="param">
+						<param name="updateBy" type="java.lang.String" />
+					</params>
+					<hql>a.updateBy = ?</hql>
+				</condition>
+				<condition id="internationCode" discribe="国际化参数">
+					<params type="param">
+						<param name="internationCode" type="java.lang.String" />
+					</params>
+					<hql>a.internationCode = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PStructureProp</className>
+		</query>
+	</dao>
+</web-query>

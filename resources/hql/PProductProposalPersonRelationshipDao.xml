@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductProposalPersonRelationshipDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,product.id,person.id,person.name,proportion,isMainProposal</properties>
+			<fields>a.id,d.id,c.id,c.name,a.proportion, a.isMainProposal</fields>
+			<hql>from PProductProposalPersonRelationship a left join a.person c left join a.product d </hql>
+			<conditions>
+				<condition id="productId" describe="产品ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>d.id = ?</hql>
+				</condition>
+				<condition id="isMainProposal" describe="产品ID">
+					<params type="param">
+						<param name="isMainProposal" type="java.lang.String" />
+					</params>
+					<hql>a.isMainProposal = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductProposalPersonRelationship</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductProposalPersonRelationship a left join a.person c left join a.product d  </hql>
+			<conditions>
+				<condition id="productId" describe="产品ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>d.id = ?</hql>
+				</condition>
+				<condition id="isMainProposal" describe="是否是主策划">
+					<params type="param">
+						<param name="isMainProposal" type="java.lang.String" />
+					</params>
+					<hql>a.isMainProposal = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductProposalPersonRelationship</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,product.id,person.id,person.name,proportion,isMainProposal</properties>
+			<fields>a.id,d.id,c.id,c.name,a.proportion, a.isMainProposal</fields>
+			<hql>from PProductProposalPersonRelationship a left join a.person c left join a.product d </hql>
+			<conditions>
+				<condition id="productId" describe="产品ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>d.id = ?</hql>
+				</condition>
+				<condition id="isMainProposal" describe="产品ID">
+					<params type="param">
+						<param name="isMainProposal" type="java.lang.String" />
+					</params>
+					<hql>a.isMainProposal = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductProposalPersonRelationship</className>
+		</query>
+	</dao>
+</web-query>

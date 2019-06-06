@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductSubjectRelationshipDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,subject.name,subject.code,subject.rootSubject.name</properties>
+			<fields>a.id,b.name,b.code,d.name</fields>
+			<hql>from PProductSubjectRelationship a left join a.subject b left join b.rootSubject d left join a.product c</hql>
+			<conditions>
+				<condition id="productId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductSubjectRelationship</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductSubjectRelationship a left join a.subject b left join a.product c</hql>
+			<conditions>
+				
+				<condition id="productId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductSubjectRelationship</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,subject.name,subject.code</properties>
+			<fields>a.id,b.code,b.name</fields>
+			<hql>from PProductSubjectRelationship a left join a.subject b left join a.product c</hql>
+			<conditions>
+				<condition id="productId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+				<condition id="subjectId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="subjectId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductSubjectRelationship</className>
+		</query>
+		
+		<query>
+			<id>getSubjectByRootId</id>
+			<method>getSubjectByRootId</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,subject.name,subject.code</properties>
+			<fields>a.id,b.code,b.name</fields>
+			<hql>from PProductSubjectRelationship a left join a.subject b left join a.product c</hql>
+			<conditions>
+				<condition id="productId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+				<!-- <condition id="subjectId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="subjectId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition> -->
+				<condition id="rootSubjectId" describe="产品类型属性组ID">
+					<params type="param">
+						<param name="rootSubjectId" type="java.lang.String" />
+					</params>
+					<hql>b.rootSubject.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductSubjectRelationship</className>
+		</query>
+	</dao>
+</web-query>

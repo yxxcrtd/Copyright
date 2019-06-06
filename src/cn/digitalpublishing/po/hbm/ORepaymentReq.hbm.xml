@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.ORepaymentReq" table="O_REPAYMENT_REQ">
+		<id name="repaymentReqId" type="java.lang.String">
+			<column name="O_REPAYMENT_REQ_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="repaymentReqPayName" type="java.lang.String">
+			<column name="O_REPAYMENT_REQ_PAY_NAME" length="128">
+				<comment>销售来款付款人名称</comment>
+			</column>
+		</property>
+		<property name="repaymentReqPayOn" type="java.util.Date">
+			<column name="O_REPAYMENT_REQ_PAY_ON">
+				<comment>销售来款付款日期</comment>
+			</column>
+		</property>
+		<property name="repaymentReqPayType" type="java.lang.String">
+			<column name="O_REPAYMENT_REQ_PAY_TYPE" length="32">
+				<comment>销售来款付款方式</comment>
+			</column>
+		</property>
+		<property name="repaymentReqAmount" type="java.math.BigDecimal">
+			<column name="O_REPAYMENT_REQ_AMOUNT" precision="10" scale="2">
+				<comment>销售来款金额</comment>
+			</column>
+		</property>
+		<property name="repaymentReqRemark" type="java.lang.String">
+			<column name="O_REPAYMENT_REQ_REMARK" length="1024">
+				<comment>销售来款备注</comment>
+			</column>
+		</property>
+		<property name="repaymentReqClaimBy" type="java.lang.String">
+			<column name="O_REPAYMENT_REQ_CLAIM_BY" length="32">
+				<comment>销售来款认领人</comment>
+			</column>
+		</property>
+		<property name="repaymentReqClaimOn" type="java.util.Date">
+			<column name="O_REPAYMENT_REQ_CLAIM_ON">
+				<comment>销售来款认领日期</comment>
+			</column>
+		</property>
+		<property name="repaymentReqStatus" type="java.lang.String">
+			<column name="O_REPAYMENT_REQ_STATUS" length="32">
+				<comment>销售来款状态</comment>
+			</column>
+		</property>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="invoiceRepaymentRelationshipSet" inverse="true">
+			<key>
+				<column name="O_REPAYMENT_REQ_ID" length="32">
+					<comment>销售来款ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OInvoiceRepaymentRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

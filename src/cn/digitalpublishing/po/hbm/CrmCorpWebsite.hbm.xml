@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpWebsite" table="CRM_CORP_WEBSITE">
+		<id name="id" type="java.lang.String">
+			<column name="WEBSITE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="type" type="java.lang.String">
+			<column name="WEBSITE_TYPE" length="32">
+				<comment>网站分类</comment>
+			</column>
+		</property>
+		<property name="url" type="java.lang.String">
+			<column name="WEBSITE_URL" length="128">
+				<comment>网站地址</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="WEBSITE_STATUS" length="32">
+				<comment>网站状态</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

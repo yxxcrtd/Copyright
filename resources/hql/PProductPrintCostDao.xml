@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductPrintCostDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,price,num,unit,total</properties>
+			<fields>a.id,(select name from BDic z where z.id=a.name),a.price,a.num,a.unit,a.total</fields>
+			<hql>from PProductPrintCost a left join a.product b left join a.print c</hql>
+			<conditions>
+				<condition id="productId" describe="题名">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="printId" describe="题名">
+					<params type="param">
+						<param name="printId" type="java.lang.String" />
+					</params>
+					<hql>c.printId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPrintCost</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductPrintCost a left join a.product b left join a.print c</hql>
+			<conditions>
+				<condition id="productId" describe="题名">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="printId" describe="题名">
+					<params type="param">
+						<param name="printId" type="java.lang.String" />
+					</params>
+					<hql>c.printId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPrintCost</className>
+		</query>
+	</dao>
+</web-query>

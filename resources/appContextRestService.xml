@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+	<bean id="restService" class="cn.digitalpublishing.remote.service.RestService" >         
+		<constructor-arg>
+			<map>
+    			<entry key="getAccount" value="http://127.0.0.1:8080/webgate/pages/rest/getAccount/" /><!-- 获取账户信息 -->
+   				<entry key="insertAccount" value="http://127.0.0.1:8080/webgate/pages/rest/insert.json"/><!--设置用户同步 -->
+   				<entry key="syncProduct" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/product"/><!--同步产品信息 --><!-- demo.cnpereading.com:8080 -->
+   				<entry key="updateProduct" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/updateProduct.xml"/><!--回写产品状态 -->
+   				<entry key="syncSource" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/source"/><!--同步提供商信息 -->
+   				<entry key="updateSource" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/updateSource.xml"/><!--回写提供商状态 -->
+   				<entry key="syncOrder" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/order"/><!--同步订单信息 -->
+   				<entry key="updateOrder" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/updateOrder.xml"/><!--回写订单状态 -->
+   				<entry key="updateOrderDetail" value="http://demo.cnpereading.com:8080/MetadataConverter/rest/updateOrderDetail.xml"/><!--同步订单详情状态 -->
+   				<!-- 邮件相关 -->
+   				<entry key="mail" value="http://127.0.0.1:8080/MailService/pages/waitingQueue/insertMailTask.xml"/><!-- 发送邮件 -->
+   				<entry key="getTemplate" value="http://127.0.0.1:8080/MailService/pages/template/getTemplate.json"/><!-- 获取模版信息 -->
+   			</map>
+		</constructor-arg>   
+	</bean>
+</beans>

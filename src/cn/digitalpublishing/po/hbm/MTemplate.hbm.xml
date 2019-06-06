@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.MTemplate" table="M_TEMPLATE">
+		<id name="id" type="java.lang.String">
+			<column name="TEMPLATE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="TEMPLATE_NAME" length="512">
+				<comment>模板名称</comment>
+			</column>
+		</property>
+		<set name="promotionSet" inverse="true">
+			<key>
+				<column name="TEMPLATE_ID" length="32">
+					<comment>模板ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.MPromotion" />
+		</set>
+	</class>
+</hibernate-mapping>

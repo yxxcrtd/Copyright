@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PKnowledgeHierarchyDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>knowledgeHierarchyId, knowledgeHierarchyCode, knowledgeHierarchyName, parentKnowledgeHierarchy.knowledgeHierarchyId, childSize</properties>
+			<fields>a.knowledgeHierarchyId, a.knowledgeHierarchyCode, a.knowledgeHierarchyName, a.parentKnowledgeHierarchy.knowledgeHierarchyId, knowledgeHierarchySet.size</fields>
+			<hql>from PKnowledgeHierarchy a</hql>
+			<conditions>
+				<condition id="knowledgeHierarchyId" discribe="知识体系ID">
+					<params type="param">
+						<param name="knowledgeHierarchyId" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyId = ?</hql>
+				</condition>
+				<condition id="knowledgeHierarchyCode" discribe="知识体系编号">
+					<params type="param">
+						<param name="knowledgeHierarchyCode" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyCode = ?</hql>
+				</condition>
+				<condition id="knowledgeHierarchyName" discribe="知识体系名称">
+					<params type="param">
+						<param name="knowledgeHierarchyName" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyName = ?</hql>
+				</condition>
+                <condition id="parentId" describe="父节点">
+                    <params type="param">
+                        <param name="parentId" type="java.lang.String"></param>
+                    </params>
+                    <hql>(case when a.parentKnowledgeHierarchy.id is null then 'root' else a.parentKnowledgeHierarchy.id end) = ?</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PKnowledgeHierarchy</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>knowledgeHierarchyId, knowledgeHierarchyCode, knowledgeHierarchyName</properties>
+			<fields>a.knowledgeHierarchyId, a.knowledgeHierarchyCode, a.knowledgeHierarchyName</fields>
+			<hql>from PKnowledgeHierarchy a</hql>
+			<conditions>
+				<condition id="knowledgeHierarchyId" discribe="知识体系ID">
+					<params type="param">
+						<param name="knowledgeHierarchyId" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyId = ?</hql>
+				</condition>
+				<condition id="knowledgeHierarchyCode" discribe="知识体系编号">
+					<params type="param">
+						<param name="knowledgeHierarchyCode" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyCode = ?</hql>
+				</condition>
+				<condition id="knowledgeHierarchyName" discribe="知识体系名称">
+					<params type="param">
+						<param name="knowledgeHierarchyName" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyName = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PKnowledgeHierarchy</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>knowledgeHierarchyId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PKnowledgeHierarchy a</hql>
+			<conditions>
+				<condition id="knowledgeHierarchyId" discribe="知识体系ID">
+					<params type="param">
+						<param name="knowledgeHierarchyId" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyId = ?</hql>
+				</condition>
+				<condition id="knowledgeHierarchyCode" discribe="知识体系编号">
+					<params type="param">
+						<param name="knowledgeHierarchyCode" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyCode = ?</hql>
+				</condition>
+				<condition id="knowledgeHierarchyName" discribe="知识体系名称">
+					<params type="param">
+						<param name="knowledgeHierarchyName" type="java.lang.String" />
+					</params>
+					<hql>a.knowledgeHierarchyName = ?</hql>
+				</condition>
+                <condition id="parentId" describe="父节点">
+                    <params type="param">
+                        <param name="parentId" type="java.lang.String"></param>
+                    </params>
+                    <hql>(case when a.parentKnowledgeHierarchy.id is null then 'root' else a.parentKnowledgeHierarchy.id end) = ?</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PKnowledgeHierarchy</className>
+		</query>
+	</dao>
+</web-query>

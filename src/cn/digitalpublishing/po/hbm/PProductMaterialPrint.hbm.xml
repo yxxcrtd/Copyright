@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductMaterialPrint" table="P_PRODUCT_MATERIAL_PRINT">
+		<id name="id" type="java.lang.String">
+			<column name="P_MP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="projectName" type="java.lang.String">
+			<column name="P_MP_PROJECT_NAME" length="32">
+				<comment>项目名称</comment>
+			</column>
+		</property>
+		<property name="materialName" type="java.lang.String">
+			<column name="P_MP_MATERIAL_NAME" length="256">
+				<comment>材料名称</comment>
+			</column>
+		</property>
+		<property name="materialCode" type="java.lang.String">
+			<column name="P_MP_MATERIAL_CODE" length="32">
+				<comment>材料编号</comment>
+			</column>
+		</property>
+		<property name="materialSpec" type="java.lang.String">
+			<column name="P_MP_MATERIAL_SPEC" length="32">
+				<comment>材料规格</comment>
+			</column>
+		</property>
+		<property name="materialType" type="java.lang.String">
+			<column name="P_MP_MATERIAL_TYPE" length="32">
+				<comment>材料类型</comment>
+			</column>
+		</property>
+		<property name="materialSource" type="java.lang.String">
+			<column name="P_MP_MATERIAL_SOURCE" length="32">
+				<comment>材料来源</comment>
+			</column>
+		</property>
+		<property name="materialGrams" type="java.lang.Integer">
+			<column name="P_MP_MATERIAL_GRAMS">
+				<comment>材料克重</comment>
+			</column>
+		</property>
+		<property name="materialQuotient" type="java.lang.Integer">
+			<column name="P_MP_MATERIAL_QUOTIENT">
+				<comment>材料纸张开数</comment>
+			</column>
+		</property>
+		<property name="materialPaper" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_PAPER" precision="10" scale="2">
+				<comment>材料正用纸</comment>
+			</column>
+		</property>
+		<property name="materialAddRate" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_ADD_RATE" precision="10" scale="2">
+				<comment>材料加放率</comment>
+			</column>
+		</property>
+		<property name="materialAddCount" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_ADD_COUNT" precision="10" scale="2">
+				<comment>材料加放数</comment>
+			</column>
+		</property>
+		<property name="materialTotalCount" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_TOTAL_COUNT" precision="10" scale="2">
+				<comment>材料合计数</comment>
+			</column>
+		</property>
+		<property name="materialReam" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_REAM" precision="10" scale="2">
+				<comment>材料包干令/吨</comment>
+			</column>
+		</property>
+		<property name="materialTon" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_TON" precision="10" scale="2">
+				<comment>材料吨数</comment>
+			</column>
+		</property>
+		<property name="materialPrice" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_PRICE" precision="10" scale="2">
+				<comment>材料单价</comment>
+			</column>
+		</property>
+		<property name="materialExpense" type="java.math.BigDecimal">
+			<column name="P_MP_MATERIAL_EXPENSE" precision="10" scale="2">
+				<comment>材料费</comment>
+			</column>
+		</property>
+		<property name="faceCount" type="java.lang.Integer">
+			<column name="P_MP_FACE_COUNT">
+				<comment>面数</comment>
+			</column>
+		</property>
+		<property name="printFrontChromaticCount" type="java.lang.Integer">
+			<column name="P_MP_PRINT_FRONT_CHROM_COUNT">
+				<comment>印刷正面色数</comment>
+			</column>
+		</property>
+		<property name="printEndChromaticCount" type="java.lang.Integer">
+			<column name="P_MP_PRINT_END_CHROM_COUNT">
+				<comment>印刷背面色数</comment>
+			</column>
+		</property>
+		<property name="printModel" type="java.lang.String">
+			<column name="P_MP_PRINT_MODEL" length="32">
+				<comment>印刷机型</comment>
+			</column>
+		</property>
+		<property name="printMakeupCount" type="java.math.BigDecimal">
+			<column name="P_MP_PRINT_MAKEUP_COUNT" precision="10" scale="2">
+				<comment>印刷拼版数</comment>
+			</column>
+		</property>
+		<property name="printMakeupExpense" type="java.math.BigDecimal">
+			<column name="P_MP_PRINT_MAKEUP_EXPENSE" precision="10" scale="2">
+				<comment>印刷拼版费</comment>
+			</column>
+		</property>
+		<property name="printType" type="java.lang.String">
+			<column name="P_MP_PRINT_TYPE" length="32">
+				<comment>印刷方式</comment>
+			</column>
+		</property>
+		<property name="printPrice" type="java.math.BigDecimal">
+			<column name="P_MP_PRINT_PRICE" precision="10" scale="2">
+				<comment>印刷单价</comment>
+			</column>
+		</property>
+		<property name="printExpense" type="java.math.BigDecimal">
+			<column name="P_MP_PRINT_EXPENSE" precision="10" scale="2">
+				<comment>印刷费</comment>
+			</column>
+		</property>
+		<property name="printColorType" type="java.lang.String">
+			<column name="P_PRINT_COLOR_TYPE" length="32">
+				<comment>印刷色谱</comment>
+			</column>
+		</property>
+		<property name="isCtpAloneExpense" type="java.lang.Boolean">
+			<column name="P_IS_CTP_ALONE_EXPENSE">
+				<comment>CTP制版费是否单独计算</comment>
+			</column>
+		</property>
+		<property name="ctpAloneExpense" type="java.math.BigDecimal">
+			<column name="P_CTP_ALONE_EXPENSE" precision="10" scale="2">
+				<comment>CTP制版费</comment>
+			</column>
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="P_MP_REMARK" length="1024">
+				<comment>项目备注</comment>
+			</column>
+		</property>
+		<many-to-one name="ctpPrintPlant" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="P_CTP_PRINT_PLANT" length="32">
+				<comment>CTP印厂</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="printPlant" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="P_PRINT_PLANT" length="32">
+				<comment>印厂</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="print" class="cn.digitalpublishing.po.EPrint" fetch="select" lazy="false">
+			<column name="E_PRINT_ID" length="32">
+				<comment>付印单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="material" class="cn.digitalpublishing.po.EMaterial" fetch="select" lazy="false">
+			<column name="E_MATERIAL_ID" length="32">
+				<comment>材料ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

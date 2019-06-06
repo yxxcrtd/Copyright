@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpType" table="CRM_CORP_TYPE">
+		<id name="id" type="java.lang.String">
+			<column name="CORP_TYPE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="CORP_TYPE_CODE" length="20">
+				<comment>公司类型编号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="CORP_TYPE_NAME" length="128">
+				<comment>公司类型名称</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="CORP_TYPE_ORDER">
+				<comment>公司类型排序</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CORP_TYPE_STATUS" length="32">
+				<comment>公司类型状态</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="CORP_TYPE_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<set name="corpTypeRelationshipSet" inverse="true">
+			<key>
+				<column name="CORP_TYPE_ID" length="32">
+					<comment>公司类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpTypeRelationship" />
+		</set>
+		<set name="corpTypePropClassifySet" inverse="true">
+			<key>
+				<column name="CORP_TYPE_ID" length="32">
+					<comment>公司类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCtpClassify" />
+		</set>
+		<set name="ctypePropSet" inverse="true">
+			<key>
+				<column name="CORP_TYPE_ID" length="32">
+					<comment>公司类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCtypeProp" />
+		</set>
+	</class>
+</hibernate-mapping>

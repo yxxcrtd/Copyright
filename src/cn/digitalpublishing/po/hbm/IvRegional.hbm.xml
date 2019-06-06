@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvRegional" table="IV_REGIONAL">
+		<id name="areaId" type="java.lang.String">
+			<column name="REGIONAL_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="areaCode" type="java.lang.String">
+			<column name="REGIONAL_CODE" length="32">
+				<comment>区域编号</comment>
+			</column>
+		</property>
+		<property name="areaDesc" type="java.lang.String">
+			<column name="REGIONAL_DESC" length="128">
+				<comment>区域描述</comment>
+			</column>
+		</property>
+		<property name="areaStatus" type="java.lang.String">
+			<column name="REGIONAL_STATUS" length="32">
+				<comment>区域状态</comment>
+			</column>
+		</property>
+		<property name="activityLevel" type="java.lang.String">
+			<column name="ACTIVITY_LEVEL" length="32">
+				<comment>活跃度</comment>
+			</column>
+		</property>
+		<many-to-one name="areaType" class="cn.digitalpublishing.po.IvAreaType" fetch="select" lazy="false">
+			<column name="AREA_TYPE_ID" length="32">
+				<comment>区域类型ID</comment>
+			</column>
+		</many-to-one>
+		<set name="locationSet" inverse="true">
+			<key>
+				<column name="REGIONAL_ID" length="32">
+					<comment>区域ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvLocation" />
+		</set>
+	</class>
+</hibernate-mapping>

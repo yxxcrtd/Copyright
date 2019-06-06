@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProposalAuthorRelationshipDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,proposal.id,personTypeRelationship.person.code,personTypeRelationship.person.name,personTypeRelationship.person.telephone,personTypeRelationship.person.phone,personTypeRelationship.person.address,personTypeRelationship.person.postCode,personTypeRelationship.person.email,personTypeRelationship.person.fax</properties>
+			<fields>a.id,d.id,c.code,c.name,c.telephone,c.phone,c.address,c.postCode,c.email,c.fax</fields>
+			<hql>from PProposalAuthorRelationship a left join a.personTypeRelationship b left join b.person c left join a.proposal d </hql>
+			<conditions>
+				<condition id="proposalId" describe="产品ID">
+					<params type="param">
+						<param name="proposalId" type="java.lang.String" />
+					</params>
+					<hql>d.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProposalAuthorRelationship</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProposalAuthorRelationship a left join a.personTypeRelationship b left join b.person c left join a.proposal d </hql>
+			<conditions>
+				<condition id="proposalId" describe="产品ID">
+					<params type="param">
+						<param name="proposalId" type="java.lang.String" />
+					</params>
+					<hql>d.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProposalAuthorRelationship</className>
+		</query>
+	</dao>
+</web-query>

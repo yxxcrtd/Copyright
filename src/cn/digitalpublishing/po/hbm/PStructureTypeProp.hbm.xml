@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PStructureTypeProp" table="P_STRUCT_TYPE_PROP" dynamic-insert="true" dynamic-update="true">
+		<id name="id" type="java.lang.String">
+			<column name="P_STYPE_PROP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="P_STYPE_PROP_CODE" length="32">
+				<comment>结构类型属性编码</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="P_STYPE_PROP_NAME" length="64">
+				<comment>结构类型属性名称</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.String">
+			<column name="P_STYPE_PROP_ORDER">
+				<comment>结构类型属性排序</comment>
+			</column>
+		</property>
+		<property name="display" type="java.lang.String">
+			<column name="P_STYPE_PROP_DISPLAY" length="32">
+				<comment>结构类型属性显示方式</comment>
+			</column>
+		</property>
+		<property name="must" type="java.lang.String">
+			<column name="P_STYPE_PROP_MUST" length="32">
+				<comment>结构类型属性是否必填</comment>
+			</column>
+		</property>
+		<property name="sourceType" type="java.lang.String">
+			<column name="P_STYPE_PROP_SOURCE_TYPE" length="32">
+				<comment>结构类型属性来源类型</comment>
+			</column>
+		</property>
+		<property name="source" type="java.lang.String">
+			<column name="P_STYPE_PROP_SOURCE" length="1024">
+				<comment>结构类型属性来源</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="P_STYPE_PROP_STATUS" length="32">
+				<comment>结构类型属性状态</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="P_STYPE_PROP_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<many-to-one name="structureTypePropClassify" class="cn.digitalpublishing.po.PStructureTypePropClassify" fetch="select" lazy="false">
+			<column name="P_STP_CLASSIFY_ID" length="32">
+				<comment>结构分类ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="structureType" class="cn.digitalpublishing.po.PStructureType" fetch="select" lazy="false">
+			<column name="P_STYPE_ID" length="32">
+				<comment>结构类型ID</comment>
+			</column>
+		</many-to-one>
+		<set name="structurePropSet" inverse="true">
+			<key>
+				<column name="P_STYPE_PROP_ID" length="32">
+					<comment>结构类型属性ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PStructureProp" />
+		</set>
+	</class>
+</hibernate-mapping>

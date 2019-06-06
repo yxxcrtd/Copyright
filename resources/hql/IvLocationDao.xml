@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvLocationDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> locationId,locationCode,locationDesc,locationStatus,locationLoad,locationCapacity,locationPack,locationLoose,
+			regional.areaId,regional.areaDesc,floor.shFloorId,floor.shFloorDesc,shelf.shelfId,shelf.shelfDesc,
+			warehouse.warehouseId,warehouse.warehouseDesc,warehouseFloor.whFloorId,warehouseFloor.whFloorDesc,
+			warehouseRoom.whRoomId,warehouseRoom.whRoomDesc </properties>
+			<fields> a.locationId,a.locationCode,a.locationDesc,(select name from BDic z where z.id=a.locationStatus),
+			a.locationLoad,a.locationCapacity,a.locationPack,a.locationLoose,b.areaId,b.areaDesc,c.shFloorId,c.shFloorDesc,
+			d.shelfId,d.shelfDesc,e.warehouseId,e.warehouseDesc,f.whFloorId,f.whFloorDesc,g.whRoomId,g.whRoomDesc  </fields>
+			<hql>from IvLocation a left join a.regional b left join a.floor c 
+			left join a.shelf d left join a.warehouse e left join a.warehouseFloor f left join a.warehouseRoom g</hql>
+			<conditions>
+				<condition id="locationId" describe="locationId">
+					<params type="param">
+						<param name="locationId" type="java.lang.String"></param>
+					</params>
+					<hql> a.locationId = ?</hql>
+				</condition>
+				<condition id="locationCode" describe="locationCode">
+					<params type="param">
+						<param name="locationCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationCode = ?</hql>
+				</condition>
+				<condition id="locationDesc" describe="locationDesc">
+					<params type="param">
+						<param name="locationDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationDesc = ?</hql>
+				</condition>
+				<condition id="locationStatus" describe="locationStatus">
+					<params type="param">
+						<param name="locationStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationStatus = ?</hql>
+				</condition>
+				
+				<condition id="locationLoad" describe="locationLoad">
+					<params type="param">
+						<param name="locationLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.locationLoad = ?</hql>
+				</condition>
+				<condition id="locationCapacity" describe="locationCapacity">
+					<params type="param">
+						<param name="locationCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.locationCapacity = ?</hql>
+				</condition>
+				
+				<condition id="areaId" describe="areaId">
+					<params type="param">
+						<param name="areaId" type="java.lang.String"></param>
+					</params>
+					<hql> b.areaId = ? </hql>
+				</condition>
+				<condition id="shFloorId" describe="shFloorId">
+					<params type="param">
+						<param name="shFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> c.shFloorId = ? </hql>
+				</condition>
+				
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> d.shelfId = ? </hql>
+				</condition>
+				<condition id="warehouseId" describe="warehouseId">
+					<params type="param">
+						<param name="warehouseId" type="java.lang.String"></param>
+					</params>
+					<hql> e.warehouseId = ? </hql>
+				</condition>
+				
+				<condition id="whFloorId" describe="whFloorId">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> f.whFloorId= ? </hql>
+				</condition>
+				<condition id="whRoomId" describe="whRoomId">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> g.whRoomId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.locationId</order>
+			<className>cn.digitalpublishing.po.IvLocation</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>locationId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvLocation a left join a.regional b left join a.floor c 
+			left join a.shelf d left join a.warehouse e left join a.warehouseFloor f left join a.warehouseRoom g</hql>
+			<conditions>
+				<condition id="locationId" describe="locationId">
+					<params type="param">
+						<param name="locationId" type="java.lang.String"></param>
+					</params>
+					<hql> a.locationId = ?</hql>
+				</condition>
+				<condition id="locationCode" describe="locationCode">
+					<params type="param">
+						<param name="locationCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationCode like ?</hql>
+				</condition>
+				<condition id="locationDesc" describe="locationDesc">
+					<params type="param">
+						<param name="locationDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationDesc like ?</hql>
+				</condition>
+				<condition id="locationStatus" describe="locationStatus">
+					<params type="param">
+						<param name="locationStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationStatus = ?</hql>
+				</condition>
+				
+				<condition id="locationLoad" describe="locationLoad">
+					<params type="param">
+						<param name="locationLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.locationLoad = ?</hql>
+				</condition>
+				<condition id="locationCapacity" describe="locationCapacity">
+					<params type="param">
+						<param name="locationCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.locationCapacity = ?</hql>
+				</condition>
+				
+				<condition id="areaId" describe="areaId">
+					<params type="param">
+						<param name="areaId" type="java.lang.String"></param>
+					</params>
+					<hql> b.areaId = ? </hql>
+				</condition>
+				<condition id="shFloorId" describe="shFloorId">
+					<params type="param">
+						<param name="shFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> c.shFloorId = ? </hql>
+				</condition>
+				
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> d.shelfId = ? </hql>
+				</condition>
+				<condition id="warehouseId" describe="warehouseId">
+					<params type="param">
+						<param name="warehouseId" type="java.lang.String"></param>
+					</params>
+					<hql> e.warehouseId = ? </hql>
+				</condition>
+				<condition id="whFloorId" describe="whFloorId">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> f.whFloorId= ? </hql>
+				</condition>
+				<condition id="whRoomId" describe="whRoomId">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> g.whRoomId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.locationId</order>
+			<className>cn.digitalpublishing.po.IvLocation</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> locationId,locationCode,locationDesc,locationStatus,locationLoad,locationCapacity,locationPack,locationLoose,
+			regional.areaId,regional.areaDesc,floor.shFloorId,floor.shFloorDesc,shelf.shelfId,shelf.shelfDesc,
+			warehouse.warehouseId,warehouse.warehouseDesc,warehouseFloor.whFloorId,warehouseFloor.whFloorDesc,
+			warehouseRoom.whRoomId,warehouseRoom.whRoomDesc </properties>
+			<fields> a.locationId,a.locationCode,a.locationDesc,(select name from BDic z where z.id=a.locationStatus),
+			a.locationLoad,a.locationCapacity,a.locationPack,a.locationLoose,b.areaId,b.areaDesc,c.shFloorId,c.shFloorDesc,
+			d.shelfId,d.shelfDesc,e.warehouseId,e.warehouseDesc,f.whFloorId,f.whFloorDesc,g.whRoomId,g.whRoomDesc  </fields>
+			<hql>from IvLocation a left join a.regional b left join a.floor c 
+			left join a.shelf d left join a.warehouse e left join a.warehouseFloor f left join a.warehouseRoom g</hql>
+			<conditions>
+				<condition id="locationId" describe="locationId">
+					<params type="param">
+						<param name="locationId" type="java.lang.String"></param>
+					</params>
+					<hql> a.locationId = ?</hql>
+				</condition>
+				<condition id="locationCode" describe="locationCode">
+					<params type="param">
+						<param name="locationCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationCode like ?</hql>
+				</condition>
+				<condition id="locationDesc" describe="locationDesc">
+					<params type="param">
+						<param name="locationDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationDesc like ?</hql>
+				</condition>
+				<condition id="locationStatus" describe="locationStatus">
+					<params type="param">
+						<param name="locationStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.locationStatus = ?</hql>
+				</condition>
+				
+				<condition id="locationLoad" describe="locationLoad">
+					<params type="param">
+						<param name="locationLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.locationLoad = ?</hql>
+				</condition>
+				<condition id="locationCapacity" describe="locationCapacity">
+					<params type="param">
+						<param name="locationCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.locationCapacity = ?</hql>
+				</condition>
+				
+				<condition id="areaId" describe="areaId">
+					<params type="param">
+						<param name="areaId" type="java.lang.String"></param>
+					</params>
+					<hql> b.areaId = ? </hql>
+				</condition>
+				<condition id="shFloorId" describe="shFloorId">
+					<params type="param">
+						<param name="shFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> c.shFloorId = ? </hql>
+				</condition>
+				
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> d.shelfId = ? </hql>
+				</condition>
+				<condition id="warehouseId" describe="warehouseId">
+					<params type="param">
+						<param name="warehouseId" type="java.lang.String"></param>
+					</params>
+					<hql> e.warehouseId = ? </hql>
+				</condition>
+				
+				<condition id="whFloorId" describe="whFloorId">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> f.whFloorId= ? </hql>
+				</condition>
+				<condition id="whRoomId" describe="whRoomId">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> g.whRoomId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.locationId</order>
+			<className>cn.digitalpublishing.po.IvLocation</className>
+		</query>
+	</dao>
+</web-query>

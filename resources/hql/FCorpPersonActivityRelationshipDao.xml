@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.FCorpPersonActivityRelationshipDao">
+
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>cpaId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from FCorpPersonActivityRelationship a  left join a.crmPersonTypeRelationship b left join a.activity c left join a.crmCorpTypeRelationship d</hql>
+            <conditions>
+
+                <condition id="activityId" describe="人员信息ID">
+                    <params type="param">
+                        <param name="activityId" type="java.lang.String"></param>
+                    </params>
+                    <hql> c.id = ? </hql>
+                </condition>
+
+                <condition id="personId" describe="人员信息ID">
+                    <params type="param">
+                        <param name="personId" type="java.lang.String"></param>
+                    </params>
+                    <hql> b.id = ? </hql>
+                </condition>
+
+                <condition id="orgId" describe="人员信息ID">
+                    <params type="param">
+                        <param name="orgId" type="java.lang.String"></param>
+                    </params>
+                    <hql>d.id = ?</hql>
+                </condition>
+
+
+            </conditions>
+            <order></order>
+            <className>cn.digitalpublishing.po.FCorpPersonActivityRelationship</className>
+        </query>
+
+
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>cpaId,crmPersonTypeRelationship.id,crmPersonTypeRelationship.person.name,activity.id,activity.assigneeCode,crmCorpTypeRelationship.id</properties>
+            <fields>a.cpaId,b.id,e.name,c.id,c.assigneeCode,d.id</fields>
+            <hql>from FCorpPersonActivityRelationship a  left join a.crmPersonTypeRelationship b left join a.activity c left join a.crmCorpTypeRelationship d left join b.person e</hql>
+            <conditions>
+
+                <condition id="activityId" describe="人员信息ID">
+                    <params type="param">
+                        <param name="activityId" type="java.lang.String"></param>
+                    </params>
+                    <hql> c.id = ? </hql>
+                </condition>
+
+                <condition id="personId" describe="人员信息ID">
+                    <params type="param">
+                        <param name="personId" type="java.lang.String"></param>
+                    </params>
+                    <hql> b.id = ? </hql>
+                </condition>
+
+                <condition id="orgId" describe="人员信息ID">
+                    <params type="param">
+                        <param name="orgId" type="java.lang.String"></param>
+                    </params>
+                    <hql>d.id = ?</hql>
+                </condition>
+                <condition id="activityIds" describe="ids">
+                    <params type="param">
+                        <param name="activityIds" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>c.id in #X1</hql>
+                </condition>
+
+
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FCorpPersonActivityRelationship</className>
+        </query>
+    </dao>
+</web-query>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvStoringDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> ivStoringId,ivStoringPack,ivStoringLoose,product.id,product.title,location.locationId, location.locationCode, location.locationDesc , location.locationPack, location.locationLoose</properties>
+			<fields> a.ivStoringId,a.ivStoringPack,a.ivStoringLoose,b.id,b.title,c.locationId, c.locationCode, c.locationDesc ,c.locationPack , c.locationLoose</fields>
+			<hql>from IvStoring a left join a.product b left join a.location c </hql>
+			<conditions>
+				<condition id="ivStoringId" describe="ivStoringId">
+					<params type="param">
+						<param name="ivStoringId" type="java.lang.String"></param>
+					</params>
+					<hql> a.ivStoringId = ?</hql>
+				</condition>
+				<condition id="ivStoringPack" describe="ivStoringPack">
+					<params type="param">
+						<param name="ivStoringPack" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.ivStoringPack = ?</hql>
+				</condition>
+				<condition id="ivStoringLoose" describe="ivStoringLoose">
+					<params type="param">
+						<param name="ivStoringLoose" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.ivStoringLoose = ?</hql>
+				</condition>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="locationId" describe="locationId">
+					<params type="param">
+						<param name="locationId" type="java.lang.String"></param>
+					</params>
+					<hql> c.locationId = ? </hql>
+				</condition>
+				
+				<condition id="locationCode" describe="locationCode">
+					<params type="param">
+						<param name="locationCode" type="java.lang.String"></param>
+					</params>
+					<hql> c.locationCode = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.ivStoringId</order>
+			<className>cn.digitalpublishing.po.IvStoring</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ivStoringId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvStoring a left join a.product b left join a.location c </hql>
+			<conditions>
+				<condition id="ivStoringId" describe="ivStoringId">
+					<params type="param">
+						<param name="ivStoringId" type="java.lang.String"></param>
+					</params>
+					<hql> a.ivStoringId = ?</hql>
+				</condition>
+				<condition id="ivStoringPack" describe="ivStoringPack">
+					<params type="param">
+						<param name="ivStoringPack" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.ivStoringPack = ?</hql>
+				</condition>
+				<condition id="ivStoringLoose" describe="ivStoringLoose">
+					<params type="param">
+						<param name="ivStoringLoose" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.ivStoringLoose = ?</hql>
+				</condition>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="locationId" describe="locationId">
+					<params type="param">
+						<param name="locationId" type="java.lang.String"></param>
+					</params>
+					<hql> c.locationId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.ivStoringId</order>
+			<className>cn.digitalpublishing.po.IvStoring</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> ivStoringId,ivStoringPack,ivStoringLoose,product.id,product.title,location.locationId,location.locationDesc,location.locationCode </properties>
+			<fields> a.ivStoringId,a.ivStoringPack,a.ivStoringLoose,b.id,b.title,c.locationId,c.locationDesc,c.locationCode </fields>
+			<hql>from IvStoring a left join a.product b left join a.location c </hql>
+			<conditions>
+				<condition id="ivStoringId" describe="ivStoringId">
+					<params type="param">
+						<param name="ivStoringId" type="java.lang.String"></param>
+					</params>
+					<hql> a.ivStoringId = ?</hql>
+				</condition>
+				<condition id="ivStoringPack" describe="ivStoringPack">
+					<params type="param">
+						<param name="ivStoringPack" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.ivStoringPack = ?</hql>
+				</condition>
+				<condition id="ivStoringLoose" describe="ivStoringLoose">
+					<params type="param">
+						<param name="ivStoringLoose" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.ivStoringLoose = ?</hql>
+				</condition>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				
+				<condition id="locationId" describe="locationId">
+					<params type="param">
+						<param name="locationId" type="java.lang.String"></param>
+					</params>
+					<hql> c.locationId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.ivStoringId</order>
+			<className>cn.digitalpublishing.po.IvStoring</className>
+		</query>
+
+		<query>
+			<id>getSumStore</id>
+			<method>getSumStore</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ivStoringPack,ivStoringLoose </properties>
+			<fields>cast(sum(a.ivStoringPack) as int),cast(sum(a.ivStoringLoose) as int) </fields>
+			<hql>from IvStoring a left join a.location b </hql>
+			<conditions>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStoring</className>
+		</query>
+
+        <query>
+            <id>getPagingListForProduct</id>
+            <method>getPagingListForProduct</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties> ivStoringPack,ivStoringLoose,product.id,product.title,product.productType.name,product.translation,product.pubName,product.editorName,product.language</properties>
+            <fields> cast(sum(a.ivStoringPack) as int),cast(sum(a.ivStoringLoose) as int),b.id,b.title,c.name,b.translation,b.pubName,b.editorName,b.language </fields>
+            <hql>from IvStoring a left join a.product b  left join b.productType c</hql>
+            <conditions>
+                <condition id="ivStoringId" describe="ivStoringId">
+                    <params type="param">
+                        <param name="ivStoringId" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.ivStoringId = ?</hql>
+                </condition>
+                <condition id="ivStoringPack" describe="ivStoringPack">
+                    <params type="param">
+                        <param name="ivStoringPack" type="java.lang.Integer"></param>
+                    </params>
+                    <hql>a.ivStoringPack = ?</hql>
+                </condition>
+                <condition id="ivStoringLoose" describe="ivStoringLoose">
+                    <params type="param">
+                        <param name="ivStoringLoose" type="java.lang.Integer"></param>
+                    </params>
+                    <hql>a.ivStoringLoose = ?</hql>
+                </condition>
+                <condition id="id" describe="id">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="title" describe="title">
+					<params type="param">
+						<param name="title" type="java.lang.String"></param>
+					</params>
+					<hql>b.title like ?</hql>
+				</condition>
+                <condition id="locationId" describe="locationId">
+                    <params type="param">
+                        <param name="locationId" type="java.lang.String"></param>
+                    </params>
+                    <hql> c.locationId = ? </hql>
+                </condition>
+            </conditions>
+            <group> group by a.ivStoringPack,a.ivStoringLoose,b.id,b.title,c.name,b.translation,b.pubName,b.editorName,b.language</group>
+            <order> order by a.ivStoringId</order>
+            <className>cn.digitalpublishing.po.IvStoring</className>
+        </query>
+        <query>
+            <id>getCountForProduct</id>
+            <method>getCountForProduct</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>ivStoringId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from IvStoring a left join a.product b left join a.location c </hql>
+            <conditions>
+                <condition id="ivStoringId" describe="ivStoringId">
+                    <params type="param">
+                        <param name="ivStoringId" type="java.lang.String"></param>
+                    </params>
+                    <hql> a.ivStoringId = ?</hql>
+                </condition>
+                <condition id="ivStoringPack" describe="ivStoringPack">
+                    <params type="param">
+                        <param name="ivStoringPack" type="java.lang.Integer"></param>
+                    </params>
+                    <hql>a.ivStoringPack = ?</hql>
+                </condition>
+                <condition id="ivStoringLoose" describe="ivStoringLoose">
+                    <params type="param">
+                        <param name="ivStoringLoose" type="java.lang.Integer"></param>
+                    </params>
+                    <hql>a.ivStoringLoose = ?</hql>
+                </condition>
+                <condition id="id" describe="id">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="title" describe="title">
+					<params type="param">
+						<param name="title" type="java.lang.String"></param>
+					</params>
+					<hql>b.title like ?</hql>
+				</condition>
+                <condition id="locationId" describe="locationId">
+                    <params type="param">
+                        <param name="locationId" type="java.lang.String"></param>
+                    </params>
+                    <hql> c.locationId = ? </hql>
+                </condition>
+            </conditions>
+            <group> group by b.id</group>
+            <order> order by a.ivStoringId</order>
+            <className>cn.digitalpublishing.po.IvStoring</className>
+        </query>
+	</dao>
+</web-query>

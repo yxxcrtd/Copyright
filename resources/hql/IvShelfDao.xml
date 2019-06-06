@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvShelfDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> shelfId,shelfCode,shelfDesc,shelfStatus,shelfLoad,shelfCapacity,shelfType,shelfUsage,warehouseFloor.whFloorId,warehouseFloor.whFloorDesc,warehouse.warehouseId,warehouse.warehouseDesc,warehouseRoom.whRoomId,warehouseRoom.whRoomDesc </properties>
+			<fields> a.shelfId,a.shelfCode,a.shelfDesc,a.shelfStatus,a.shelfLoad,a.shelfCapacity,a.shelfType,a.shelfUsage,b.whFloorId,b.whFloorDesc,c.warehouseId,c.warehouseDesc,d.whRoomId,d.whRoomDesc </fields>
+			<hql>from IvShelf a left join a.warehouseFloor b left join a.warehouse c left join a.warehouseRoom d </hql>
+			<conditions>
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> a.shelfId = ?</hql>
+				</condition>
+				<condition id="shelfCode" describe="shelfCode">
+					<params type="param">
+						<param name="shelfCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfCode = ?</hql>
+				</condition>
+				<condition id="shelfDesc" describe="shelfDesc">
+					<params type="param">
+						<param name="shelfDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfDesc = ?</hql>
+				</condition>
+				<condition id="shelfStatus" describe="shelfStatus">
+					<params type="param">
+						<param name="shelfStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfStatus = ?</hql>
+				</condition>
+				<condition id="shelfLoad" describe="shelfLoad">
+					<params type="param">
+						<param name="shelfLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shelfLoad = ?</hql>
+				</condition>
+				<condition id="shelfCapacity" describe="shelfCapacity">
+					<params type="param">
+						<param name="shelfCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shelfCapacity = ?</hql>
+				</condition>
+				<condition id="shelfType" describe="shelfType">
+					<params type="param">
+						<param name="shelfType" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.shelfType = ?</hql>
+				</condition>
+				<condition id="shelfUsage" describe="shelfUsage">
+					<params type="param">
+						<param name="shelfUsage" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.shelfUsage = ?</hql>
+				</condition>
+				<condition id="whFloorId" describe="b.id">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> b.whFloorId = ? </hql>
+				</condition>
+				<condition id="warehouseId" describe="b.id">
+					<params type="param">
+						<param name="warehouseId" type="java.lang.String"></param>
+					</params>
+					<hql> c.warehouseId = ? </hql>
+				</condition>
+				<condition id="whRoomId" describe="b.id">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> d.whRoomId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.shelfId</order>
+			<className>cn.digitalpublishing.po.IvShelf</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>shelfId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from IvShelf a left join a.warehouseFloor b left join a.warehouse c left join a.warehouseRoom d </hql>
+			<conditions>
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> a.shelfId = ?</hql>
+				</condition>
+				<condition id="shelfCode" describe="shelfCode">
+					<params type="param">
+						<param name="shelfCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfCode like ?</hql>
+				</condition>
+				<condition id="shelfDesc" describe="shelfDesc">
+					<params type="param">
+						<param name="shelfDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfDesc like ?</hql>
+				</condition>
+				<condition id="shelfStatus" describe="shelfStatus">
+					<params type="param">
+						<param name="shelfStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfStatus = ?</hql>
+				</condition>
+				<condition id="shelfLoad" describe="shelfLoad">
+					<params type="param">
+						<param name="shelfLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shelfLoad = ?</hql>
+				</condition>
+				<condition id="shelfCapacity" describe="shelfCapacity">
+					<params type="param">
+						<param name="shelfCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shelfCapacity = ?</hql>
+				</condition>
+				<condition id="shelfType" describe="shelfType">
+					<params type="param">
+						<param name="shelfType" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.shelfType = ?</hql>
+				</condition>
+				<condition id="shelfUsage" describe="shelfUsage">
+					<params type="param">
+						<param name="shelfUsage" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.shelfUsage = ?</hql>
+				</condition>
+				<condition id="whFloorId" describe="b.id">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> b.whFloorId = ? </hql>
+				</condition>
+				<condition id="warehouseId" describe="b.id">
+					<params type="param">
+						<param name="warehouseId" type="java.lang.String"></param>
+					</params>
+					<hql> c.warehouseId = ? </hql>
+				</condition>
+				<condition id="whRoomId" describe="b.id">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> d.whRoomId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.shelfId</order>
+			<className>cn.digitalpublishing.po.IvShelf</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> shelfId,shelfCode,shelfDesc,shelfStatus,shelfLoad,shelfCapacity,shelfType,shelfUsage,warehouseFloor.whFloorId,warehouseFloor.whFloorDesc,warehouse.warehouseId,warehouse.warehouseDesc,warehouseRoom.whRoomId,warehouseRoom.whRoomDesc </properties>
+			<fields> a.shelfId,a.shelfCode,a.shelfDesc,(select name from BDic z where z.id=a.shelfStatus),a.shelfLoad,a.shelfCapacity,a.shelfType,a.shelfUsage,b.whFloorId,b.whFloorDesc,c.warehouseId,c.warehouseDesc,d.whRoomId,d.whRoomDesc </fields>
+			<hql>from IvShelf a left join a.warehouseFloor b left join a.warehouse c left join a.warehouseRoom d </hql>
+			<conditions>
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> a.shelfId = ?</hql>
+				</condition>
+				<condition id="shelfCode" describe="shelfCode">
+					<params type="param">
+						<param name="shelfCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfCode like ?</hql>
+				</condition>
+				<condition id="shelfDesc" describe="shelfDesc">
+					<params type="param">
+						<param name="shelfDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfDesc like ?</hql>
+				</condition>
+				<condition id="shelfStatus" describe="shelfStatus">
+					<params type="param">
+						<param name="shelfStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.shelfStatus = ?</hql>
+				</condition>
+				<condition id="shelfLoad" describe="shelfLoad">
+					<params type="param">
+						<param name="shelfLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shelfLoad = ?</hql>
+				</condition>
+				<condition id="shelfCapacity" describe="shelfCapacity">
+					<params type="param">
+						<param name="shelfCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shelfCapacity = ?</hql>
+				</condition>
+				<condition id="shelfType" describe="shelfType">
+					<params type="param">
+						<param name="shelfType" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.shelfType = ?</hql>
+				</condition>
+				<condition id="shelfUsage" describe="shelfUsage">
+					<params type="param">
+						<param name="shelfUsage" type="java.lang.Integer"></param>
+					</params>
+					<hql>a.shelfUsage = ?</hql>
+				</condition>
+				<condition id="whFloorId" describe="b.id">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> b.whFloorId = ? </hql>
+				</condition>
+				<condition id="warehouseId" describe="b.id">
+					<params type="param">
+						<param name="warehouseId" type="java.lang.String"></param>
+					</params>
+					<hql> c.warehouseId = ? </hql>
+				</condition>
+				<condition id="whRoomId" describe="b.id">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> d.whRoomId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.shelfId</order>
+			<className>cn.digitalpublishing.po.IvShelf</className>
+		</query>
+	</dao>
+</web-query>

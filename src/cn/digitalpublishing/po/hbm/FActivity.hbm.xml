@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.FActivity" table="F_ACTIVITY">
+		<id name="id" type="java.lang.String">
+			<column name="F_ACTIVITY_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="pdid" type="java.lang.String">
+			<column name="F_ACTIVITY_PD_ID" length="32">
+				<comment>流程定义ID</comment>
+			</column>
+		</property>
+		<property name="pdName" type="java.lang.String">
+			<column name="F_ACTIVITY_PD_NAME" length="32">
+				<comment>流程定义名称</comment>
+			</column>
+		</property>
+		<property name="activityName" type="java.lang.String">
+			<column name="F_ACTIVITY_NAME" length="32">
+				<comment>节点名称</comment>
+			</column>
+		</property>
+		<property name="propCode" type="java.lang.String">
+			<column name="F_ACTIVITY_PROP_CODE" length="32">
+				<comment>审批属性CODE</comment>
+			</column>
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="F_ACTIVITY_TYPE" length="32">
+				<comment>流程类型</comment>
+			</column>
+		</property>
+        <property name="assigneeCode" type="java.lang.String">
+			<column name="F_ASSIGNEE_CODE" length="32">
+				<comment>执行者编号</comment>
+			</column>
+		</property>
+        <property name="startFlag" type="java.lang.String">
+			<column name="F_START_FLAG" length="32">
+				<comment>开始标识</comment>
+			</column>
+		</property>
+		<set name="activityClassifyRelationshipSet" inverse="true">
+			<key>
+				<column name="F_ACTIVITY_ID" length="32">
+					<comment>流程节点ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.FActivityClassifyRelationship" />
+		</set>
+		<set name="activityPropRelationshipSet" inverse="true">
+			<key>
+				<column name="F_ACTIVITY_ID" length="32">
+					<comment>流程节点ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.FActivityPropRelationship" />
+		</set>
+		<set name="corpPersonActivityRelationshipSet" inverse="true">
+			<key>
+				<column name="F_ACTIVITY_ID" length="32">
+					<comment>流程节点ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.FCorpPersonActivityRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

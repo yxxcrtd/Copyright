@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvRacking" table="IV_RACKING">
+		<id name="rackingId" type="java.lang.String">
+			<column name="IV_RACKING_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="rackingCode" type="java.lang.String">
+			<column name="IV_RACKING_CODE" length="32">
+				<comment>上架指示单号</comment>
+			</column>
+		</property>
+		<property name="rackingCreateOn" type="java.util.Date">
+			<column name="IV_RACKING_CREATE_ON">
+				<comment>上架指示单创建日期</comment>
+			</column>
+		</property>
+		<property name="rackingCreateBy" type="java.lang.String">
+			<column name="IV_RACKING_CREATE_BY" length="32">
+				<comment>上架指示单创建人</comment>
+			</column>
+		</property>
+		<property name="rackingUpdateOn" type="java.util.Date">
+			<column name="IV_RACKING_UPDATE_ON">
+				<comment>上架指示单修改日期</comment>
+			</column>
+		</property>
+		<property name="rackingUpdateBy" type="java.lang.String">
+			<column name="IV_RACKING_UPDATE_BY" length="32">
+				<comment>上架指示单修改人</comment>
+			</column>
+		</property>
+		<property name="rackingPickBy" type="java.lang.String">
+			<column name="IV_RACKING_PICK_BY" length="32">
+				<comment>上架指示单拣货人</comment>
+			</column>
+		</property>
+		<property name="rackingStatus" type="java.lang.String">
+			<column name="IV_RACKING_STATUS" length="32">
+				<comment>上架指示单状态</comment>
+			</column>
+		</property>
+		<set name="rackingItemSet" inverse="true">
+			<key>
+				<column name="IV_RACKING_ID" length="32">
+					<comment>上架指示单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvRackingItem" />
+		</set>
+	</class>
+</hibernate-mapping>

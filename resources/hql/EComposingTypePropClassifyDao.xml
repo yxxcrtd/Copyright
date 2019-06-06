@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.EComposingTypePropClassifyDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ctpClassifyId,ctpClassifyName,ctpClassifyCode,ctpClassifyOrder,ctpClassifyStatus,ctpClassifyInternationCode,composingType.ctypeId,composingType.ctypeName,parentClassify.ctpClassifyId,parentClassify.ctpClassifyName</properties>
+			<fields>a.ctpClassifyId,a.ctpClassifyName,a.ctpClassifyCode,a.ctpClassifyOrder,a.ctpClassifyStatus,a.ctpClassifyInternationCode,b.ctypeId,b.ctypeName,c.ctpClassifyId,c.ctpClassifyName</fields>
+			<hql>from EComposingTypePropClassify a left join a.composingType b left join a.parentClassify c</hql>
+			<conditions>
+				<condition id="ctpClassifyId" discribe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyName" discribe="ctpClassifyName">
+					<params type="param">
+						<param name="ctpClassifyName" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyName = ?</hql>
+				</condition>
+				<condition id="ctpClassifyCode" describe="ctpClassifyCode">
+					<params type="param">
+						<param name="ctpClassifyCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyCode = ?</hql>
+				</condition>
+				<condition id="ctpClassifyOrder" describe="ctpClassifyOrder">
+					<params type="param">
+						<param name="ctpClassifyOrder" type="java.lang.Integer" />
+					</params>
+					<hql>a.ctpClassifyOrder = ?</hql>
+				</condition>
+				<condition id="ctpClassifyStatus" describe="ctpClassifyStatus">
+					<params type="param">
+						<param name="ctpClassifyStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyStatus = ?</hql>
+				</condition>
+				<condition id="ctpClassifyInternationCode" describe="ctpClassifyInternationCode">
+					<params type="param">
+						<param name="ctpClassifyInternationCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyInternationCode = ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>b.ctypeId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>c.ctpClassifyId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypePropClassify</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>ctpClassifyId,ctpClassifyName,ctpClassifyCode,ctpClassifyOrder,ctpClassifyStatus,ctpClassifyInternationCode,composingType.ctypeId,composingType.ctypeName,parentClassify.ctpClassifyId,parentClassify.ctpClassifyName</properties>
+			<fields>a.ctpClassifyId,a.ctpClassifyName,a.ctpClassifyCode,a.ctpClassifyOrder,a.ctpClassifyStatus,a.ctpClassifyInternationCode,b.ctypeId,b.ctypeName,c.ctpClassifyId,c.ctpClassifyName</fields>
+			<hql>from EComposingTypePropClassify a left join a.composingType b left join a.parentClassify c</hql>
+			<conditions>
+				<condition id="ctpClassifyId" discribe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyName" discribe="ctpClassifyName">
+					<params type="param">
+						<param name="ctpClassifyName" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyName = ?</hql>
+				</condition>
+				<condition id="ctpClassifyCode" describe="ctpClassifyCode">
+					<params type="param">
+						<param name="ctpClassifyCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyCode = ?</hql>
+				</condition>
+				<condition id="ctpClassifyOrder" describe="ctpClassifyOrder">
+					<params type="param">
+						<param name="ctpClassifyOrder" type="java.lang.Integer" />
+					</params>
+					<hql>a.ctpClassifyOrder = ?</hql>
+				</condition>
+				<condition id="ctpClassifyStatus" describe="ctpClassifyStatus">
+					<params type="param">
+						<param name="ctpClassifyStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyStatus = ?</hql>
+				</condition>
+				<condition id="ctpClassifyInternationCode" describe="ctpClassifyInternationCode">
+					<params type="param">
+						<param name="ctpClassifyInternationCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyInternationCode = ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>b.ctypeId = ?</hql>
+				</condition>
+				<condition id="pctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="pctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>(case when c.ctpClassifyId is null then 'root' else c.ctpClassifyId end) = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypePropClassify</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>ctpClassifyId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from EComposingTypePropClassify a left join a.composingType b left join a.parentClassify c</hql>
+			<conditions>
+				<condition id="ctpClassifyId" discribe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyName" discribe="ctpClassifyName">
+					<params type="param">
+						<param name="ctpClassifyName" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyName = ?</hql>
+				</condition>
+				<condition id="ctpClassifyCode" describe="ctpClassifyCode">
+					<params type="param">
+						<param name="ctpClassifyCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyCode = ?</hql>
+				</condition>
+				<condition id="ctpClassifyOrder" describe="ctpClassifyOrder">
+					<params type="param">
+						<param name="ctpClassifyOrder" type="java.lang.Integer" />
+					</params>
+					<hql>a.ctpClassifyOrder = ?</hql>
+				</condition>
+				<condition id="ctpClassifyStatus" describe="ctpClassifyStatus">
+					<params type="param">
+						<param name="ctpClassifyStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyStatus = ?</hql>
+				</condition>
+				<condition id="ctpClassifyInternationCode" describe="ctpClassifyInternationCode">
+					<params type="param">
+						<param name="ctpClassifyInternationCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyInternationCode = ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>b.ctypeId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>c.ctpClassifyId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypePropClassify</className>
+		</query>
+		
+		<query>
+			<id>getPProductTypePropClassifyByCode</id>
+			<method>getPProductTypePropClassifyByCode</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>ctpClassifyId,ctpClassifyName,ctpClassifyCode,ctpClassifyOrder,ctpClassifyStatus,ctpClassifyInternationCode,composingType.ctypeId,composingType.ctypeName,parentClassify.ctpClassifyId,parentClassify.ctpClassifyName</properties>
+			<fields>a.ctpClassifyId,a.ctpClassifyName,a.ctpClassifyCode,a.ctpClassifyOrder,a.ctpClassifyStatus,a.ctpClassifyInternationCode,b.ctypeId,b.ctypeName,c.ctpClassifyId,c.ctpClassifyName</fields>
+			<hql>from EComposingTypePropClassify a left join a.composingType b left join a.parentClassify c</hql>
+			<conditions>
+				<condition id="ctpClassifyId" discribe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyName" discribe="ctpClassifyName">
+					<params type="param">
+						<param name="ctpClassifyName" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyName = ?</hql>
+				</condition>
+				<condition id="ctpClassifyCode" describe="ctpClassifyCode">
+					<params type="param">
+						<param name="ctpClassifyCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyCode = ?</hql>
+				</condition>
+				<condition id="ctpClassifyOrder" describe="ctpClassifyOrder">
+					<params type="param">
+						<param name="ctpClassifyOrder" type="java.lang.Integer" />
+					</params>
+					<hql>a.ctpClassifyOrder = ?</hql>
+				</condition>
+				<condition id="ctpClassifyStatus" describe="ctpClassifyStatus">
+					<params type="param">
+						<param name="ctpClassifyStatus" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyStatus = ?</hql>
+				</condition>
+				<condition id="ctpClassifyInternationCode" describe="ctpClassifyInternationCode">
+					<params type="param">
+						<param name="ctpClassifyInternationCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctpClassifyInternationCode = ?</hql>
+				</condition>
+				<condition id="ctypeId" describe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>b.ctypeId = ?</hql>
+				</condition>
+				<condition id="ctpClassifyId" describe="ctpClassifyId">
+					<params type="param">
+						<param name="ctpClassifyId" type="java.lang.String" />
+					</params>
+					<hql>c.ctpClassifyId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingTypePropClassify</className>
+		</query>
+	</dao>
+</web-query>

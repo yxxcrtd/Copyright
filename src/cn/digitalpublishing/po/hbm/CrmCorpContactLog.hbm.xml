@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpContactLog" table="CRM_CORP_CONTACT_LOG">
+		<id name="id" type="java.lang.String">
+			<column name="CONTACT_LOG_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="CONTACT_LOG_NAME" length="32">
+				<comment>联系日志名称</comment>
+			</column>
+		</property>
+		<property name="desc" type="java.lang.String">
+			<column name="CONTACT_LOG_DESC" length="32">
+				<comment>联系日志描述</comment>
+			</column>
+		</property>
+		<property name="date" type="java.util.Date">
+			<column name="CONTACT_LOG_DATE">
+				<comment>联系日志日期</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CONTACT_LOG_STATUS" length="32">
+				<comment>联系日志状态</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

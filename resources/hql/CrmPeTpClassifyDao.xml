@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmPeTpClassifyDao">
+	
+		<query>
+			<id>getPersonTypeClassifyList</id>
+			<method>getPersonTypeClassifyList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, name, code</properties>
+			<fields>a.id, a.name, a.code</fields>
+			<hql>from CrmPeTpClassify a</hql>
+			<conditions>
+				<condition id="personType_id" describe="人员类型ID">
+					<params type="param">
+						<param name="personType_id" type="java.lang.String" />
+					</params>
+					<hql>a.personType.id = ?</hql>
+				</condition>
+				
+				<condition id="status" describe="人员类型属性分类状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+
+				<condition id="parentClassify_id" describe="父节点">
+					<params type="param">
+						<param name="parentClassify_id" type="java.lang.String">
+						</param>
+					</params>
+					<hql>(case when a.parentClassify.id is null then 'root' else a.parentClassify.id end) = ?</hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+			<order>order by a.order</order>
+			<className>cn.digitalpublishing.po.CrmPeTpClassify</className>
+		</query>
+	
+	
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,code,order,internationCode,status</properties>
+			<fields>a.id,a.name,a.code,a.order,a.internationCode,(select name from BDic z where z.id=a.status)</fields>
+			<hql>from CrmPeTpClassify a left join a.personType b </hql>
+			<conditions>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="id" discribe="人员类型属性组ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="人员类型属性组名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="code" describe="人员类型属性组编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPeTpClassify</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,name,code</properties>
+			<fields>a.id,a.name,a.code</fields>
+			<hql>from CrmPeTpClassify a left join a.personType b</hql>
+			<conditions>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="id" describe="人员类型ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="order" describe="人员类型ID">
+					<params type="param">
+						<param name="order" type="java.lang.Integer" />
+					</params>
+					<hql>a.order = ?</hql>
+				</condition>
+				<condition id="status" describe="人员类型status">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="code" describe="人员类型CODE">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>b.code = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order> order by a.order </order>
+			<className>cn.digitalpublishing.po.CrmPeTpClassify</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from CrmPeTpClassify a left join a.personType b</hql>
+			<conditions>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型属性组ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="name" describe="人员类型属性组名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="code" describe="人员类型属性组编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="order" describe="排序">
+					<params type="param">
+						<param name="order" type="java.lang.Integer" />
+					</params>
+					<hql>a.order = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPeTpClassify</className>
+		</query>
+		<query>
+			<id>getCrmPeTpClassifyByCode</id>
+			<method>getCrmPeTpClassifyByCode</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,name,code</properties>
+			<fields>a.id,a.name,a.code</fields>
+			<hql>from CrmPeTpClassify a</hql>
+			<conditions>
+				<condition id="code" describe="人员类型CODE">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPeTpClassify</className>
+		</query>
+	
+	</dao>
+</web-query>
+
+

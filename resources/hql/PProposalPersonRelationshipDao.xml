@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <dao id="cn.digitalpublishing.dao.PProposalPersonRelationshipDao">
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                id,person.id,person.name,person.telephone,person.phone,person.address,person.postCode,person.email,person.fax,proposal.id,proposal.name,proposal.desc,proposal.createBy,proposal.createOn
+            </properties>
+            <fields>a.id,c.id,c.name,c.telephone,c.phone,c.address,c.postCode,c.email,c.fax,b.id,b.name,b.desc,(select
+                d.person.name from CrmPersonTypeRelationship d where d.id = b.createBy),b.createOn
+            </fields>
+            <hql>from PProposalPersonRelationship a left join a.proposal b left join a.person c</hql>
+            <conditions>
+                <condition id="id" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="name" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="name" type="java.lang.String"/>
+                    </params>
+                    <hql>b.name like ?</hql>
+                </condition>
+                <condition id="desc" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="desc" type="java.lang.String"/>
+                    </params>
+                    <hql>b.desc = ?</hql>
+                </condition>
+                <condition id="proposalId" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="proposalId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="personId" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="personId" type="java.lang.String"/>
+                    </params>
+                    <hql>(c.id = ? or c.id is null)</hql>
+                </condition>
+                <condition id="all" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="all" type="java.lang.String"/>
+                    </params>
+                    <hql>(case when c.id is null then '1' else c.id end) = ?</hql>
+                </condition>
+                <condition id="notMe" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="notMe" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id <![CDATA[<>]]> ? and c.id is not null</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProposalPersonRelationship</className>
+        </query>
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                id,person.id,person.name,person.telephone,person.phone,person.address,person.postCode,person.email,person.fax,proposal.id,proposal.name,proposal.desc,proposal.createBy,proposal.createOn
+            </properties>
+            <fields>a.id,c.id,c.name,c.telephone,c.phone,c.address,c.postCode,c.email,c.fax,b.id,b.name,b.desc,(select
+                d.person.name from CrmPersonTypeRelationship d where d.id = b.createBy),b.createOn
+            </fields>
+            <hql>from PProposalPersonRelationship a left join a.proposal b left join a.person c</hql>
+            <conditions>
+                <condition id="code" describe="产品类型属性编码">
+                    <params type="param">
+                        <param name="code" type="java.lang.String"/>
+                    </params>
+                    <hql>c.code = ?</hql>
+                </condition>
+                <condition id="proposalId" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="proposalId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="personId" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="personId" type="java.lang.String"/>
+                    </params>
+                    <hql>(c.id = ? or c.id is null)</hql>
+                </condition>
+                <condition id="all" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="all" type="java.lang.String"/>
+                    </params>
+                    <hql>(case when c.id is null then '1' else c.id end) = ?</hql>
+                </condition>
+                <condition id="notMe" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="notMe" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id <![CDATA[<>]]> ? and c.id is not null</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProposalPersonRelationship</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"/>
+            </params>
+            <properties>id</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from PProposalPersonRelationship a left join a.proposal b left join a.person c</hql>
+            <conditions>
+                <condition id="id" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"/>
+                    </params>
+                    <hql>a.id = ?</hql>
+                </condition>
+                <condition id="proposalId" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="proposalId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="personId" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="personId" type="java.lang.String"/>
+                    </params>
+                    <hql>(c.id = ? or c.id is null)</hql>
+                </condition>
+                <condition id="all" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="all" type="java.lang.String"/>
+                    </params>
+                    <hql>(case when c.id is null then '1' else c.id end) = ?</hql>
+                </condition>
+                <condition id="notMe" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="notMe" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id <![CDATA[<>]]> ? and c.id is not null</hql>
+                </condition>
+                <condition id="name" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="name" type="java.lang.String"/>
+                    </params>
+                    <hql>b.name like ?</hql>
+                </condition>
+                <condition id="desc" discribe="产品类型属性ID">
+                    <params type="param">
+                        <param name="desc" type="java.lang.String"/>
+                    </params>
+                    <hql>b.desc = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.PProposalPersonRelationship</className>
+        </query>
+    </dao>
+</web-query>

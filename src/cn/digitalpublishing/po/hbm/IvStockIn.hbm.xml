@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStockIn" table="IV_STOCK_IN">
+		<id name="stockInId" type="java.lang.String">
+			<column name="IV_STOCK_IN_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="stockInCode" type="java.lang.String">
+			<column name="IV_STOCK_IN_CODE" length="32">
+				<comment>入库单号</comment>
+			</column>
+		</property>
+		<property name="stockInCreateOn" type="java.util.Date">
+			<column name="IV_STOCK_IN_CREATE_ON">
+				<comment>入库单创建日期</comment>
+			</column>
+		</property>
+		<property name="stockInCreateBy" type="java.lang.String">
+			<column name="IV_STOCK_IN_CREATE_BY" length="32">
+				<comment>入库单创建人</comment>
+			</column>
+		</property>
+		<property name="stockInSendCode" type="java.lang.String">
+			<column name="IV_STOCK_IN_SEND_CODE" length="32">
+				<comment>入库单发货单号</comment>
+			</column>
+		</property>
+		<property name="stockInSendOn" type="java.util.Date">
+			<column name="IV_STOCK_IN_SEND_ON">
+				<comment>入库单到货日期</comment>
+			</column>
+		</property>
+		<property name="stockInSendRemark" type="java.lang.String">
+			<column name="IV_STOCK_IN_SEND_REMARK" length="1024">
+				<comment>入库单进货备注</comment>
+			</column>
+		</property>
+		<property name="stockInFixedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_IN_FIXED_PRICE" precision="10" scale="2">
+				<comment>入库单总码洋</comment>
+			</column>
+		</property>
+		<property name="stockInDiscountedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_IN_DISCOUNTED_PRICE" precision="10" scale="2">
+				<comment>入库单总实洋</comment>
+			</column>
+		</property>
+		<property name="stockInAverageDiscount" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_AVERAGE_DISCOUNT">
+				<comment>入库单平均折扣</comment>
+			</column>
+		</property>
+		<property name="stockInTaxRate" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_TAX_RATE">
+				<comment>入库单税率</comment>
+			</column>
+		</property>
+		<property name="stockInTotalPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_IN_TOTAL_PRICE" precision="10" scale="2">
+				<comment>入库单总应付款</comment>
+			</column>
+		</property>
+		<property name="stockInTotalCount" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_TOTAL_COUNT">
+				<comment>入库单总数量</comment>
+			</column>
+		</property>
+		<property name="stockInStatus" type="java.lang.String">
+			<column name="IV_STOCK_IN_STATUS" length="32">
+				<comment>入库单状态</comment>
+			</column>
+		</property>
+		<many-to-one name="warehouse" class="cn.digitalpublishing.po.IvWarehouse" fetch="select" lazy="false">
+			<column name="WAREHOUSE_ID" length="32">
+				<comment>仓库ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="stockInItemSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_IN_ID" length="32">
+					<comment>入库单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockInItem" />
+		</set>
+		<set name="checkSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_IN_ID" length="32">
+					<comment>入库单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvCheck" />
+		</set>
+	</class>
+</hibernate-mapping>

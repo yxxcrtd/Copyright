@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmPositionDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, name, code</properties>
+			<fields>a.id, a.name, a.code</fields>
+			<hql>from CrmPosition a</hql>
+			<conditions>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="题名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" describe="题名">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+				<condition id="personTypeRelationId" describe="personTypeRelationId">
+					<params type="param">
+						<param name="personTypeRelationId" type="java.lang.String"></param>
+					</params>
+					<hql>  not exists( from CrmPersonPositionRelationship z where z.position.id = a.id and z.personTypeRelationship.id = ?) </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPosition</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmPosition a</hql>
+			<conditions>
+				<condition id="code" describe="产品类型编号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like ?</hql>
+				</condition>
+				<condition id="name" describe="题名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" describe="题名">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+				<condition id="personTypeRelationId" describe="personTypeRelationId">
+					<params type="param">
+						<param name="personTypeRelationId" type="java.lang.String"></param>
+					</params>
+					<hql>  not exists( from CrmPersonPositionRelationship z where z.position.id = a.id and z.personTypeRelationship.id = ?) </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPosition</className>
+		</query>
+	</dao>
+</web-query>

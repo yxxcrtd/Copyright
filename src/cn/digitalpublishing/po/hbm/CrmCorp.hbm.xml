@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorp" table="CRM_CORP">
+		<id name="id" type="java.lang.String">
+			<column name="CORP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="CORP_CODE" length="32">
+				<comment>公司编码</comment>
+			</column>
+		</property>
+		<property name="fullName" type="java.lang.String">
+			<column name="CORP_FULL_NAME" length="128">
+				<comment>公司全称</comment>
+			</column>
+		</property>
+		<property name="shortName" type="java.lang.String">
+			<column name="CORP_SHORT_NAME" length="128">
+				<comment>公司简称</comment>
+			</column>
+		</property>
+		<property name="introduction" type="java.lang.String">
+			<column name="CORP_INTRODUCTION" length="512">
+				<comment>公司简介</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CORP_STATUS" length="32">
+				<comment>公司信息状态</comment>
+			</column>
+		</property>
+		<property name="treeCode" type="java.lang.String">
+			<column name="CORP_TREE_CODE" length="128">
+				<comment>公司树形编号</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="CORP_ORDER">
+				<comment>公司排序</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="CORP_CREATE_ON">
+				<comment>公司创建时间</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="CORP_CREATE_BY" length="32">
+				<comment>公司创建人</comment>
+			</column>
+		</property>
+		<property name="updateOn" type="java.util.Date">
+			<column name="CORP_UPDATE_ON">
+				<comment>公司修改时间</comment>
+			</column>
+		</property>
+		<property name="updateBy" type="java.lang.String">
+			<column name="CORP_UPDATE_BY" length="32">
+				<comment>公司修改人</comment>
+			</column>
+		</property>
+		<property name="nameFirstChar" type="java.lang.String">
+			<column name="CORP_NAME_FIRST_CHAR" length="32">
+				<comment>公司简称首字母字符串</comment>
+			</column>
+		</property>
+		<many-to-one name="corpGroup" class="cn.digitalpublishing.po.CrmCorpGroup" fetch="select" lazy="false">
+			<column name="CORP_GROUP_ID" length="32">
+				<comment>公司组ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="region" class="cn.digitalpublishing.po.BRegion" fetch="select" lazy="false">
+			<column name="B_REGION_ID" length="32">
+				<comment>地域ID</comment>
+			</column>
+		</many-to-one>
+		<set name="corpTypeRelationshipSet" inverse="true">
+			<key>
+				<column name="CORP_ID" length="32">
+					<comment>公司信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpTypeRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

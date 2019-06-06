@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <dao id="cn.digitalpublishing.dao.OInvoiceRepaymentRelaDao">
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="sort" type="java.lang.String"></param>
+                <param name="condition" type="java.util.Map"></param>
+            </params>
+            <properties>invoiceReqId</properties>
+            <fields>a.invoiceReqId</fields>
+            <hql>from OInvoiceRepaymentRelationship a </hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderId = ?</hql>
+                </condition>
+                <condition id="initialSaleOrderCode" discribe="ID">
+                    <params type="param">
+                        <param name="initialSaleOrderCode" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderCode like ?</hql>
+                </condition>
+                <condition id="invoiceStatus" discribe="ID">
+                    <params type="param">
+                        <param name="invoiceStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqStatus = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.OInvoiceRepaymentRelationship</className>
+        </query>
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>invoiceRepaymentId,invoiceRepaymentAmount,invoiceReq.invoiceReqId,invoiceReq.invoiceReqCode,invoiceReq.invoiceReqCreateBy,invoiceReq.invoiceReqCreateOn,invoiceReq.invoiceReqCustomer,invoiceReq.invoiceReqInvoiceType,invoiceReq.invoiceReqContent,invoiceReq.invoiceReqRemark,invoiceReq.invoiceReqCount,invoiceReq.invoiceReqFixedPrice,invoiceReq.invoiceReqDiscountedPrice,invoiceReq.invoiceReqTaxRate,invoiceReq.invoiceReqTax,invoiceReq.invoiceReqStatus,repaymentReq.repaymentReqId,repaymentReq.repaymentReqPayName,repaymentReq.repaymentReqPayOn,repaymentReq.repaymentReqPayType,repaymentReq.repaymentReqAmount,repaymentReq.repaymentReqRemark,repaymentReq.repaymentReqClaimBy,repaymentReq.repaymentReqClaimOn,repaymentReq.repaymentReqStatus</properties>
+            <fields>a.invoiceRepaymentId,a.invoiceRepaymentAmount,b.invoiceReqId,b.invoiceReqCode,b.invoiceReqCreateBy,b.invoiceReqCreateOn,b.invoiceReqCustomer,b.invoiceReqInvoiceType,b.invoiceReqContent,b.invoiceReqRemark,b.invoiceReqCount,b.invoiceReqFixedPrice,b.invoiceReqDiscountedPrice,b.invoiceReqTaxRate,b.invoiceReqTax,(select name from BDic z where z.id=b.invoiceReqStatus),c.repaymentReqId,c.repaymentReqPayName,c.repaymentReqPayOn,(select name from BDic z where z.id=c.repaymentReqPayType),c.repaymentReqAmount,c.repaymentReqRemark,(select p.person.name from CrmPersonTypeRelationship p where p.id = c.repaymentReqClaimBy),c.repaymentReqClaimOn,(select name from BDic z where z.id=c.repaymentReqStatus)</fields>
+            <hql>from OInvoiceRepaymentRelationship a left join a.invoiceReq b left join a.repaymentReq c</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderId = ?</hql>
+                </condition>
+                <condition id="invoiceStatus" discribe="ID">
+                    <params type="param">
+                        <param name="invoiceStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqStatus = ?</hql>
+                </condition>
+                <condition id="invoiceReqId" discribe="ID">
+                    <params type="param">
+                        <param name="invoiceReqId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.invoiceReqId = ?</hql>
+                </condition>
+                <condition id="repaymentReqIsNotNull" discribe="ID">
+                    <params type="param">
+                        <param name="repaymentReqIsNotNull" type="java.lang.String"/>
+                    </params>
+                    <hql>(case when c.repaymentReqId is null then '1' else c.id end)  <![CDATA[<>]]> ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.OInvoiceRepaymentRelationship</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map" />
+            </params>
+            <properties>invoiceRepaymentId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql> from OInvoiceRepaymentRelationship a left join a.invoiceReq b left join a.repaymentReq c</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderId= ?</hql>
+                </condition>
+                <condition id="invoiceStatus" discribe="ID">
+                    <params type="param">
+                        <param name="invoiceStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqStatus = ?</hql>
+                </condition>
+                <condition id="invoiceReqId" discribe="ID">
+                    <params type="param">
+                        <param name="invoiceReqId" type="java.lang.String"/>
+                    </params>
+                    <hql>b.invoiceReqId = ?</hql>
+                </condition>
+                <condition id="repaymentReqIsNotNull" discribe="ID">
+                    <params type="param">
+                        <param name="repaymentReqIsNotNull" type="java.lang.String"/>
+                    </params>
+                    <hql>(case when c.repaymentReqId is null then '1' else c.id end)  <![CDATA[<>]]> ?</hql>
+                </condition>
+                <condition id="repaymentReqId" discribe="ID">
+                    <params type="param">
+                        <param name="repaymentReqId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.OInvoiceRepaymentRelationship</className>
+        </query>
+    </dao>
+</web-query>

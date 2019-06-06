@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpEmail" table="CRM_CORP_EMAIL">
+		<id name="id" type="java.lang.String">
+			<column name="EMAIL_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="defaultFlg" type="java.lang.String">
+			<column name="EMAIL_DEFAULT_FLG" length="32">
+				<comment>是否主邮箱</comment>
+			</column>
+		</property>
+		<property name="address" type="java.lang.String">
+			<column name="EMAIL_ADDRESS" length="128">
+				<comment>邮箱地址</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="EMAIL_STATUS" length="32">
+				<comment>邮箱状态</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

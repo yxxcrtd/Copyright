@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmPersonIdentity" table="CRM_PERSON_IDENTITY">
+		<id name="id" type="java.lang.String">
+			<column name="IDENTITY_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="type" type="java.lang.String">
+			<column name="IDENTITY_TYPE" length="32">
+				<comment>标识分类</comment>
+			</column>
+		</property>
+		<property name="value" type="java.lang.String">
+			<column name="IDENTITY_VALUE" length="32">
+				<comment>标识值</comment>
+			</column>
+		</property>
+		<property name="defaultFlg" type="java.lang.String">
+			<column name="IDENTITY_DEFAULT_FLG" length="32">
+				<comment>是否主标识</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="IDENTITY_STATUS" length="32">
+				<comment>标识状态</comment>
+			</column>
+		</property>
+		<many-to-one name="crmPersonTypeRelationship" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_PERSON_TYPE_ID" length="32">
+				<comment>人员类型角色ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

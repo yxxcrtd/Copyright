@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvCheckDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>checkId, checkCreateOn, checkCreateBy, checkType, checkIsbn, checkTitle, checkCount</properties>
+			<fields>a.checkId, a.checkCreateOn, a.checkCreateBy, a.checkType, a.checkIsbn, a.checkTitle, a.checkCount</fields>
+			<hql>from IvCheck a</hql>
+			<conditions>
+				<condition id="checkId" discribe="入库验更单ID">
+					<params type="param">
+						<param name="checkId" type="java.lang.String" />
+					</params>
+					<hql>a.checkId = ?</hql>
+				</condition>
+				<condition id="checkCreateOn" discribe="入库验更单创建日期">
+					<params type="param">
+						<param name="checkCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkCreateOn = ?</hql>
+				</condition>
+				<condition id="checkCreateBy" discribe="入库验更单创建人">
+					<params type="param">
+						<param name="checkCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkCreateBy = ?</hql>
+				</condition>
+				<condition id="checkType" discribe="入库验更单类型">
+					<params type="param">
+						<param name="checkType" type="java.lang.String" />
+					</params>
+					<hql>a.checkType = ?</hql>
+				</condition>
+				<condition id="checkIsbn" discribe="入库验更单ISBN">
+					<params type="param">
+						<param name="checkIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.checkIsbn = ?</hql>
+				</condition>
+				<condition id="checkTitle" discribe="入库验更单书名">
+					<params type="param">
+						<param name="checkTitle" type="java.lang.String" />
+					</params>
+					<hql>a.checkTitle = ?</hql>
+				</condition>
+				<condition id="checkCount" discribe="入库验更单数量">
+					<params type="param">
+						<param name="checkCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.checkCount = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvCheck</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>checkId, checkCode, checkCreateOn, checkCreateBy, checkType, checkIsbn, checkTitle, checkCount, stockIn.stockInCode, stockInItem.stockInItemPlanCount, stockInItem.stockInItemRealCount</properties>
+			<fields>a.checkId, a.checkCode, a.checkCreateOn, a.checkCreateBy, (select name from BDic e where e.id = a.checkType), a.checkIsbn, a.checkTitle, a.checkCount, a.stockIn.stockInCode, a.stockInItem.stockInItemPlanCount, a.stockInItem.stockInItemRealCount</fields>
+			<hql> from IvCheck a </hql>
+			<conditions>
+				<condition id="checkId" discribe="入库验更单ID">
+					<params type="param">
+						<param name="checkId" type="java.lang.String" />
+					</params>
+					<hql>a.checkId = ?</hql>
+				</condition>
+				<condition id="checkCode" discribe="入库验更单ID">
+					<params type="param">
+						<param name="checkCode" type="java.lang.String" />
+					</params>
+					<hql>a.checkCode like ?</hql>
+				</condition>
+				<condition id="checkCreateOn" discribe="入库验更单创建日期">
+					<params type="param">
+						<param name="checkCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkCreateOn = ?</hql>
+				</condition>
+				<condition id="checkCreateBy" discribe="入库验更单创建人">
+					<params type="param">
+						<param name="checkCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkCreateBy = ?</hql>
+				</condition>
+				<condition id="checkType" discribe="入库验更单类型">
+					<params type="param">
+						<param name="checkType" type="java.lang.String" />
+					</params>
+					<hql>a.checkType = ?</hql>
+				</condition>
+				<condition id="checkIsbn" discribe="入库验更单ISBN">
+					<params type="param">
+						<param name="checkIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.checkIsbn = ?</hql>
+				</condition>
+				<condition id="checkTitle" discribe="入库验更单书名">
+					<params type="param">
+						<param name="checkTitle" type="java.lang.String" />
+					</params>
+					<hql>a.checkTitle = ?</hql>
+				</condition>
+				<condition id="checkCount" discribe="入库验更单数量">
+					<params type="param">
+						<param name="checkCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.checkCount = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by a.checkCreateOn desc </order>
+			<className>cn.digitalpublishing.po.IvCheck</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>checkId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvCheck a</hql>
+			<conditions>
+				<condition id="checkId" discribe="入库验更单ID">
+					<params type="param">
+						<param name="checkId" type="java.lang.String" />
+					</params>
+					<hql>a.checkId = ?</hql>
+				</condition>
+				<condition id="checkCode" discribe="入库验更单ID">
+					<params type="param">
+						<param name="checkCode" type="java.lang.String" />
+					</params>
+					<hql>a.checkCode like ?</hql>
+				</condition>
+				<condition id="checkCreateOn" discribe="入库验更单创建日期">
+					<params type="param">
+						<param name="checkCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkCreateOn = ?</hql>
+				</condition>
+				<condition id="checkCreateBy" discribe="入库验更单创建人">
+					<params type="param">
+						<param name="checkCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkCreateBy = ?</hql>
+				</condition>
+				<condition id="checkType" discribe="入库验更单类型">
+					<params type="param">
+						<param name="checkType" type="java.lang.String" />
+					</params>
+					<hql>a.checkType = ?</hql>
+				</condition>
+				<condition id="checkIsbn" discribe="入库验更单ISBN">
+					<params type="param">
+						<param name="checkIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.checkIsbn = ?</hql>
+				</condition>
+				<condition id="checkTitle" discribe="入库验更单书名">
+					<params type="param">
+						<param name="checkTitle" type="java.lang.String" />
+					</params>
+					<hql>a.checkTitle = ?</hql>
+				</condition>
+				<condition id="checkCount" discribe="入库验更单数量">
+					<params type="param">
+						<param name="checkCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.checkCount = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvCheck</className>
+		</query>
+	</dao>
+</web-query>

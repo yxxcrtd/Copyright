@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductProp" table="P_PRODUCT_PROP">
+		<id name="id" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_CODE" length="32">
+				<comment>产品属性编码</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_NAME" length="64">
+				<comment>产品属性名称</comment>
+			</column>
+		</property>
+		<property name="value" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_VAL" length="512">
+				<comment>产品属性取值</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_ORDER" length="32">
+				<comment>产品属性排序</comment>
+			</column>
+		</property>
+		<property name="display" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_DISPLAY" length="32">
+				<comment>产品属性显示方式</comment>
+			</column>
+		</property>
+		<property name="must" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_MUST" length="32">
+				<comment>产品属性是否必填</comment>
+			</column>
+		</property>
+		<property name="source" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_SOURCE" length="1024">
+				<comment>产品属性来源</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_STATUS" length="32">
+				<comment>产品属性状态</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="P_PRODUCT_PROP_CREATE_ON">
+				<comment>产品属性创建日期</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_CREATE_BY" length="32">
+				<comment>产品属性创建者</comment>
+			</column>
+		</property>
+		<property name="updateOn" type="java.util.Date">
+			<column name="P_PRODUCT_PROP_UPDATE_ON">
+				<comment>产品属性修改日期</comment>
+			</column>
+		</property>
+		<property name="updateBy" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_UPDATE_BY" length="32">
+				<comment>产品属性修改者</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<property name="defaultValue" type="java.lang.String">
+			<column name="P_PRODUCT_PROP_DEFAULT_VALUE" length="1024">
+				<comment>产品属性默认值</comment>
+			</column>
+		</property>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="productTypeProp" class="cn.digitalpublishing.po.PProductTypeProp" fetch="select" lazy="false">
+			<column name="P_PTYPE_PROP_ID" length="32">
+				<comment>产品类型属性ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

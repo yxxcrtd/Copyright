@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProposalAuthorRelationship" table="P_PROPOSAL_AUTHOR_RS">
+		<id name="id" type="java.lang.String">
+			<column name="P_PA_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="defaultFlg" type="java.lang.String">
+			<column name="P_PA_DEFAULT_FLG" length="32">
+				<comment>默认贡献者</comment>
+			</column>
+		</property>
+		<many-to-one name="personTypeRelationship" class="cn.digitalpublishing.po.CrmPersonTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_PERSON_TYPE_ID" length="32">
+				<comment>人员类型角色ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="proposal" class="cn.digitalpublishing.po.PProposal" fetch="select" lazy="false">
+			<column name="PROPOSAL_ID" length="32">
+				<comment>策划ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.EComposingTypeDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>ctypeId,ctypeName,ctypeCode</properties>
+			<fields>a.ctypeId,a.ctypeName,a.ctypeCode</fields>
+			<hql>from EComposingType a</hql>
+			<conditions>
+				<condition id="ctypeId" discribe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeId = ?</hql>
+				</condition>
+				<condition id="ctypeName" describe="ctypeName">
+					<params type="param">
+						<param name="ctypeName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeName = ?</hql>
+				</condition>
+				<condition id="ctypeCode" describe="ctypeCode">
+					<params type="param">
+						<param name="ctypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeCode = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingType</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>ctypeId,ctypeName,ctypeCode</properties>
+			<fields>a.ctypeId,a.ctypeName,a.ctypeCode</fields>
+			<hql>from EComposingType a</hql>
+			<conditions>
+				<condition id="ctypeId" discribe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeId = ?</hql>
+				</condition>
+				<condition id="ctypeName" describe="ctypeName">
+					<params type="param">
+						<param name="ctypeName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeName = ?</hql>
+				</condition>
+				<condition id="ctypeCode" describe="ctypeCode">
+					<params type="param">
+						<param name="ctypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeCode = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingType</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>ctypeId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from EComposingType a </hql>
+			<conditions>
+				<condition id="ctypeId" discribe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeId = ?</hql>
+				</condition>
+				<condition id="ctypeName" describe="ctypeName">
+					<params type="param">
+						<param name="ctypeName" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeName = ?</hql>
+				</condition>
+				<condition id="ctypeCode" describe="ctypeCode">
+					<params type="param">
+						<param name="ctypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.ctypeCode = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposingType</className>
+		</query>
+		
+	</dao>
+</web-query>

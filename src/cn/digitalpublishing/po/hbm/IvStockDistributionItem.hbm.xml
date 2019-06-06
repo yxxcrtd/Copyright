@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStockDistributionItem" table="IV_STOCK_DISTRIBUTION_ITEM">
+		<id name="stockDistItemId" type="java.lang.String">
+			<column name="IV_STOCK_DIST_ITEM_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="stockDistItemIndicateCode" type="java.lang.String">
+			<column name="IV_STOCK_DIST_ITEM_IND_CODE" length="32">
+				<comment>配书单明细指示货位号</comment>
+			</column>
+		</property>
+		<property name="stockDistItemActualCode" type="java.lang.String">
+			<column name="IV_STOCK_DIST_ITEM_ACT_CODE" length="32">
+				<comment>配书单明细实际货位号</comment>
+			</column>
+		</property>
+		<property name="stockDistItemCount" type="java.lang.Integer">
+			<column name="IV_STOCK_DIST_ITEM_COUNT">
+				<comment>配书单明细数量</comment>
+			</column>
+		</property>
+		<property name="stockDistItemPackCount" type="java.lang.Integer">
+			<column name="IV_STOCK_DIST_ITEM_PACK_COUNT">
+				<comment>配书单明细包数量</comment>
+			</column>
+		</property>
+		<property name="stockDistItemStatus" type="java.lang.String">
+			<column name="IV_STOCK_DIST_ITEM_STATUS" length="32">
+				<comment>配书单明细状态</comment>
+			</column>
+		</property>
+		<many-to-one name="stockDistribution" class="cn.digitalpublishing.po.IvStockDistribution" fetch="select" lazy="false">
+			<column name="IV_STOCK_DIST_ID" length="32">
+				<comment>配书单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="stockOutItem" class="cn.digitalpublishing.po.IvStockOutItem" fetch="select" lazy="false">
+			<column name="IV_STOCK_OUT_ITEM_ID" length="32">
+				<comment>出库单明细ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="actualStoring" class="cn.digitalpublishing.po.IvStoring" fetch="select" lazy="false">
+			<column name="IV_ACTUAL_STORING_ID" length="32">
+				<comment>存货信息ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="indicateStoring" class="cn.digitalpublishing.po.IvStoring" fetch="select" lazy="false">
+			<column name="IV_INDICATE_STORING_ID" length="32">
+				<comment>存货信息ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

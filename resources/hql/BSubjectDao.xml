@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.BSubjectDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,nameEn,order,treeCode,parentSubject.id</properties>
+			<fields>a.id,a.code,a.name,a.nameEn,a.order,a.treeCode,a.parentSubject.id</fields>
+			<hql>from BSubject a </hql>
+			<conditions>
+				<condition id="parentSubject" describe="父节点">
+					<params type="param">
+						<param name="parentSubject" type="java.lang.String"></param>
+					</params>
+					<hql>(case when a.parentSubject.id is null then '1' else a.parentSubject.id end) = ?</hql>
+				</condition>
+
+				<condition id="name" describe="名称">
+					<params type="param">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> a.name like ? </hql>
+				</condition>
+
+				<condition id="code" describe="编号">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql> a.code like ? </hql>
+				</condition>
+
+				<condition id="order" describe="序号">
+					<params type="param">
+						<param name="order" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.order = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BSubject</className>
+		</query>
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from BSubject a left join a.parentSubject b</hql>
+			<conditions>
+				<condition id="parentSubject" describe="父节点">
+					<params type="param">
+						<param name="parentSubject" type="java.lang.String"></param>
+					</params>
+					<hql>(case when b.id is null then '1' else b.id end) = ?</hql>
+				</condition>
+				
+				<condition id="order" describe="序号">
+					<params type="param">
+						<param name="order" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.order = ? </hql>
+				</condition>
+				<condition id="name" describe="名称">
+					<params type="param">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> a.name like ? </hql>
+				</condition>
+
+				<condition id="code" describe="编号">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql> a.code like ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BSubject</className>
+		</query>
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,nameEn,order,treeCode,parentSubject.id, childSize</properties>
+			<fields>a.id,a.code,a.name,a.nameEn,a.order,a.treeCode,a.parentSubject.id, a.subjectSet.size</fields>
+			<hql>from BSubject a </hql>
+			<conditions>
+				<condition id="parentSubject" describe="父节点">
+					<params type="param">
+						<param name="parentSubject" type="java.lang.String"></param>
+					</params>
+					<hql>(case when a.parentSubject.id is null then '1' else a.parentSubject.id end) = ?</hql>
+				</condition>
+
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="名称">
+					<params type="param">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> a.name like ? </hql>
+				</condition>
+
+				<condition id="code" describe="编号">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql> a.code like ? </hql>
+				</condition>
+				<condition id="productId" describe="productId">
+					<params type="param">
+						<param name="productId" type="java.lang.String"></param>
+					</params>
+					<hql>exists(select c.id from PPSRelation c where c.subjectId = a.id and c.productId = ?)</hql>
+				</condition>
+				
+				<condition id="order" describe="序号">
+					<params type="param">
+						<param name="order" type="java.lang.Integer"></param>
+					</params>
+					<hql> a.order = ? </hql>
+				</condition>
+				<condition id="rootId" describe="父节点">
+					<params type="param">
+						<param name="rootId" type="java.lang.String"></param>
+					</params>
+					<hql> a.rootSubject.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BSubject</className>
+		</query>
+	</dao>
+
+</web-query>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.ProductOrderDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,isbn,listPrice,salePrice,quantity,discount,tradeDate</properties>
+			<fields>p.id,p.code,p.name,p.isbn,p.listPrice,p.salePrice,p.quantity,p.discount,p.tradeDate</fields>
+			<hql>from ProductOrder p</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="商品名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>p.name = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>p.isbn = ?</hql>
+				</condition>
+				<condition id="code" describe="订单号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>p.code = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order> order by p.tradeDate DESC</order>
+			<className>cn.digitalpublishing.po.ProductOrder</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from ProductOrder p</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="商品名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>p.name = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>p.isbn = ?</hql>
+				</condition>
+				<condition id="code" describe="订单号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>p.code = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ProductOrder</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,code,name,isbn,listPrice,salePrice,quantity,discount,tradeDate</properties>
+			<fields>p.id,p.code,p.name,p.isbn,p.listPrice,p.salePrice,p.quantity,p.discount,p.tradeDate</fields>
+			<hql>from ProductOrder p</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>p.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="商品名">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>p.name = ?</hql>
+				</condition>
+				<condition id="isbn" describe="ISBN">
+					<params type="param">
+						<param name="isbn" type="java.lang.String" />
+					</params>
+					<hql>p.isbn = ?</hql>
+				</condition>
+				<condition id="code" describe="订单号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>p.code = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.ProductOrder</className>
+		</query>
+	</dao>
+</web-query>

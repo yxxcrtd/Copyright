@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpTypeRelationship" table="CRM_CORP_TYPE_RS">
+		<id name="id" type="java.lang.String">
+			<column name="CRM_CORP_TYPE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="status" type="java.lang.String">
+			<column name="CRM_CORP_TYPE_STATUS" length="32">
+				<comment>公司类型角色关系状态</comment>
+			</column>
+		</property>
+        <property name="treeCode" type="java.lang.String">
+            <column name="CRM_CORP_TYPE_TREE_CODE" length="128">
+                <comment>公司类型角色关系树形编号</comment>
+            </column>
+        </property>
+		<many-to-one name="corpType" class="cn.digitalpublishing.po.CrmCorpType" fetch="select" lazy="false">
+			<column name="CORP_TYPE_ID" length="32">
+				<comment>公司类型ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="corp" class="cn.digitalpublishing.po.CrmCorp" fetch="select" lazy="false">
+			<column name="CORP_ID" length="32">
+				<comment>公司信息ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="parentRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_PARENT_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="corpPropSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpProp" />
+		</set>
+		<set name="childRelationshipSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_PARENT_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpTypeRelationship" />
+		</set>
+		<set name="corpAddressSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpAddress" />
+		</set>
+		<set name="corpEmailSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpEmail" />
+		</set>
+		<set name="corpCaseSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpCase" />
+		</set>
+		<set name="corpPhoneSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpPhone" />
+		</set>
+		<set name="corpIdentitySet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpIdentity" />
+		</set>
+		<set name="corpWebsiteSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpWebsite" />
+		</set>
+		<set name="corpAccountSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpAccount" />
+		</set>
+		<set name="corpContactLogSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpContactLog" />
+		</set>
+		<set name="corpComplainSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpComplain" />
+		</set>
+		<set name="crmPositionSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPosition" />
+		</set>
+		<set name="personSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPerson" />
+		</set>
+		<set name="materialSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.EMaterial" />
+		</set>
+		<set name="corpPersonActivityRelationshipSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.FCorpPersonActivityRelationship" />
+		</set>
+		<set name="saleItemSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OSaleItem" />
+		</set>
+		<set name="saleOrderSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OSaleOrder" />
+		</set>
+		<set name="initialSaleOrderSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OInitialSaleOrder" />
+		</set>
+		<set name="initialSaleItemSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OInitialSaleItem" />
+		</set>
+		<set name="stockInSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockIn" />
+		</set>
+		<set name="stockOutSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockOut" />
+		</set>
+		<set name="invoiceReqSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OInvoiceReq" />
+		</set>
+		<set name="reverseReqSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.OReverseReq" />
+		</set>
+		<set name="repaymentReqSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.ORepaymentReq" />
+		</set>
+		<set name="corpDeliverySet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorpDelivery" />
+		</set>
+		<set name="transportSet" inverse="true">
+			<key>
+				<column name="CRM_CORP_TYPE_ID" length="32">
+					<comment>公司类型角色关系ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvTransport" />
+		</set>
+	</class>
+</hibernate-mapping>

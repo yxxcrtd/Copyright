@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductCheckDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>checkId,checkType,checkStartOn,checkEndOn,checkBy,checkResponsibleBy,checkEditorBy,checkPrintBy,checkStatus</properties>
+			<fields>a.checkId,(select z.name from BDic z where z.id = a.checkType),a.checkStartOn,a.checkEndOn,a.checkBy,a.checkResponsibleBy,a.checkEditorBy,a.checkPrintBy, (select z.name from BDic z where z.id = a.checkStatus)</fields>
+			<hql>from PProductCheck a left join a.product b </hql>
+			<conditions>
+				<condition id="checkId" describe="priceId">
+					<params type="param">
+						<param name="checkId" type="java.lang.String"></param>
+					</params>
+					<hql> a.checkId = ? </hql>
+				</condition>
+				<condition id="checkType" describe="校对程序卡类型">
+					<params type="param">
+						<param name="checkType" type="java.lang.String" />
+					</params>
+					<hql>a.checkType like ?</hql>
+				</condition>
+				<condition id="checkStartOn" describe="校对程序卡开始日期">
+					<params type="param">
+						<param name="checkStartOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkStartOn = ?</hql>
+				</condition>
+				<condition id="checkEndOn" describe="校对程序卡完成日期">
+					<params type="param">
+						<param name="checkEndOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkEndOn = ?</hql>
+				</condition>
+				<condition id="checkBy" describe="校对程序卡校对人">
+					<params type="param">
+						<param name="checkBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkBy like ?</hql>
+				</condition>
+				<condition id="checkResponsibleBy" describe="校对程序卡责任人">
+					<params type="param">
+						<param name="checkResponsibleBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkResponsibleBy like ?</hql>
+				</condition>
+				<condition id="checkEditorBy" describe="校对程序卡责编收">
+					<params type="param">
+						<param name="checkEditorBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkEditorBy like ?</hql>
+				</condition>
+				<condition id="checkPrintBy" describe="校对程序卡印制收">
+					<params type="param">
+						<param name="checkPrintBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkPrintBy like ?</hql>
+				</condition>
+				<condition id="checkStatus" describe="校对程序卡状态">
+					<params type="param">
+						<param name="checkStatus" type="java.lang.String" />
+					</params>
+					<hql>a.checkStatus like ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductCheck</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>checkId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductCheck a left join a.product b </hql>
+			<conditions>
+				<condition id="checkId" describe="priceId">
+					<params type="param">
+						<param name="checkId" type="java.lang.String"></param>
+					</params>
+					<hql> a.checkId = ? </hql>
+				</condition>
+				<condition id="checkType" describe="校对程序卡类型">
+					<params type="param">
+						<param name="checkType" type="java.lang.String" />
+					</params>
+					<hql>a.checkType like ?</hql>
+				</condition>
+				<condition id="checkStartOn" describe="校对程序卡开始日期">
+					<params type="param">
+						<param name="checkStartOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkStartOn = ?</hql>
+				</condition>
+				<condition id="checkEndOn" describe="校对程序卡完成日期">
+					<params type="param">
+						<param name="checkEndOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkEndOn = ?</hql>
+				</condition>
+				<condition id="checkBy" describe="校对程序卡校对人">
+					<params type="param">
+						<param name="checkBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkBy like ?</hql>
+				</condition>
+				<condition id="checkResponsibleBy" describe="校对程序卡责任人">
+					<params type="param">
+						<param name="checkResponsibleBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkResponsibleBy like ?</hql>
+				</condition>
+				<condition id="checkEditorBy" describe="校对程序卡责编收">
+					<params type="param">
+						<param name="checkEditorBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkEditorBy like ?</hql>
+				</condition>
+				<condition id="checkPrintBy" describe="校对程序卡印制收">
+					<params type="param">
+						<param name="checkPrintBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkPrintBy like ?</hql>
+				</condition>
+				<condition id="checkStatus" describe="校对程序卡状态">
+					<params type="param">
+						<param name="checkStatus" type="java.lang.String" />
+					</params>
+					<hql>a.checkStatus like ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductCheck</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>checkId,checkType,checkStartOn,checkEndOn,checkBy,checkResponsibleBy,checkEditorBy,checkPrintBy,checkStatus</properties>
+			<fields>a.checkId,(select z.name from BDic z where z.id = a.checkType),a.checkStartOn,a.checkEndOn,a.checkBy,a.checkResponsibleBy,a.checkEditorBy,a.checkPrintBy, (select z.name from BDic z where z.id = a.checkStatus)</fields>
+			<hql>from PProductCheck a left join a.product b </hql>
+			<conditions>
+				<condition id="checkId" describe="priceId">
+					<params type="param">
+						<param name="checkId" type="java.lang.String"></param>
+					</params>
+					<hql> a.checkId = ? </hql>
+				</condition>
+				<condition id="checkType" describe="校对程序卡类型">
+					<params type="param">
+						<param name="checkType" type="java.lang.String" />
+					</params>
+					<hql>a.checkType like ?</hql>
+				</condition>
+				<condition id="checkStartOn" describe="校对程序卡开始日期">
+					<params type="param">
+						<param name="checkStartOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkStartOn = ?</hql>
+				</condition>
+				<condition id="checkEndOn" describe="校对程序卡完成日期">
+					<params type="param">
+						<param name="checkEndOn" type="java.util.Date" />
+					</params>
+					<hql>a.checkEndOn = ?</hql>
+				</condition>
+				<condition id="checkBy" describe="校对程序卡校对人">
+					<params type="param">
+						<param name="checkBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkBy like ?</hql>
+				</condition>
+				<condition id="checkResponsibleBy" describe="校对程序卡责任人">
+					<params type="param">
+						<param name="checkResponsibleBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkResponsibleBy like ?</hql>
+				</condition>
+				<condition id="checkEditorBy" describe="校对程序卡责编收">
+					<params type="param">
+						<param name="checkEditorBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkEditorBy like ?</hql>
+				</condition>
+				<condition id="checkPrintBy" describe="校对程序卡印制收">
+					<params type="param">
+						<param name="checkPrintBy" type="java.lang.String" />
+					</params>
+					<hql>a.checkPrintBy like ?</hql>
+				</condition>
+				<condition id="checkStatus" describe="校对程序卡状态">
+					<params type="param">
+						<param name="checkStatus" type="java.lang.String" />
+					</params>
+					<hql>a.checkStatus like ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductCheck</className>
+		</query>
+	</dao>
+</web-query>

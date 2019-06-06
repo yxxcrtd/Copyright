@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmPersonDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>a.id, person</properties>
+			<fields>a.id, a.person</fields>
+			<hql>from CrmPersonTypeRelationship a left join a.person b left join a.personType c</hql>
+			<conditions>
+				<condition id="id" discribe="人员ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="name" describe="名称">
+					<params type="param">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> b.name like ? </hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> b.status = ? </hql>
+				</condition>
+				<condition id="code" describe="code">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql> c.code = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPersonTypeRelationship</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,telephone,phone,address,postCode,email,fax,lowerPinyin</properties>
+			<fields>a.id,a.code,a.name,a.telephone,a.phone,a.address,a.postCode,a.email,a.fax,a.lowerPinyin</fields>
+			<hql>from CrmPerson a</hql>
+			<conditions>
+				<condition id="personType_id" describe="人员类型ID">
+					<params type="param">
+						<param name="personType_id" type="java.lang.String"></param>
+					</params>
+					<hql>a.id not in (select b.person.id from CrmPersonTypeRelationship b where b.personType.id = ?)</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql>a.id in (select b.person.id from CrmPersonTypeRelationship b where b.status = ?)</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPerson</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmPersonTypeRelationship a left join a.person b left join a.personType c</hql>
+			<conditions>
+				<condition id="id" discribe="人员ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="name" describe="名称">
+					<params type="param">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> b.name like ?  </hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql> b.status = ? </hql>
+				</condition>
+				<condition id="code" describe="code">
+					<params type="param">
+						<param name="code" type="java.lang.String"></param>
+					</params>
+					<hql> c.code = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPersonTypeRelationship</className>
+		</query>
+		
+		<query>
+			<id>getPersonList</id>
+			<method>getPersonList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,telephone,phone,address,postCode,email,fax,lowerPinyin</properties>
+			<fields>a.id,a.code,a.name,a.telephone,a.phone,a.address,a.postCode,a.email,a.fax,a.lowerPinyin</fields>
+			<hql>from CrmPerson a</hql>
+			<conditions>
+				<condition id="personType_id" describe="人员类型ID">
+					<params type="param">
+						<param name="personType_id" type="java.lang.String"></param>
+					</params>
+					<hql>a.id  in (select b.person.id from CrmPersonTypeRelationship b where b.personType.id = ?)</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String"></param>
+					</params>
+					<hql>a.id in (select b.person.id from CrmPersonTypeRelationship b where b.status = ?)</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPerson</className>
+		</query>
+		
+	</dao>
+</web-query>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpAccount" table="CRM_CORP_ACCOUNT">
+		<id name="id" type="java.lang.String">
+			<column name="ACCOUNT_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="term" type="java.lang.String">
+			<column name="ACCOUNT_TERM" length="32">
+				<comment>账期</comment>
+			</column>
+		</property>
+		<property name="type" type="java.lang.String">
+			<column name="ACCOUNT_TYPE" length="32">
+				<comment>账户类型</comment>
+			</column>
+		</property>
+		<property name="level" type="java.lang.String">
+			<column name="ACCOUNT_LEVEL" length="32">
+				<comment>重要程度</comment>
+			</column>
+		</property>
+		<property name="currency" type="java.lang.String">
+			<column name="ACCOUNT_CURRENCY" length="32">
+				<comment>默认币种</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="ACCOUNT_STATUS" length="32">
+				<comment>账户状态</comment>
+			</column>
+		</property>
+		<property name="advanceAmount" type="java.math.BigDecimal">
+			<column name="ACCOUNT_ADVANCE_AMOUNT" precision="10" scale="2">
+				<comment>预付款金额</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

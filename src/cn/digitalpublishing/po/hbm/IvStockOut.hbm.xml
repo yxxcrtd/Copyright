@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStockOut" table="IV_STOCK_OUT">
+		<id name="stockOutId" type="java.lang.String">
+			<column name="IV_STOCK_OUT_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="stockOutCode" type="java.lang.String">
+			<column name="IV_STOCK_OUT_CODE" length="32">
+				<comment>出库单号</comment>
+			</column>
+		</property>
+		<property name="stockOutCreateOn" type="java.util.Date">
+			<column name="IV_STOCK_OUT_CREATE_ON">
+				<comment>出库单创建日期</comment>
+			</column>
+		</property>
+		<property name="stockOutCreateBy" type="java.lang.String">
+			<column name="IV_STOCK_OUT_CREATE_BY" length="32">
+				<comment>出库单创建人</comment>
+			</column>
+		</property>
+		<property name="stockOutUpdateOn" type="java.util.Date">
+			<column name="IV_STOCK_OUT_UPDATE_ON">
+				<comment>出库单修改日期</comment>
+			</column>
+		</property>
+		<property name="stockOutUpdateBy" type="java.lang.String">
+			<column name="IV_STOCK_OUT_UPDATE_BY" length="32">
+				<comment>出库单修改人</comment>
+			</column>
+		</property>
+		<property name="stockOutSendOn" type="java.util.Date">
+			<column name="IV_STOCK_OUT_SEND_ON">
+				<comment>出库单发货日期</comment>
+			</column>
+		</property>
+		<property name="stockOutReceiveCorp" type="java.lang.String">
+			<column name="IV_STOCK_OUT_RECEIVE_CORP" length="1024">
+				<comment>出库单收货单位</comment>
+			</column>
+		</property>
+		<property name="stockOutReceiveAddr" type="java.lang.String">
+			<column name="IV_STOCK_OUT_RECEIVE_ADDR" length="1024">
+				<comment>出库单收货地址</comment>
+			</column>
+		</property>
+		<property name="stockOutReceiveTel" type="java.lang.String">
+			<column name="IV_STOCK_OUT_RECEIVE_TEL" length="32">
+				<comment>出库单联系电话</comment>
+			</column>
+		</property>
+		<property name="stockOutReceivePerson" type="java.lang.String">
+			<column name="IV_STOCK_OUT_RECEIVE_PERSON" length="128">
+				<comment>出库单联系人</comment>
+			</column>
+		</property>
+		<property name="stockOutTotalCount" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_TOTAL_COUNT">
+				<comment>出库单总数量</comment>
+			</column>
+		</property>
+		<property name="stockOutFixedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_FIXED_PRICE" precision="10" scale="2">
+				<comment>出库单总码洋</comment>
+			</column>
+		</property>
+		<property name="stockOutDiscountedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_DISCOUNTED_PRICE" precision="10" scale="2">
+				<comment>出库单总实洋</comment>
+			</column>
+		</property>
+		<property name="stockOutAverageDiscount" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_AVERAGE_DISCOUNT">
+				<comment>出库单平均折扣</comment>
+			</column>
+		</property>
+		<property name="stockOutTaxRate" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_TAX_RATE">
+				<comment>出库单税率</comment>
+			</column>
+		</property>
+		<property name="stockOutDiscount" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_DISCOUNT" precision="10" scale="2">
+				<comment>出库单折扣额</comment>
+			</column>
+		</property>
+		<property name="stockOutAttach" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_ATTACH" precision="10" scale="2">
+				<comment>出库单附加费用</comment>
+			</column>
+		</property>
+		<property name="stockOutTypeCount" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_TYPE_COUNT">
+				<comment>出库单品种数</comment>
+			</column>
+		</property>
+		<property name="stockOutBusinessBy" type="java.lang.String">
+			<column name="IV_STOCK_OUT_BUSINESS_BY" length="32">
+				<comment>出库单业务人</comment>
+			</column>
+		</property>
+		<property name="stockOutStatus" type="java.lang.String">
+			<column name="IV_STOCK_OUT_STATUS" length="32">
+				<comment>出库单状态</comment>
+			</column>
+		</property>
+		<many-to-one name="warehouse" class="cn.digitalpublishing.po.IvWarehouse" fetch="select" lazy="false">
+			<column name="WAREHOUSE_ID" length="32">
+				<comment>仓库ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="saleOrder" class="cn.digitalpublishing.po.OSaleOrder" fetch="select" lazy="false">
+			<column name="O_SALE_ORDER_ID" length="32">
+				<comment>销售订单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="invoiceReq" class="cn.digitalpublishing.po.OInvoiceReq" fetch="select" lazy="false">
+			<column name="O_INVOICE_REQ_ID" length="32">
+				<comment>销售发票申请单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="transport" class="cn.digitalpublishing.po.IvTransport" fetch="select" lazy="false">
+			<column name="IV_TRANSPORT_ID" length="32">
+				<comment>运输登记单ID</comment>
+			</column>
+		</many-to-one>
+		<set name="stockOutItemSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_OUT_ID" length="32">
+					<comment>出库单ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockOutItem" />
+		</set>
+	</class>
+</hibernate-mapping>

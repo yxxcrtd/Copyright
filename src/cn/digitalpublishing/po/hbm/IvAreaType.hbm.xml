@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvAreaType" table="IV_AREA_TYPE">
+		<id name="areaTypeId" type="java.lang.String">
+			<column name="AREA_TYPE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="areaTypeCode" type="java.lang.String">
+			<column name="AREA_TYPE_CODE" length="32">
+				<comment>区域类型编号</comment>
+			</column>
+		</property>
+		<property name="areaTypeDesc" type="java.lang.String">
+			<column name="AREA_TYPE_DESC" length="128">
+				<comment>区域类型名称</comment>
+			</column>
+		</property>
+		<property name="areaTypeStatus" type="java.lang.String">
+			<column name="AREA_TYPE_STATUS" length="32">
+				<comment>区域类型状态</comment>
+			</column>
+		</property>
+		<set name="regionalSet" inverse="true">
+			<key>
+				<column name="AREA_TYPE_ID" length="32">
+					<comment>区域类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvRegional" />
+		</set>
+	</class>
+</hibernate-mapping>

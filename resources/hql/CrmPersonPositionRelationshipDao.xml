@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmPersonPositionRelationshipDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,position.code,position.name</properties>
+			<fields>a.id,b.code,b.name</fields>
+			<hql>from CrmPersonPositionRelationship a left join a.position b left join a.personTypeRelationship c</hql>
+			<conditions>
+				<condition id="personId" describe="人员类型属性组ID">
+					<params type="param">
+						<param name="personId" type="java.lang.String" />
+					</params>
+					<hql>a.personTypeRelationship.id = ?</hql>
+				</condition>
+				
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPersonPositionRelationship</className>
+		</query>
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>id,position.id,position.code,position.name</properties>
+            <fields>a.id,b.id,b.code,b.name</fields>
+            <hql>from CrmPersonPositionRelationship a left join a.position b left join a.personTypeRelationship c</hql>
+            <conditions>
+                <condition id="personId" describe="人员类型属性组ID">
+                    <params type="param">
+                        <param name="personId" type="java.lang.String" />
+                    </params>
+                    <hql>a.personTypeRelationship.id = ?</hql>
+                </condition>
+                <condition id="person" describe="人员类型属性组ID">
+                    <params type="param">
+                        <param name="person" type="java.lang.String" />
+                    </params>
+                    <hql>a.personTypeRelationship.person.id = ?</hql>
+                </condition>
+                <condition id="status" describe="status">
+                    <params type="param">
+                        <param name="status" type="java.lang.String" />
+                    </params>
+                    <hql>a.status = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.CrmPersonPositionRelationship</className>
+        </query>
+
+        <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmPersonPositionRelationship a</hql>
+			<conditions>
+				<condition id="personId" describe="人员类型属性组ID">
+					<params type="param">
+						<param name="personId" type="java.lang.String" />
+					</params>
+					<hql>a.personTypeRelationship.id = ?</hql>
+				</condition>
+				
+				<condition id="status" describe="status">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmPersonPositionRelationship</className>
+		</query>
+		
+			
+	</dao>
+	
+</web-query>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

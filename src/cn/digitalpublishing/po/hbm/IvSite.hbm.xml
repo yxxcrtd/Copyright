@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvSite" table="IV_SITE">
+		<id name="siteId" type="java.lang.String">
+			<column name="SITE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="siteCode" type="java.lang.String">
+			<column name="SITE_CODE" length="32">
+				<comment>驻地编号</comment>
+			</column>
+		</property>
+		<property name="siteDescription" type="java.lang.String">
+			<column name="SITE_DESCRIPTION" length="128">
+				<comment>驻地描述</comment>
+			</column>
+		</property>
+		<property name="siteStatus" type="java.lang.String">
+			<column name="SITE_STATUS" length="32">
+				<comment>驻地状态</comment>
+			</column>
+		</property>
+		<many-to-one name="region" class="cn.digitalpublishing.po.BRegion" fetch="select" lazy="false">
+			<column name="B_REGION_ID" length="32">
+				<comment>地域ID</comment>
+			</column>
+		</many-to-one>
+		<set name="warehouseSet" inverse="true">
+			<key>
+				<column name="SITE_ID" length="32">
+					<comment>驻地ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvWarehouse" />
+		</set>
+	</class>
+</hibernate-mapping>

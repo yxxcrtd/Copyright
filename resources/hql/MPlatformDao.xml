@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.MPlatformDao">
+
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> id,name,app_key,app_secret,redirectUri,authorizeCode,accessToken,expiresIn,refreshToken,openid,openkey</properties>
+			<fields> a.id,a.name,a.app_key,a.app_secret,a.redirectUri,a.authorizeCode,a.accessToken,a.expiresIn,a.refreshToken,a.openid,a.openkey </fields>
+			<hql> from MPlatform a</hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+				<condition id="name" describe="name">
+					<params type="name">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> a.name like ? </hql>
+				</condition>
+				<condition id="app_key" describe="app_key">
+					<params type="app_key">
+						<param name="app_key" type="java.lang.String"></param>
+					</params>
+					<hql> a.app_key = ? </hql>
+				</condition>
+				<condition id="app_secret" describe="app_secret">
+					<params type="app_secret">
+						<param name="app_secret" type="java.lang.String"></param>
+					</params>
+					<hql> a.app_secret = ? </hql>
+				</condition>
+				<condition id="redirectUri" describe="redirectUri">
+					<params type="redirectUri">
+						<param name="redirectUri" type="java.lang.String"></param>
+					</params>
+					<hql> a.redirectUri = ? </hql>
+				</condition>
+				<condition id="authorizeCode" describe="authorizeCode">
+					<params type="authorizeCode">
+						<param name="authorizeCode" type="java.lang.String"></param>
+					</params>
+					<hql> a.authorizeCode = ? </hql>
+				</condition>
+				<condition id="accessToken" describe="accessToken">
+					<params type="accessToken">
+						<param name="accessToken" type="java.lang.String"></param>
+					</params>
+					<hql> a.accessToken = ? </hql>
+				</condition>
+				<condition id="expiresIn" describe="expiresIn">
+					<params type="expiresIn">
+						<param name="expiresIn" type="java.lang.String"></param>
+					</params>
+					<hql> a.expiresIn = ? </hql>
+				</condition>
+				<condition id="refreshToken" describe="refreshToken">
+					<params type="refreshToken">
+						<param name="refreshToken" type="java.lang.String"></param>
+					</params>
+					<hql> a.refreshToken = ? </hql>
+				</condition>
+				<condition id="openid" describe="openid">
+					<params type="openid">
+						<param name="openid" type="java.lang.String"></param>
+					</params>
+					<hql> a.openid = ? </hql>
+				</condition>
+				<condition id="openkey" describe="openkey">
+					<params type="openkey">
+						<param name="openkey" type="java.lang.String"></param>
+					</params>
+					<hql> a.openkey = ? </hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.MPlatform</className>
+		</query>
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> id </properties>
+			<fields> cast(count(*) as string) </fields>
+			<fields> a.id </fields>
+			<hql> from MPlatform a </hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+				<condition id="name" describe="name">
+					<params type="name">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> a.name like ? </hql>
+				</condition>
+				<condition id="app_key" describe="app_key">
+					<params type="app_key">
+						<param name="app_key" type="java.lang.String"></param>
+					</params>
+					<hql> a.app_key = ? </hql>
+				</condition>
+				<condition id="app_secret" describe="app_secret">
+					<params type="app_secret">
+						<param name="app_secret" type="java.lang.String"></param>
+					</params>
+					<hql> a.app_secret = ? </hql>
+				</condition>
+				<condition id="redirectUri" describe="redirectUri">
+					<params type="redirectUri">
+						<param name="redirectUri" type="java.lang.String"></param>
+					</params>
+					<hql> a.redirectUri = ? </hql>
+				</condition>
+				<condition id="authorizeCode" describe="authorizeCode">
+					<params type="authorizeCode">
+						<param name="authorizeCode" type="java.lang.String"></param>
+					</params>
+					<hql> a.authorizeCode = ? </hql>
+				</condition>
+				<condition id="accessToken" describe="accessToken">
+					<params type="accessToken">
+						<param name="accessToken" type="java.lang.String"></param>
+					</params>
+					<hql> a.accessToken = ? </hql>
+				</condition>
+				<condition id="expiresIn" describe="expiresIn">
+					<params type="expiresIn">
+						<param name="expiresIn" type="java.lang.String"></param>
+					</params>
+					<hql> a.expiresIn = ? </hql>
+				</condition>
+				<condition id="refreshToken" describe="refreshToken">
+					<params type="refreshToken">
+						<param name="refreshToken" type="java.lang.String"></param>
+					</params>
+					<hql> a.refreshToken = ? </hql>
+				</condition>
+				<condition id="openid" describe="openid">
+					<params type="openid">
+						<param name="openid" type="java.lang.String"></param>
+					</params>
+					<hql> a.openid = ? </hql>
+				</condition>
+				<condition id="openkey" describe="openkey">
+					<params type="openkey">
+						<param name="openkey" type="java.lang.String"></param>
+					</params>
+					<hql> a.openkey = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.MPlatform</className>
+		</query>
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> id,name,app_key,app_secret,redirectUri,authorizeCode,accessToken,expiresIn,refreshToken,openid,openkey</properties>
+			<fields> a.id,a.name,a.app_key,a.app_secret,a.redirectUri,a.authorizeCode,a.accessToken,a.expiresIn,a.refreshToken,a.openid,a.openkey</fields>
+			<hql> from MPlatform a </hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+				<condition id="name" describe="name">
+					<params type="name">
+						<param name="name" type="java.lang.String"></param>
+					</params>
+					<hql> a.name = ? </hql>
+				</condition>
+				<condition id="app_key" describe="app_key">
+					<params type="app_key">
+						<param name="app_key" type="java.lang.String"></param>
+					</params>
+					<hql> a.app_key = ? </hql>
+				</condition>
+				<condition id="app_secret" describe="app_secret">
+					<params type="app_secret">
+						<param name="app_secret" type="java.lang.String"></param>
+					</params>
+					<hql> a.app_secret = ? </hql>
+				</condition>
+				<condition id="redirectUri" describe="redirectUri">
+					<params type="redirectUri">
+						<param name="redirectUri" type="java.lang.String"></param>
+					</params>
+					<hql> a.redirectUri = ? </hql>
+				</condition>
+				<condition id="authorizeCode" describe="authorizeCode">
+					<params type="authorizeCode">
+						<param name="authorizeCode" type="java.lang.String"></param>
+					</params>
+					<hql> a.authorizeCode = ? </hql>
+				</condition>
+				<condition id="accessToken" describe="accessToken">
+					<params type="accessToken">
+						<param name="accessToken" type="java.lang.String"></param>
+					</params>
+					<hql> a.accessToken = ? </hql>
+				</condition>
+				<condition id="expiresIn" describe="expiresIn">
+					<params type="expiresIn">
+						<param name="expiresIn" type="java.lang.String"></param>
+					</params>
+					<hql> a.expiresIn = ? </hql>
+				</condition>
+				<condition id="refreshToken" describe="refreshToken">
+					<params type="refreshToken">
+						<param name="refreshToken" type="java.lang.String"></param>
+					</params>
+					<hql> a.refreshToken = ? </hql>
+				</condition>
+				<condition id="openid" describe="openid">
+					<params type="openid">
+						<param name="openid" type="java.lang.String"></param>
+					</params>
+					<hql> a.openid = ? </hql>
+				</condition>
+				<condition id="openkey" describe="openkey">
+					<params type="openkey">
+						<param name="openkey" type="java.lang.String"></param>
+					</params>
+					<hql> a.openkey = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.MPlatform</className>
+		</query>
+</dao>
+</web-query>

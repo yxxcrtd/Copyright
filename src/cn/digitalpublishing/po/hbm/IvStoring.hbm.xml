@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStoring" table="IV_STORING">
+		<id name="ivStoringId" type="java.lang.String">
+			<column name="IV_STORING_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="ivStoringPack" type="java.lang.Integer">
+			<column name="IV_STORING_PACK">
+				<comment>包数</comment>
+			</column>
+		</property>
+		<property name="ivStoringLoose" type="java.lang.Integer">
+			<column name="IV_STORING_LOOSE">
+				<comment>散数</comment>
+			</column>
+		</property>
+		<many-to-one name="location" class="cn.digitalpublishing.po.IvLocation" fetch="select" lazy="false">
+			<column name="LOCATION_ID" length="32">
+				<comment>货位ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<set name="stockOutStoringRelationshipSet" inverse="true">
+			<key>
+				<column name="IV_STORING_ID" length="32">
+					<comment>存货信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockOutStoringRelationship" />
+		</set>
+		<set name="saleItemStoringRelationshipSet" inverse="true">
+			<key>
+				<column name="IV_STORING_ID" length="32">
+					<comment>存货信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvSaleItemStoringRelationship" />
+		</set>
+		<set name="indicateRackingItemSet" inverse="true">
+			<key>
+				<column name="IV_INDICATE_STORING_ID" length="32">
+					<comment>存货信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvRackingItem" />
+		</set>
+		<set name="actualRackingItemSet" inverse="true">
+			<key>
+				<column name="IV_ACTUAL_STORING_ID" length="32">
+					<comment>存货信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvRackingItem" />
+		</set>
+		<set name="actualDistributionItemSet" inverse="true">
+			<key>
+				<column name="IV_ACTUAL_STORING_ID" length="32">
+					<comment>存货信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockDistributionItem" />
+		</set>
+		<set name="indicateDistributionItemSet" inverse="true">
+			<key>
+				<column name="IV_INDICATE_STORING_ID" length="32">
+					<comment>存货信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockDistributionItem" />
+		</set>
+	</class>
+</hibernate-mapping>

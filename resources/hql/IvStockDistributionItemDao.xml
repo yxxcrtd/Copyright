@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvStockDistributionItemDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockDistItemId, stockDistItemIndicateCode, stockDistItemActualCode, stockDistItemCount, stockDistItemPackCount, stockDistItemStatus, product.id, product.title, product.isbn, stockOutItem.stockOutItemId</properties>
+			<fields>a.stockDistItemId, a.stockDistItemIndicateCode, a.stockDistItemActualCode, a.stockDistItemCount, a.stockDistItemPackCount, (select name from BDic e where e.id = a.stockDistItemStatus), a.product.id, a.product.title, a.product.isbn, a.stockOutItem.stockOutItemId</fields>
+			<hql>from IvStockDistributionItem a</hql>
+			<conditions>
+				<condition id="stockDistItemId" discribe="配书单明细ID">
+					<params type="param">
+						<param name="stockDistItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemId = ?</hql>
+				</condition>
+				<condition id="stockDistItemIndicateCode" discribe="配书单明细指示货位号">
+					<params type="param">
+						<param name="stockDistItemIndicateCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemIndicateCode = ?</hql>
+				</condition>
+				<condition id="stockDistItemActualCode" discribe="配书单明细实际货位号">
+					<params type="param">
+						<param name="stockDistItemActualCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemActualCode = ?</hql>
+				</condition>
+				<condition id="stockDistItemCount" discribe="配书单明细数量">
+					<params type="param">
+						<param name="stockDistItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockDistItemCount = ?</hql>
+				</condition>
+				<condition id="stockDistItemPackCount" discribe="配书单明细包数量">
+					<params type="param">
+						<param name="stockDistItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockDistItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockDistItemStatus" discribe="配书单明细状态">
+					<params type="param">
+						<param name="stockDistItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemStatus = ?</hql>
+				</condition>
+				<condition id="stockDistribution_stockDistributionId" discribe="配书单ID">
+					<params type="param">
+						<param name="stockDistribution_stockDistributionId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistribution.stockDistributionId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockDistributionItem</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>stockDistItemId, stockDistItemIndicateCode, stockDistItemActualCode, stockDistItemCount, stockDistItemPackCount, stockDistItemStatus, product.title, product.isbn</properties>
+			<fields>a.stockDistItemId, a.stockDistItemIndicateCode, a.stockDistItemActualCode, a.stockDistItemCount, a.stockDistItemPackCount, (select name from BDic e where e.id = a.stockDistItemStatus), a.product.title, a.product.isbn</fields>
+			<hql>from IvStockDistributionItem a</hql>
+			<conditions>
+				<condition id="stockDistItemId" discribe="配书单明细ID">
+					<params type="param">
+						<param name="stockDistItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemId = ?</hql>
+				</condition>
+				<condition id="stockDistItemIndicateCode" discribe="配书单明细指示货位号">
+					<params type="param">
+						<param name="stockDistItemIndicateCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemIndicateCode like ?</hql>
+				</condition>
+				<condition id="stockDistItemActualCode" discribe="配书单明细实际货位号">
+					<params type="param">
+						<param name="stockDistItemActualCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemActualCode = ?</hql>
+				</condition>
+				<condition id="stockDistItemCount" discribe="配书单明细数量">
+					<params type="param">
+						<param name="stockDistItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockDistItemCount = ?</hql>
+				</condition>
+				<condition id="stockDistItemPackCount" discribe="配书单明细包数量">
+					<params type="param">
+						<param name="stockDistItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockDistItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockDistItemStatus" discribe="配书单明细状态">
+					<params type="param">
+						<param name="stockDistItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockDistributionItem</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockDistItemId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvStockDistributionItem a</hql>
+			<conditions>
+				<condition id="stockDistItemId" discribe="配书单明细ID">
+					<params type="param">
+						<param name="stockDistItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemId = ?</hql>
+				</condition>
+				<condition id="stockDistItemIndicateCode" discribe="配书单明细指示货位号">
+					<params type="param">
+						<param name="stockDistItemIndicateCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemIndicateCode like ?</hql>
+				</condition>
+				<condition id="stockDistItemActualCode" discribe="配书单明细实际货位号">
+					<params type="param">
+						<param name="stockDistItemActualCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemActualCode = ?</hql>
+				</condition>
+				<condition id="stockDistItemCount" discribe="配书单明细数量">
+					<params type="param">
+						<param name="stockDistItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockDistItemCount = ?</hql>
+				</condition>
+				<condition id="stockDistItemPackCount" discribe="配书单明细包数量">
+					<params type="param">
+						<param name="stockDistItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockDistItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockDistItemStatus" discribe="配书单明细状态">
+					<params type="param">
+						<param name="stockDistItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistItemStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockDistributionItem</className>
+		</query>
+	</dao>
+</web-query>

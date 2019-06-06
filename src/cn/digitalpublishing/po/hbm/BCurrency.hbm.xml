@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.BCurrency" table="B_CURRENCY">
+		<id name="currencyId" type="java.lang.String">
+			<column name="B_CURRENCY_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="currencyName" type="java.lang.String">
+			<column name="B_CURRENCY_NAME" length="128">
+				<comment>币种名称</comment>
+			</column>
+		</property>
+		<property name="currencyCode" type="java.lang.String">
+			<column name="B_CURRENCY_CODE" length="128">
+				<comment>币种编号</comment>
+			</column>
+		</property>
+		<property name="currencyStatus" type="java.lang.String">
+			<column name="B_CURRENCY_STATUS" length="32">
+				<comment>币种状态</comment>
+			</column>
+		</property>
+		<property name="currencyInternationCode" type="java.lang.String">
+			<column name="B_CURRENCY_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<property name="currencyCreateOn" type="java.util.Date">
+			<column name="B_CURRENCY_CREATE_ON">
+				<comment>币种创建日期</comment>
+			</column>
+		</property>
+		<property name="currencyCreateBy" type="java.lang.String">
+			<column name="B_CURRENCY_CREATE_BY" length="32">
+				<comment>币种创建人</comment>
+			</column>
+		</property>
+		<property name="currencyUpdateOn" type="java.util.Date">
+			<column name="B_CURRENCY_UPDATE_ON">
+				<comment>币种修改日期</comment>
+			</column>
+		</property>
+		<property name="currencyUpdateBy" type="java.lang.String">
+			<column name="B_CURRENCY_UPDATE_BY" length="32">
+				<comment>币种修改人</comment>
+			</column>
+		</property>
+		<set name="fromExchangeSet" inverse="true">
+			<key>
+				<column name="CURR_FROM_ID" length="32">
+					<comment>币种信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.BExchange" />
+		</set>
+		<set name="toExchangeSet" inverse="true">
+			<key>
+				<column name="CURR_TO_ID" length="32">
+					<comment>币种信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.BExchange" />
+		</set>
+	</class>
+</hibernate-mapping>

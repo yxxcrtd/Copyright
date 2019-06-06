@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.FProcessTaskRelationshipDao">
+
+        <query>
+            <id>getTaskList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>process.id,task.id,task.name,task.url,task.taskAssigneeFlag,task.assignee,task.startFlag,task.field,task.display,transition.id,transition.name,transition.nextTaskName,transition.expr</properties>
+            <fields>b.id,c.id,c.name,c.url,c.taskAssigneeFlag,c.assignee,c.startFlag,c.field,c.display,d.id,d.name,d.nextTaskName,d.expr</fields>
+            <hql>from FProcessTaskRelationship a left join a.process b left join a.task c left join a.transition d </hql>
+            <conditions>
+                <condition id="processId" describe="状态">
+                    <params type="param">
+                        <param name="processId" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="taskId" describe="状态">
+                    <params type="param">
+                        <param name="taskId" type="java.lang.String"></param>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+
+
+            </conditions>
+            <group>group by c.id</group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FProcessTaskRelationship</className>
+        </query>
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>process.id,task.id,task.name,task.url,task.taskAssigneeFlag,task.assignee,task.startFlag,task.field,task.display,transition.id,transition.name,transition.nextTaskName,transition.expr</properties>
+            <fields>b.id,c.id,c.name,c.url,c.taskAssigneeFlag,c.assignee,c.startFlag,c.field,c.display,d.id,d.name,d.nextTaskName,d.expr</fields>
+            <hql>from FProcessTaskRelationship a left join a.process b left join a.task c left join a.transition d </hql>
+            <conditions>
+                <condition id="processId" describe="状态">
+                    <params type="param">
+                        <param name="processId" type="java.lang.String"></param>
+                    </params>
+                    <hql>b.id = ?</hql>
+                </condition>
+                <condition id="taskId" describe="状态">
+                    <params type="param">
+                        <param name="taskId" type="java.lang.String"></param>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+
+
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.FProcessTaskRelationship</className>
+        </query>
+    </dao>
+</web-query>

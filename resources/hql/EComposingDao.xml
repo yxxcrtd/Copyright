@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.EComposingDao">
+		<query>
+			<id>getById</id>
+			<method>getByIsbn</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>composingId,composingProduct,composingManuscriptCount,composingPhotoCount,composingLayoutCount,composingFirstCount,composingSecondCount,composingThirdCount,composingPaperFormat,composingMainFontStyle,composingMainFontSize,composingCesuCount,composingDoubleColCount,composingPointFontSize,composingPointFontStyle,composingLayoutStyle,composingStatus,composingType.composingType,product.product</properties>
+			<fields>a.composingId,a.composingProduct,a.composingManuscriptCount,a.composingPhotoCount,a.composingLayoutCount,a.composingFirstCount,a.composingSecondCount,a.composingThirdCount,a.composingPaperFormat,a.composingMainFontStyle,a.composingMainFontSize,a.composingCesuCount,a.composingDoubleColCount,a.composingPointFontSize,a.composingPointFontStyle,a.composingLayoutStyle,a.composingStatus,b.composingType,c.product</fields>
+			<hql>from EComposing a left join a.composingType b left join a.product c</hql>
+			<conditions>
+				<condition id="composingId" discribe="composingId">
+					<params type="param">
+						<param name="composingId" type="java.lang.String" />
+					</params>
+					<hql>a.composingId = ?</hql>
+				</condition>
+				<condition id="composingStatus" discribe="composingStatus">
+					<params type="param">
+						<param name="composingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposing</className>
+		</query>
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>composingId,composingProduct,composingManuscriptCount,composingPhotoCount,composingLayoutCount,composingFirstCount,composingSecondCount,composingThirdCount,composingPaperFormat,composingMainFontStyle,composingMainFontSize,composingCesuCount,composingDoubleColCount,composingPointFontSize,composingPointFontStyle,composingLayoutStyle,composingStatus,composingType.composingType,product.product</properties>
+			<fields>a.composingId,a.composingProduct,a.composingManuscriptCount,a.composingPhotoCount,a.composingLayoutCount,a.composingFirstCount,a.composingSecondCount,a.composingThirdCount,a.composingPaperFormat,a.composingMainFontStyle,a.composingMainFontSize,a.composingCesuCount,a.composingDoubleColCount,a.composingPointFontSize,a.composingPointFontStyle,a.composingLayoutStyle,a.composingStatus,b.composingType,c.product</fields>
+			<hql>from EComposing a left join a.composingType b left join a.product c</hql>
+			<conditions>
+				<condition id="composingId" discribe="composingId">
+					<params type="param">
+						<param name="composingId" type="java.lang.String" />
+					</params>
+					<hql>a.composingId = ?</hql>
+				</condition>
+				<condition id="composingStatus" discribe="composingStatus">
+					<params type="param">
+						<param name="composingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposing</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>composingId,composingProduct,composingManuscriptCount,composingPhotoCount,composingLayoutCount,composingFirstCount,composingSecondCount,composingThirdCount,composingPaperFormat,composingMainFontStyle,composingMainFontSize,composingCesuCount,composingDoubleColCount,composingPointFontSize,composingPointFontStyle,composingLayoutStyle,composingStatus</properties>
+			<fields>a.composingId,a.composingProduct,a.composingManuscriptCount,a.composingPhotoCount,a.composingLayoutCount,a.composingFirstCount,a.composingSecondCount,a.composingThirdCount,a.composingPaperFormat,a.composingMainFontStyle,a.composingMainFontSize,a.composingCesuCount,a.composingDoubleColCount,a.composingPointFontSize,a.composingPointFontStyle,a.composingLayoutStyle,a.composingStatus</fields>
+			<hql>from EComposing a left join a.product c</hql>
+			<conditions>
+				<condition id="composingId" discribe="composingId">
+					<params type="param">
+						<param name="composingId" type="java.lang.String" />
+					</params>
+					<hql>a.composingId = ?</hql>
+				</condition>
+				<condition id="composingStatus" discribe="composingStatus">
+					<params type="param">
+						<param name="composingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingStatus = ?</hql>
+				</condition>
+				<condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposing</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>composingId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from EComposing a left join a.composingType b left join a.product c</hql>
+			<conditions>
+				<condition id="composingId" discribe="composingId">
+					<params type="param">
+						<param name="composingId" type="java.lang.String" />
+					</params>
+					<hql>a.composingId = ?</hql>
+				</condition>
+				<condition id="composingProduct" discribe="composingProduct">
+					<params type="param">
+						<param name="composingProduct" type="java.lang.String" />
+					</params>
+					<hql>a.composingProduct = ?</hql>
+				</condition>
+				<condition id="composingManuscriptCount" discribe="composingManuscriptCount">
+					<params type="param">
+						<param name="composingManuscriptCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingManuscriptCount = ?</hql>
+				</condition>
+				<condition id="composingPhotoCount" discribe="composingPhotoCount">
+					<params type="param">
+						<param name="composingPhotoCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingPhotoCount = ?</hql>
+				</condition>
+				<condition id="composingLayoutCount" discribe="composingLayoutCount">
+					<params type="param">
+						<param name="composingLayoutCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingLayoutCount = ?</hql>
+				</condition>
+				<condition id="composingFirstCount" discribe="composingFirstCount">
+					<params type="param">
+						<param name="composingFirstCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingFirstCount = ?</hql>
+				</condition>
+				<condition id="composingSecondCount" discribe="composingSecondCount">
+					<params type="param">
+						<param name="composingSecondCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingSecondCount = ?</hql>
+				</condition>
+				<condition id="composingThirdCount" discribe="composingThirdCount">
+					<params type="param">
+						<param name="composingThirdCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingThirdCount = ?</hql>
+				</condition>
+				<condition id="composingPaperFormat" discribe="composingPaperFormat">
+					<params type="param">
+						<param name="composingPaperFormat" type="java.lang.String" />
+					</params>
+					<hql>a.composingPaperFormat = ?</hql>
+				</condition>
+				<condition id="composingMainFontStyle" discribe="composingMainFontStyle">
+					<params type="param">
+						<param name="composingMainFontStyle" type="java.lang.String" />
+					</params>
+					<hql>a.composingMainFontStyle = ?</hql>
+				</condition>
+				<condition id="composingMainFontSize" discribe="composingMainFontSize">
+					<params type="param">
+						<param name="composingMainFontSize" type="java.lang.String" />
+					</params>
+					<hql>a.composingMainFontSize = ?</hql>
+				</condition>
+				<condition id="composingCesuCount" discribe="composingCesuCount">
+					<params type="param">
+						<param name="composingCesuCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingCesuCount = ?</hql>
+				</condition>
+				<condition id="composingDoubleColCount" discribe="composingDoubleColCount">
+					<params type="param">
+						<param name="composingDoubleColCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.composingDoubleColCount = ?</hql>
+				</condition>
+				<condition id="composingPointFontSize" discribe="composingPointFontSize">
+					<params type="param">
+						<param name="composingPointFontSize" type="java.lang.String" />
+					</params>
+					<hql>a.composingPointFontSize = ?</hql>
+				</condition>
+				<condition id="composingPointFontStyle" discribe="composingPointFontStyle">
+					<params type="param">
+						<param name="composingPointFontStyle" type="java.lang.String" />
+					</params>
+					<hql>a.composingPointFontStyle = ?</hql>
+				</condition>
+				<condition id="composingLayoutStyle" discribe="composingLayoutStyle">
+					<params type="param">
+						<param name="composingLayoutStyle" type="java.lang.String" />
+					</params>
+					<hql>a.composingLayoutStyle = ?</hql>
+				</condition>
+				<condition id="composingStatus" discribe="composingStatus">
+					<params type="param">
+						<param name="composingStatus" type="java.lang.String" />
+					</params>
+					<hql>a.composingStatus = ?</hql>
+				</condition>
+				<condition id="id" discribe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+				<condition id="ctypeId" discribe="ctypeId">
+					<params type="param">
+						<param name="ctypeId" type="java.lang.String" />
+					</params>
+					<hql>b.ctypeId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.EComposing</className>
+		</query>
+	</dao>
+</web-query>

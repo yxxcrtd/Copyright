@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStockOutItem" table="IV_STOCK_OUT_ITEM">
+		<id name="stockOutItemId" type="java.lang.String">
+			<column name="IV_STOCK_OUT_ITEM_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="stockOutItemIsbn" type="java.lang.String">
+			<column name="IV_STOCK_OUT_ITEM_ISBN" length="32">
+				<comment>出库单明细ISBN</comment>
+			</column>
+		</property>
+		<property name="stockOutItemTitle" type="java.lang.String">
+			<column name="IV_STOCK_OUT_ITEM_TITLE" length="256">
+				<comment>出库单明细书名</comment>
+			</column>
+		</property>
+		<property name="stockOutItemPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_ITEM_PRICE" precision="10" scale="2">
+				<comment>出库单明细价格</comment>
+			</column>
+		</property>
+		<property name="stockOutItemDiscount" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_ITEM_DISCOUNT">
+				<comment>出库单明细折扣</comment>
+			</column>
+		</property>
+		<property name="stockOutItemCount" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_ITEM_COUNT">
+				<comment>出库单明细数量</comment>
+			</column>
+		</property>
+		<property name="stockOutItemFixedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_ITEM_FIXED_PRICE" precision="10" scale="2">
+				<comment>出库单明细码洋</comment>
+			</column>
+		</property>
+		<property name="stockOutItemDiscountedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_OUT_ITEM_DIS_PRICE" precision="10" scale="2">
+				<comment>出库单明细实洋</comment>
+			</column>
+		</property>
+		<property name="stockOutItemPackCount" type="java.lang.Integer">
+			<column name="IV_STOCK_OUT_ITEM_PACK_COUNT">
+				<comment>出库单明细包数量</comment>
+			</column>
+		</property>
+		<property name="stockOutItemLocationCode" type="java.lang.String">
+			<column name="IV_STOCK_OUT_ITEM_LOC_CODE" length="32">
+				<comment>出库单明细货位号</comment>
+			</column>
+		</property>
+		<property name="stockOutItemStatus" type="java.lang.String">
+			<column name="IV_STOCK_OUT_ITEM_STATUS" length="32">
+				<comment>出库单明细状态</comment>
+			</column>
+		</property>
+		<many-to-one name="stockOut" class="cn.digitalpublishing.po.IvStockOut" fetch="select" lazy="false">
+			<column name="IV_STOCK_OUT_ID" length="32">
+				<comment>出库单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="saleItem" class="cn.digitalpublishing.po.OSaleItem" fetch="select" lazy="false">
+			<column name="O_SALE_ITEM_ID" length="32">
+				<comment>销售订单项ID</comment>
+			</column>
+		</many-to-one>
+		<set name="stockOutStoringRelationshipSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_OUT_ITEM_ID" length="32">
+					<comment>出库单明细ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockOutStoringRelationship" />
+		</set>
+		<set name="stockDistributionItemSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_OUT_ITEM_ID" length="32">
+					<comment>出库单明细ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStockDistributionItem" />
+		</set>
+	</class>
+</hibernate-mapping>

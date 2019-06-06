@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> </web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.BExchangeDao">
+	
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>exId,currencyCode,fromCurrency,toCurrency,exRate,exDate,exStatus</properties>
+			<fields>a.exId,b.currencyCode,a.fromCurrency,a.toCurrency,a.exRate,a.exDate, (select name from BDic z where z.id=a.exStatus)</fields>
+			<hql>from BExchange a left join a.fromCurrency b left join a.toCurrency c</hql>
+			<conditions>
+				<condition id="exId" describe="exId">
+					<params type="param">
+						<param name="exId" type="java.lang.String"></param>
+					</params>
+					<hql> a.exId = ? </hql>
+				</condition>
+
+				<condition id="fromCurrencyCode" describe="源币种编号">
+					<params type="param">
+						<param name="fromCurrencyCode" type="java.lang.String"></param>
+					</params>
+					<hql> b.currencyCode = ? </hql>
+				</condition>
+
+				<condition id="toCurrencyCode" describe="目标币种编号">
+					<params type="param">
+						<param name="toCurrencyCode" type="java.lang.String"></param>
+					</params>
+					<hql> c.currencyCode = ? </hql>
+				</condition>
+				
+				<condition id="exRate" describe="exRate">
+					<params type="param">
+						<param name="exRate" type="java.lang.String"></param>
+					</params>
+					<hql>a.exRate = ? </hql>
+				</condition>
+				
+				<condition id="exDate" describe="exDate">
+					<params type="param">
+						<param name="exDate" type="java.lang.String"></param>
+					</params>
+					<hql>a.exDate = ? </hql>
+				</condition>
+				
+				<condition id="exStatus" describe="exStatus">
+					<params type="param">
+						<param name="exStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.exStatus = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> </order>
+			<className>cn.digitalpublishing.po.BExchange</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>exId,fromCurrencyCode,toCurrencyCode,exRate,exDate,exStatus</properties>
+			<fields>a.exId,b.currencyCode,c.currencyCode,a.exRate,a.exDate, (select name from BDic z where z.id=a.exStatus)</fields>
+			<hql>from BExchange a left join a.fromCurrency b left join a.toCurrency c</hql>
+			<conditions>
+				<condition id="exId" describe="exId">
+					<params type="param">
+						<param name="exId" type="java.lang.String"></param>
+					</params>
+					<hql> a.exId = ? </hql>
+				</condition>
+
+				<condition id="fromCurrencyCode" describe="源币种编号">
+					<params type="param">
+						<param name="fromCurrencyCode" type="java.lang.String"></param>
+					</params>
+					<hql> b.currencyCode = ? </hql>
+				</condition>
+
+				<condition id="toCurrencyCode" describe="目标币种编号">
+					<params type="param">
+						<param name="toCurrencyCode" type="java.lang.String"></param>
+					</params>
+					<hql> c.currencyCode = ? </hql>
+				</condition>
+				
+				<condition id="exRate" describe="exRate">
+					<params type="param">
+						<param name="exRate" type="java.lang.String"></param>
+					</params>
+					<hql>a.exRate = ? </hql>
+				</condition>
+				
+				<condition id="exDate" describe="exDate">
+					<params type="param">
+						<param name="exDate" type="java.lang.String"></param>
+					</params>
+					<hql>a.exDate = ? </hql>
+				</condition>
+								
+				<condition id="exStatus" describe="exStatus">
+					<params type="param">
+						<param name="exStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.exStatus = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BExchange</className>
+		</query>
+		
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>exId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from BExchange a left join a.fromCurrency b left join a.toCurrency c</hql>
+			<conditions>
+				<condition id="exId" describe="exId">
+					<params type="param">
+						<param name="exId" type="java.lang.String"></param>
+					</params>
+					<hql> a.exId = ? </hql>
+				</condition>
+
+				<condition id="fromCurrencyCode" describe="源币种编号">
+					<params type="param">
+						<param name="fromCurrencyCode" type="java.lang.String"></param>
+					</params>
+					<hql> b.currencyCode = ? </hql>
+				</condition>
+
+				<condition id="toCurrencyCode" describe="目标币种编号">
+					<params type="param">
+						<param name="toCurrencyCode" type="java.lang.String"></param>
+					</params>
+					<hql> c.currencyCode = ? </hql>
+				</condition>
+				
+				<condition id="exRate" describe="exRate">
+					<params type="param">
+						<param name="exRate" type="java.lang.String"></param>
+					</params>
+					<hql>a.exRate = ? </hql>
+				</condition>
+				
+				<condition id="exDate" describe="exDate">
+					<params type="param">
+						<param name="exDate" type="java.lang.String"></param>
+					</params>
+					<hql>a.exDate = ? </hql>
+				</condition>
+								
+				<condition id="exStatus" describe="exStatus">
+					<params type="param">
+						<param name="exStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.exStatus = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.BExchange</className>
+		</query>
+		
+	</dao>
+	
+</web-query>

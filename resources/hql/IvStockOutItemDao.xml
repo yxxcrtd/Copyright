@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvStockOutItemDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockOutItemId, stockOutItemIsbn, stockOutItemTitle, stockOutItemPrice, stockOutItemDiscount, stockOutItemFixedPrice, stockOutItemDiscountedPrice, stockOutItemPackCount, stockOutItemStatusValue, stockOutItemStatus, product.id, stockOutItemCount, stockOut.stockOutId, realOutStockCount, realAssignedCount</properties>
+			<fields>a.stockOutItemId, a.stockOutItemIsbn, a.stockOutItemTitle, a.stockOutItemPrice, a.stockOutItemDiscount, a.stockOutItemFixedPrice, a.stockOutItemDiscountedPrice, a.stockOutItemPackCount, a.stockOutItemStatus, (select name from BDic e where e.id = a.stockOutItemStatus), a.product.id, a.stockOutItemCount, a.stockOut.stockOutId, (select cast(sum(e.stockDistItemCount) as int) from IvStockDistributionItem e where e.stockOutItem.stockOutItemId = a.stockOutItemId and e.stockDistItemStatus = '402880be47c3df720147c3df7329000c'), (select cast(sum(e.stockDistItemCount) as int) from IvStockDistributionItem e where e.stockOutItem.stockOutItemId = a.stockOutItemId and e.stockDistItemStatus in('402880be47c3df720147c3df7329000a', '402880be47c3df720147c3df7329000b'))</fields>
+			<hql>from IvStockOutItem a</hql>
+			<conditions>
+				<condition id="stockOutItemId" discribe="出库单明细ID">
+					<params type="param">
+						<param name="stockOutItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemId = ?</hql>
+				</condition>
+				<condition id="stockOutItemIsbn" discribe="出库单明细ISBN">
+					<params type="param">
+						<param name="stockOutItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemIsbn = ?</hql>
+				</condition>
+				<condition id="stockOutItemTitle" discribe="出库单明细书名">
+					<params type="param">
+						<param name="stockOutItemTitle" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemTitle = ?</hql>
+				</condition>
+				<condition id="stockOutItemPrice" discribe="出库单明细价格">
+					<params type="param">
+						<param name="stockOutItemPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemDiscount" discribe="出库单明细折扣">
+					<params type="param">
+						<param name="stockOutItemDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemDiscount = ?</hql>
+				</condition>
+				<condition id="stockOutItemFixedPrice" discribe="出库单明细码洋">
+					<params type="param">
+						<param name="stockOutItemFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemDiscountedPrice" discribe="出库单明细实洋">
+					<params type="param">
+						<param name="stockOutItemDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemPackCount" discribe="出库单明细包数量">
+					<params type="param">
+						<param name="stockOutItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockOutItemStatus" discribe="出库单明细状态">
+					<params type="param">
+						<param name="stockOutItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemStatus = ?</hql>
+				</condition>
+				<condition id="stockOut_stockOutId" discribe="出库单ID">
+					<params type="param">
+						<param name="stockOut_stockOutId" type="java.lang.String" />
+					</params>
+					<hql>a.stockOut.stockOutId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockOutItem</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>stockOutItemId, stockOutItemIsbn, stockOutItemTitle, stockOutItemPrice, stockOutItemDiscount, stockOutItemCount, stockOutItemFixedPrice, stockOutItemDiscountedPrice, stockOutItemPackCount, stockOutItemStatus, product.id, realOutStockCount, realAssignedCount</properties>
+			<fields>a.stockOutItemId, a.stockOutItemIsbn, a.stockOutItemTitle, a.stockOutItemPrice, a.stockOutItemDiscount, a.stockOutItemCount, a.stockOutItemFixedPrice, a.stockOutItemDiscountedPrice, a.stockOutItemPackCount, (select z.name from BDic z where z.id = a.stockOutItemStatus), product.id, (select cast(sum(e.stockDistItemCount) as int) from IvStockDistributionItem e where e.stockOutItem.stockOutItemId = a.stockOutItemId and e.stockDistItemStatus = '402880be47c3df720147c3df7329000c'), (select cast(sum(e.stockDistItemCount) as int) from IvStockDistributionItem e where e.stockOutItem.stockOutItemId = a.stockOutItemId and e.stockDistItemStatus in('402880be47c3df720147c3df7329000a', '402880be47c3df720147c3df7329000b'))</fields>
+			<hql>from IvStockOutItem a</hql>
+			<conditions>
+				<condition id="stockOutItemId" discribe="出库单明细ID">
+					<params type="param">
+						<param name="stockOutItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemId = ?</hql>
+				</condition>
+				<condition id="stockOutItemIsbn" discribe="出库单明细ISBN">
+					<params type="param">
+						<param name="stockOutItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemIsbn = ?</hql>
+				</condition>
+				<condition id="stockOutItemTitle" discribe="出库单明细书名">
+					<params type="param">
+						<param name="stockOutItemTitle" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemTitle = ?</hql>
+				</condition>
+				<condition id="stockOutItemPrice" discribe="出库单明细价格">
+					<params type="param">
+						<param name="stockOutItemPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemDiscount" discribe="出库单明细折扣">
+					<params type="param">
+						<param name="stockOutItemDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemDiscount = ?</hql>
+				</condition>
+				<condition id="stockOutItemCount" discribe="出库单明细数量">
+					<params type="param">
+						<param name="stockOutItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemCount = ?</hql>
+				</condition>
+				<condition id="stockOutItemFixedPrice" discribe="出库单明细码洋">
+					<params type="param">
+						<param name="stockOutItemFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemDiscountedPrice" discribe="出库单明细实洋">
+					<params type="param">
+						<param name="stockOutItemDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemPackCount" discribe="出库单明细包数量">
+					<params type="param">
+						<param name="stockOutItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockOutItemStatus" discribe="出库单明细状态">
+					<params type="param">
+						<param name="stockOutItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemStatus = ?</hql>
+				</condition>
+				<condition id="stockOut_stockOutId" discribe="出库单ID">
+					<params type="param">
+						<param name="stockOut_stockOutId" type="java.lang.String" />
+					</params>
+					<hql>a.stockOut.stockOutId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockOutItem</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockOutItemId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvStockOutItem a</hql>
+			<conditions>
+				<condition id="stockOutItemId" discribe="出库单明细ID">
+					<params type="param">
+						<param name="stockOutItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemId = ?</hql>
+				</condition>
+				<condition id="stockOutItemIsbn" discribe="出库单明细ISBN">
+					<params type="param">
+						<param name="stockOutItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemIsbn = ?</hql>
+				</condition>
+				<condition id="stockOutItemTitle" discribe="出库单明细书名">
+					<params type="param">
+						<param name="stockOutItemTitle" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemTitle = ?</hql>
+				</condition>
+				<condition id="stockOutItemPrice" discribe="出库单明细价格">
+					<params type="param">
+						<param name="stockOutItemPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemDiscount" discribe="出库单明细折扣">
+					<params type="param">
+						<param name="stockOutItemDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemDiscount = ?</hql>
+				</condition>
+				<condition id="stockOutItemCount" discribe="出库单明细数量">
+					<params type="param">
+						<param name="stockOutItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemCount = ?</hql>
+				</condition>
+				<condition id="stockOutItemFixedPrice" discribe="出库单明细码洋">
+					<params type="param">
+						<param name="stockOutItemFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemDiscountedPrice" discribe="出库单明细实洋">
+					<params type="param">
+						<param name="stockOutItemDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockOutItemDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockOutItemPackCount" discribe="出库单明细包数量">
+					<params type="param">
+						<param name="stockOutItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockOutItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockOutItemStatus" discribe="出库单明细状态">
+					<params type="param">
+						<param name="stockOutItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockOutItemStatus = ?</hql>
+				</condition>
+				<condition id="stockOut_stockOutId" discribe="出库单ID">
+					<params type="param">
+						<param name="stockOut_stockOutId" type="java.lang.String" />
+					</params>
+					<hql>a.stockOut.stockOutId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockOutItem</className>
+		</query>
+        <query>
+            <id>getSumSaleItemSendCount</id>
+            <method>getSumSaleItemSendCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+            </params>
+            <properties>stockOutItemId</properties>
+            <fields>cast(sum(a.stockOutItemCount) as string)</fields>
+            <hql>from IvStockOutItem a left join a.saleItem b </hql>
+            <conditions>
+                <condition id="stockOutItemId" discribe="出库单明细ID">
+                    <params type="param">
+                        <param name="stockOutItemId" type="java.lang.String" />
+                    </params>
+                    <hql>a.stockOutItemId = ?</hql>
+                </condition>
+                <condition id="stockOutItemIsbn" discribe="出库单明细ISBN">
+                    <params type="param">
+                        <param name="stockOutItemIsbn" type="java.lang.String" />
+                    </params>
+                    <hql>a.stockOutItemIsbn = ?</hql>
+                </condition>
+                <condition id="stockOutItemTitle" discribe="出库单明细书名">
+                    <params type="param">
+                        <param name="stockOutItemTitle" type="java.lang.String" />
+                    </params>
+                    <hql>a.stockOutItemTitle = ?</hql>
+                </condition>
+                <condition id="stockOutItemPrice" discribe="出库单明细价格">
+                    <params type="param">
+                        <param name="stockOutItemPrice" type="java.math.BigDecimal" />
+                    </params>
+                    <hql>a.stockOutItemPrice = ?</hql>
+                </condition>
+                <condition id="stockOutItemDiscount" discribe="出库单明细折扣">
+                    <params type="param">
+                        <param name="stockOutItemDiscount" type="java.lang.Integer" />
+                    </params>
+                    <hql>a.stockOutItemDiscount = ?</hql>
+                </condition>
+                <condition id="stockOutItemCount" discribe="出库单明细数量">
+                    <params type="param">
+                        <param name="stockOutItemCount" type="java.lang.Integer" />
+                    </params>
+                    <hql>a.stockOutItemCount = ?</hql>
+                </condition>
+                <condition id="stockOutItemFixedPrice" discribe="出库单明细码洋">
+                    <params type="param">
+                        <param name="stockOutItemFixedPrice" type="java.math.BigDecimal" />
+                    </params>
+                    <hql>a.stockOutItemFixedPrice = ?</hql>
+                </condition>
+                <condition id="stockOutItemDiscountedPrice" discribe="出库单明细实洋">
+                    <params type="param">
+                        <param name="stockOutItemDiscountedPrice" type="java.math.BigDecimal" />
+                    </params>
+                    <hql>a.stockOutItemDiscountedPrice = ?</hql>
+                </condition>
+                <condition id="stockOutItemPackCount" discribe="出库单明细包数量">
+                    <params type="param">
+                        <param name="stockOutItemPackCount" type="java.lang.Integer" />
+                    </params>
+                    <hql>a.stockOutItemPackCount = ?</hql>
+                </condition>
+                <condition id="stockOutItemStatus" discribe="出库单明细状态">
+                    <params type="param">
+                        <param name="stockOutItemStatus" type="java.lang.String" />
+                    </params>
+                    <hql>a.stockOutItemStatus = ?</hql>
+                </condition>
+                <condition id="saleItemId" discribe="销售订单项Id">
+                    <params type="param">
+                        <param name="saleItemId" type="java.lang.String" />
+                    </params>
+                    <hql>b.saleItemId = ?</hql>
+                </condition>
+            </conditions>
+            <group>group by b.saleItemId</group>
+            <order></order>
+            <className>cn.digitalpublishing.po.IvStockOutItem</className>
+        </query>
+	</dao>
+</web-query>

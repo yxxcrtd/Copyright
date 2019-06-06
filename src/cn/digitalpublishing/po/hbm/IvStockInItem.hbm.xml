@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvStockInItem" table="IV_STOCK_IN_ITEM">
+		<id name="stockInItemId" type="java.lang.String">
+			<column name="IV_STOCK_IN_ITEM_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="stockInItemIsbn" type="java.lang.String">
+			<column name="IV_STOCK_IN_ITEM_ISBN" length="32">
+				<comment>入库单明细ISBN</comment>
+			</column>
+		</property>
+		<property name="stockInItemTitle" type="java.lang.String">
+			<column name="IV_STOCK_IN_ITEM_TITLE" length="256">
+				<comment>入库单明细书名</comment>
+			</column>
+		</property>
+		<property name="stockInItemPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_IN_ITEM_PRICE" precision="10" scale="2">
+				<comment>入库单明细价格</comment>
+			</column>
+		</property>
+		<property name="stockInItemDiscount" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_ITEM_DISCOUNT">
+				<comment>入库单明细折扣</comment>
+			</column>
+		</property>
+		<property name="stockInItemFixedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_IN_ITEM_FIXED_PRICE" precision="10" scale="2">
+				<comment>入库单明细码洋</comment>
+			</column>
+		</property>
+		<property name="stockInItemDiscountedPrice" type="java.math.BigDecimal">
+			<column name="IV_STOCK_IN_ITEM_DIS_PRICE" precision="10" scale="2">
+				<comment>入库单明细实洋</comment>
+			</column>
+		</property>
+		<property name="stockInItemPackCount" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_ITEM_PACK_COUNT">
+				<comment>入库单明细包数量</comment>
+			</column>
+		</property>
+		<property name="stockInItemStatus" type="java.lang.String">
+			<column name="IV_STOCK_IN_ITEM_STATUS" length="32">
+				<comment>入库单明细状态</comment>
+			</column>
+		</property>
+		<property name="stockInItemPlanCount" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_ITEM_PLAN_COUNT">
+				<comment>入库单明细计划入库数量</comment>
+			</column>
+		</property>
+		<property name="stockInItemRealCount" type="java.lang.Integer">
+			<column name="IV_STOCK_IN_ITEM_REAL_COUNT">
+				<comment>入库单明细实际入库数量</comment>
+			</column>
+		</property>
+		<many-to-one name="stockIn" class="cn.digitalpublishing.po.IvStockIn" fetch="select" lazy="false">
+			<column name="IV_STOCK_IN_ID" length="32">
+				<comment>入库单ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<set name="rackingItemSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_IN_ITEM_ID" length="32">
+					<comment>入库单明细ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvRackingItem" />
+		</set>
+		<set name="checkSet" inverse="true">
+			<key>
+				<column name="IV_STOCK_IN_ITEM_ID" length="32">
+					<comment>入库单明细ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvCheck" />
+		</set>
+	</class>
+</hibernate-mapping>

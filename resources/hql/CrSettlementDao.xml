@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrSettlementDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,setType,code,name,amount,setStatus,endDate,status</properties>
+			<fields>s.id,(select name from BDic z where z.id = s.setType),s.code,s.name,s.amount,(select name from BDic z where z.id = s.setStatus),s.endDate,(select name from BDic z where z.id = s.status)</fields>
+			<hql>from CrSettlement s</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>s.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="贡献者">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>s.name = ?</hql>
+				</condition>
+				<condition id="code" discribe="订单号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>s.code = ?</hql>
+				</condition>
+				<condition id="setStatus" describe="结算状态">
+					<params type="param">
+						<param name="setStatus" type="java.lang.String" />
+					</params>
+					<hql>s.setStatus = ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>s.status = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order> order by s.endDate</order>
+			<className>cn.digitalpublishing.po.CrSettlement</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrSettlement s</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>s.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="贡献者">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>s.name = ?</hql>
+				</condition>
+				<condition id="code" discribe="订单号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>s.code = ?</hql>
+				</condition>
+				<condition id="setStatus" describe="结算状态">
+					<params type="param">
+						<param name="setStatus" type="java.lang.String" />
+					</params>
+					<hql>s.setStatus = ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>s.status = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrSettlement</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id,setType,code,name,amount,setStatus,endDate,status</properties>
+			<fields>s.id,(select name from BDic z where z.id = s.setType),s.code,s.name,s.amount,(select name from BDic z where z.id = s.setStatus),s.endDate,(select name from BDic z where z.id = s.status)</fields>
+			<hql>from CrSettlement s</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>s.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="贡献者">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>s.name = ?</hql>
+				</condition>
+				<condition id="code" discribe="订单号">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>s.code = ?</hql>
+				</condition>
+				<condition id="setStatus" describe="结算状态">
+					<params type="param">
+						<param name="setStatus" type="java.lang.String" />
+					</params>
+					<hql>s.setStatus = ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>s.status = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrSettlement</className>
+		</query>
+	</dao>
+</web-query>

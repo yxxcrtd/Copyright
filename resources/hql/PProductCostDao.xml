@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductCostDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,type,classify,name,value</properties>
+			<fields>a.id,(select z.name from BDic z where z.id = a.type),(select z.name from BDic z where z.id = a.classify),a.name,a.value</fields>
+			<hql>from PProductCost a left join a.product b</hql>
+			<conditions>
+				<condition id="type" describe="成本预算分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type like ?</hql>
+				</condition>
+				<condition id="classify" describe="项目成本编号">
+					<params type="param">
+						<param name="classify" type="java.lang.String" />
+					</params>
+					<hql>a.classify like ?</hql>
+				</condition>
+				<condition id="name" describe="项目成本名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="value" describe="题名">
+					<params type="param">
+						<param name="value" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.value like ?</hql>
+				</condition>
+				<condition id="productId" describe="题名">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductCost</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductCost a left join a.product b</hql>
+			<conditions>
+				<condition id="type" describe="成本预算分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type like ?</hql>
+				</condition>
+				<condition id="classify" describe="项目成本编号">
+					<params type="param">
+						<param name="classify" type="java.lang.String" />
+					</params>
+					<hql>a.classify like ?</hql>
+				</condition>
+				<condition id="name" describe="项目成本名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like ?</hql>
+				</condition>
+				<condition id="value" describe="题名">
+					<params type="param">
+						<param name="value" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.value like ?</hql>
+				</condition>
+				<condition id="productId" describe="题名">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductCost</className>
+		</query>
+	</dao>
+</web-query>

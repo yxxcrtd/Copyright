@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <dao id="cn.digitalpublishing.dao.OInvoiceReqDao">
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="sort" type="java.lang.String"></param>
+                <param name="condition" type="java.util.Map"></param>
+            </params>
+            <properties>invoiceReqId</properties>
+            <fields>a.invoiceReqId</fields>
+            <hql>from OInvoiceReq a </hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderId = ?</hql>
+                </condition>
+                <condition id="initialSaleOrderCode" discribe="ID">
+                    <params type="param">
+                        <param name="initialSaleOrderCode" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderCode like ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.OInitialSaleOrder</className>
+        </query>
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>invoiceReqId,invoiceReqCode,invoiceReqCreateBy,invoiceReqCreateOn,invoiceReqCustomer,invoiceReqInvoiceType,invoiceReqContent,invoiceReqRemark,invoiceReqCount,invoiceReqFixedPrice,invoiceReqDiscountedPrice,invoiceReqTaxRate,invoiceReqTax,invoiceReqStatus</properties>
+            <fields>a.invoiceReqId,a.invoiceReqCode,(select person.name from CrmPersonTypeRelationship p where p.id = a.invoiceReqCreateBy),a.invoiceReqCreateOn,a.invoiceReqCustomer,(select name from BDic z where z.id=a.invoiceReqInvoiceType),a.invoiceReqContent,a.invoiceReqRemark,a.invoiceReqCount,a.invoiceReqFixedPrice,a.invoiceReqDiscountedPrice,a.invoiceReqTaxRate,a.invoiceReqTax,(select name from BDic z where z.id=a.invoiceReqStatus)</fields>
+            <hql>from OInvoiceReq a </hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderId = ?</hql>
+                </condition>
+                <condition id="invoiceReqStatus" discribe="invoiceReqStatus">
+                    <params type="param">
+                        <param name="invoiceReqStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqStatus = ?</hql>
+                </condition>
+                <condition id="invoiceReqCode" discribe="invoiceReqCode">
+                    <params type="param">
+                        <param name="invoiceReqCode" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqCode like ?</hql>
+                </condition>
+                <condition id="corpId" discribe="invoiceReqStatus">
+                    <params type="param">
+                        <param name="corpId" type="java.lang.String"/>
+                    </params>
+                    <hql>a.corpTypeRelationship.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.OInvoiceReq</className>
+        </query>
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map" />
+            </params>
+            <properties>invoiceReqId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql> from OInvoiceReq a</hql>
+            <conditions>
+                <condition id="id" discribe="ID">
+                    <params type="param">
+                        <param name="id" type="java.lang.String" />
+                    </params>
+                    <hql>a.initialSaleOrderId= ?</hql>
+                </condition>
+                <condition id="invoiceReqStatus" discribe="invoiceReqStatus">
+                    <params type="param">
+                        <param name="invoiceReqStatus" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqStatus = ?</hql>
+                </condition>
+                <condition id="invoiceReqCode" discribe="invoiceReqCode">
+                    <params type="param">
+                        <param name="invoiceReqCode" type="java.lang.String"/>
+                    </params>
+                    <hql>a.invoiceReqCode like ?</hql>
+                </condition>
+                <condition id="corpId" discribe="invoiceReqStatus">
+                    <params type="param">
+                        <param name="corpId" type="java.lang.String"/>
+                    </params>
+                    <hql>a.corpTypeRelationship.id = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order></order>
+            <className>cn.digitalpublishing.po.OInvoiceReq</className>
+        </query>
+    </dao>
+</web-query>

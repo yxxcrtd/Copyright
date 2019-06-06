@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.OInitialSaleItemDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>initialSaleItemId,initialSaleItemCode, initialSaleItemCreateOn, initialSaleItemCreateBy,initialSaleItemUpdateOn,initialSaleItemUpdateBy,initialSaleItemIsbn, initialSaleItemTitle,initialSaleItemAuthor,initialSaleItemPublisher,initialSaleItemPrice,initialSaleItemDiscount,initialSaleItemCount,initialSaleItemStatus, product.id</properties>
+			<fields>a.initialSaleItemId,a.initialSaleItemCode, a.initialSaleItemCreateOn, a.initialSaleItemCreateBy,a.initialSaleItemUpdateOn,a.initialSaleItemUpdateBy,a.initialSaleItemIsbn,a. initialSaleItemTitle,a.initialSaleItemAuthor,a.initialSaleItemPublisher,a.initialSaleItemPrice,a.initialSaleItemDiscount,a.initialSaleItemCount,(select name from BDic z where z.id=a.initialSaleItemStatus), b.id</fields>
+			<hql>from OInitialSaleItem a left join a.product b  </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleItemId = ?</hql>
+				</condition>
+				<condition id="iniOrderId" discribe="ID">
+					<params type="param">
+						<param name="iniOrderId" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrder.initialSaleOrderId = ?</hql>
+				</condition>
+				<condition id="initialSaleItemStatus" discribe="ID">
+					<params type="param">
+						<param name="initialSaleItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleItemStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OInitialSaleItem</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>initialSaleItemId,initialSaleItemCode, initialSaleItemCreateOn, initialSaleItemCreateBy,initialSaleItemUpdateOn,initialSaleItemUpdateBy,initialSaleItemIsbn, initialSaleItemTitle,initialSaleItemAuthor,initialSaleItemPublisher,initialSaleItemPrice,initialSaleItemDiscount,initialSaleItemCount,initialSaleItemStatus, product.id</properties>
+			<fields>a.initialSaleItemId,a.initialSaleItemCode, a.initialSaleItemCreateOn, a.initialSaleItemCreateBy,a.initialSaleItemUpdateOn,a.initialSaleItemUpdateBy,a.initialSaleItemIsbn,a. initialSaleItemTitle,a.initialSaleItemAuthor,a.initialSaleItemPublisher,a.initialSaleItemPrice,a.initialSaleItemDiscount,a.initialSaleItemCount,(select name from BDic z where z.id=a.initialSaleItemStatus), b.id</fields>
+			<hql>from OInitialSaleItem a left join a.product b  </hql>
+			<conditions>
+				<condition id="initialSaleItemId" discribe="ID">
+					<params type="param">
+						<param name="initialSaleItemId" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleItemId = ?</hql>
+				</condition>
+				<condition id="initialSaleItemStatus" discribe="ID">
+					<params type="param">
+						<param name="initialSaleItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleItemStatus = ?</hql>
+				</condition>
+				<condition id="iniOrderId" discribe="ID">
+					<params type="param">
+						<param name="iniOrderId" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrder.initialSaleOrderId = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OInitialSaleItem</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>initialSaleItemId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from OInitialSaleItem a</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleItemId= ?</hql>
+				</condition>
+				<condition id="initialSaleItemStatus" discribe="ID">
+					<params type="param">
+						<param name="initialSaleItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleItemStatus = ?</hql>
+				</condition>
+				<condition id="iniOrderId" discribe="ID">
+					<params type="param">
+						<param name="iniOrderId" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrder.initialSaleOrderId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OInitialSaleItem</className>
+		</query>
+	</dao>
+</web-query>

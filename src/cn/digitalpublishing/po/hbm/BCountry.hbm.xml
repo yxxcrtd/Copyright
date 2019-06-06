@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.BCountry" table="B_COUNTRY">
+		<id name="id" type="java.lang.String">
+			<column name="B_COUNTRY_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="cnName" type="java.lang.String">
+			<column name="B_COUNTRY_CNNAME" length="32">
+				<comment>国家中文名称</comment>
+			</column>
+		</property>
+		<property name="enName" type="java.lang.String">
+			<column name="B_COUNTRY_ENNAME" length="32">
+				<comment>国家英文名称</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="B_COUNTRY_STATUS" length="32">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="B_COUNTRY_CREATE_ON">
+				<comment>创建日期</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="B_COUNTRY_CREATE_BY" length="32">
+				<comment>创建者</comment>
+			</column>
+		</property>
+		<property name="updateOn" type="java.util.Date">
+			<column name="B_COUNTRY_UPDATE_ON">
+				<comment>修改日期</comment>
+			</column>
+		</property>
+		<property name="updateBy" type="java.lang.String">
+			<column name="B_COUNTRY_UPDATE_BY" length="32">
+				<comment>修改者</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="B_COUNTRY_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<set name="regionSet" inverse="true">
+			<key>
+				<column name="B_COUNTRY_ID" length="32">
+					<comment>国别ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.BRegion" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PCdInfoDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>cdInfoId, cdInfoPublishType, cdInfoContentType, cdInfoSupport, cdInfoUse, cdInfoMode, cdInfoReader, cdInfoOrg, cdInfoLanguage, cdInfoAuthor, cdInfoPublishDate, cdInfoLong, cdInfoCapacity, cdInfoScale, cdInfoGreatFlag, cdInfoGreat, cdInfoAbstract, cdInfoIsbn,cdInfoStatus</properties>
+			<fields>a.cdInfoId, a.cdInfoPublishType, a.cdInfoContentType, a.cdInfoSupport, a.cdInfoUse, a.cdInfoMode, a.cdInfoReader, a.cdInfoOrg, a.cdInfoLanguage, a.cdInfoAuthor, a.cdInfoPublishDate, a.cdInfoLong, a.cdInfoCapacity, a.cdInfoScale, a.cdInfoGreatFlag, a.cdInfoGreat, a.cdInfoAbstract, a.cdInfoIsbn, (select z.name from BDic z where z.id = a.cdInfoStatus)</fields>
+			<hql>from PCdInfo a left join a.product b </hql>
+			<conditions>
+				<condition id="cdInfoId" discribe="盘号申请单ID">
+					<params type="param">
+						<param name="cdInfoId" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoId = ?</hql>
+				</condition>
+				<condition id="cdInfoPublishType" discribe="出版物类别">
+					<params type="param">
+						<param name="cdInfoPublishType" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoPublishType = ?</hql>
+				</condition>
+				<condition id="cdInfoContentType" discribe="内容类别">
+					<params type="param">
+						<param name="cdInfoContentType" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoContentType = ?</hql>
+				</condition>
+				<condition id="cdInfoSupport" discribe="拟用载体形式">
+					<params type="param">
+						<param name="cdInfoSupport" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoSupport = ?</hql>
+				</condition>
+				<condition id="cdInfoUse" discribe="用途分类">
+					<params type="param">
+						<param name="cdInfoUse" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoUse = ?</hql>
+				</condition>
+				<condition id="cdInfoMode" discribe="出版方式">
+					<params type="param">
+						<param name="cdInfoMode" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoMode = ?</hql>
+				</condition>
+				<condition id="cdInfoReader" discribe="读者对象">
+					<params type="param">
+						<param name="cdInfoReader" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoReader = ?</hql>
+				</condition>
+				<condition id="cdInfoOrg" discribe="制作单位">
+					<params type="param">
+						<param name="cdInfoOrg" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoOrg = ?</hql>
+				</condition>
+				<condition id="cdInfoLanguage" discribe="语种">
+					<params type="param">
+						<param name="cdInfoLanguage" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoLanguage = ?</hql>
+				</condition>
+				<condition id="cdInfoAuthor" discribe="作者">
+					<params type="param">
+						<param name="cdInfoAuthor" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoAuthor = ?</hql>
+				</condition>
+				<condition id="cdInfoPublishDate" discribe="拟出版时间">
+					<params type="param">
+						<param name="cdInfoPublishDate" type="java.util.Date" />
+					</params>
+					<hql>a.cdInfoPublishDate = ?</hql>
+				</condition>
+				<condition id="cdInfoLong" discribe="节目长度">
+					<params type="param">
+						<param name="cdInfoLong" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoLong = ?</hql>
+				</condition>
+				<condition id="cdInfoCapacity" discribe="节目容量">
+					<params type="param">
+						<param name="cdInfoCapacity" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoCapacity = ?</hql>
+				</condition>
+				<condition id="cdInfoScale" discribe="规模">
+					<params type="param">
+						<param name="cdInfoScale" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoScale = ?</hql>
+				</condition>
+				<condition id="cdInfoGreatFlag" discribe="重点选项标注">
+					<params type="param">
+						<param name="cdInfoGreatFlag" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoGreatFlag = ?</hql>
+				</condition>
+				<condition id="cdInfoGreat" discribe="重大选题">
+					<params type="param">
+						<param name="cdInfoGreat" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoGreat = ?</hql>
+				</condition>
+				<condition id="cdInfoAbstract" discribe="内容简介">
+					<params type="param">
+						<param name="cdInfoAbstract" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoAbstract = ?</hql>
+				</condition>
+				<condition id="cdInfoIsbn" discribe="盘号">
+					<params type="param">
+						<param name="cdInfoIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoIsbn = ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="cdInfoStatus" describe="状态">
+					<params type="param">
+						<param name="cdInfoStatus" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PCdInfo</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>cdInfoId, cdInfoPublishType, cdInfoContentType, cdInfoSupport, cdInfoUse, cdInfoMode, cdInfoReader, cdInfoOrg, cdInfoLanguage, cdInfoAuthor, cdInfoPublishDate, cdInfoLong, cdInfoCapacity, cdInfoScale, cdInfoGreatFlag, cdInfoGreat, cdInfoAbstract, cdInfoIsbn,cdInfoStatus</properties>
+			<fields>a.cdInfoId, a.cdInfoPublishType, a.cdInfoContentType, a.cdInfoSupport, a.cdInfoUse, a.cdInfoMode, a.cdInfoReader, a.cdInfoOrg, a.cdInfoLanguage, a.cdInfoAuthor, a.cdInfoPublishDate, a.cdInfoLong, a.cdInfoCapacity, a.cdInfoScale, a.cdInfoGreatFlag, a.cdInfoGreat, a.cdInfoAbstract, a.cdInfoIsbn, (select z.name from BDic z where z.id = a.cdInfoStatus)</fields>
+			<hql>from PCdInfo a left join a.product b </hql>
+			<conditions>
+				<condition id="cdInfoId" discribe="盘号申请单ID">
+					<params type="param">
+						<param name="cdInfoId" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoId = ?</hql>
+				</condition>
+				<condition id="cdInfoPublishType" discribe="出版物类别">
+					<params type="param">
+						<param name="cdInfoPublishType" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoPublishType = ?</hql>
+				</condition>
+				<condition id="cdInfoContentType" discribe="内容类别">
+					<params type="param">
+						<param name="cdInfoContentType" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoContentType = ?</hql>
+				</condition>
+				<condition id="cdInfoSupport" discribe="拟用载体形式">
+					<params type="param">
+						<param name="cdInfoSupport" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoSupport = ?</hql>
+				</condition>
+				<condition id="cdInfoUse" discribe="用途分类">
+					<params type="param">
+						<param name="cdInfoUse" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoUse = ?</hql>
+				</condition>
+				<condition id="cdInfoMode" discribe="出版方式">
+					<params type="param">
+						<param name="cdInfoMode" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoMode = ?</hql>
+				</condition>
+				<condition id="cdInfoReader" discribe="读者对象">
+					<params type="param">
+						<param name="cdInfoReader" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoReader = ?</hql>
+				</condition>
+				<condition id="cdInfoOrg" discribe="制作单位">
+					<params type="param">
+						<param name="cdInfoOrg" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoOrg = ?</hql>
+				</condition>
+				<condition id="cdInfoLanguage" discribe="语种">
+					<params type="param">
+						<param name="cdInfoLanguage" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoLanguage = ?</hql>
+				</condition>
+				<condition id="cdInfoAuthor" discribe="作者">
+					<params type="param">
+						<param name="cdInfoAuthor" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoAuthor = ?</hql>
+				</condition>
+				<condition id="cdInfoPublishDate" discribe="拟出版时间">
+					<params type="param">
+						<param name="cdInfoPublishDate" type="java.util.Date" />
+					</params>
+					<hql>a.cdInfoPublishDate = ?</hql>
+				</condition>
+				<condition id="cdInfoLong" discribe="节目长度">
+					<params type="param">
+						<param name="cdInfoLong" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoLong = ?</hql>
+				</condition>
+				<condition id="cdInfoCapacity" discribe="节目容量">
+					<params type="param">
+						<param name="cdInfoCapacity" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoCapacity = ?</hql>
+				</condition>
+				<condition id="cdInfoScale" discribe="规模">
+					<params type="param">
+						<param name="cdInfoScale" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoScale = ?</hql>
+				</condition>
+				<condition id="cdInfoGreatFlag" discribe="重点选项标注">
+					<params type="param">
+						<param name="cdInfoGreatFlag" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoGreatFlag = ?</hql>
+				</condition>
+				<condition id="cdInfoGreat" discribe="重大选题">
+					<params type="param">
+						<param name="cdInfoGreat" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoGreat = ?</hql>
+				</condition>
+				<condition id="cdInfoAbstract" discribe="内容简介">
+					<params type="param">
+						<param name="cdInfoAbstract" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoAbstract = ?</hql>
+				</condition>
+				<condition id="cdInfoIsbn" discribe="盘号">
+					<params type="param">
+						<param name="cdInfoIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoIsbn = ?</hql>
+				</condition>
+				<condition id="cdInfoStatus" describe="状态">
+					<params type="param">
+						<param name="cdInfoStatus" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoStatus = ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PCdInfo</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>cdInfoId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PCdInfo a left join a.product b </hql>
+			<conditions>
+				<condition id="cdInfoId" discribe="盘号申请单ID">
+					<params type="param">
+						<param name="cdInfoId" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoId = ?</hql>
+				</condition>
+				<condition id="cdInfoPublishType" discribe="出版物类别">
+					<params type="param">
+						<param name="cdInfoPublishType" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoPublishType = ?</hql>
+				</condition>
+				<condition id="cdInfoContentType" discribe="内容类别">
+					<params type="param">
+						<param name="cdInfoContentType" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoContentType = ?</hql>
+				</condition>
+				<condition id="cdInfoSupport" discribe="拟用载体形式">
+					<params type="param">
+						<param name="cdInfoSupport" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoSupport = ?</hql>
+				</condition>
+				<condition id="cdInfoUse" discribe="用途分类">
+					<params type="param">
+						<param name="cdInfoUse" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoUse = ?</hql>
+				</condition>
+				<condition id="cdInfoMode" discribe="出版方式">
+					<params type="param">
+						<param name="cdInfoMode" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoMode = ?</hql>
+				</condition>
+				<condition id="cdInfoReader" discribe="读者对象">
+					<params type="param">
+						<param name="cdInfoReader" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoReader = ?</hql>
+				</condition>
+				<condition id="cdInfoOrg" discribe="制作单位">
+					<params type="param">
+						<param name="cdInfoOrg" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoOrg = ?</hql>
+				</condition>
+				<condition id="cdInfoLanguage" discribe="语种">
+					<params type="param">
+						<param name="cdInfoLanguage" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoLanguage = ?</hql>
+				</condition>
+				<condition id="cdInfoAuthor" discribe="作者">
+					<params type="param">
+						<param name="cdInfoAuthor" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoAuthor = ?</hql>
+				</condition>
+				<condition id="cdInfoPublishDate" discribe="拟出版时间">
+					<params type="param">
+						<param name="cdInfoPublishDate" type="java.util.Date" />
+					</params>
+					<hql>a.cdInfoPublishDate = ?</hql>
+				</condition>
+				<condition id="cdInfoLong" discribe="节目长度">
+					<params type="param">
+						<param name="cdInfoLong" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoLong = ?</hql>
+				</condition>
+				<condition id="cdInfoCapacity" discribe="节目容量">
+					<params type="param">
+						<param name="cdInfoCapacity" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoCapacity = ?</hql>
+				</condition>
+				<condition id="cdInfoScale" discribe="规模">
+					<params type="param">
+						<param name="cdInfoScale" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoScale = ?</hql>
+				</condition>
+				<condition id="cdInfoGreatFlag" discribe="重点选项标注">
+					<params type="param">
+						<param name="cdInfoGreatFlag" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoGreatFlag = ?</hql>
+				</condition>
+				<condition id="cdInfoGreat" discribe="重大选题">
+					<params type="param">
+						<param name="cdInfoGreat" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoGreat = ?</hql>
+				</condition>
+				<condition id="cdInfoAbstract" discribe="内容简介">
+					<params type="param">
+						<param name="cdInfoAbstract" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoAbstract = ?</hql>
+				</condition>
+				<condition id="cdInfoIsbn" discribe="盘号">
+					<params type="param">
+						<param name="cdInfoIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoIsbn = ?</hql>
+				</condition>
+				<condition id="cdInfoStatus" describe="状态">
+					<params type="param">
+						<param name="cdInfoStatus" type="java.lang.String" />
+					</params>
+					<hql>a.cdInfoStatus = ?</hql>
+				</condition>
+				<condition id="productId" describe="产品id">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PCdInfo</className>
+		</query>
+	</dao>
+</web-query>

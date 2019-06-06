@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+    <!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query>
+        <queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno>
+        <builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm>
+        </web-query> -->
+    <!-- 主界面管理查询模块 -->
+    <dao id="cn.digitalpublishing.dao.ORepaymentReqDao">
+
+        <query>
+            <id>getPagingList</id>
+            <method>getPagingList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                repaymentReqId,repaymentReqPayName,repaymentReqPayOn,repaymentReqPayType,repaymentReqAmount,repaymentReqRemark,repaymentReqClaimBy,repaymentReqClaimOn,repaymentReqStatus
+            </properties>
+            <fields>
+                a.repaymentReqId,a.repaymentReqPayName,a.repaymentReqPayOn,(select z.name from BDic z where z.id = a.repaymentReqPayType),a.repaymentReqAmount,a.repaymentReqRemark,(select
+                d.person.name from CrmPersonTypeRelationship d where d.id =
+                a.repaymentReqClaimBy),a.repaymentReqClaimOn,(select z.name from BDic z where z.id = a.repaymentReqStatus)
+            </fields>
+            <hql>from ORepaymentReq a</hql>
+            <conditions>
+                <condition id="id" describe="id">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqId = ?</hql>
+                </condition>
+                 <condition id="repaymentReqPayName" describe="id">
+                    <params type="param">
+                        <param name="repaymentReqPayName" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqPayName like ?</hql>
+                </condition>
+                <condition id="repaymentReqStatus" describe="id">
+                    <params type="param">
+                        <param name="repaymentReqStatus" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqStatus = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>
+            </order>
+            <className>cn.digitalpublishing.po.ORepaymentReq</className>
+        </query>
+
+        <query>
+            <id>getCount</id>
+            <method>getCount</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>repaymentReqId</properties>
+            <fields>cast(count(*) as string)</fields>
+            <hql>from ORepaymentReq a</hql>
+            <conditions>
+                <condition id="id" describe="id">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqId = ?</hql>
+                </condition>
+                <condition id="ids" describe="names">
+                    <params type="param">
+                        <param name="ids" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.repaymentReqId in #X1</hql>
+                </condition>
+                
+                <condition id="repaymentReqPayName" describe="id">
+                    <params type="param">
+                        <param name="repaymentReqPayName" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqPayName like ?</hql>
+                </condition>
+                <condition id="repaymentReqStatus" describe="id">
+                    <params type="param">
+                        <param name="repaymentReqStatus" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqStatus = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>
+            </order>
+            <className>cn.digitalpublishing.po.ORepaymentReq</className>
+        </query>
+
+        <query>
+            <id>getList</id>
+            <method>getList</method>
+            <params>
+                <param name="condition" type="java.util.Map"></param>
+                <param name="sort" type="java.lang.String"></param>
+            </params>
+            <properties>
+                repaymentReqId,repaymentReqPayName,repaymentReqPayOn,repaymentReqPayType,repaymentReqAmount,repaymentReqRemark,repaymentReqClaimBy,repaymentReqClaimOn,repaymentReqStatus
+            </properties>
+            <fields>
+                a.repaymentReqId,a.repaymentReqPayName,a.repaymentReqPayOn,a.repaymentReqPayType,a.repaymentReqAmount,a.repaymentReqRemark,a.repaymentReqClaimBy,a.repaymentReqClaimOn,a.repaymentReqStatus
+            </fields>
+            <hql>from ORepaymentReq a</hql>
+            <conditions>
+                <condition id="id" describe="id">
+                    <params type="param">
+                        <param name="id" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqId = ?</hql>
+                </condition>
+                <condition id="ids" describe="names">
+                    <params type="param">
+                        <param name="ids" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.repaymentReqId in #X1</hql>
+                </condition>
+                <condition id="repaymentReqStatus" describe="id">
+                    <params type="param">
+                        <param name="repaymentReqStatus" type="java.lang.String"></param>
+                    </params>
+                    <hql>a.repaymentReqStatus = ?</hql>
+                </condition>
+            </conditions>
+            <group></group>
+            <order>
+            </order>
+            <className>cn.digitalpublishing.po.ORepaymentReq</className>
+        </query>
+    </dao>
+</web-query>

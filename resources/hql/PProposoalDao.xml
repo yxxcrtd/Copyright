@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProposalDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,desc,createOn,createBy</properties>
+			<fields>a.id,a.name,a.desc,a.createOn,a.createBy</fields>
+			<hql>from PProposal a</hql>
+			<conditions>
+				<condition id="id" discribe="策划ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="策划名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="desc" describe="策划描述">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc like  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProposal</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,desc,createOn,createBy</properties>
+			<fields>a.id,a.name,a.desc,a.createOn,a.createBy</fields>
+			<hql>from PProposal a</hql>
+			<conditions>
+				<condition id="id" discribe="策划ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="策划名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="desc" describe="策划描述">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc like  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProposal</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from PProposal a </hql>
+			<conditions>
+				<condition id="id" discribe="策划ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="策划名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="desc" describe="策划描述">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc like  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProposal</className>
+		</query>
+	</dao>
+</web-query>

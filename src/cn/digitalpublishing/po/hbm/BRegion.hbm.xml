@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.BRegion" table="B_REGION">
+		<id name="id" type="java.lang.String">
+			<column name="B_REGION_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="B_REGION_NAME" length="32">
+				<comment>名称</comment>
+			</column>
+		</property>
+		<property name="fullName" type="java.lang.String">
+			<column name="B_REGION_FULL_NAME" length="512">
+				<comment>全名称</comment>
+			</column>
+		</property>
+		<property name="code" type="java.lang.String">
+			<column name="B_REGION_CODE" length="8">
+				<comment>区域编码</comment>
+			</column>
+		</property>
+		<property name="treeCode" type="java.lang.String">
+			<column name="B_REGION_TREE_CODE" length="32">
+				<comment>树形编号</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="B_REGION_ORDER">
+				<comment>排序</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="B_REGION_STATUS" length="32">
+				<comment>状态</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="B_REGION_CREATE_ON">
+				<comment>创建日期</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="B_REGION_CREATE_BY" length="32">
+				<comment>创建者</comment>
+			</column>
+		</property>
+		<property name="updateOn" type="java.util.Date">
+			<column name="B_REGION_UPDATE_ON">
+				<comment>修改日期</comment>
+			</column>
+		</property>
+		<property name="updateBy" type="java.lang.String">
+			<column name="B_REGION_UPDATE_BY" length="32">
+				<comment>修改者</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="B_REGION_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<many-to-one name="parentRegion" class="cn.digitalpublishing.po.BRegion" fetch="select" lazy="false">
+			<column name="B_REGION_PARENT_ID" length="32">
+				<comment>地域ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="country" class="cn.digitalpublishing.po.BCountry" fetch="select" lazy="false">
+			<column name="B_COUNTRY_ID" length="32">
+				<comment>国别ID</comment>
+			</column>
+		</many-to-one>
+		<set name="regionSet" inverse="true">
+			<key>
+				<column name="B_REGION_PARENT_ID" length="32">
+					<comment>地域ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.BRegion" />
+		</set>
+		<set name="corpSet" inverse="true">
+			<key>
+				<column name="B_REGION_ID" length="32">
+					<comment>地域ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmCorp" />
+		</set>
+		<set name="siteSet" inverse="true">
+			<key>
+				<column name="B_REGION_ID" length="32">
+					<comment>地域ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvSite" />
+		</set>
+	</class>
+</hibernate-mapping>

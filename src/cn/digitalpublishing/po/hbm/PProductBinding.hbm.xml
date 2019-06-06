@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductBinding" table="P_PRODUCT_BINDING">
+		<id name="id" type="java.lang.String">
+			<column name="P_PRODUCT_BINDING_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="name" type="java.lang.String">
+			<column name="P_PRODUCT_BINDING_NAME" length="32">
+				<comment>装订项目</comment>
+			</column>
+		</property>
+		<property name="factory" type="java.lang.String">
+			<column name="P_PRODUCT_BINDING_FACTORY" length="32">
+				<comment>装订承装厂名称</comment>
+			</column>
+		</property>
+		<property name="price" type="java.math.BigDecimal">
+			<column name="P_PRODUCT_BINDING_PRICE" precision="10" scale="2">
+				<comment>装订单价</comment>
+			</column>
+		</property>
+		<property name="labour" type="java.math.BigDecimal">
+			<column name="P_PRODUCT_BINDING_LABOUR" precision="10" scale="2">
+				<comment>装订工价</comment>
+			</column>
+		</property>
+		<property name="unit" type="java.lang.String">
+			<column name="P_PRODUCT_BINDING_UNIT" length="32">
+				<comment>装订计算单位</comment>
+			</column>
+		</property>
+		<property name="num" type="java.math.BigDecimal">
+			<column name="P_PRODUCT_BINDING_NUM" precision="10" scale="2">
+				<comment>装订结算数量</comment>
+			</column>
+		</property>
+		<property name="count" type="java.lang.Integer">
+			<column name="P_PRODUCT_BINDING_COUNT">
+				<comment>装订承装册数</comment>
+			</column>
+		</property>
+		<property name="endOn" type="java.util.Date">
+			<column name="P_PRODUCT_BINDING_END_ON">
+				<comment>装订完成日期</comment>
+			</column>
+		</property>
+		<property name="desc" type="java.lang.String">
+			<column name="P_PRODUCT_BINDING_DESC" length="1024">
+				<comment>装订印法说明</comment>
+			</column>
+		</property>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="print" class="cn.digitalpublishing.po.EPrint" fetch="select" lazy="false">
+			<column name="E_PRINT_ID" length="32">
+				<comment>付印单ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

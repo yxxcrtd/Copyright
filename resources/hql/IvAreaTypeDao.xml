@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvAreaTypeDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> areaTypeId,areaTypeCode,areaTypeDesc,areaTypeStatus </properties>
+			<fields> a.areaTypeId,a.areaTypeCode,a.areaTypeDesc,a.areaTypeStatus </fields>
+			<hql>from IvAreaType a </hql>
+			<conditions>
+				<condition id="areaTypeId" describe="areaTypeId">
+					<params type="param">
+						<param name="areaTypeId" type="java.lang.String"></param>
+					</params>
+					<hql> a.areaTypeId = ?</hql>
+				</condition>
+				<condition id="areaTypeCode" describe="areaTypeCode">
+					<params type="param">
+						<param name="areaTypeCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeCode = ?</hql>
+				</condition>
+				<condition id="areaTypeDesc" describe="areaTypeDesc">
+					<params type="param">
+						<param name="areaTypeDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeDesc = ?</hql>
+				</condition>
+				<condition id="areaTypeStatus" describe="areaTypeStatus">
+					<params type="param">
+						<param name="areaTypeStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.areaTypeId</order>
+			<className>cn.digitalpublishing.po.IvAreaType</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>areaTypeId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvAreaType a </hql>
+			<conditions>
+				<condition id="areaTypeId" describe="areaTypeId">
+					<params type="param">
+						<param name="areaTypeId" type="java.lang.String"></param>
+					</params>
+					<hql> a.areaTypeId = ?</hql>
+				</condition>
+				<condition id="areaTypeCode" describe="areaTypeCode">
+					<params type="param">
+						<param name="areaTypeCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeCode like ?</hql>
+				</condition>
+				<condition id="areaTypeDesc" describe="areaTypeDesc">
+					<params type="param">
+						<param name="areaTypeDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeDesc like ?</hql>
+				</condition>
+				<condition id="areaTypeStatus" describe="areaTypeStatus">
+					<params type="param">
+						<param name="areaTypeStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.areaTypeId</order>
+			<className>cn.digitalpublishing.po.IvAreaType</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> areaTypeId,areaTypeCode,areaTypeDesc,areaTypeStatus </properties>
+			<fields> a.areaTypeId,a.areaTypeCode,a.areaTypeDesc, (select name from BDic z where z.id= a.areaTypeStatus) </fields>
+			<hql>from IvAreaType a </hql>
+			<conditions>
+				<condition id="areaTypeId" describe="areaTypeId">
+					<params type="param">
+						<param name="areaTypeId" type="java.lang.String"></param>
+					</params>
+					<hql> a.areaTypeId = ?</hql>
+				</condition>
+				<condition id="areaTypeCode" describe="areaTypeCode">
+					<params type="param">
+						<param name="areaTypeCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeCode like ?</hql>
+				</condition>
+				<condition id="areaTypeDesc" describe="areaTypeDesc">
+					<params type="param">
+						<param name="areaTypeDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeDesc like ?</hql>
+				</condition>
+				<condition id="areaTypeStatus" describe="areaTypeStatus">
+					<params type="param">
+						<param name="areaTypeStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaTypeStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by a.areaTypeId </order>
+			<className>cn.digitalpublishing.po.IvAreaType</className>
+		</query>
+	</dao>
+</web-query>

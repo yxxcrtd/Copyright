@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductPriceDiscountDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>priceDiscountId,priceDiscountCount,priceDiscountValue,priceDiscountType</properties>
+			<fields>a.priceDiscountId,a.priceDiscountCount,a.priceDiscountValue,(select z.name from BDic z where z.id = a.priceDiscountType)</fields>
+			<hql>from PProductPriceDiscount a left join a.productPrice b </hql>
+			<conditions>
+				<condition id="priceDiscountId" describe="priceDiscountId">
+					<params type="param">
+						<param name="priceDiscountId" type="java.lang.String"></param>
+					</params>
+					<hql> a.priceDiscountId = ? </hql>
+				</condition>
+				<condition id="priceDiscountCount" describe="价格折扣数量">
+					<params type="param">
+						<param name="priceDiscountCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.priceDiscountCount = ?</hql>
+				</condition>
+				<condition id="priceValue" describe="价格折扣值">
+					<params type="param">
+						<param name="priceValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.priceValue = ?</hql>
+				</condition>
+				<condition id="priceDiscountType" describe="价格折扣类型">
+					<params type="param">
+						<param name="priceDiscountType" type="java.lang.String" />
+					</params>
+					<hql>a.priceDiscountType like ?</hql>
+				</condition>
+				<condition id="priceId" describe="产品id">
+					<params type="param">
+						<param name="priceId" type="java.lang.String" />
+					</params>
+					<hql>b.priceId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPriceDiscount</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>priceDiscountId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductPriceDiscount a left join a.productPrice b</hql>
+			<conditions>
+				<condition id="priceDiscountId" describe="priceDiscountId">
+					<params type="param">
+						<param name="priceDiscountId" type="java.lang.String"></param>
+					</params>
+					<hql> a.priceDiscountId = ? </hql>
+				</condition>
+				<condition id="priceDiscountCount" describe="价格折扣数量">
+					<params type="param">
+						<param name="priceDiscountCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.priceDiscountCount = ?</hql>
+				</condition>
+				<condition id="priceValue" describe="价格折扣值">
+					<params type="param">
+						<param name="priceValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.priceValue = ?</hql>
+				</condition>
+				<condition id="priceDiscountType" describe="价格折扣类型">
+					<params type="param">
+						<param name="priceDiscountType" type="java.lang.String" />
+					</params>
+					<hql>a.priceDiscountType like ?</hql>
+				</condition>
+				<condition id="priceId" describe="产品id">
+					<params type="param">
+						<param name="priceId" type="java.lang.String" />
+					</params>
+					<hql>b.priceId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPriceDiscount</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>priceDiscountId,priceDiscountCount,priceDiscountValue,priceDiscountType</properties>
+			<fields>a.priceDiscountId,a.priceDiscountCount,a.priceDiscountValue,a.priceDiscountType</fields>
+			<hql>from PProductPriceDiscount a left join a.productPrice b </hql>
+			<conditions>
+				<condition id="priceDiscountId" describe="priceDiscountId">
+					<params type="param">
+						<param name="priceDiscountId" type="java.lang.String"></param>
+					</params>
+					<hql> a.priceDiscountId = ? </hql>
+				</condition>
+				<condition id="priceDiscountCount" describe="价格折扣数量">
+					<params type="param">
+						<param name="priceDiscountCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.priceDiscountCount = ?</hql>
+				</condition>
+				<condition id="priceValue" describe="价格折扣值">
+					<params type="param">
+						<param name="priceValue" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.priceValue = ?</hql>
+				</condition>
+				<condition id="priceDiscountType" describe="价格折扣类型">
+					<params type="param">
+						<param name="priceDiscountType" type="java.lang.String" />
+					</params>
+					<hql>a.priceDiscountType like ?</hql>
+				</condition>
+				<condition id="priceId" describe="产品id">
+					<params type="param">
+						<param name="priceId" type="java.lang.String" />
+					</params>
+					<hql>b.priceId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductPriceDiscount</className>
+		</query>
+	</dao>
+</web-query>

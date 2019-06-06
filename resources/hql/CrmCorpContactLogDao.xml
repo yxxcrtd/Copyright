@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpContactLogDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, name, desc, date</properties>
+			<fields>a.id, a.name, a.desc, a.date</fields>
+			<hql>from CrmCorpContactLog a</hql>
+			<conditions>
+				<condition id="id" discribe="联系日志ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="联系日志名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="desc" discribe="联系日志描述">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc = ?</hql>
+				</condition>
+				<condition id="date" discribe="联系日志日期">
+					<params type="param">
+						<param name="date" type="java.util.Date" />
+					</params>
+					<hql>a.date = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpContactLog</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, name, desc, date</properties>
+			<fields>a.id, a.name, a.desc, a.date</fields>
+			<hql>from CrmCorpContactLog a</hql>
+			<conditions>
+				<condition id="id" discribe="联系日志ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="联系日志名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="desc" discribe="联系日志描述">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc = ?</hql>
+				</condition>
+				<condition id="date" discribe="联系日志日期">
+					<params type="param">
+						<param name="date" type="java.util.Date" />
+					</params>
+					<hql>a.date = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpContactLog</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpContactLog a</hql>
+			<conditions>
+				<condition id="id" discribe="联系日志ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" discribe="联系日志名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name = ?</hql>
+				</condition>
+				<condition id="desc" discribe="联系日志描述">
+					<params type="param">
+						<param name="desc" type="java.lang.String" />
+					</params>
+					<hql>a.desc = ?</hql>
+				</condition>
+				<condition id="date" discribe="联系日志日期">
+					<params type="param">
+						<param name="date" type="java.util.Date" />
+					</params>
+					<hql>a.date = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpContactLog</className>
+		</query>
+	</dao>
+</web-query>

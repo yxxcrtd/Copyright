@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.PProductProposalPersonRelationship" table="P_PRODUCT_PROPOSAL_PERSON_RS">
+		<id name="id" type="java.lang.String">
+			<column name="P_PP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="proportion" type="java.lang.String">
+			<column name="P_PP_PROPORTION" length="10">
+				<comment>所占比例</comment>
+			</column>
+		</property>
+		<property name="isMainProposal" type="java.lang.String">
+			<column name="P_PP_IS_MAIN_PROPOSAL" length="32">
+				<comment>是否是主策划</comment>
+			</column>
+		</property>
+		<many-to-one name="product" class="cn.digitalpublishing.po.PProduct" fetch="select" lazy="false">
+			<column name="P_PRODUCT_ID" length="32">
+				<comment>产品ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="person" class="cn.digitalpublishing.po.CrmPerson" fetch="select" lazy="false">
+			<column name="PERSON_ID" length="32">
+				<comment>人员ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

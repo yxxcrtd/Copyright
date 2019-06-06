@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvWarehouseRoomDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> whRoomId,whRoomCode,whRoomDesc,whRoomStatus,warehouseFloor.whFloorId,warehouseFloor.whFloorDesc,warehouseFloor.warehouse.warehouseId </properties>
+			<fields> a.whRoomId,a.whRoomCode,a.whRoomDesc,a.whRoomStatus,b.whFloorId,b.whFloorDesc,c.warehouseId </fields>
+			<hql>from IvWarehouseRoom a left join a.warehouseFloor b left join b.warehouse c </hql>
+			<conditions>
+				<condition id="whRoomId" describe="whRoomId">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> a.whRoomId = ?</hql>
+				</condition>
+				<condition id="whRoomCode" describe="whRoomCode">
+					<params type="param">
+						<param name="whRoomCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.whRoomCode = ?</hql>
+				</condition>
+				<condition id="whRoomDesc" describe="whRoomDesc">
+					<params type="param">
+						<param name="whRoomDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.whRoomDesc = ?</hql>
+				</condition>
+				<condition id="whRoomStatus" describe="whRoomStatus">
+					<params type="param">
+						<param name="whRoomStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.whRoomStatus = ?</hql>
+				</condition>
+				<condition id="whFloorId" describe="whFloorId">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> b.whFloorId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.whRoomId</order>
+			<className>cn.digitalpublishing.po.IvWarehouseRoom</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>whRoomId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvWarehouseRoom a left join a.warehouseFloor b </hql>
+			<conditions>
+				<condition id="whRoomId" describe="whRoomId">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> a.whRoomId = ? </hql>
+				</condition>
+				<condition id="whRoomCode" describe="whRoomCode">
+					<params type="param">
+						<param name="whRoomCode" type="java.lang.String"></param>
+					</params>
+					<hql> a.whRoomCode like ? </hql>
+				</condition>
+				<condition id="whRoomDesc" describe="whRoomDesc">
+					<params type="param">
+						<param name="whRoomDesc" type="java.lang.String"></param>
+					</params>
+					<hql> a.whRoomDesc like ? </hql>
+				</condition>
+				<condition id="whRoomStatus" describe="whRoomStatus">
+					<params type="param">
+						<param name="whRoomStatus" type="java.lang.String"></param>
+					</params>
+					<hql> a.whRoomStatus = ? </hql>
+				</condition>
+				<condition id="whFloorId" describe="b.id">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> b.whFloorId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by a.whRoomId </order>
+			<className>cn.digitalpublishing.po.IvWarehouseRoom</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> whRoomId,whRoomCode,whRoomDesc,whRoomStatus,warehouseFloor.whFloorId,warehouseFloor.whFloorDesc </properties>
+			<fields> a.whRoomId,a.whRoomCode,a.whRoomDesc,(select name from BDic z where z.id=a.whRoomStatus),b.whFloorId,b.whFloorDesc </fields>
+			<hql>from IvWarehouseRoom a left join a.warehouseFloor b </hql>
+			<conditions>
+				<condition id="whRoomId" describe="whRoomId">
+					<params type="param">
+						<param name="whRoomId" type="java.lang.String"></param>
+					</params>
+					<hql> a.whRoomId = ?</hql>
+				</condition>
+				<condition id="whRoomCode" describe="whRoomCode">
+					<params type="param">
+						<param name="whRoomCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.whRoomCode like ?</hql>
+				</condition>
+				<condition id="whRoomDesc" describe="whRoomDesc">
+					<params type="param">
+						<param name="whRoomDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.whRoomDesc like ?</hql>
+				</condition>
+				<condition id="whRoomStatus" describe="whRoomStatus">
+					<params type="param">
+						<param name="whRoomStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.whRoomStatus = ?</hql>
+				</condition>
+				<condition id="whFloorId" describe="b.id">
+					<params type="param">
+						<param name="whFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> b.whFloorId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.whRoomId</order>
+			<className>cn.digitalpublishing.po.IvWarehouseRoom</className>
+		</query>
+	</dao>
+</web-query>

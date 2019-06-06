@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+
+	<dao id="cn.digitalpublishing.dao.OSaleItemDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>saleItemId,saleItemCode, saleItemCreateOn, saleItemCreateBy,saleItemUpdateOn,saleItemUpdateBy,saleItemIsbn, saleItemTitle,saleItemAuthor,saleItemPublisher,saleItemPrice,saleItemDiscount,saleItemCount,saleItemStatus, saleItemStatusId,product.id</properties>
+			<fields>a.saleItemId,a.saleItemCode, a.saleItemCreateOn, a.saleItemCreateBy,a.saleItemUpdateOn,a.saleItemUpdateBy,a.saleItemIsbn,a. saleItemTitle,a.saleItemAuthor,a.saleItemPublisher,a.saleItemPrice,a.saleItemDiscount,a.saleItemCount,(select z.name from BDic z where z.id = a.saleItemStatus),a.saleItemStatus, b.id</fields>
+			<hql>from OSaleItem a left join a.product b left join  a.saleOrder c</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemId = ?</hql>
+				</condition>
+				<condition id="saleItemStatus" discribe="状态">
+					<params type="param">
+						<param name="saleItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemStatus = ?</hql>
+				</condition>
+				<condition id="saleOrderId" discribe="销售订单ID">
+					<params type="param">
+						<param name="saleOrderId" type="java.lang.String" />
+					</params>
+					<hql>c.saleOrderId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OSaleItem</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>saleItemId,saleItemCode, saleItemCreateOn, saleItemCreateBy,saleItemUpdateOn,saleItemUpdateBy,saleItemIsbn, saleItemTitle,saleItemAuthor,saleItemPublisher,saleItemPrice,saleItemDiscount,saleItemCount,saleItemSendCount,saleItemNotSendCount,saleItemStatus, corpTypeRelationship.corp.fullName</properties>
+			<fields>a.saleItemId,a.saleItemCode, a.saleItemCreateOn, a.saleItemCreateBy,a.saleItemUpdateOn,a.saleItemUpdateBy,a.saleItemIsbn,a. saleItemTitle,a.saleItemAuthor,a.saleItemPublisher,a.saleItemPrice,a.saleItemDiscount,a.saleItemCount,(select cast(sum(z.stockOutItemCount) as int) from IvStockOutItem z left join z.saleItem y where y.saleItemId = a.saleItemId group by y.saleItemId),a.saleItemCount,(select z.name from BDic z where z.id = a.saleItemStatus),d.fullName</fields>
+			<hql>from OSaleItem a left join a.saleOrder b left join a.corpTypeRelationship c left join c.corp d  </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemId = ?</hql>
+				</condition>
+				<condition id="saleItemIsbn" discribe="saleItemIsbn">
+					<params type="param">
+						<param name="saleItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemIsbn = ?</hql>
+				</condition>
+				<condition id="saleItemStatus" discribe="状态">
+					<params type="param">
+						<param name="saleItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemStatus = ?</hql>
+				</condition>
+				<condition id="saleOrderId" discribe="销售订单ID">
+					<params type="param">
+						<param name="saleOrderId" type="java.lang.String" />
+					</params>
+					<hql>b.saleOrderId = ?</hql>
+				</condition>
+				<condition id="saleItemCode" discribe="销售订单ID">
+					<params type="param">
+						<param name="saleItemCode" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemCode like ?</hql>
+				</condition>
+				<condition id="saleItemIsbn" discribe="销售订单ID">
+                    <params type="param">
+                        <param name="saleItemIsbn" type="java.lang.String"/>
+                    </params>
+                    <hql>a.saleItemIsbn = ?</hql>
+                </condition>
+                <condition id="corpId" discribe="销售订单ID">
+                    <params type="param">
+                        <param name="corpId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OSaleItem</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>saleItemId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from OSaleItem a left join a.saleOrder b left join a.corpTypeRelationship c </hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemId= ?</hql>
+				</condition>
+				<condition id="saleItemStatus" discribe="状态">
+					<params type="param">
+						<param name="saleItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemStatus = ?</hql>
+				</condition>
+				<condition id="saleOrderId" discribe="销售订单ID">
+					<params type="param">
+						<param name="saleOrderId" type="java.lang.String" />
+					</params>
+					<hql>b.saleOrderId = ?</hql>
+				</condition>
+				<condition id="saleItemCode" discribe="销售订单ID">
+					<params type="param">
+						<param name="saleItemCode" type="java.lang.String" />
+					</params>
+					<hql>a.saleItemCode like ?</hql>
+				</condition>
+                <condition id="saleItemIsbn" discribe="销售订单ID">
+                    <params type="param">
+                        <param name="saleItemIsbn" type="java.lang.String"/>
+                    </params>
+                    <hql>a.saleItemIsbn = ?</hql>
+                </condition>
+                <condition id="corpId" discribe="销售订单ID">
+                    <params type="param">
+                        <param name="corpId" type="java.lang.String"/>
+                    </params>
+                    <hql>c.id = ?</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OSaleItem</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductMaterialPrintDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, projectName, projectNameText, materialName, materialCode, materialSpec, materialType, materialTypeText, materialSource, materialSourceText, materialGrams, materialQuotient, materialPaper, materialAddRate, materialAddCount, materialTotalCount, materialReam, materialTon, materialPrice, materialExpense, faceCount, printFrontChromaticCount, printEndChromaticCount, printModel, printMakeupCount, printMakeupExpense, printType, printTypeText, printPrice, printExpense, remark, material.materialId</properties>
+			<fields>a.id, a.projectName, (select name from BDic e where e.id = a.projectName), a.materialName, a.materialCode, a.materialSpec, a.materialType, (select name from BDic e where e.id = a.materialType), a.materialSource, (select name from BDic e where e.id = a.materialSource), a.materialGrams, a.materialQuotient, a.materialPaper, a.materialAddRate, a.materialAddCount, a.materialTotalCount, a.materialReam, a.materialTon, a.materialPrice, a.materialExpense, a.faceCount, a.printFrontChromaticCount, a.printEndChromaticCount, a.printModel, a.printMakeupCount, a.printMakeupExpense, a.printType, (select name from BDic e where e.id = a.printType), a.printPrice, a.printExpense, a.remark, a.material.materialId</fields>
+			<hql>from PProductMaterialPrint a</hql>
+			<conditions>
+				<condition id="id" discribe="材料及印刷ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="projectName" discribe="项目名称">
+					<params type="param">
+						<param name="projectName" type="java.lang.String" />
+					</params>
+					<hql>a.projectName = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialType" discribe="材料类型">
+					<params type="param">
+						<param name="materialType" type="java.lang.String" />
+					</params>
+					<hql>a.materialType = ?</hql>
+				</condition>
+				<condition id="materialSource" discribe="材料来源">
+					<params type="param">
+						<param name="materialSource" type="java.lang.String" />
+					</params>
+					<hql>a.materialSource = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialQuotient" discribe="材料纸张开数">
+					<params type="param">
+						<param name="materialQuotient" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialQuotient = ?</hql>
+				</condition>
+				<condition id="materialPaper" discribe="材料正用纸">
+					<params type="param">
+						<param name="materialPaper" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPaper = ?</hql>
+				</condition>
+				<condition id="materialAddRate" discribe="材料加放率">
+					<params type="param">
+						<param name="materialAddRate" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialAddRate = ?</hql>
+				</condition>
+				<condition id="materialAddCount" discribe="材料加放数">
+					<params type="param">
+						<param name="materialAddCount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialAddCount = ?</hql>
+				</condition>
+				<condition id="materialTotalCount" discribe="材料合计数">
+					<params type="param">
+						<param name="materialTotalCount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialTotalCount = ?</hql>
+				</condition>
+				<condition id="materialReam" discribe="材料包干令/吨">
+					<params type="param">
+						<param name="materialReam" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialReam = ?</hql>
+				</condition>
+				<condition id="materialTon" discribe="材料吨数">
+					<params type="param">
+						<param name="materialTon" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialTon = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialExpense" discribe="材料费">
+					<params type="param">
+						<param name="materialExpense" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialExpense = ?</hql>
+				</condition>
+				<condition id="faceCount" discribe="面数">
+					<params type="param">
+						<param name="faceCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.faceCount = ?</hql>
+				</condition>
+				<condition id="printFrontChromaticCount" discribe="印刷正面色数">
+					<params type="param">
+						<param name="printFrontChromaticCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printFrontChromaticCount = ?</hql>
+				</condition>
+				<condition id="printEndChromaticCount" discribe="印刷背面色数">
+					<params type="param">
+						<param name="printEndChromaticCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printEndChromaticCount = ?</hql>
+				</condition>
+				<condition id="printModel" discribe="印刷机型">
+					<params type="param">
+						<param name="printModel" type="java.lang.String" />
+					</params>
+					<hql>a.printModel = ?</hql>
+				</condition>
+				<condition id="printMakeupCount" discribe="印刷拼版数">
+					<params type="param">
+						<param name="printMakeupCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printMakeupCount = ?</hql>
+				</condition>
+				<condition id="printType" discribe="印刷方式">
+					<params type="param">
+						<param name="printType" type="java.lang.String" />
+					</params>
+					<hql>a.printType = ?</hql>
+				</condition>
+				<condition id="printPrice" discribe="印刷单价">
+					<params type="param">
+						<param name="printPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.printPrice = ?</hql>
+				</condition>
+				<condition id="printExpense" discribe="印刷费">
+					<params type="param">
+						<param name="printExpense" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.printExpense = ?</hql>
+				</condition>
+				<condition id="remark" discribe="项目备注">
+					<params type="param">
+						<param name="remark" type="java.lang.String" />
+					</params>
+					<hql>a.remark = ?</hql>
+				</condition>
+				
+				<condition id="print_printId" discribe="付印单ID">
+					<params type="param">
+						<param name="print_printId" type="java.lang.String" />
+					</params>
+					<hql>a.print.printId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductMaterialPrint</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, projectName, materialName, materialCode, materialSpec, materialType, materialSource, materialGrams, materialQuotient, materialPaper, materialAddRate, materialAddCount, materialTotalCount, materialReam, materialTon, materialPrice, materialExpense, faceCount, printFrontChromaticCount, printEndChromaticCount, printModel, printMakeupCount, printType, printPrice, printExpense, remark</properties>
+			<fields>a.id, a.projectName, a.materialName, a.materialCode, a.materialSpec, a.materialType, a.materialSource, a.materialGrams, a.materialQuotient, a.materialPaper, a.materialAddRate, a.materialAddCount, a.materialTotalCount, a.materialReam, a.materialTon, a.materialPrice, a.materialExpense, a.faceCount, a.printFrontChromaticCount, a.printEndChromaticCount, a.printModel, a.printMakeupCount, a.printType, a.printPrice, a.printExpense, a.remark</fields>
+			<hql>from PProductMaterialPrint a</hql>
+			<conditions>
+				<condition id="id" discribe="材料及印刷ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="projectName" discribe="项目名称">
+					<params type="param">
+						<param name="projectName" type="java.lang.String" />
+					</params>
+					<hql>a.projectName = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialType" discribe="材料类型">
+					<params type="param">
+						<param name="materialType" type="java.lang.String" />
+					</params>
+					<hql>a.materialType = ?</hql>
+				</condition>
+				<condition id="materialSource" discribe="材料来源">
+					<params type="param">
+						<param name="materialSource" type="java.lang.String" />
+					</params>
+					<hql>a.materialSource = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialQuotient" discribe="材料纸张开数">
+					<params type="param">
+						<param name="materialQuotient" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialQuotient = ?</hql>
+				</condition>
+				<condition id="materialPaper" discribe="材料正用纸">
+					<params type="param">
+						<param name="materialPaper" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPaper = ?</hql>
+				</condition>
+				<condition id="materialAddRate" discribe="材料加放率">
+					<params type="param">
+						<param name="materialAddRate" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialAddRate = ?</hql>
+				</condition>
+				<condition id="materialAddCount" discribe="材料加放数">
+					<params type="param">
+						<param name="materialAddCount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialAddCount = ?</hql>
+				</condition>
+				<condition id="materialTotalCount" discribe="材料合计数">
+					<params type="param">
+						<param name="materialTotalCount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialTotalCount = ?</hql>
+				</condition>
+				<condition id="materialReam" discribe="材料包干令/吨">
+					<params type="param">
+						<param name="materialReam" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialReam = ?</hql>
+				</condition>
+				<condition id="materialTon" discribe="材料吨数">
+					<params type="param">
+						<param name="materialTon" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialTon = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialExpense" discribe="材料费">
+					<params type="param">
+						<param name="materialExpense" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialExpense = ?</hql>
+				</condition>
+				<condition id="faceCount" discribe="面数">
+					<params type="param">
+						<param name="faceCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.faceCount = ?</hql>
+				</condition>
+				<condition id="printFrontChromaticCount" discribe="印刷正面色数">
+					<params type="param">
+						<param name="printFrontChromaticCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printFrontChromaticCount = ?</hql>
+				</condition>
+				<condition id="printEndChromaticCount" discribe="印刷背面色数">
+					<params type="param">
+						<param name="printEndChromaticCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printEndChromaticCount = ?</hql>
+				</condition>
+				<condition id="printModel" discribe="印刷机型">
+					<params type="param">
+						<param name="printModel" type="java.lang.String" />
+					</params>
+					<hql>a.printModel = ?</hql>
+				</condition>
+				<condition id="printMakeupCount" discribe="印刷拼版数">
+					<params type="param">
+						<param name="printMakeupCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printMakeupCount = ?</hql>
+				</condition>
+				<condition id="printType" discribe="印刷方式">
+					<params type="param">
+						<param name="printType" type="java.lang.String" />
+					</params>
+					<hql>a.printType = ?</hql>
+				</condition>
+				<condition id="printPrice" discribe="印刷单价">
+					<params type="param">
+						<param name="printPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.printPrice = ?</hql>
+				</condition>
+				<condition id="printExpense" discribe="印刷费">
+					<params type="param">
+						<param name="printExpense" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.printExpense = ?</hql>
+				</condition>
+				<condition id="remark" discribe="项目备注">
+					<params type="param">
+						<param name="remark" type="java.lang.String" />
+					</params>
+					<hql>a.remark = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductMaterialPrint</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from PProductMaterialPrint a</hql>
+			<conditions>
+				<condition id="id" discribe="材料及印刷ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="projectName" discribe="项目名称">
+					<params type="param">
+						<param name="projectName" type="java.lang.String" />
+					</params>
+					<hql>a.projectName = ?</hql>
+				</condition>
+				<condition id="materialName" discribe="材料名称">
+					<params type="param">
+						<param name="materialName" type="java.lang.String" />
+					</params>
+					<hql>a.materialName = ?</hql>
+				</condition>
+				<condition id="materialCode" discribe="材料编号">
+					<params type="param">
+						<param name="materialCode" type="java.lang.String" />
+					</params>
+					<hql>a.materialCode = ?</hql>
+				</condition>
+				<condition id="materialSpec" discribe="材料规格">
+					<params type="param">
+						<param name="materialSpec" type="java.lang.String" />
+					</params>
+					<hql>a.materialSpec = ?</hql>
+				</condition>
+				<condition id="materialType" discribe="材料类型">
+					<params type="param">
+						<param name="materialType" type="java.lang.String" />
+					</params>
+					<hql>a.materialType = ?</hql>
+				</condition>
+				<condition id="materialSource" discribe="材料来源">
+					<params type="param">
+						<param name="materialSource" type="java.lang.String" />
+					</params>
+					<hql>a.materialSource = ?</hql>
+				</condition>
+				<condition id="materialGrams" discribe="材料克重">
+					<params type="param">
+						<param name="materialGrams" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialGrams = ?</hql>
+				</condition>
+				<condition id="materialQuotient" discribe="材料纸张开数">
+					<params type="param">
+						<param name="materialQuotient" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialQuotient = ?</hql>
+				</condition>
+				<condition id="materialPaper" discribe="材料正用纸">
+					<params type="param">
+						<param name="materialPaper" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPaper = ?</hql>
+				</condition>
+				<condition id="materialAddRate" discribe="材料加放率">
+					<params type="param">
+						<param name="materialAddRate" type="java.lang.Integer" />
+					</params>
+					<hql>a.materialAddRate = ?</hql>
+				</condition>
+				<condition id="materialAddCount" discribe="材料加放数">
+					<params type="param">
+						<param name="materialAddCount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialAddCount = ?</hql>
+				</condition>
+				<condition id="materialTotalCount" discribe="材料合计数">
+					<params type="param">
+						<param name="materialTotalCount" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialTotalCount = ?</hql>
+				</condition>
+				<condition id="materialReam" discribe="材料包干令/吨">
+					<params type="param">
+						<param name="materialReam" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialReam = ?</hql>
+				</condition>
+				<condition id="materialTon" discribe="材料吨数">
+					<params type="param">
+						<param name="materialTon" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialTon = ?</hql>
+				</condition>
+				<condition id="materialPrice" discribe="材料单价">
+					<params type="param">
+						<param name="materialPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialPrice = ?</hql>
+				</condition>
+				<condition id="materialExpense" discribe="材料费">
+					<params type="param">
+						<param name="materialExpense" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.materialExpense = ?</hql>
+				</condition>
+				<condition id="faceCount" discribe="面数">
+					<params type="param">
+						<param name="faceCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.faceCount = ?</hql>
+				</condition>
+				<condition id="printFrontChromaticCount" discribe="印刷正面色数">
+					<params type="param">
+						<param name="printFrontChromaticCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printFrontChromaticCount = ?</hql>
+				</condition>
+				<condition id="printEndChromaticCount" discribe="印刷背面色数">
+					<params type="param">
+						<param name="printEndChromaticCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printEndChromaticCount = ?</hql>
+				</condition>
+				<condition id="printModel" discribe="印刷机型">
+					<params type="param">
+						<param name="printModel" type="java.lang.String" />
+					</params>
+					<hql>a.printModel = ?</hql>
+				</condition>
+				<condition id="printMakeupCount" discribe="印刷拼版数">
+					<params type="param">
+						<param name="printMakeupCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.printMakeupCount = ?</hql>
+				</condition>
+				<condition id="printType" discribe="印刷方式">
+					<params type="param">
+						<param name="printType" type="java.lang.String" />
+					</params>
+					<hql>a.printType = ?</hql>
+				</condition>
+				<condition id="printPrice" discribe="印刷单价">
+					<params type="param">
+						<param name="printPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.printPrice = ?</hql>
+				</condition>
+				<condition id="printExpense" discribe="印刷费">
+					<params type="param">
+						<param name="printExpense" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.printExpense = ?</hql>
+				</condition>
+				<condition id="remark" discribe="项目备注">
+					<params type="param">
+						<param name="remark" type="java.lang.String" />
+					</params>
+					<hql>a.remark = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductMaterialPrint</className>
+		</query>
+	</dao>
+</web-query>

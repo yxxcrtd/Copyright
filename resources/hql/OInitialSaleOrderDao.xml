@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.OInitialSaleOrderDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>initialSaleOrderId, initialSaleOrderCode, initialSaleOrderCreateOn, initialSaleOrderCreateBy,initialSaleOrderUpdateOn,initialSaleOrderUpdateBy,initialSaleOrderSendRemark,initialSaleOrderBookingOn,initialSaleOrderBookingBy,initialSaleOrderTaxRate,initialSaleOrderRecheckFlg,initialSaleOrderStatus, corpTypeRelationship.corp.code,corpTypeRelationship.corp.fullName, product.id</properties>
+			<fields>a.initialSaleOrderId, a.initialSaleOrderCode, a.initialSaleOrderCreateOn, a.initialSaleOrderCreateBy,a.initialSaleOrderUpdateOn,a.initialSaleOrderUpdateBy,a.initialSaleOrderSendRemark,a.initialSaleOrderBookingOn,a.initialSaleOrderBookingBy,a.initialSaleOrderTaxRate,(select name from BDic z where z.id=a.initialSaleOrderRecheckFlg),(select name from BDic z where z.id=a.initialSaleOrderStatus), c.code, c.fullName, d.id</fields>
+			<hql>from OInitialSaleOrder a  left join a.corpTypeRelationship b left join b.corp c left join a.product d </hql>
+			<conditions>
+				<condition id="initialSaleOrderId" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderId" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderId = ?</hql>
+				</condition>
+				<condition id="initialSaleOrderRecheckFlg" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderRecheckFlg" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderRecheckFlg = ?</hql>
+				</condition>
+				<condition id="initialSaleOrderStatus" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderStatus" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderStatus = ?</hql>
+				</condition>
+				<condition id="initialSaleOrderCode" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderCode" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderCode like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OInitialSaleOrder</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>initialSaleOrderId, initialSaleOrderCode, initialSaleOrderCreateOn, initialSaleOrderCreateBy,initialSaleOrderUpdateOn,initialSaleOrderUpdateBy,initialSaleOrderSendRemark,initialSaleOrderBookingOn,initialSaleOrderBookingBy,initialSaleOrderTaxRate,initialSaleOrderRecheckFlg,initialSaleOrderStatus, corpTypeRelationship.corp.code,corpTypeRelationship.corp.fullName</properties>
+			<fields>a.initialSaleOrderId, a.initialSaleOrderCode, a.initialSaleOrderCreateOn, a.initialSaleOrderCreateBy,a.initialSaleOrderUpdateOn,a.initialSaleOrderUpdateBy,a.initialSaleOrderSendRemark,a.initialSaleOrderBookingOn,(select d.person.name from CrmPersonTypeRelationship d where d.id = a.initialSaleOrderBookingBy),a.initialSaleOrderTaxRate,(select name from BDic z where z.id=a.initialSaleOrderRecheckFlg),(select name from BDic z where z.id=a.initialSaleOrderStatus), c.code, c.fullName</fields>
+			<hql>from OInitialSaleOrder a  left join a.corpTypeRelationship b left join b.corp c</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderId = ?</hql>
+				</condition>
+				<condition id="initialSaleOrderCode" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderCode" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderCode like ?</hql>
+				</condition>
+				<condition id="initialSaleOrderRecheckFlg" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderRecheckFlg" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderRecheckFlg = ?</hql>
+				</condition>
+				<condition id="initialSaleOrderStatus" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderStatus" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderStatus = ?</hql>
+				</condition>
+            </conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OInitialSaleOrder</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>initialSaleOrderId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from OInitialSaleOrder a</hql>
+			<conditions>
+				<condition id="id" discribe="ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderId= ?</hql>
+				</condition>
+				<condition id="initialSaleOrderCode" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderCode" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderCode like ?</hql>
+				</condition>
+				<condition id="initialSaleOrderRecheckFlg" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderRecheckFlg" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderRecheckFlg = ?</hql>
+				</condition>
+				<condition id="initialSaleOrderStatus" discribe="ID">
+					<params type="param">
+						<param name="initialSaleOrderStatus" type="java.lang.String" />
+					</params>
+					<hql>a.initialSaleOrderStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.OInitialSaleOrder</className>
+		</query>
+	</dao>
+</web-query>

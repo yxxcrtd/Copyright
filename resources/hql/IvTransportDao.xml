@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvTransportDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>transportId, transportCode, transportSendOn, transportSendCount, transportSendBy</properties>
+			<fields>a.transportId, a.transportCode, a.transportSendOn, a.transportSendCount, a.transportSendBy</fields>
+			<hql>from IvTransport a</hql>
+			<conditions>
+				<condition id="transportId" discribe="运输登记单ID">
+					<params type="param">
+						<param name="transportId" type="java.lang.String" />
+					</params>
+					<hql>a.transportId = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvTransport</className>
+		</query>
+		
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>transportId, transportCode, transportSendOn, transportSendCount, transportSendBy</properties>
+			<fields>a.transportId, a.transportCode, a.transportSendOn, a.transportSendCount, (select e.person.name from CrmPersonTypeRelationship e where e.id = a.transportSendBy)</fields>
+			<hql>from IvTransport a</hql>
+			<conditions>
+				<condition id="transportId" discribe="运输登记单ID">
+					<params type="param">
+						<param name="transportId" type="java.lang.String" />
+					</params>
+					<hql>a.transportId = ?</hql>
+				</condition>
+				<condition id="transportCode" discribe="运输登记单编号">
+					<params type="param">
+						<param name="transportCode" type="java.lang.String" />
+					</params>
+					<hql>a.transportCode like ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvTransport</className>
+		</query>
+		
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>transportId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvTransport a</hql>
+			<conditions>
+				<condition id="transportId" discribe="运输登记单ID">
+					<params type="param">
+						<param name="transportId" type="java.lang.String" />
+					</params>
+					<hql>a.transportId = ?</hql>
+				</condition>
+				<condition id="transportCode" discribe="运输登记单编号">
+					<params type="param">
+						<param name="transportCode" type="java.lang.String" />
+					</params>
+					<hql>a.transportCode like ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvTransport</className>
+		</query>
+		
+	</dao>
+
+</web-query>
+

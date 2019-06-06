@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvStockDistributionDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockDistributionId, stockDistributionCode, stockDistributionCreateOn, stockDistributionCreateBy, stockDistributionUpdateOn, stockDistributionUpdateBy, stockDistributionPickBy, stockDistributionStatus</properties>
+			<fields>a.stockDistributionId, a.stockDistributionCode, a.stockDistributionCreateOn, a.stockDistributionCreateBy, a.stockDistributionUpdateOn, a.stockDistributionUpdateBy, (select e.person.name from CrmPersonTypeRelationship e where e.id = a.stockDistributionPickBy), (select name from BDic e where e.id = a.stockDistributionStatus)</fields>
+			<hql>from IvStockDistribution a</hql>
+			<conditions>
+				<condition id="stockDistributionId" discribe="配书单ID">
+					<params type="param">
+						<param name="stockDistributionId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionId = ?</hql>
+				</condition>
+				<condition id="stockDistributionCode" discribe="配书单号">
+					<params type="param">
+						<param name="stockDistributionCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionCode = ?</hql>
+				</condition>
+				<condition id="stockDistributionCreateOn" discribe="配书单创建日期">
+					<params type="param">
+						<param name="stockDistributionCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockDistributionCreateOn = ?</hql>
+				</condition>
+				<condition id="stockDistributionCreateBy" discribe="配书单创建人">
+					<params type="param">
+						<param name="stockDistributionCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionCreateBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionUpdateOn" discribe="配书单修改日期">
+					<params type="param">
+						<param name="stockDistributionUpdateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockDistributionUpdateOn = ?</hql>
+				</condition>
+				<condition id="stockDistributionUpdateBy" discribe="配书单修改人">
+					<params type="param">
+						<param name="stockDistributionUpdateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionUpdateBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionPickBy" discribe="配书单拣货人">
+					<params type="param">
+						<param name="stockDistributionPickBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionPickBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionStatus" discribe="配书单状态">
+					<params type="param">
+						<param name="stockDistributionStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockDistribution</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>stockDistributionId, stockDistributionCode, stockDistributionCreateOn, stockDistributionCreateBy, stockDistributionUpdateOn, stockDistributionUpdateBy, stockDistributionPickBy, stockDistributionStatus</properties>
+			<fields>a.stockDistributionId, a.stockDistributionCode, a.stockDistributionCreateOn, a.stockDistributionCreateBy, a.stockDistributionUpdateOn, a.stockDistributionUpdateBy, (select e.person.name from CrmPersonTypeRelationship e where e.id = a.stockDistributionPickBy), (select name from BDic e where e.id = a.stockDistributionStatus)</fields>
+			<hql>from IvStockDistribution a</hql>
+			<conditions>
+				<condition id="stockDistributionId" discribe="配书单ID">
+					<params type="param">
+						<param name="stockDistributionId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionId = ?</hql>
+				</condition>
+				<condition id="stockDistributionCode" discribe="配书单号">
+					<params type="param">
+						<param name="stockDistributionCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionCode like ?</hql>
+				</condition>
+				<condition id="stockDistributionCreateOn" discribe="配书单创建日期">
+					<params type="param">
+						<param name="stockDistributionCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockDistributionCreateOn = ?</hql>
+				</condition>
+				<condition id="stockDistributionCreateBy" discribe="配书单创建人">
+					<params type="param">
+						<param name="stockDistributionCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionCreateBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionUpdateOn" discribe="配书单修改日期">
+					<params type="param">
+						<param name="stockDistributionUpdateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockDistributionUpdateOn = ?</hql>
+				</condition>
+				<condition id="stockDistributionUpdateBy" discribe="配书单修改人">
+					<params type="param">
+						<param name="stockDistributionUpdateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionUpdateBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionPickBy" discribe="配书单拣货人">
+					<params type="param">
+						<param name="stockDistributionPickBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionPickBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionStatus" discribe="配书单状态">
+					<params type="param">
+						<param name="stockDistributionStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockDistribution</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockDistributionId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvStockDistribution a</hql>
+			<conditions>
+				<condition id="stockDistributionId" discribe="配书单ID">
+					<params type="param">
+						<param name="stockDistributionId" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionId = ?</hql>
+				</condition>
+				<condition id="stockDistributionCode" discribe="配书单号">
+					<params type="param">
+						<param name="stockDistributionCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionCode like ?</hql>
+				</condition>
+				<condition id="stockDistributionCreateOn" discribe="配书单创建日期">
+					<params type="param">
+						<param name="stockDistributionCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockDistributionCreateOn = ?</hql>
+				</condition>
+				<condition id="stockDistributionCreateBy" discribe="配书单创建人">
+					<params type="param">
+						<param name="stockDistributionCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionCreateBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionUpdateOn" discribe="配书单修改日期">
+					<params type="param">
+						<param name="stockDistributionUpdateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockDistributionUpdateOn = ?</hql>
+				</condition>
+				<condition id="stockDistributionUpdateBy" discribe="配书单修改人">
+					<params type="param">
+						<param name="stockDistributionUpdateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionUpdateBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionPickBy" discribe="配书单拣货人">
+					<params type="param">
+						<param name="stockDistributionPickBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionPickBy = ?</hql>
+				</condition>
+				<condition id="stockDistributionStatus" discribe="配书单状态">
+					<params type="param">
+						<param name="stockDistributionStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockDistributionStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockDistribution</className>
+		</query>
+	</dao>
+</web-query>

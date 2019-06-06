@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvFloorDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> shFloorId,shFloorCode,shFloorDesc,shFloorStatus,shFloorLoad,shFloorCapacity,shelf.shelfId,shelf.shelfDesc </properties>
+			<fields> a.shFloorId,a.shFloorCode,a.shFloorDesc,a.shFloorStatus,a.shFloorLoad,a.shFloorCapacity,b.shelfId,b.shelfDesc </fields>
+			<hql>from IvFloor a left join a.shelf b </hql>
+			<conditions>
+				<condition id="shFloorId" describe="shFloorId">
+					<params type="param">
+						<param name="shFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> a.shFloorId = ?</hql>
+				</condition>
+				<condition id="shFloorCode" describe="shFloorCode">
+					<params type="param">
+						<param name="shFloorCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorCode = ?</hql>
+				</condition>
+				<condition id="shFloorDesc" describe="shFloorDesc">
+					<params type="param">
+						<param name="shFloorDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorDesc = ?</hql>
+				</condition>
+				<condition id="shFloorStatus" describe="shFloorStatus">
+					<params type="param">
+						<param name="shFloorStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorStatus = ?</hql>
+				</condition>
+				<condition id="shFloorLoad" describe="shFloorLoad">
+					<params type="param">
+						<param name="shFloorLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shFloorLoad = ?</hql>
+				</condition>
+				<condition id="shFloorCapacity" describe="shFloorCapacity">
+					<params type="param">
+						<param name="shFloorCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shFloorCapacity = ?</hql>
+				</condition>
+				
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> b.shelfId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.shFloorId</order>
+			<className>cn.digitalpublishing.po.IvFloor</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>shFloorId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvFloor a left join a.shelf b </hql>
+			<conditions>
+				<condition id="shFloorId" describe="shFloorId">
+					<params type="param">
+						<param name="shFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> a.shFloorId = ?</hql>
+				</condition>
+				<condition id="shFloorCode" describe="shFloorCode">
+					<params type="param">
+						<param name="shFloorCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorCode like ?</hql>
+				</condition>
+				<condition id="shFloorDesc" describe="shFloorDesc">
+					<params type="param">
+						<param name="shFloorDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorDesc like ?</hql>
+				</condition>
+				<condition id="shFloorStatus" describe="shFloorStatus">
+					<params type="param">
+						<param name="shFloorStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorStatus = ?</hql>
+				</condition>
+				<condition id="shFloorLoad" describe="shFloorLoad">
+					<params type="param">
+						<param name="shFloorLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shFloorLoad = ?</hql>
+				</condition>
+				<condition id="shFloorCapacity" describe="shFloorCapacity">
+					<params type="param">
+						<param name="shFloorCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shFloorCapacity = ?</hql>
+				</condition>
+				
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> b.shelfId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.shFloorId</order>
+			<className>cn.digitalpublishing.po.IvFloor</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> shFloorId,shFloorCode,shFloorDesc,shFloorStatus,shFloorLoad,shFloorCapacity,shelf.shelfId,shelf.shelfDesc </properties>
+			<fields> a.shFloorId,a.shFloorCode,a.shFloorDesc, (select name from BDic z where z.id= a.shFloorStatus),a.shFloorLoad,a.shFloorCapacity,b.shelfId,b.shelfDesc </fields>
+			<hql>from IvFloor a left join a.shelf b </hql>
+			<conditions>
+				<condition id="shFloorId" describe="shFloorId">
+					<params type="param">
+						<param name="shFloorId" type="java.lang.String"></param>
+					</params>
+					<hql> a.shFloorId = ?</hql>
+				</condition>
+				<condition id="shFloorCode" describe="shFloorCode">
+					<params type="param">
+						<param name="shFloorCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorCode like ?</hql>
+				</condition>
+				<condition id="shFloorDesc" describe="shFloorDesc">
+					<params type="param">
+						<param name="shFloorDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorDesc like ?</hql>
+				</condition>
+				<condition id="shFloorStatus" describe="shFloorStatus">
+					<params type="param">
+						<param name="shFloorStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.shFloorStatus = ?</hql>
+				</condition>
+				<condition id="shFloorLoad" describe="shFloorLoad">
+					<params type="param">
+						<param name="shFloorLoad" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shFloorLoad = ?</hql>
+				</condition>
+				<condition id="shFloorCapacity" describe="shFloorCapacity">
+					<params type="param">
+						<param name="shFloorCapacity" type="java.lang.Double"></param>
+					</params>
+					<hql>a.shFloorCapacity = ?</hql>
+				</condition>
+				
+				<condition id="shelfId" describe="shelfId">
+					<params type="param">
+						<param name="shelfId" type="java.lang.String"></param>
+					</params>
+					<hql> b.shelfId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.shFloorId</order>
+			<className>cn.digitalpublishing.po.IvFloor</className>
+		</query>
+	</dao>
+</web-query>

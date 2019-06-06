@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.MPlatform" table="M_PLATFORM">
+		<id name="id" type="java.lang.String">
+			<column name="PLATFORM_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		
+		<property name="name" type="java.lang.String">
+			<column name="PLATFORM_NAME" length="512">
+				<comment>推送平台名称</comment>
+			</column>
+		</property>
+		<property name="app_key" type="java.lang.String">
+			<column name="PLATFORM_APPKEY" length="512">
+				<comment>app_key</comment>
+			</column>
+		</property>
+		<property name="app_secret" type="java.lang.String">
+			<column name="PLATFORM_APPSERCET" length="512">
+				<comment>app_secret</comment>
+			</column>
+		</property>
+		<property name="redirectUri" type="java.lang.String">
+			<column name="PLATFORM_REDIRECTURI" length="512">
+				<comment>redirectUri</comment>
+			</column>
+		</property>
+		<property name="authorizeCode" type="java.lang.String">
+			<column name="PLATFORM_AUTHORIZECODE" length="512">
+				<comment>authorizeCode</comment>
+			</column>
+		</property>
+		<property name="accessToken" type="java.lang.String">
+			<column name="PLATFORM_ACCESSTOKEN" length="512">
+				<comment>accessToken</comment>
+			</column>
+		</property>
+		<property name="expiresIn" type="java.lang.String">
+			<column name="PLATFORM_EXPIRESIN" length="512">
+				<comment>expiresIn</comment>
+			</column>
+		</property>
+		<property name="refreshToken" type="java.lang.String">
+			<column name="PLATFORM_REFRESHTOKEN" length="512">
+				<comment>refreshToken</comment>
+			</column>
+		</property>
+		<property name="openid" type="java.lang.String">
+			<column name="PLATFORM_OPENID" length="512">
+				<comment>openid</comment>
+			</column>
+		</property>
+		<property name="openkey" type="java.lang.String">
+			<column name="PLATFORM_OPENKEY" length="512">
+				<comment>openkey</comment>
+			</column>
+		</property>
+		
+		<set name="promotionSet" inverse="true">
+			<key>
+				<column name="PLATFORM_ID" length="32">
+					<comment>推送平台ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.MPromotion" />
+		</set>
+	</class>
+</hibernate-mapping>

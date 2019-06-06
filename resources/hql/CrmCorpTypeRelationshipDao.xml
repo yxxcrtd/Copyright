@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpTypeRelationshipDao">
+		<query>
+			<id>getTreeChildNodes</id>
+			<method>getTreeChildNodes</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, corp.shortName, childSize, parentRelationship.id</properties>
+			<fields>a.id, a.corp.shortName, (select count(*) from CrmCorpTypeRelationship e where e.parentRelationship.id = a.id and e.status = a.status), a.parentRelationship.id</fields>
+			<hql>from CrmCorpTypeRelationship a</hql>
+			<conditions>
+				<condition id="corpTypeId" describe="组织类型ID">
+					<params type="param">
+						<param name="corpTypeId" type="java.lang.String" />
+					</params>
+					<hql>a.corpType.id = ?</hql>
+				</condition>
+				<condition id="corpTypeCode" describe="组织类型编码">
+					<params type="param">
+						<param name="corpTypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.corpType.code = ?</hql>
+				</condition>
+				<condition id="parentId" describe="父节点">
+					<params type="param">
+						<param name="parentId" type="java.lang.String"></param>
+					</params>
+					<hql>(case when a.parentRelationship.id is null then 'root' else a.parentRelationship.id end) = ?</hql>
+				</condition>
+				<condition id="status" describe="公司类型角色关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpTypeRelationship</className>
+		</query>
+		
+		<query>
+			<id>getByCorpCode</id>
+			<method>getByCorpCode</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>a.id</fields>
+			<hql>from CrmCorpTypeRelationship a</hql>
+			<conditions>
+				<condition id="corpType_code" describe="公司编码">
+					<params type="param">
+						<param name="corp_code" type="java.lang.String" />
+					</params>
+					<hql>a.corp.code = ?</hql>
+				</condition>
+				<condition id="status" describe="公司类型角色关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpTypeRelationship</className>
+		</query>
+
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, corp.code, corp.shortName, corpType.code, corpType.name</properties>
+			<fields>a.id, c.code, c.shortName, b.code, b.name</fields>
+			<hql>from CrmCorpTypeRelationship a left join a.corpType b left join a.corp c </hql>
+			<conditions>
+				<condition id="corpTypeId" describe="组织类型ID">
+					<params type="param">
+						<param name="corpTypeId" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="corpTypeCode" describe="组织类型编码">
+					<params type="param">
+						<param name="corpTypeCode" type="java.lang.String" />
+					</params>
+					<hql>b.code = ?</hql>
+				</condition>
+				<condition id="corp_shortName" describe="公司简称">
+					<params type="param">
+						<param name="corp_shortName" type="java.lang.String" />
+					</params>
+					<hql>c.shortName like ?</hql>
+				</condition>
+				<condition id="status" describe="公司类型角色关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpTypeRelationship</className>
+		</query>
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpTypeRelationship a</hql>
+			<conditions>
+				<condition id="corpTypeId" describe="组织类型ID">
+					<params type="param">
+						<param name="corpTypeId" type="java.lang.String" />
+					</params>
+					<hql>a.corpType.id = ?</hql>
+				</condition>
+				<condition id="corpTypeCode" describe="组织类型编码">
+					<params type="param">
+						<param name="corpTypeCode" type="java.lang.String" />
+					</params>
+					<hql>a.corpType.code = ?</hql>
+				</condition>
+				<condition id="shortName" describe="公司简称">
+					<params type="param">
+						<param name="shortName" type="java.lang.String" />
+					</params>
+					<hql>a.corp.shortName like ?</hql>
+				</condition>
+				<condition id="status" describe="公司类型角色关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpTypeRelationship</className>
+		</query>
+		
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, corp.code, corp.fullName, corp.shortName, corp.introduction, corp.nameFirstChar</properties>
+			<fields>a.id, a.corp.code, a.corp.fullName, a.corp.shortName, a.corp.introduction, a.corp.nameFirstChar</fields>
+			<hql>from CrmCorpTypeRelationship a</hql>
+			<conditions>
+				<condition id="corpType_code" describe="组织类型编码">
+					<params type="param">
+						<param name="corpType_code" type="java.lang.String" />
+					</params>
+					<hql>a.corpType.code = ?</hql>
+				</condition>
+				<condition id="status" describe="公司类型角色关系状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpTypeRelationship</className>
+		</query>
+		
+
+	</dao>
+
+</web-query>

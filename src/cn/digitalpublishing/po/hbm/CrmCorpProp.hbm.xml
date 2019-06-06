@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmCorpProp" table="CRM_CORP_PROP">
+		<id name="id" type="java.lang.String">
+			<column name="CORP_PROP_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="CORP_PROP_CODE" length="32">
+				<comment>公司属性编号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="CORP_PROP_NAME" length="64">
+				<comment>公司属性名称</comment>
+			</column>
+		</property>
+		<property name="value" type="java.lang.String">
+			<column name="CORP_PROP_VAL" length="256">
+				<comment>公司属性取值</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.String">
+			<column name="CORP_PROP_ORDER">
+				<comment>公司属性排序</comment>
+			</column>
+		</property>
+		<property name="display" type="java.lang.String">
+			<column name="CORP_PROP_DISPLAY" length="32">
+				<comment>公司属性显示方式</comment>
+			</column>
+		</property>
+		<property name="must" type="java.lang.String">
+			<column name="CORP_PROP_MUST" length="32">
+				<comment>公司属性是否必填</comment>
+			</column>
+		</property>
+		<property name="source" type="java.lang.String">
+			<column name="CORP_PROP_SOURCE" length="1024">
+				<comment>公司属性来源</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="CORP_PROP_STATUS" length="32">
+				<comment>公司属性状态</comment>
+			</column>
+		</property>
+		<property name="createOn" type="java.util.Date">
+			<column name="CORP_PROP_CREATE_ON">
+				<comment>公司属性创建时间</comment>
+			</column>
+		</property>
+		<property name="createBy" type="java.lang.String">
+			<column name="CORP_PROP_CREATE_BY" length="32">
+				<comment>公司属性创建人</comment>
+			</column>
+		</property>
+		<property name="updateOn" type="java.util.Date">
+			<column name="CORP_PROP_UPDATE_ON">
+				<comment>公司属性修改时间</comment>
+			</column>
+		</property>
+		<property name="updateBy" type="java.lang.String">
+			<column name="CORP_PROP_UPDATE_BY" length="32">
+				<comment>公司属性修改人</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="CORP_PROP_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<many-to-one name="corpTypeProp" class="cn.digitalpublishing.po.CrmCtypeProp" fetch="select" lazy="false">
+			<column name="CTYPE_PROP_ID" length="32">
+				<comment>公司类型属性ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

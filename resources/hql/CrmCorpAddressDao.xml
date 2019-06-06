@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpAddressDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, type, country, roomNo, floor, building, street, block, town, city, post</properties>
+			<fields>a.id, a.type, a.country, a.roomNo, a.floor, a.building, a.street, a.block, a.town, a.city, a.post</fields>
+			<hql>from CrmCorpAddress a</hql>
+			<conditions>
+				<condition id="id" discribe="地址ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="地址分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="country" discribe="国家">
+					<params type="param">
+						<param name="country" type="java.lang.String" />
+					</params>
+					<hql>a.country = ?</hql>
+				</condition>
+				<condition id="roomNo" discribe="房间号">
+					<params type="param">
+						<param name="roomNo" type="java.lang.String" />
+					</params>
+					<hql>a.roomNo = ?</hql>
+				</condition>
+				<condition id="floor" discribe="楼层">
+					<params type="param">
+						<param name="floor" type="java.lang.Integer" />
+					</params>
+					<hql>a.floor = ?</hql>
+				</condition>
+				<condition id="building" discribe="建筑名">
+					<params type="param">
+						<param name="building" type="java.lang.String" />
+					</params>
+					<hql>a.building = ?</hql>
+				</condition>
+				<condition id="street" discribe="街道名">
+					<params type="param">
+						<param name="street" type="java.lang.String" />
+					</params>
+					<hql>a.street = ?</hql>
+				</condition>
+				<condition id="block" discribe="区">
+					<params type="param">
+						<param name="block" type="java.lang.String" />
+					</params>
+					<hql>a.block = ?</hql>
+				</condition>
+				<condition id="town" discribe="镇">
+					<params type="param">
+						<param name="town" type="java.lang.String" />
+					</params>
+					<hql>a.town = ?</hql>
+				</condition>
+				<condition id="city" discribe="城市">
+					<params type="param">
+						<param name="city" type="java.lang.String" />
+					</params>
+					<hql>a.city = ?</hql>
+				</condition>
+				<condition id="post" discribe="邮编">
+					<params type="param">
+						<param name="post" type="java.lang.String" />
+					</params>
+					<hql>a.post = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpAddress</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, type, country, roomNo, floor, building, street, block, town, city, post</properties>
+			<fields>a.id, a.type, a.country, a.roomNo, a.floor, a.building, a.street, a.block, a.town, a.city, a.post</fields>
+			<hql>from CrmCorpAddress a</hql>
+			<conditions>
+				<condition id="id" discribe="地址ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="地址分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="country" discribe="国家">
+					<params type="param">
+						<param name="country" type="java.lang.String" />
+					</params>
+					<hql>a.country = ?</hql>
+				</condition>
+				<condition id="roomNo" discribe="房间号">
+					<params type="param">
+						<param name="roomNo" type="java.lang.String" />
+					</params>
+					<hql>a.roomNo = ?</hql>
+				</condition>
+				<condition id="floor" discribe="楼层">
+					<params type="param">
+						<param name="floor" type="java.lang.Integer" />
+					</params>
+					<hql>a.floor = ?</hql>
+				</condition>
+				<condition id="building" discribe="建筑名">
+					<params type="param">
+						<param name="building" type="java.lang.String" />
+					</params>
+					<hql>a.building = ?</hql>
+				</condition>
+				<condition id="street" discribe="街道名">
+					<params type="param">
+						<param name="street" type="java.lang.String" />
+					</params>
+					<hql>a.street = ?</hql>
+				</condition>
+				<condition id="block" discribe="区">
+					<params type="param">
+						<param name="block" type="java.lang.String" />
+					</params>
+					<hql>a.block = ?</hql>
+				</condition>
+				<condition id="town" discribe="镇">
+					<params type="param">
+						<param name="town" type="java.lang.String" />
+					</params>
+					<hql>a.town = ?</hql>
+				</condition>
+				<condition id="city" discribe="城市">
+					<params type="param">
+						<param name="city" type="java.lang.String" />
+					</params>
+					<hql>a.city = ?</hql>
+				</condition>
+				<condition id="post" discribe="邮编">
+					<params type="param">
+						<param name="post" type="java.lang.String" />
+					</params>
+					<hql>a.post = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpAddress</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpAddress a</hql>
+			<conditions>
+				<condition id="id" discribe="地址ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="地址分类">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="country" discribe="国家">
+					<params type="param">
+						<param name="country" type="java.lang.String" />
+					</params>
+					<hql>a.country = ?</hql>
+				</condition>
+				<condition id="roomNo" discribe="房间号">
+					<params type="param">
+						<param name="roomNo" type="java.lang.String" />
+					</params>
+					<hql>a.roomNo = ?</hql>
+				</condition>
+				<condition id="floor" discribe="楼层">
+					<params type="param">
+						<param name="floor" type="java.lang.Integer" />
+					</params>
+					<hql>a.floor = ?</hql>
+				</condition>
+				<condition id="building" discribe="建筑名">
+					<params type="param">
+						<param name="building" type="java.lang.String" />
+					</params>
+					<hql>a.building = ?</hql>
+				</condition>
+				<condition id="street" discribe="街道名">
+					<params type="param">
+						<param name="street" type="java.lang.String" />
+					</params>
+					<hql>a.street = ?</hql>
+				</condition>
+				<condition id="block" discribe="区">
+					<params type="param">
+						<param name="block" type="java.lang.String" />
+					</params>
+					<hql>a.block = ?</hql>
+				</condition>
+				<condition id="town" discribe="镇">
+					<params type="param">
+						<param name="town" type="java.lang.String" />
+					</params>
+					<hql>a.town = ?</hql>
+				</condition>
+				<condition id="city" discribe="城市">
+					<params type="param">
+						<param name="city" type="java.lang.String" />
+					</params>
+					<hql>a.city = ?</hql>
+				</condition>
+				<condition id="post" discribe="邮编">
+					<params type="param">
+						<param name="post" type="java.lang.String" />
+					</params>
+					<hql>a.post = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpAddress</className>
+		</query>
+	</dao>
+</web-query>

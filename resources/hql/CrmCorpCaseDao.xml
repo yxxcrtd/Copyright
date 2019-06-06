@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpCaseDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, type, classify, level, status, mode</properties>
+			<fields>a.id, a.type, a.classify, a.level, a.status, a.mode</fields>
+			<hql>from CrmCorpCase a</hql>
+			<conditions>
+				<condition id="id" discribe="销售机会ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="销售机会类别">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="classify" discribe="销售机会分类">
+					<params type="param">
+						<param name="classify" type="java.lang.String" />
+					</params>
+					<hql>a.classify = ?</hql>
+				</condition>
+				<condition id="level" discribe="销售机会优先级">
+					<params type="param">
+						<param name="level" type="java.lang.String" />
+					</params>
+					<hql>a.level = ?</hql>
+				</condition>
+				<condition id="status" discribe="销售机会状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="mode" discribe="销售机会方式">
+					<params type="param">
+						<param name="mode" type="java.lang.String" />
+					</params>
+					<hql>a.mode = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpCase</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, type, classify, level, status, mode</properties>
+			<fields>a.id, a.type, a.classify, a.level, a.status, a.mode</fields>
+			<hql>from CrmCorpCase a</hql>
+			<conditions>
+				<condition id="id" discribe="销售机会ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="销售机会类别">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="classify" discribe="销售机会分类">
+					<params type="param">
+						<param name="classify" type="java.lang.String" />
+					</params>
+					<hql>a.classify = ?</hql>
+				</condition>
+				<condition id="level" discribe="销售机会优先级">
+					<params type="param">
+						<param name="level" type="java.lang.String" />
+					</params>
+					<hql>a.level = ?</hql>
+				</condition>
+				<condition id="status" discribe="销售机会状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="mode" discribe="销售机会方式">
+					<params type="param">
+						<param name="mode" type="java.lang.String" />
+					</params>
+					<hql>a.mode = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpCase</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpCase a</hql>
+			<conditions>
+				<condition id="id" discribe="销售机会ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="type" discribe="销售机会类别">
+					<params type="param">
+						<param name="type" type="java.lang.String" />
+					</params>
+					<hql>a.type = ?</hql>
+				</condition>
+				<condition id="classify" discribe="销售机会分类">
+					<params type="param">
+						<param name="classify" type="java.lang.String" />
+					</params>
+					<hql>a.classify = ?</hql>
+				</condition>
+				<condition id="level" discribe="销售机会优先级">
+					<params type="param">
+						<param name="level" type="java.lang.String" />
+					</params>
+					<hql>a.level = ?</hql>
+				</condition>
+				<condition id="status" discribe="销售机会状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="mode" discribe="销售机会方式">
+					<params type="param">
+						<param name="mode" type="java.lang.String" />
+					</params>
+					<hql>a.mode = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpCase</className>
+		</query>
+	</dao>
+</web-query>

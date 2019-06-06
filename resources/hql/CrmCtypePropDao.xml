@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCtypePropDao">
+	
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,code,order,must,display,internationCode,source,sourceType,personTypePropClassify.name</properties>
+			<fields>a.id,a.name,a.code,a.order,(select name from BDic e where e.id=a.must),(select name from BDic e where e.id=a.display),a.internationCode,a.source,a.sourceType,c.name</fields>
+			<hql>from CrmCtypeProp a left join a.corpType b left join a.corpTypePropClassify c</hql>
+			<conditions>
+				<condition id="id" discribe="人员类型属性ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="name" describe="人员类型属性名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="code" describe="人员类型属性编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like  ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id =  ?</hql>
+				</condition>
+				<condition id="cid" describe="人员类型属性分类ID">
+					<params type="param">
+						<param name="cid" type="java.lang.String" />
+					</params>
+					<hql>c.id =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCtypeProp</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,code,order,must,display,internationCode,source, sourceType</properties>
+			<fields>a.id,a.name,a.code,a.order,(select code from BDic e where e.id=a.must),(select code from BDic d where d.id = a.display),a.internationCode,a.source,a.sourceType</fields>
+			<hql>from CrmCtypeProp a left join a.corpType b left join a.corpTypePropClassify c</hql>
+			<conditions>
+				<condition id="code" describe="人员类型属性编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>c.code =  ?</hql>
+				</condition>
+				<condition id="status" describe="人员类型属性状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id =  ?</hql>
+				</condition>
+				<condition id="classifyId" describe="人员类型属性分类">
+					<params type="param">
+						<param name="classifyId" type="java.lang.String" />
+					</params>
+					<hql>c.id =  ?</hql>
+				</condition>
+				<condition id="order" describe="排序">
+					<params type="param">
+						<param name="order" type="java.lang.String" />
+					</params>
+					<hql>a.order =  ?</hql>
+				</condition>
+				<condition id="cid" describe="人员类型属性分类ID">
+					<params type="param">
+						<param name="cid" type="java.lang.String" />
+					</params>
+					<hql>c.id =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCtypeProp</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCtypeProp a left join a.corpType b left join a.corpTypePropClassify c</hql>
+			<conditions>
+				<condition id="id" discribe="人员类型属性分类ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="order" discribe="排序">
+					<params type="param">
+						<param name="order" type="java.lang.String" />
+					</params>
+					<hql>a.order = ?</hql>
+				</condition>
+				<condition id="name" describe="人员类型属性分类名称">
+					<params type="param">
+						<param name="name" type="java.lang.String" />
+					</params>
+					<hql>a.name like  ?</hql>
+				</condition>
+				<condition id="code" describe="人员类型属性分类编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code like  ?</hql>
+				</condition>
+				<condition id="status" describe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id =  ?</hql>
+				</condition>
+				<condition id="cid" describe="人员类型属性分类ID">
+					<params type="param">
+						<param name="cid" type="java.lang.String" />
+					</params>
+					<hql>c.id =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCtypeProp</className>
+		</query>
+		<query>
+			<id>getListForInsert</id>
+			<method>getListForInsert</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,name,code,order,must,display,internationCode,source,sourceType</properties>
+			<fields>a.id,a.name,a.code,a.order,a.must,a.display,a.internationCode,a.source, a.sourceType</fields>
+			<hql>from CrmCtypeProp a left join a.corpType b left join a.corpTypePropClassify c</hql>
+			<conditions>
+				<condition id="code" describe="人员类型属性编码">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>c.code =  ?</hql>
+				</condition>
+				<condition id="status" describe="人员类型属性状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="tid" describe="人员类型ID">
+					<params type="param">
+						<param name="tid" type="java.lang.String" />
+					</params>
+					<hql>b.id =  ?</hql>
+				</condition>
+				<condition id="classifyId" describe="人员类型属性分类">
+					<params type="param">
+						<param name="classifyId" type="java.lang.String" />
+					</params>
+					<hql>c.id =  ?</hql>
+				</condition>
+				<condition id="order" describe="排序">
+					<params type="param">
+						<param name="order" type="java.lang.String" />
+					</params>
+					<hql>a.order =  ?</hql>
+				</condition>
+				<condition id="cid" describe="人员类型属性分类ID">
+					<params type="param">
+						<param name="cid" type="java.lang.String" />
+					</params>
+					<hql>c.id =  ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCtypeProp</className>
+		</query>
+		
+	</dao>
+</web-query>

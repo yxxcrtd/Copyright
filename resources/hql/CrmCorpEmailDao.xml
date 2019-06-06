@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpEmailDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, defaultFlg, address</properties>
+			<fields>a.id, a.defaultFlg, a.address</fields>
+			<hql>from CrmCorpEmail a</hql>
+			<conditions>
+				<condition id="id" discribe="邮箱ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="defaultFlg" discribe="是否主邮箱">
+					<params type="param">
+						<param name="defaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.defaultFlg = ?</hql>
+				</condition>
+				<condition id="address" discribe="邮箱地址">
+					<params type="param">
+						<param name="address" type="java.lang.String" />
+					</params>
+					<hql>a.address = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpEmail</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id, defaultFlg, address</properties>
+			<fields>a.id, a.defaultFlg, a.address</fields>
+			<hql>from CrmCorpEmail a</hql>
+			<conditions>
+				<condition id="id" discribe="邮箱ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="defaultFlg" discribe="是否主邮箱">
+					<params type="param">
+						<param name="defaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.defaultFlg = ?</hql>
+				</condition>
+				<condition id="address" discribe="邮箱地址">
+					<params type="param">
+						<param name="address" type="java.lang.String" />
+					</params>
+					<hql>a.address = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpEmail</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from CrmCorpEmail a</hql>
+			<conditions>
+				<condition id="id" discribe="邮箱ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="defaultFlg" discribe="是否主邮箱">
+					<params type="param">
+						<param name="defaultFlg" type="java.lang.String" />
+					</params>
+					<hql>a.defaultFlg = ?</hql>
+				</condition>
+				<condition id="address" discribe="邮箱地址">
+					<params type="param">
+						<param name="address" type="java.lang.String" />
+					</params>
+					<hql>a.address = ?</hql>
+				</condition>
+				<condition id="crmCorpTypeRelationship_id" discribe="公司类型角色关系ID">
+					<params type="param">
+						<param name="crmCorpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.crmCorpTypeRelationship.id = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.CrmCorpEmail</className>
+		</query>
+	</dao>
+</web-query>

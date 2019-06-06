@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvStockInDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockInId, stockInCode, stockInCreateOn, stockInCreateBy, stockInSendCode, stockInSendOn, stockInSendRemark, stockInFixedPrice, stockInDiscountedPrice, stockInAverageDiscount, stockInTaxRate, stockInTotalPrice, stockInTotalCount, stockInStatus</properties>
+			<fields>a.stockInId, a.stockInCode, a.stockInCreateOn, a.stockInCreateBy, a.stockInSendCode, a.stockInSendOn, a.stockInSendRemark, a.stockInFixedPrice, a.stockInDiscountedPrice, a.stockInAverageDiscount, a.stockInTaxRate, a.stockInTotalPrice, a.stockInTotalCount, a.stockInStatus</fields>
+			<hql>from IvStockIn a</hql>
+			<conditions>
+				<condition id="stockInId" discribe="入库单ID">
+					<params type="param">
+						<param name="stockInId" type="java.lang.String" />
+					</params>
+					<hql>a.stockInId = ?</hql>
+				</condition>
+				<condition id="stockInCode" discribe="入库单号">
+					<params type="param">
+						<param name="stockInCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockInCode = ?</hql>
+				</condition>
+				<condition id="stockInCreateOn" discribe="入库单创建日期">
+					<params type="param">
+						<param name="stockInCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockInCreateOn = ?</hql>
+				</condition>
+				<condition id="stockInCreateBy" discribe="入库单创建人">
+					<params type="param">
+						<param name="stockInCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockInCreateBy = ?</hql>
+				</condition>
+				<condition id="stockInSendCode" discribe="入库单发货单号">
+					<params type="param">
+						<param name="stockInSendCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockInSendCode = ?</hql>
+				</condition>
+				<condition id="stockInSendOn" discribe="入库单到货日期">
+					<params type="param">
+						<param name="stockInSendOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockInSendOn = ?</hql>
+				</condition>
+				<condition id="stockInSendRemark" discribe="入库单进货备注">
+					<params type="param">
+						<param name="stockInSendRemark" type="java.lang.String" />
+					</params>
+					<hql>a.stockInSendRemark = ?</hql>
+				</condition>
+				<condition id="stockInFixedPrice" discribe="入库单总码洋">
+					<params type="param">
+						<param name="stockInFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockInDiscountedPrice" discribe="入库单总实洋">
+					<params type="param">
+						<param name="stockInDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockInAverageDiscount" discribe="入库单平均折扣">
+					<params type="param">
+						<param name="stockInAverageDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInAverageDiscount = ?</hql>
+				</condition>
+				<condition id="stockInTaxRate" discribe="入库单税率">
+					<params type="param">
+						<param name="stockInTaxRate" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInTaxRate = ?</hql>
+				</condition>
+				<condition id="stockInTotalPrice" discribe="入库单总应付款">
+					<params type="param">
+						<param name="stockInTotalPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInTotalPrice = ?</hql>
+				</condition>
+				<condition id="stockInTotalCount" discribe="入库单总数量">
+					<params type="param">
+						<param name="stockInTotalCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInTotalCount = ?</hql>
+				</condition>
+				<condition id="stockInStatus" discribe="入库单状态">
+					<params type="param">
+						<param name="stockInStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockInStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockIn</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>stockInId, stockInCode, stockInCreateOn, stockInSendCode, stockInSendOn, stockInSendRemark, stockInFixedPrice, stockInDiscountedPrice, stockInAverageDiscount, stockInTaxRate, stockInTotalPrice, stockInTotalCount, stockInStatus</properties>
+			<fields>a.stockInId, a.stockInCode, a.stockInCreateOn, a.stockInSendCode, a.stockInSendOn, a.stockInSendRemark, a.stockInFixedPrice, a.stockInDiscountedPrice, a.stockInAverageDiscount, a.stockInTaxRate, a.stockInTotalPrice, a.stockInTotalCount, (select name from BDic e where e.id = a.stockInStatus)</fields>
+			<hql> from IvStockIn a </hql>
+			<conditions>
+				<condition id="stockInId" discribe="入库单ID">
+					<params type="param">
+						<param name="stockInId" type="java.lang.String" />
+					</params>
+					<hql>a.stockInId = ?</hql>
+				</condition>
+				<condition id="stockInCode" discribe="入库单号">
+					<params type="param">
+						<param name="stockInCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockInCode like ?</hql>
+				</condition>
+				<condition id="stockInCreateOn" discribe="入库单创建日期">
+					<params type="param">
+						<param name="stockInCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockInCreateOn = ?</hql>
+				</condition>
+				<condition id="stockInCreateBy" discribe="入库单创建人">
+					<params type="param">
+						<param name="stockInCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockInCreateBy = ?</hql>
+				</condition>
+				<condition id="stockInSendCode" discribe="入库单发货单号">
+					<params type="param">
+						<param name="stockInSendCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockInSendCode like ?</hql>
+				</condition>
+				<condition id="stockInSendOn" discribe="入库单到货日期">
+					<params type="param">
+						<param name="stockInSendOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockInSendOn = ?</hql>
+				</condition>
+				<condition id="stockInSendRemark" discribe="入库单进货备注">
+					<params type="param">
+						<param name="stockInSendRemark" type="java.lang.String" />
+					</params>
+					<hql>a.stockInSendRemark = ?</hql>
+				</condition>
+				<condition id="stockInFixedPrice" discribe="入库单总码洋">
+					<params type="param">
+						<param name="stockInFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockInDiscountedPrice" discribe="入库单总实洋">
+					<params type="param">
+						<param name="stockInDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockInAverageDiscount" discribe="入库单平均折扣">
+					<params type="param">
+						<param name="stockInAverageDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInAverageDiscount = ?</hql>
+				</condition>
+				<condition id="stockInTaxRate" discribe="入库单税率">
+					<params type="param">
+						<param name="stockInTaxRate" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInTaxRate = ?</hql>
+				</condition>
+				<condition id="stockInTotalPrice" discribe="入库单总应付款">
+					<params type="param">
+						<param name="stockInTotalPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInTotalPrice = ?</hql>
+				</condition>
+				<condition id="stockInTotalCount" discribe="入库单总数量">
+					<params type="param">
+						<param name="stockInTotalCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInTotalCount = ?</hql>
+				</condition>
+				<condition id="stockInStatus" discribe="入库单状态">
+					<params type="param">
+						<param name="stockInStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockInStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order> order by a.stockInCreateOn desc </order>
+			<className>cn.digitalpublishing.po.IvStockIn</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockInId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvStockIn a</hql>
+			<conditions>
+				<condition id="stockInId" discribe="入库单ID">
+					<params type="param">
+						<param name="stockInId" type="java.lang.String" />
+					</params>
+					<hql>a.stockInId = ?</hql>
+				</condition>
+				<condition id="stockInCode" discribe="入库单号">
+					<params type="param">
+						<param name="stockInCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockInCode like ?</hql>
+				</condition>
+				<condition id="stockInCreateOn" discribe="入库单创建日期">
+					<params type="param">
+						<param name="stockInCreateOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockInCreateOn = ?</hql>
+				</condition>
+				<condition id="stockInCreateBy" discribe="入库单创建人">
+					<params type="param">
+						<param name="stockInCreateBy" type="java.lang.String" />
+					</params>
+					<hql>a.stockInCreateBy = ?</hql>
+				</condition>
+				<condition id="stockInSendCode" discribe="入库单发货单号">
+					<params type="param">
+						<param name="stockInSendCode" type="java.lang.String" />
+					</params>
+					<hql>a.stockInSendCode = ?</hql>
+				</condition>
+				<condition id="stockInSendOn" discribe="入库单到货日期">
+					<params type="param">
+						<param name="stockInSendOn" type="java.util.Date" />
+					</params>
+					<hql>a.stockInSendOn = ?</hql>
+				</condition>
+				<condition id="stockInSendRemark" discribe="入库单进货备注">
+					<params type="param">
+						<param name="stockInSendRemark" type="java.lang.String" />
+					</params>
+					<hql>a.stockInSendRemark = ?</hql>
+				</condition>
+				<condition id="stockInFixedPrice" discribe="入库单总码洋">
+					<params type="param">
+						<param name="stockInFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockInDiscountedPrice" discribe="入库单总实洋">
+					<params type="param">
+						<param name="stockInDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockInAverageDiscount" discribe="入库单平均折扣">
+					<params type="param">
+						<param name="stockInAverageDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInAverageDiscount = ?</hql>
+				</condition>
+				<condition id="stockInTaxRate" discribe="入库单税率">
+					<params type="param">
+						<param name="stockInTaxRate" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInTaxRate = ?</hql>
+				</condition>
+				<condition id="stockInTotalPrice" discribe="入库单总应付款">
+					<params type="param">
+						<param name="stockInTotalPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInTotalPrice = ?</hql>
+				</condition>
+				<condition id="stockInTotalCount" discribe="入库单总数量">
+					<params type="param">
+						<param name="stockInTotalCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInTotalCount = ?</hql>
+				</condition>
+				<condition id="stockInStatus" discribe="入库单状态">
+					<params type="param">
+						<param name="stockInStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockInStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockIn</className>
+		</query>
+	</dao>
+</web-query>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.IvLocation" table="IV_LOCATION">
+		<id name="locationId" type="java.lang.String">
+			<column name="LOCATION_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="locationCode" type="java.lang.String">
+			<column name="LOCATION_CODE" length="32">
+				<comment>货位编号</comment>
+			</column>
+		</property>
+		<property name="locationDesc" type="java.lang.String">
+			<column name="LOCATION_DESC" length="128">
+				<comment>货位描述</comment>
+			</column>
+		</property>
+		<property name="locationStatus" type="java.lang.String">
+			<column name="LOCATION_STATUS" length="32">
+				<comment>货位状态</comment>
+			</column>
+		</property>
+		<property name="locationLoad" type="java.math.BigDecimal">
+			<column name="LOCATION_LOAD" precision="10" scale="2">
+				<comment>货位承重</comment>
+			</column>
+		</property>
+		<property name="locationCapacity" type="java.math.BigDecimal">
+			<column name="LOCATION_CAPACITY" precision="10" scale="2">
+				<comment>货位容积</comment>
+			</column>
+		</property>
+		<property name="locationPack" type="java.lang.Integer">
+			<column name="LOCATION_PACK">
+				<comment>最大包数</comment>
+			</column>
+		</property>
+		<property name="locationLoose" type="java.lang.Integer">
+			<column name="LOCATION_LOOSE">
+				<comment>最大散数</comment>
+			</column>
+		</property>
+		<many-to-one name="regional" class="cn.digitalpublishing.po.IvRegional" fetch="select" lazy="false">
+			<column name="REGIONAL_ID" length="32">
+				<comment>区域ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="floor" class="cn.digitalpublishing.po.IvFloor" fetch="select" lazy="false">
+			<column name="SH_FLOOR_ID" length="32">
+				<comment>货架层ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="warehouse" class="cn.digitalpublishing.po.IvWarehouse" fetch="select" lazy="false">
+			<column name="WAREHOUSE_ID" length="32">
+				<comment>仓库ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="shelf" class="cn.digitalpublishing.po.IvShelf" fetch="select" lazy="false">
+			<column name="SHELF_ID" length="32">
+				<comment>货架ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="warehouseFloor" class="cn.digitalpublishing.po.IvWarehouseFloor" fetch="select" lazy="false">
+			<column name="WH_FLOOR_ID" length="32">
+				<comment>仓库层ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="warehouseRoom" class="cn.digitalpublishing.po.IvWarehouseRoom" fetch="select" lazy="false">
+			<column name="WH_ROOM_ID" length="32">
+				<comment>仓库房间ID</comment>
+			</column>
+		</many-to-one>
+		<set name="storingSet" inverse="true">
+			<key>
+				<column name="LOCATION_ID" length="32">
+					<comment>货位ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.IvStoring" />
+		</set>
+	</class>
+</hibernate-mapping>

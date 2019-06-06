@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.IvRegionalDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> areaId,areaCode,areaDesc,areaStatus,activityLevel,areaType.areaTypeId,areaType.areaTypeDesc </properties>
+			<fields> a.areaId,a.areaCode,a.areaDesc,(select name from BDic z where z.id=a.areaStatus),a.activityLevel,b.areaTypeId,b.areaTypeDesc </fields>
+			<hql>from IvRegional a left join a.areaType b </hql>
+			<conditions>
+				<condition id="areaId" describe="areaId">
+					<params type="param">
+						<param name="areaId" type="java.lang.String"></param>
+					</params>
+					<hql> a.areaId = ?</hql>
+				</condition>
+				<condition id="areaCode" describe="areaCode">
+					<params type="param">
+						<param name="areaCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaCode = ?</hql>
+				</condition>
+				<condition id="areaDesc" describe="areaDesc">
+					<params type="param">
+						<param name="areaDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaDesc = ?</hql>
+				</condition>
+				<condition id="areaStatus" describe="areaStatus">
+					<params type="param">
+						<param name="areaStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaStatus = ?</hql>
+				</condition>
+				<condition id="activityLevel" describe="activityLevel">
+					<params type="param">
+						<param name="activityLevel" type="java.lang.String"></param>
+					</params>
+					<hql>a.activityLevel = ?</hql>
+				</condition>
+				<condition id="areaTypeId" describe="areaTypeId">
+					<params type="param">
+						<param name="areaTypeId" type="java.lang.String"></param>
+					</params>
+					<hql> b.areaTypeId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.areaId</order>
+			<className>cn.digitalpublishing.po.IvRegional</className>
+		</query>
+		
+		 <query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>areaId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvRegional a left join a.areaType b </hql>
+			<conditions>
+				<condition id="areaId" describe="areaId">
+					<params type="param">
+						<param name="areaId" type="java.lang.String"></param>
+					</params>
+					<hql> a.areaId = ?</hql>
+				</condition>
+				<condition id="areaCode" describe="areaCode">
+					<params type="param">
+						<param name="areaCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaCode like ?</hql>
+				</condition>
+				<condition id="areaDesc" describe="areaDesc">
+					<params type="param">
+						<param name="areaDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaDesc like ?</hql>
+				</condition>
+				<condition id="areaStatus" describe="areaStatus">
+					<params type="param">
+						<param name="areaStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaStatus = ?</hql>
+				</condition>
+				<condition id="activityLevel" describe="activityLevel">
+					<params type="param">
+						<param name="activityLevel" type="java.lang.String"></param>
+					</params>
+					<hql>a.activityLevel like ?</hql>
+				</condition>
+				<condition id="areaTypeId" describe="areaTypeId">
+					<params type="param">
+						<param name="areaTypeId" type="java.lang.String"></param>
+					</params>
+					<hql> b.areaTypeId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.areaId</order>
+			<className>cn.digitalpublishing.po.IvRegional</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> areaId,areaCode,areaDesc,areaStatus,activityLevel,areaType.areaTypeId,areaType.areaTypeDesc </properties>
+			<fields> a.areaId,a.areaCode,a.areaDesc,(select name from BDic z where z.id=a.areaStatus),a.activityLevel,b.areaTypeId,b.areaTypeDesc </fields>
+			<hql>from IvRegional a left join a.areaType b </hql>
+			<conditions>
+				<condition id="areaId" describe="areaId">
+					<params type="param">
+						<param name="areaId" type="java.lang.String"></param>
+					</params>
+					<hql> a.areaId = ?</hql>
+				</condition>
+				<condition id="areaCode" describe="areaCode">
+					<params type="param">
+						<param name="areaCode" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaCode like ?</hql>
+				</condition>
+				<condition id="areaDesc" describe="areaDesc">
+					<params type="param">
+						<param name="areaDesc" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaDesc like ?</hql>
+				</condition>
+				<condition id="areaStatus" describe="areaStatus">
+					<params type="param">
+						<param name="areaStatus" type="java.lang.String"></param>
+					</params>
+					<hql>a.areaStatus = ?</hql>
+				</condition>
+				<condition id="activityLevel" describe="activityLevel">
+					<params type="param">
+						<param name="activityLevel" type="java.lang.String"></param>
+					</params>
+					<hql>a.activityLevel like ?</hql>
+				</condition>
+				<condition id="areaTypeId" describe="areaTypeId">
+					<params type="param">
+						<param name="areaTypeId" type="java.lang.String"></param>
+					</params>
+					<hql> b.areaTypeId = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>order by a.areaId</order>
+			<className>cn.digitalpublishing.po.IvRegional</className>
+		</query>
+	</dao>
+</web-query>

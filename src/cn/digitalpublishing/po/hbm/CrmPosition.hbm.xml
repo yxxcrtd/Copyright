@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmPosition" table="CRM_POSITION">
+		<id name="id" type="java.lang.String">
+			<column name="POSITION_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="POSITION_CODE" length="32">
+				<comment>岗位编号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="POSITION_NAME" length="256">
+				<comment>岗位名称</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="POSITION_STATUS" length="32">
+				<comment>岗位状态</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="personPositionRelationshipSet" inverse="true">
+			<key>
+				<column name="POSITION_ID" length="32">
+					<comment>岗位ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonPositionRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.ProductOrder" table="P_PRODUCT_ORDER">
+		<id name="id" type="java.lang.String">
+			<column name="P_ORDER_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="P_ORDER_CODE" length="64">
+				<comment>订单号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="P_ORDER_NAME" length="64">
+				<comment>产品名</comment>
+			</column>
+		</property>
+		<property name="isbn" type="java.lang.String">
+			<column name="P_ORDER_ISBN" length="32">
+				<comment>ISBN</comment>
+			</column>
+		</property>
+		<property name="listPrice" type="java.math.BigDecimal">
+			<column name="P_ORDER_LISTPRICE" precision="10" scale="2">
+				<comment>原价</comment>
+			</column>
+		</property>
+		<property name="salePrice" type="java.math.BigDecimal">
+			<column name="P_ORDER_SALEPRICE" precision="10" scale="2">
+				<comment>销售价格</comment>
+			</column>
+		</property>
+		<property name="quantity" type="java.math.BigDecimal">
+			<column name="P_ORDER_QUANTITY" precision="10" scale="2">
+				<comment>数量</comment>
+			</column>
+		</property>
+		<property name="discount" type="java.math.BigDecimal">
+			<column name="P_ORDER_DISCOUNT" precision="10" scale="2">
+				<comment>折扣</comment>
+			</column>
+		</property>
+		<property name="tradeDate" type="java.util.Date">
+			<column name="P_ORDER_TRADEDATE">
+				<comment>交易日期</comment>
+			</column>
+		</property>
+	</class>
+</hibernate-mapping>

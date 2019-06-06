@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.CrmPersonType" table="CRM_PERSON_TYPE">
+		<id name="id" type="java.lang.String">
+			<column name="PE_TYPE_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="code" type="java.lang.String">
+			<column name="PE_TYPE_CODE" length="32">
+				<comment>人员类型编号</comment>
+			</column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="PE_TYPE_NAME" length="256">
+				<comment>人员类型名称</comment>
+			</column>
+		</property>
+		<property name="order" type="java.lang.Integer">
+			<column name="PE_TYPE_ORDER">
+				<comment>人员类型排序</comment>
+			</column>
+		</property>
+		<property name="status" type="java.lang.String">
+			<column name="PE_TYPE_STATUS" length="32">
+				<comment>人员类型状态</comment>
+			</column>
+		</property>
+		<property name="internationCode" type="java.lang.String">
+			<column name="PE_TYPE_INT_CODE" length="32">
+				<comment>国际化参数</comment>
+			</column>
+		</property>
+		<set name="personTypePropClassifySet" inverse="true">
+			<key>
+				<column name="PE_TYPE_ID" length="32">
+					<comment>人员类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPeTpClassify" />
+		</set>
+		<set name="personTypePropSet" inverse="true">
+			<key>
+				<column name="PE_TYPE_ID" length="32">
+					<comment>人员类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPeTypeProp" />
+		</set>
+		<set name="personTypeRelationshipSet" inverse="true">
+			<key>
+				<column name="PE_TYPE_ID" length="32">
+					<comment>人员类型ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.CrmPersonTypeRelationship" />
+		</set>
+	</class>
+</hibernate-mapping>

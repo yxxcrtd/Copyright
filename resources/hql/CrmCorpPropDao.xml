@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.CrmCorpPropDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>id, code, name, value, order, display, must, source, status, internationCode</properties>
+			<fields>a.id, a.code, a.name, a.value, a.order, (select code from BDic e where e.id = a.display), (select code from BDic e where e.id = a.must), a.source, a.status, a.internationCode</fields>
+			<hql>from CrmCorpProp a </hql>
+			<conditions>
+			
+				<condition id="corpTypeRelationship_id" describe="公司和公司类型中间表ID">
+					<params type="param">
+						<param name="corpTypeRelationship_id" type="java.lang.String" />
+					</params>
+					<hql>a.corpTypeRelationship.id = ?</hql>
+				</condition>
+				
+				<condition id="corpTypePropClassify_id" describe="公司类型属性分组ID">
+					<params type="param">
+						<param name="corpTypePropClassify_id" type="java.lang.String" />
+					</params>
+					<hql>a.corpTypeProp.corpTypePropClassify.id = ?</hql>
+				</condition>
+
+			</conditions>
+			<group></group>
+			<order> order by a.order</order>
+			<className>cn.digitalpublishing.po.CrmCorpProp</className>
+		</query>
+
+	</dao>
+</web-query>

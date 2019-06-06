@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<!-- 传入参数xml文件格式如下: <?xml version="1.0" encoding="UTF-8"?>" <web-query> 
+		<queryparm> <ccsno>%</ccsno> <shipname>%</shipname> <stjobno>%</stjobno> 
+		<builder>%</builder> <yardno>%</yardno> <projectid>%</projectid> </queryparm> 
+		</web-query> -->
+	<!-- 主界面管理查询模块 -->
+	<dao id="cn.digitalpublishing.dao.MPromotionDao">
+
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> id,date,platform.id,platform.name,template.id,template.name </properties>
+			<fields> a.id,a.date,b.id,b.name,c.id,c.name </fields>
+			<hql> from MPromotion a left join a.platform b left join a.template c </hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+				<condition id="date" describe="date">
+					<params type="param">
+						<param name="date" type="java.util.Date"></param>
+					</params>
+					<hql> a.date = ? </hql>
+				</condition>
+				<condition id="b.id" describe="b.id">
+					<params type="param">
+						<param name="b.id" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+				<condition id="c.id" describe="c.id">
+					<params type="param">
+						<param name="c.id" type="java.lang.String"></param>
+					</params>
+					<hql> c.id = ?  </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.MPromotion</className>
+		</query>
+
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from MPromotion a </hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+				<condition id="date" describe="date">
+					<params type="param">
+						<param name="date" type="java.util.Date"></param>
+					</params>
+					<hql> a.date = ? </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.MPromotion</className>
+		</query>
+
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties> id,date,platform.id,platform.name,template.id,template.name </properties>
+			<fields> a.id,a.date,b.id,b.name,c.id,c.name </fields>
+			<hql> from MPromotion a left join a.platform b left join a.template c </hql>
+			<conditions>
+				<condition id="id" describe="id">
+					<params type="param">
+						<param name="id" type="java.lang.String"></param>
+					</params>
+					<hql> a.id = ? </hql>
+				</condition>
+				<condition id="date" describe="date">
+					<params type="param">
+						<param name="date" type="java.util.Date"></param>
+					</params>
+					<hql> a.date = ? </hql>
+				</condition>
+				<condition id="b.id" describe="b.id">
+					<params type="param">
+						<param name="b.id" type="java.lang.String"></param>
+					</params>
+					<hql> b.id = ? </hql>
+				</condition>
+				<condition id="c.id" describe="c.id">
+					<params type="param">
+						<param name="c.id" type="java.lang.String"></param>
+					</params>
+					<hql> c.id = ?  </hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order>
+			</order>
+			<className>cn.digitalpublishing.po.MPromotion</className>
+		</query>
+</dao>
+</web-query>

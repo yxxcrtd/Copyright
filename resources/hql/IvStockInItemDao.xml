@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvStockInItemDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockInItemId, stockInItemIsbn, stockInItemTitle, stockInItemPrice, stockInItemDiscount, stockInItemFixedPrice, stockInItemDiscountedPrice, stockInItemPackCount, stockInItemStatusValue, stockInItemStatus, product.id, stockInItemPlanCount, stockInItemRealCount, realPutInStockCount, realAssignedCount</properties>
+			<fields>a.stockInItemId, a.stockInItemIsbn, a.stockInItemTitle, a.stockInItemPrice, a.stockInItemDiscount, a.stockInItemFixedPrice, a.stockInItemDiscountedPrice, a.stockInItemPackCount, a.stockInItemStatus, (select name from BDic e where e.id = a.stockInItemStatus), a.product.id, a.stockInItemPlanCount, a.stockInItemRealCount, (select cast(sum(e.rackingItemCount) as int) from IvRackingItem e where e.stockInItem.stockInItemId = a.stockInItemId and e.rackingItemStatus = '402880be47b9c2e10147b9c2e1d60004'), (select cast(sum(e.rackingItemCount) as int) from IvRackingItem e where e.stockInItem.stockInItemId = a.stockInItemId and e.rackingItemStatus = '402880be47b9c2e10147b9c2e1d60002')</fields>
+			<hql>from IvStockInItem a</hql>
+			<conditions>
+				<condition id="stockInItemId" discribe="入库单明细ID">
+					<params type="param">
+						<param name="stockInItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemId = ?</hql>
+				</condition>
+				<condition id="stockInItemIsbn" discribe="入库单明细ISBN">
+					<params type="param">
+						<param name="stockInItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemIsbn = ?</hql>
+				</condition>
+				<condition id="stockInItemTitle" discribe="入库单明细书名">
+					<params type="param">
+						<param name="stockInItemTitle" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemTitle = ?</hql>
+				</condition>
+				<condition id="stockInItemPrice" discribe="入库单明细价格">
+					<params type="param">
+						<param name="stockInItemPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemDiscount" discribe="入库单明细折扣">
+					<params type="param">
+						<param name="stockInItemDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemDiscount = ?</hql>
+				</condition>
+				<condition id="stockInItemFixedPrice" discribe="入库单明细码洋">
+					<params type="param">
+						<param name="stockInItemFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemDiscountedPrice" discribe="入库单明细实洋">
+					<params type="param">
+						<param name="stockInItemDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemPackCount" discribe="入库单明细包数量">
+					<params type="param">
+						<param name="stockInItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockInItemStatus" discribe="入库单明细状态">
+					<params type="param">
+						<param name="stockInItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemStatus = ?</hql>
+				</condition>
+				<condition id="stockIn_stockInId" discribe="入库单ID">
+					<params type="param">
+						<param name="stockIn_stockInId" type="java.lang.String" />
+					</params>
+					<hql>a.stockIn.stockInId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockInItem</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>stockInItemId, stockInItemIsbn, stockInItemTitle, stockInItemPrice, stockInItemDiscount, stockInItemCount, stockInItemFixedPrice, stockInItemDiscountedPrice, stockInItemPackCount, stockInItemStatus</properties>
+			<fields>a.stockInItemId, a.stockInItemIsbn, a.stockInItemTitle, a.stockInItemPrice, a.stockInItemDiscount, a.stockInItemCount, a.stockInItemFixedPrice, a.stockInItemDiscountedPrice, a.stockInItemPackCount, a.stockInItemStatus</fields>
+			<hql>from IvStockInItem a</hql>
+			<conditions>
+				<condition id="stockInItemId" discribe="入库单明细ID">
+					<params type="param">
+						<param name="stockInItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemId = ?</hql>
+				</condition>
+				<condition id="stockInItemIsbn" discribe="入库单明细ISBN">
+					<params type="param">
+						<param name="stockInItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemIsbn = ?</hql>
+				</condition>
+				<condition id="stockInItemTitle" discribe="入库单明细书名">
+					<params type="param">
+						<param name="stockInItemTitle" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemTitle = ?</hql>
+				</condition>
+				<condition id="stockInItemPrice" discribe="入库单明细价格">
+					<params type="param">
+						<param name="stockInItemPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemDiscount" discribe="入库单明细折扣">
+					<params type="param">
+						<param name="stockInItemDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemDiscount = ?</hql>
+				</condition>
+				<condition id="stockInItemCount" discribe="入库单明细数量">
+					<params type="param">
+						<param name="stockInItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemCount = ?</hql>
+				</condition>
+				<condition id="stockInItemFixedPrice" discribe="入库单明细码洋">
+					<params type="param">
+						<param name="stockInItemFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemDiscountedPrice" discribe="入库单明细实洋">
+					<params type="param">
+						<param name="stockInItemDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemPackCount" discribe="入库单明细包数量">
+					<params type="param">
+						<param name="stockInItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockInItemStatus" discribe="入库单明细状态">
+					<params type="param">
+						<param name="stockInItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockInItem</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>stockInItemId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvStockInItem a</hql>
+			<conditions>
+				<condition id="stockInItemId" discribe="入库单明细ID">
+					<params type="param">
+						<param name="stockInItemId" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemId = ?</hql>
+				</condition>
+				<condition id="stockInItemIsbn" discribe="入库单明细ISBN">
+					<params type="param">
+						<param name="stockInItemIsbn" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemIsbn = ?</hql>
+				</condition>
+				<condition id="stockInItemTitle" discribe="入库单明细书名">
+					<params type="param">
+						<param name="stockInItemTitle" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemTitle = ?</hql>
+				</condition>
+				<condition id="stockInItemPrice" discribe="入库单明细价格">
+					<params type="param">
+						<param name="stockInItemPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemDiscount" discribe="入库单明细折扣">
+					<params type="param">
+						<param name="stockInItemDiscount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemDiscount = ?</hql>
+				</condition>
+				<condition id="stockInItemCount" discribe="入库单明细数量">
+					<params type="param">
+						<param name="stockInItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemCount = ?</hql>
+				</condition>
+				<condition id="stockInItemFixedPrice" discribe="入库单明细码洋">
+					<params type="param">
+						<param name="stockInItemFixedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemFixedPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemDiscountedPrice" discribe="入库单明细实洋">
+					<params type="param">
+						<param name="stockInItemDiscountedPrice" type="java.math.BigDecimal" />
+					</params>
+					<hql>a.stockInItemDiscountedPrice = ?</hql>
+				</condition>
+				<condition id="stockInItemPackCount" discribe="入库单明细包数量">
+					<params type="param">
+						<param name="stockInItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.stockInItemPackCount = ?</hql>
+				</condition>
+				<condition id="stockInItemStatus" discribe="入库单明细状态">
+					<params type="param">
+						<param name="stockInItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.stockInItemStatus = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvStockInItem</className>
+		</query>
+	</dao>
+</web-query>

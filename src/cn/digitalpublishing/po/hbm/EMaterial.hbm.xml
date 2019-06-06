@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.EMaterial" table="E_MATERIAL">
+		<id name="materialId" type="java.lang.String">
+			<column name="E_MATERIAL_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="materialName" type="java.lang.String">
+			<column name="E_MATERIAL_NAME" length="256">
+				<comment>材料名称</comment>
+			</column>
+		</property>
+		<property name="materialCode" type="java.lang.String">
+			<column name="E_MATERIAL_CODE" length="32">
+				<comment>材料编号</comment>
+			</column>
+		</property>
+		<property name="materialSpec" type="java.lang.String">
+			<column name="E_MATERIAL_SPEC" length="32">
+				<comment>材料规格</comment>
+			</column>
+		</property>
+		<property name="materialGrams" type="java.lang.Integer">
+			<column name="E_MATERIAL_GRAMS">
+				<comment>材料克重</comment>
+			</column>
+		</property>
+		<property name="materialUnit" type="java.lang.String">
+			<column name="E_MATERIAL_UNIT" length="32">
+				<comment>材料单位</comment>
+			</column>
+		</property>
+		<property name="materialPrice" type="java.math.BigDecimal">
+			<column name="E_MATERIAL_PRICE" precision="10" scale="2">
+				<comment>材料单价</comment>
+			</column>
+		</property>
+		<property name="materialStock" type="java.lang.String">
+			<column name="E_MATERIAL_STOCK" length="256">
+				<comment>材料库区</comment>
+			</column>
+		</property>
+		<property name="materialStockCount" type="java.math.BigDecimal">
+			<column name="E_MATERIAL_STOCK_COUNT" precision="10" scale="2">
+				<comment>材料库存</comment>
+			</column>
+		</property>
+		<many-to-one name="crmCorpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_RELATION_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+		<set name="productMaterialPrintSet" inverse="true">
+			<key>
+				<column name="E_MATERIAL_ID" length="32">
+					<comment>材料ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProductMaterialPrint" />
+		</set>
+	</class>
+</hibernate-mapping>

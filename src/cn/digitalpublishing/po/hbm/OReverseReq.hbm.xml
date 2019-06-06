@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.OReverseReq" table="O_REVERSE_REQ">
+		<id name="reverseReqId" type="java.lang.String">
+			<column name="O_REVERSE_REQ_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="reverseReqCode" type="java.lang.String">
+			<column name="O_REVERSE_REQ_CODE" length="32">
+				<comment>冲账申请单号</comment>
+			</column>
+		</property>
+		<property name="reverseReqCreateBy" type="java.lang.String">
+			<column name="O_REVERSE_REQ_CREATE_BY" length="32">
+				<comment>冲账申请单创建人</comment>
+			</column>
+		</property>
+		<property name="reverseReqCreateOn" type="java.util.Date">
+			<column name="O_REVERSE_REQ_CREATE_ON">
+				<comment>冲账申请单创建日期</comment>
+			</column>
+		</property>
+		<property name="reverseReqAmount" type="java.math.BigDecimal">
+			<column name="O_REVERSE_REQ_AMOUNT" precision="10" scale="2">
+				<comment>冲账申请单金额</comment>
+			</column>
+		</property>
+		<property name="reverseReqStatus" type="java.lang.String">
+			<column name="O_REVERSE_REQ_STATUS" length="32">
+				<comment>冲账申请单状态</comment>
+			</column>
+		</property>
+		<many-to-one name="corpTypeRelationship" class="cn.digitalpublishing.po.CrmCorpTypeRelationship" fetch="select" lazy="false">
+			<column name="CRM_CORP_TYPE_ID" length="32">
+				<comment>公司类型角色关系ID</comment>
+			</column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

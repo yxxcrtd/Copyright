@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.IvRackingItemDao">
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="sort" type="java.lang.String"></param>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rackingItemId, rackingItemIndicateCode, rackingItemActualCode, rackingItemCount, rackingItemPackCount, rackingItemSubjectCode, rackingItemStatus, product.id, product.title, product.isbn, stockInItem.stockInItemId</properties>
+			<fields>a.rackingItemId, a.rackingItemIndicateCode, a.rackingItemActualCode, a.rackingItemCount, a.rackingItemPackCount, a.rackingItemSubjectCode, (select name from BDic e where e.id = a.rackingItemStatus), a.product.id, a.product.title, a.product.isbn, a.stockInItem.stockInItemId</fields>
+			<hql>from IvRackingItem a</hql>
+			<conditions>
+				<condition id="rackingItemId" discribe="上架指示单明细ID">
+					<params type="param">
+						<param name="rackingItemId" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemId = ?</hql>
+				</condition>
+				<condition id="rackingItemIndicateCode" discribe="上架指示单明细指示货位号">
+					<params type="param">
+						<param name="rackingItemIndicateCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemIndicateCode = ?</hql>
+				</condition>
+				<condition id="rackingItemActualCode" discribe="上架指示单明细实际货位号">
+					<params type="param">
+						<param name="rackingItemActualCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemActualCode = ?</hql>
+				</condition>
+				<condition id="rackingItemCount" discribe="上架指示单明细数量">
+					<params type="param">
+						<param name="rackingItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.rackingItemCount = ?</hql>
+				</condition>
+				<condition id="rackingItemPackCount" discribe="上架指示单明细包数量">
+					<params type="param">
+						<param name="rackingItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.rackingItemPackCount = ?</hql>
+				</condition>
+				<condition id="rackingItemSubjectCode" discribe="上架指示单明细分类法号">
+					<params type="param">
+						<param name="rackingItemSubjectCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemSubjectCode = ?</hql>
+				</condition>
+				<condition id="rackingItemStatus" discribe="上架指示单明细状态">
+					<params type="param">
+						<param name="rackingItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemStatus = ?</hql>
+				</condition>
+				
+				<condition id="racking_rackingId" discribe="上架指示单ID">
+					<params type="param">
+						<param name="racking_rackingId" type="java.lang.String" />
+					</params>
+					<hql>a.racking.rackingId = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvRackingItem</className>
+		</query>
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>rackingItemId, rackingItemIndicateCode, rackingItemActualCode, rackingItemCount, rackingItemPackCount, rackingItemSubjectCode, rackingItemStatus, product.title, product.isbn</properties>
+			<fields>a.rackingItemId, a.rackingItemIndicateCode, a.rackingItemActualCode, a.rackingItemCount, a.rackingItemPackCount, a.rackingItemSubjectCode, (select name from BDic e where e.id = a.rackingItemStatus), a.product.title, a.product.isbn</fields>
+			<hql>from IvRackingItem a</hql>
+			<conditions>
+				<condition id="rackingItemId" discribe="上架指示单明细ID">
+					<params type="param">
+						<param name="rackingItemId" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemId = ?</hql>
+				</condition>
+				
+				<condition id="rackingItemIndicateCode" discribe="上架指示单明细指示货位号">
+					<params type="param">
+						<param name="rackingItemIndicateCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemIndicateCode like ?</hql>
+				</condition>
+				<condition id="rackingItemActualCode" discribe="上架指示单明细实际货位号">
+					<params type="param">
+						<param name="rackingItemActualCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemActualCode = ?</hql>
+				</condition>
+				<condition id="rackingItemCount" discribe="上架指示单明细数量">
+					<params type="param">
+						<param name="rackingItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.rackingItemCount = ?</hql>
+				</condition>
+				<condition id="rackingItemPackCount" discribe="上架指示单明细包数量">
+					<params type="param">
+						<param name="rackingItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.rackingItemPackCount = ?</hql>
+				</condition>
+				<condition id="rackingItemSubjectCode" discribe="上架指示单明细分类法号">
+					<params type="param">
+						<param name="rackingItemSubjectCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemSubjectCode = ?</hql>
+				</condition>
+				<condition id="rackingItemStatus" discribe="上架指示单明细状态">
+					<params type="param">
+						<param name="rackingItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemStatus = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order> order by rackingItemIndicateCode</order>
+			<className>cn.digitalpublishing.po.IvRackingItem</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+			</params>
+			<properties>rackingItemId</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql>from IvRackingItem a</hql>
+			<conditions>
+				<condition id="rackingItemId" discribe="上架指示单明细ID">
+					<params type="param">
+						<param name="rackingItemId" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemId = ?</hql>
+				</condition>
+				
+				<condition id="rackingItemIndicateCode" discribe="上架指示单明细指示货位号">
+					<params type="param">
+						<param name="rackingItemIndicateCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemIndicateCode like ?</hql>
+				</condition>
+				<condition id="rackingItemActualCode" discribe="上架指示单明细实际货位号">
+					<params type="param">
+						<param name="rackingItemActualCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemActualCode = ?</hql>
+				</condition>
+				<condition id="rackingItemCount" discribe="上架指示单明细数量">
+					<params type="param">
+						<param name="rackingItemCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.rackingItemCount = ?</hql>
+				</condition>
+				<condition id="rackingItemPackCount" discribe="上架指示单明细包数量">
+					<params type="param">
+						<param name="rackingItemPackCount" type="java.lang.Integer" />
+					</params>
+					<hql>a.rackingItemPackCount = ?</hql>
+				</condition>
+				<condition id="rackingItemSubjectCode" discribe="上架指示单明细分类法号">
+					<params type="param">
+						<param name="rackingItemSubjectCode" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemSubjectCode = ?</hql>
+				</condition>
+				<condition id="rackingItemStatus" discribe="上架指示单明细状态">
+					<params type="param">
+						<param name="rackingItemStatus" type="java.lang.String" />
+					</params>
+					<hql>a.rackingItemStatus = ?</hql>
+				</condition>
+				
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.IvRackingItem</className>
+		</query>
+	</dao>
+</web-query>

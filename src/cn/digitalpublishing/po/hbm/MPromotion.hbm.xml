@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.digitalpublishing.po.MPromotion" table="M_PROMOTION">
+		<id name="id" type="java.lang.String">
+			<column name="PROMOTION_ID" length="32" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="date" type="java.util.Date">
+			<column name="PROMOTION_DATE">
+				<comment>推送信息日期</comment>
+			</column>
+		</property>
+		<many-to-one name="platform" class="cn.digitalpublishing.po.MPlatform" fetch="select" lazy="false">
+			<column name="PLATFORM_ID" length="32">
+				<comment>推送平台ID</comment>
+			</column>
+		</many-to-one>
+		<many-to-one name="template" class="cn.digitalpublishing.po.MTemplate" fetch="select" lazy="false">
+			<column name="TEMPLATE_ID" length="32">
+				<comment>模板ID</comment>
+			</column>
+		</many-to-one>
+		<set name="productSet" inverse="true">
+			<key>
+				<column name="PROMOTION_ID" length="32">
+					<comment>推送信息ID</comment>
+				</column>
+			</key>
+			<one-to-many class="cn.digitalpublishing.po.PProduct" />
+		</set>
+	</class>
+</hibernate-mapping>

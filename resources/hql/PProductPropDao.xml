@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-query>
+	<dao id="cn.digitalpublishing.dao.PProductPropDao">
+		<query>
+			<id>getPagingList</id>
+			<method>getPagingList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,value,order,must,status,display,internationCode,defaultValue</properties>
+			<fields>a.id,a.code,a.name,a.value,a.order,(select name from BDic e where e.id=a.must),a.status,(select name from BDic e where e.id=a.display),a.internationCode,a.defaultValue</fields>
+			<hql>from PProductProp a</hql>
+			<conditions>
+				<condition id="id" discribe="产品属性ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+                <condition id="codes" describe="names">
+                    <params type="param">
+                        <param name="codes" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.code in #X1</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductProp</className>
+		</query>
+		<query>
+			<id>getList</id>
+			<method>getList</method>
+			<params>
+				<param name="condition" type="java.util.Map"></param>
+				<param name="sort" type="java.lang.String"></param>
+			</params>
+			<properties>id,code,name,value,order,must,status,display,source,internationCode,product.id,defaultValue</properties>
+			<fields>a.id,a.code,a.name,a.value,a.order,(select code from BDic f where f.id=a.must),a.status,(select code from BDic f where f.id=a.display),a.source,a.internationCode,e.id,a.defaultValue</fields>
+			<hql>from PProductProp a left join a.productTypeProp b left join b.typePropClassify c left join a.product e </hql>
+			<conditions>
+				<condition id="ptpid" discribe="产品类型属性ID">
+					<params type="param">
+						<param name="ptpid" type="java.lang.String" />
+					</params>
+					<hql>b.id = ?</hql>
+				</condition>
+				<condition id="code" discribe="产品类型属性ID">
+					<params type="param">
+						<param name="code" type="java.lang.String" />
+					</params>
+					<hql>a.code = ?</hql>
+				</condition>
+				<condition id="piid" discribe="产品信息ID">
+					<params type="param">
+						<param name="piid" type="java.lang.String" />
+					</params>
+					<hql>(case when e.id is null then 'null' else e.id end) = ?</hql>
+				</condition>
+				<condition id="classifyId" discribe="产品类型属性分类Id">
+					<params type="param">
+						<param name="classifyId" type="java.lang.String" />
+					</params>
+					<hql>c.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.String" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+				<condition id="productId" discribe="proid">
+					<params type="param">
+						<param name="productId" type="java.lang.String" />
+					</params>
+					<hql>e.id = ?</hql>
+				</condition>
+                <condition id="codes" describe="names">
+                    <params type="param">
+                        <param name="codes" type="java.lang.String" array="true" arrayMark="#X1"></param>
+                    </params>
+                    <hql>a.code in #X1</hql>
+                </condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductProp</className>
+		</query>
+		<query>
+			<id>getCount</id>
+			<method>getCount</method>
+			<params>
+				<param name="condition" type="java.util.Map" />
+			</params>
+			<properties>id</properties>
+			<fields>cast(count(*) as string)</fields>
+			<hql> from PProductProp a</hql>
+			<conditions>
+			<condition id="id" discribe="产品属性ID">
+					<params type="param">
+						<param name="id" type="java.lang.String" />
+					</params>
+					<hql>a.id = ?</hql>
+				</condition>
+				<condition id="status" discribe="状态">
+					<params type="param">
+						<param name="status" type="java.lang.Integer" />
+					</params>
+					<hql>a.status = ?</hql>
+				</condition>
+			</conditions>
+			<group></group>
+			<order></order>
+			<className>cn.digitalpublishing.po.PProductProp</className>
+		</query>
+	</dao>
+</web-query>
